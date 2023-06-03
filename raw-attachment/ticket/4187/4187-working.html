@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>#4187</title>
+	<link type="text/css" href="../../themes/base/ui.all.css" rel="stylesheet" />
+	<script type="text/javascript" src="../../jquery-1.3.2.js"></script>
+	<script type="text/javascript" src="../../ui/ui.core.js"></script>
+	<script type="text/javascript" src="../../ui/ui.draggable.js"></script>
+	<script type="text/javascript" src="../../ui/ui.resizable.js"></script>
+	<link type="text/css" href="../demos.css" rel="stylesheet" />
+	<style type="text/css">
+	#canvas { width: 500px; height: 500px; background-color: #ccc; }
+	#elem { width: 150px; height: 150px; padding: 0.5em; }
+	#elem h3 { text-align: center; margin: 0; }
+	</style>
+	<script type="text/javascript">
+	$(function() {
+		$("#elem")
+			.draggable({
+				handle: 'h3',
+				grid: [10, 10],
+				containment: '#canvas'
+			})
+			.resizable({
+				grid: [10, 10],
+				containment: '#canvas'
+			});
+	});
+	</script>
+</head>
+<body>
+<div class="demo">
+
+<div id="canvas">
+	<div id="elem" class="ui-widget-content">
+		<h3 class="ui-widget-header">Test</h3>
+	</div>
+</div>
+
+</div><!-- End demo -->
+
+</body>
+</html>
+

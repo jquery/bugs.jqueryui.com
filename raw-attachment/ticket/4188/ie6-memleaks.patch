@@ -1,0 +1,51 @@
+Index: ui.core.js
+===================================================================
+--- ui.core.js	(revision 2623)
++++ ui.core.js	(working copy)
+@@ -274,23 +274,32 @@
+ 			options);
+ 
+ 		this.element = $(element)
+-			.bind('setData.' + name, function(event, key, value) {
+-				if (event.target == element) {
+-					return self._setData(key, value);
+-				}
+-			})
+-			.bind('getData.' + name, function(event, key) {
+-				if (event.target == element) {
+-					return self._getData(key);
+-				}
+-			})
+-			.bind('remove', function() {
+-				return self.destroy();
+-			});
++			.bind('setData.' + name, this._handleData)
++			.bind('getData.' + name, this._handleData)
++			.bind('remove', this._handleRemove);
+ 	};
+ 
+ 	// add widget prototype
+-	$[namespace][name].prototype = $.extend({}, $.widget.prototype, prototype);
++	$[namespace][name].prototype = $.extend({}, $.widget.prototype, prototype, { 
++		_handleData : function(e, k, v){ 
++			var instance = $.data(e.target, name); 
++			if (instance)
++				return instance[ v ? '_setData' : '_getData' ](k,v); 
++		},
++		_handleRemove : function(e) { 
++			var instance = $.data(e.target, name); 
++			if (!instance) return null; 
++			
++			var result = instance.destroy(); 
++            
++            // default 
++			 instance.element
++				.removeData(instance.widgetName)
++				.unbind('.' + instance.widgetName)
++				
++			return result; 
++		}
++	});
+ };
+ 
+ $.widget.prototype = {

@@ -1,0 +1,11 @@
+--- ui.datepicker.js	Fri Jan 30 01:50:00 2009
++++ ui.datepicker.week-fix.js	Thu Mar 05 12:12:15 2009
+@@ -844,7 +844,7 @@
+ 				return 1;
+ 			}
+ 		}
+-		return Math.floor(((checkDate - firstMon) / 86400000) / 7) + 1; // Weeks to given date
++		return Math.floor(Math.round((checkDate - firstMon) / 86400000) / 7) + 1; // Weeks to given date
+ 	},
+ 
+ 	/* Parse a string value into a date object.

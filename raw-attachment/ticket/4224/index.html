@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>test case</title>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.5.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.5.3/jquery-ui.min.js"></script> <!-- comment this out and it works fine -->
+</head>
+<body>
+    Instructions: Type in the box here, then click elsewhere on the page. In IE you will get a dialog, in Firefox+Firebug you will get an error message in the console.
+    <br /><br /><input id="username" maxlength="100" size="25"/>
+
+    <span style="display:none" id="usernameInvalid">Invalid username</span>
+
+	<script type="text/javascript">
+		var emailRegEx = /^([_a-z0-9'+])*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[_a-z0-9-]+){1,320}/i
+
+		$(document).ready(function(){
+			$("#username").keypress(function() {
+				hideAllAddressCheckResults();
+			});
+
+			$("#username").blur(function() {
+				checkEmailAddress();
+			});
+        });
+
+		function checkEmailAddress() {
+			hideAllAddressCheckResults();
+			var valueEntered = $("#username").val();
+			if (!emailRegEx.test(valueEntered)) {
+				// is an invalid email address
+				$("#usernameInvalid").show();
+            }
+        }
+
+		function hideAllAddressCheckResults() {
+			$("#usernameInvalid").hide();
+        }
+
+
+    </script>
+
+</body>
+</html>

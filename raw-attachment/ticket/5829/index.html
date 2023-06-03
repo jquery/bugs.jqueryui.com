@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+
+  <style>
+  .ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
+.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
+.ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
+  </style>
+    
+
+   
+  <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.8.custom.min.js"></script>
+
+
+	<script type="text/javascript">
+    ﻿$(document).ready(function(){
+ 
+        var pdata = eval('('+'{"client":[["Correspondance","Gestion de projet & developpement"],["Devis","Ing\u00e9nierie informatique Intranet"],["Facture","Formation \u00e0 distance au Canada"],["Gestion de projet","D\u00e9veloppement sp\u00e9cifique terminal mobile"],["H\u00e9bergement","Conseil e-marketing, devis gratuit"],["Domaine","Conseil e-marketing, devis gratuit"],["Affiliation","Conseil e-marketing, devis gratuit"],["Infos personnelles","Assistance & maintenance 7j\/7j"],["Bloc-notes","Assistance & maintenance 7j\/7j"]]}'+')');
+    
+        for(i in pdata['client']){
+        $('#tabs ul').append('<li><a href="#tabs-'+i+'">'+pdata['client'][i][0]+'</a></li>');
+        $('#tabs').append('<div id="tabs-'+i+'><p>'+pdata['client'][i][1]+'</p></div>');
+        }
+        
+        $("#tabs").tabs();
+     
+                    
+});
+    </script>
+  </head>
+
+
+  <body>
+    
+
+    <div id="tabs"><ul></ul></div>
+      
+        
+</body>
+</html>

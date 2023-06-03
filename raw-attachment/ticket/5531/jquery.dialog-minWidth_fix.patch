@@ -1,0 +1,12 @@
+diff --git a/ui/jquery.ui.dialog.js b/ui/jquery.ui.dialog.js
+index 6e538b6..dc8b1dc 100644
+--- a/ui/jquery.ui.dialog.js
++++ b/ui/jquery.ui.dialog.js
+@@ -49,6 +49,7 @@ $.widget("ui.dialog", {
+ 	},
+ 	_create: function() {
+ 		this.originalTitle = this.element.attr('title');
++		this.options.width = Math.max(this.options.width, this.options.minWidth);
+ 
+ 		var self = this,
+ 			options = self.options,

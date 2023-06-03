@@ -1,0 +1,22 @@
+--- ui.orig/ui.slider.js	2009-01-16 01:11:14.000000000 +0100
++++ ui/ui.slider.js	2009-01-26 17:59:35.490771400 +0100
+@@ -185,7 +185,8 @@
+ 		var position = { x: event.pageX, y: event.pageY };
+ 		var normValue = this._normValueFromMouse(position);
+ 
+-		var distance = this._valueMax(), closestHandle;
++		var distance = this._valueMax() + 1;
++		var closestHandle;
+ 		var self = this, index;
+ 		this.handles.each(function(i) {
+ 			var thisDistance = Math.abs(normValue - self.values(i));
+@@ -196,6 +197,9 @@
+ 			}
+ 		});
+ 
++		if (index == undefined)
++			return false;
++
+ 		self._handleIndex = index;
+ 
+ 		closestHandle

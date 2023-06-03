@@ -1,0 +1,44 @@
+diff --git a/ui/ui.dialog.js b/ui/ui.dialog.js
+index 1edfee1..bbbe428 100644
+--- a/ui/ui.dialog.js
++++ b/ui/ui.dialog.js
+@@ -30,6 +30,7 @@ var setDataSwitch = {
+ $.widget("ui.dialog", {
+ 
+ 	_init: function() {
++		this.container = $(this.element).parent().get(0);
+ 		this.originalTitle = this.element.attr('title');
+ 
+ 		var self = this,
+@@ -143,11 +144,11 @@ $.widget("ui.dialog", {
+ 	destroy: function() {
+ 		(this.overlay && this.overlay.destroy());
+ 		this.uiDialog.hide();
+-		this.element
++		$(this.container).append(this.element
+ 			.unbind('.dialog')
+ 			.removeData('dialog')
+ 			.removeClass('ui-dialog-content ui-widget-content')
+-			.hide().appendTo('body');
++			.hide());
+ 		this.uiDialog.remove();
+ 
+ 		(this.originalTitle && this.element.attr('title', this.originalTitle));
+@@ -157,15 +158,15 @@ $.widget("ui.dialog", {
+ 		if (false === this._trigger('beforeclose', event)) {
+ 			return;
+ 		}
+-
++		
+ 		(this.overlay && this.overlay.destroy());
+ 		this.uiDialog
+ 			.hide(this.options.hide)
+ 			.unbind('keypress.ui-dialog');
++		this.destroy();
+ 
+ 		this._trigger('close', event);
+ 		$.ui.dialog.overlay.resize();
+-
+ 		this._isOpen = false;
+ 	},
+ 

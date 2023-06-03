@@ -1,0 +1,177 @@
+<HTML>
+
+<HEAD>
+	<TITLE>
+		1st jQuery Test
+	</TITLE>
+
+	<script type="text/javascript" src="jquery_1_3_2.js"></script>
+	<script type="text/javascript" src="jquery_ui_1_5_3.js"></script>
+
+	<script type="text/javascript">
+		function hideBucket() {
+			$("#bucket").hide("slow");
+			
+		}
+
+		function unhideBucket() {
+			$("#bucket").show("slow");
+			
+		}
+
+		$(document).ready(function() {
+			$("#p1").draggable();
+			$("bucket").droppable({
+				drop : function() {
+					alert("ye Dropped!");
+				}
+			});
+		});
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="notes.css">
+</HEAD>
+
+
+<BODY>
+<CENTER>
+<p>
+<a href="#" onclick="hideBucket()">Click here to hide the bucket</a>
+<br>
+<a href="#" onclick="unhideBucket()">Click here to unhide the bucket</a>
+<p>
+<TABLE>
+	<TR>
+		<TD>
+			<TABLE class="projectListTable">
+				<TR>
+					<TH>
+						<input type="checkbox" name="all" id="all">
+					</TH>
+
+					<TH>
+						Project Name
+					</TH>
+
+					<TH>
+						New / Updated
+					</TH>
+				</TR>
+
+				<TR  id="p1" style="cursor:move" > 
+					<TD>
+						<input type="checkbox" id="project[1]">
+					</TD>
+
+					<TD>
+						Omkar
+					</TD>
+
+					<TD>
+						N
+					</TD>
+				</TR>
+
+				<TR id="p2">
+					<TD>
+						<input type="checkbox" id="project[2]">
+					</TD>
+
+					<TD>
+						ABI
+					</TD>
+
+					<TD>
+						N
+					</TD>
+				</TR>
+
+				<TR id="p3">
+					<TD>
+						<input type="checkbox" id="project[3]">
+					</TD>
+
+					<TD>
+						NASA
+					</TD>
+
+					<TD>
+						N
+					</TD>
+				</TR>
+
+				<TR id="p4">
+					<TD>
+						<input type="checkbox" id="project[4]">
+					</TD>
+
+					<TD>
+						BBC
+					</TD>
+
+					<TD>
+						U
+					</TD>
+				</TR>
+
+				<TR id="p5">
+					<TD>
+						<input type="checkbox" id="project[5]">
+					</TD>
+
+					<TD>
+						UK
+					</TD>
+
+					<TD>
+						N
+					</TD>
+				</TR>
+			</TABLE>
+
+		</TD>
+
+		<TD>
+		<DIV id="test" style="display-style:block;border-width:20px;"> This is a test </div>
+		<div>
+			<TABLE id="bucket" class="bucketArea">
+				<TR>
+					<TH>
+						BUCKET
+					</TH>
+				</TR>
+
+				<TR>
+					<TD>
+						&nbsp;
+					</TD>
+				</TR>
+
+			</TABLE>
+		</div>
+		</TD>
+	</TR>
+
+</TABLE>
+<p>
+<p>
+
+			<TABLE class="infoArea" style="">
+				<TR>
+					<TH>
+						The projects added in the bucket are: -
+					</TH>
+				</TR>
+
+				<TR>
+					<TD>
+						&nbsp;
+					</TD>
+				</TR>
+
+			</TABLE>
+
+</CENTER>
+</BODY>
+
+<HTML>

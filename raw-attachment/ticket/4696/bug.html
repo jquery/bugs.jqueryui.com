@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="jquery-ui-1.7.2.custom.min.js"></script>
+
+	<style>
+		#conteneur {
+			position:relative; /* or not, bug is always present */
+		}
+		#conteneur .objet {
+			position:absolute;
+			background-color:red;
+			width:80px;
+			height:80px
+		}
+		#conteneur .green { background-color:green }
+		</style>
+</head>
+
+<body>
+
+	<div id="conteneur">
+		<div class="objet" style="top:0px; left:0px"></div>
+		<div class="objet green" style="top:80px; left:80px"></div>
+		<div class="objet" style="top:160px; left:160px"></div>
+	</div>
+	
+	<script>
+		$(document).ready(function() {
+			$('.objet').draggable( {
+				grid		: [40,40],
+				revert		: true
+			});
+		});
+	</script>
+
+</body>
+</html>
+

@@ -1,0 +1,623 @@
+[
+  {
+    "name": "1.5",
+    "due": 1212303600000000,
+    "completed": 1213016400000000,
+    "description": "",
+    "total": 350,
+    "closed": 350,
+    "percent": 100
+  },
+  {
+    "name": "1.5.1",
+    "due": 1214463600000000,
+    "completed": 1214546400000000,
+    "description": "",
+    "total": 43,
+    "closed": 43,
+    "percent": 100
+  },
+  {
+    "name": "1.5.2",
+    "due": 1215414000000000,
+    "completed": 1215611318000000,
+    "description": "",
+    "total": 36,
+    "closed": 36,
+    "percent": 100
+  },
+  {
+    "name": "1.6b",
+    "due": 1216018800000000,
+    "completed": 1218839425000000,
+    "description": "",
+    "total": 22,
+    "closed": 22,
+    "percent": 100
+  },
+  {
+    "name": "1.6rc1",
+    "due": 1221202800000000,
+    "completed": 1221276501000000,
+    "description": "",
+    "total": 26,
+    "closed": 26,
+    "percent": 100
+  },
+  {
+    "name": "1.6rc2",
+    "due": 1221807600000000,
+    "completed": 1221880568000000,
+    "description": "",
+    "total": 13,
+    "closed": 13,
+    "percent": 100
+  },
+  {
+    "name": "1.5.3",
+    "due": 1227859200000000,
+    "completed": 1227908884000000,
+    "description": "",
+    "total": 0,
+    "closed": 0,
+    "percent": null
+  },
+  {
+    "name": "1.6rc3",
+    "due": 1230710400000000,
+    "completed": 1230773414000000,
+    "description": "",
+    "total": 0,
+    "closed": 0,
+    "percent": null
+  },
+  {
+    "name": "1.6rc4",
+    "due": 1230796800000000,
+    "completed": 1230814719000000,
+    "description": "",
+    "total": 0,
+    "closed": 0,
+    "percent": null
+  },
+  {
+    "name": "1.6rc5",
+    "due": 1232006400000000,
+    "completed": 1232085939000000,
+    "description": "",
+    "total": 3,
+    "closed": 3,
+    "percent": 100
+  },
+  {
+    "name": "1.6rc6",
+    "due": 1233216000000000,
+    "completed": 1233297142000000,
+    "description": "",
+    "total": 2,
+    "closed": 2,
+    "percent": 100
+  },
+  {
+    "name": "1.7",
+    "due": 1236067200000000,
+    "completed": 1236078514000000,
+    "description": "1.6rc6 plus bug fixes, compatible with jQuery 1.3+\r\\\nMajor features:\r\\\n* Progressbar\r\\\n* jQuery UI CSS Framework\r\\\n",
+    "total": 490,
+    "closed": 490,
+    "percent": 100
+  },
+  {
+    "name": "1.6rc2.5",
+    "due": 1236754800000000,
+    "completed": 1236831880000000,
+    "description": "",
+    "total": 0,
+    "closed": 0,
+    "percent": null
+  },
+  {
+    "name": "1.7.1",
+    "due": 1237359600000000,
+    "completed": 1237421279000000,
+    "description": "",
+    "total": 23,
+    "closed": 23,
+    "percent": 100
+  },
+  {
+    "name": "1.6rc2.6",
+    "due": 1237964400000000,
+    "completed": 1238063868000000,
+    "description": "",
+    "total": 0,
+    "closed": 0,
+    "percent": null
+  },
+  {
+    "name": "1.6",
+    "due": 1239778800000000,
+    "completed": 1239937341000000,
+    "description": "1.6rc2 plus bug fixes, compatible with jQuery 1.2.6",
+    "total": 37,
+    "closed": 37,
+    "percent": 100
+  },
+  {
+    "name": "1.7.2",
+    "due": 1238569200000000,
+    "completed": 1244113350000000,
+    "description": "",
+    "total": 35,
+    "closed": 35,
+    "percent": 100
+  },
+  {
+    "name": "1.8a1",
+    "due": 1250060400000000,
+    "completed": 1250129076000000,
+    "description": "",
+    "total": 1,
+    "closed": 1,
+    "percent": 100
+  },
+  {
+    "name": "1.8a2",
+    "due": 1262073600000000,
+    "completed": 1262138271000000,
+    "description": "",
+    "total": 3,
+    "closed": 3,
+    "percent": 100
+  },
+  {
+    "name": "1.8b1",
+    "due": 1263974400000000,
+    "completed": 1264002059000000,
+    "description": "",
+    "total": 0,
+    "closed": 0,
+    "percent": null
+  },
+  {
+    "name": "1.8rc1",
+    "due": 1264579200000000,
+    "completed": 1264656157000000,
+    "description": "",
+    "total": 0,
+    "closed": 0,
+    "percent": null
+  },
+  {
+    "name": "1.8rc2",
+    "due": 1266307200000000,
+    "completed": 1266324206000000,
+    "description": "",
+    "total": 0,
+    "closed": 0,
+    "percent": null
+  },
+  {
+    "name": "1.8rc3",
+    "due": 1267084800000000,
+    "completed": 1267097234000000,
+    "description": "",
+    "total": 0,
+    "closed": 0,
+    "percent": null
+  },
+  {
+    "name": "1.8",
+    "due": 1268895600000000,
+    "completed": 1268912721000000,
+    "description": "",
+    "total": 443,
+    "closed": 443,
+    "percent": 100
+  },
+  {
+    "name": "1.7.3",
+    "due": 1269846000000000,
+    "completed": 1269872238000000,
+    "description": "",
+    "total": 3,
+    "closed": 3,
+    "percent": 100
+  },
+  {
+    "name": "1.8.1",
+    "due": 1271833200000000,
+    "completed": 1271859192000000,
+    "description": "",
+    "total": 33,
+    "closed": 33,
+    "percent": 100
+  },
+  {
+    "name": "1.8.2",
+    "due": 1274338800000000,
+    "completed": 1274353672000000,
+    "description": "",
+    "total": 49,
+    "closed": 49,
+    "percent": 100
+  },
+  {
+    "name": "1.8.3",
+    "due": 1280818800000000,
+    "completed": 1280883865000000,
+    "description": "",
+    "total": 79,
+    "closed": 79,
+    "percent": 100
+  },
+  {
+    "name": "1.8.4",
+    "due": 1280991600000000,
+    "completed": 1281053551000000,
+    "description": "",
+    "total": 7,
+    "closed": 7,
+    "percent": 100
+  },
+  {
+    "name": "1.8.5",
+    "due": 1284102000000000,
+    "completed": 1284139223000000,
+    "description": "",
+    "total": 41,
+    "closed": 41,
+    "percent": 100
+  },
+  {
+    "name": "1.8.6",
+    "due": 1287990000000000,
+    "completed": 1288032362000000,
+    "description": "",
+    "total": 54,
+    "closed": 54,
+    "percent": 100
+  },
+  {
+    "name": "1.8.7",
+    "due": 1291766400000000,
+    "completed": 1291832906000000,
+    "description": "",
+    "total": 47,
+    "closed": 47,
+    "percent": 100
+  },
+  {
+    "name": "1.8.8",
+    "due": 1325376000000000,
+    "completed": 1294927182000000,
+    "description": "",
+    "total": 14,
+    "closed": 14,
+    "percent": 100
+  },
+  {
+    "name": "1.8.9",
+    "due": 1325376000000000,
+    "completed": 1295461114000000,
+    "description": "",
+    "total": 12,
+    "closed": 12,
+    "percent": 100
+  },
+  {
+    "name": "1.8.10",
+    "due": 1325376000000000,
+    "completed": 1298371692000000,
+    "description": "",
+    "total": 13,
+    "closed": 13,
+    "percent": 100
+  },
+  {
+    "name": "1.8.11",
+    "due": 1325376000000000,
+    "completed": 1300218204000000,
+    "description": "",
+    "total": 18,
+    "closed": 18,
+    "percent": 100
+  },
+  {
+    "name": "1.8.12",
+    "due": 1325376000000000,
+    "completed": 1302710417000000,
+    "description": "",
+    "total": 8,
+    "closed": 8,
+    "percent": 100
+  },
+  {
+    "name": "1.8.13",
+    "due": 1325376000000000,
+    "completed": 1305218312000000,
+    "description": "",
+    "total": 23,
+    "closed": 23,
+    "percent": 100
+  },
+  {
+    "name": "1.8.14",
+    "due": 1325376000000000,
+    "completed": 1308342728000000,
+    "description": "",
+    "total": 25,
+    "closed": 25,
+    "percent": 100
+  },
+  {
+    "name": "1.8.15",
+    "due": 1325376000000000,
+    "completed": 1312243634000000,
+    "description": "",
+    "total": 11,
+    "closed": 11,
+    "percent": 100
+  },
+  {
+    "name": "1.8.16",
+    "due": 1325376000000000,
+    "completed": 1313415018000000,
+    "description": "",
+    "total": 18,
+    "closed": 18,
+    "percent": 100
+  },
+  {
+    "name": "1.8.17",
+    "due": 1325307600000000,
+    "completed": 1322581112000000,
+    "description": "",
+    "total": 31,
+    "closed": 31,
+    "percent": 100
+  },
+  {
+    "name": "1.8.18",
+    "due": 1325307600000000,
+    "completed": 1329774596000000,
+    "description": "",
+    "total": 30,
+    "closed": 30,
+    "percent": 100
+  },
+  {
+    "name": "1.8.19",
+    "due": 1356930000000000,
+    "completed": 1334601458000000,
+    "description": "",
+    "total": 20,
+    "closed": 20,
+    "percent": 100
+  },
+  {
+    "name": "1.8.20",
+    "due": 1356930000000000,
+    "completed": 1335817304000000,
+    "description": "",
+    "total": 7,
+    "closed": 7,
+    "percent": 100
+  },
+  {
+    "name": "1.8.21",
+    "due": 1356930000000000,
+    "completed": 1338914246000000,
+    "description": "",
+    "total": 13,
+    "closed": 13,
+    "percent": 100
+  },
+  {
+    "name": "1.8.22",
+    "due": 1356930000000000,
+    "completed": 1343132989000000,
+    "description": "",
+    "total": 8,
+    "closed": 8,
+    "percent": 100
+  },
+  {
+    "name": "1.8.23",
+    "due": 1356930000000000,
+    "completed": 1345038815000000,
+    "description": "",
+    "total": 7,
+    "closed": 7,
+    "percent": 100
+  },
+  {
+    "name": "1.8.24",
+    "due": 1356930000000000,
+    "completed": 1348878419000000,
+    "description": "",
+    "total": 8,
+    "closed": 8,
+    "percent": 100
+  },
+  {
+    "name": "1.9.0",
+    "due": 1356930000000000,
+    "completed": 1349463048000000,
+    "description": "",
+    "total": 1451,
+    "closed": 1451,
+    "percent": 100
+  },
+  {
+    "name": "1.9.1",
+    "due": 1356930000000000,
+    "completed": 1351173050000000,
+    "description": "",
+    "total": 59,
+    "closed": 59,
+    "percent": 100
+  },
+  {
+    "name": "1.9.2",
+    "due": 1354338000000000,
+    "completed": 1353650895000000,
+    "description": "",
+    "total": 19,
+    "closed": 19,
+    "percent": 100
+  },
+  {
+    "name": "1.10.0",
+    "due": 1357016400000000,
+    "completed": 1358447362000000,
+    "description": "",
+    "total": 357,
+    "closed": 357,
+    "percent": 100
+  },
+  {
+    "name": "1.10.1",
+    "due": 1362114000000000,
+    "completed": 1360958717000000,
+    "description": "",
+    "total": 26,
+    "closed": 26,
+    "percent": 100
+  },
+  {
+    "name": "1.10.2",
+    "due": 1364788800000000,
+    "completed": 1363288922000000,
+    "description": "",
+    "total": 22,
+    "closed": 22,
+    "percent": 100
+  },
+  {
+    "name": "1.10.3",
+    "due": 1367380800000000,
+    "completed": 1367598100000000,
+    "description": "",
+    "total": 19,
+    "closed": 19,
+    "percent": 100
+  },
+  {
+    "name": "1.10.4",
+    "due": 1388552400000000,
+    "completed": 1389964341000000,
+    "description": "",
+    "total": 33,
+    "closed": 33,
+    "percent": 100
+  },
+  {
+    "name": "1.11.0",
+    "due": 1391230800000000,
+    "completed": 1403784919000000,
+    "description": "",
+    "total": 215,
+    "closed": 215,
+    "percent": 100
+  },
+  {
+    "name": "1.11.1",
+    "due": 1406865600000000,
+    "completed": 1407929367000000,
+    "description": "",
+    "total": 26,
+    "closed": 26,
+    "percent": 100
+  },
+  {
+    "name": "1.11.2",
+    "due": 1412136000000000,
+    "completed": 1413376878000000,
+    "description": "",
+    "total": 30,
+    "closed": 30,
+    "percent": 100
+  },
+  {
+    "name": "1.11.3",
+    "due": 1423976400000000,
+    "completed": 1423764112000000,
+    "description": "",
+    "total": 12,
+    "closed": 12,
+    "percent": 100
+  },
+  {
+    "name": "1.11.4",
+    "due": 1426132800000000,
+    "completed": 1426078787000000,
+    "description": "",
+    "total": 10,
+    "closed": 10,
+    "percent": 100
+  },
+  {
+    "name": "1.12.0",
+    "due": 1430452800000000,
+    "completed": 1468000150000000,
+    "description": "",
+    "total": 123,
+    "closed": 123,
+    "percent": 100
+  },
+  {
+    "name": "1.12.1",
+    "due": 1470628800000000,
+    "completed": 1473870697000000,
+    "description": "",
+    "total": 12,
+    "closed": 11,
+    "percent": 92
+  },
+  {
+    "name": "1.12.2",
+    "due": 1477972800000000,
+    "completed": 0,
+    "description": "",
+    "total": 48,
+    "closed": 46,
+    "percent": 96
+  },
+  {
+    "name": "1.13.0",
+    "due": 1483246800000000,
+    "completed": 0,
+    "description": "",
+    "total": 18,
+    "closed": 0,
+    "percent": 0
+  },
+  {
+    "name": "2.0.0",
+    "due": 1496289600000000,
+    "completed": 0,
+    "description": "",
+    "total": 371,
+    "closed": 262,
+    "percent": 71
+  },
+  {
+    "name": "git",
+    "due": 0,
+    "completed": 0,
+    "description": "",
+    "total": 63,
+    "closed": 63,
+    "percent": 100
+  },
+  {
+    "name": "none",
+    "due": 0,
+    "completed": 0,
+    "description": "",
+    "total": 1652,
+    "closed": 1189,
+    "percent": 72
+  }
+]

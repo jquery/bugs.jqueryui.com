@@ -1,0 +1,14 @@
+Index: /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.resizable.js
+===================================================================
+--- /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.resizable.js	(revision 1221)
++++ /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.resizable.js	(working copy)
+@@ -606,7 +606,7 @@
+ 			});
+ 		};
+ 
+-		if (typeof(o.alsoResize) == 'object') {
++		if (typeof(o.alsoResize) == 'object' && !o.alsoResize.parentNode) {
+ 			$.each(o.alsoResize, function(exp, c) { _alsoResize(exp, c); });
+ 		}else{
+ 			_alsoResize(o.alsoResize);
+

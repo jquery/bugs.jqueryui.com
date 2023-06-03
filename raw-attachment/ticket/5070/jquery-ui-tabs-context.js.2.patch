@@ -1,0 +1,19 @@
+Index: jquery.ui.tabs.js
+===================================================================
+--- jquery.ui.tabs.js	(revision 3691)
++++ jquery.ui.tabs.js	(working copy)
+@@ -567,6 +567,14 @@
+ 
+ 		this.xhr = $.ajax($.extend({}, o.ajaxOptions, {
+ 			url: url,
++			error: function(r, s) {
++				self._trigger('error', null, self._ui(self.anchors[index], self.panels[index]));
++				
++				try {
++					o.ajaxOptions.error(r, s);
++				}
++				catch(e) {}
++			},
+ 			success: function(r, s) {
+ 				$(self._sanitizeSelector(a.hash)).html(r);
+ 

@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<script src="jquery-1.4.2.min.js"></script>
+		<script src="jquery-ui-1.8.5.custom.min.js"></script>
+		<script> 
+			$(document).ready(function() {
+				$("#drag-n-resize").draggable({
+					containment : 'parent',
+					stop: function(event, ui) {
+						$("#debug").val(ui.position["left"]+","+ui.position["top"]);
+					}	
+				});
+				$("#drag-n-resize").resizable();
+			});
+		</script>
+		<style> 
+			@import url(jquery-ui-1.8.5.custom.css);
+			#container {
+				border: 1px solid #000;
+				width: 800px;
+				height: 600px;
+			}
+			#drag-n-resize {
+				background: #f00;
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		Try simply drag red square. Everything is going alright.<br>
+		Put it at left-upper corner - coords will be 0,0;<br>
+		And now change square size and drug it. Position is not more relative to #container object. =(<br>
+		Put it at left-upper corner - coords will not be 0,0;
+		<div id="container"> 
+			<div id="drag-n-resize"></div>
+		</div>
+		Position: <input disabled="disabled" id="debug">
+	</body>
+</html>

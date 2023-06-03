@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Datepicker default date bug</title>
+		<link type="text/css" href="css/smoothness/jquery-ui-1.8.5.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript">
+				// Datepicker
+        $(document).ready(function() {
+				    $('.pre').datepicker({defaultDate: new Date(2009, 0, 1)});
+            $(".post").datepicker({});
+            $(".post").datepicker('option', 'defaultDate', new Date(2009, 0, 1));
+        });
+		</script>
+	</head>
+	<body>
+		<!-- Datepicker -->
+		<h2>Datepicker as input, default in constructor</h2>
+    <input class="pre">
+		<h2>Datepicker as div, default in constructor</h2>
+		<div class="pre"></div>
+    <h2>Datepicker as div, set default after the fact</h2>
+    <input class="post">
+    <h2>Datepicker as div, set default after the fact</h2>
+    <div class="post"></div>
+	</body>
+</html>
+
+

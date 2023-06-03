@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Datepicker KeyUp Bug</title>
+</head>
+<body>
+    <p style="width: 600px;">
+        Click inside the field and hit any key (e.g. [Ctrl]).
+        A scroll bar should appear within the IFRAME.
+        This will also happen if you [Tab] into the field, since
+        this is tied to the <code>keyup</code> event.
+    </p>
+    <p style="width: 600px;">
+        This will not happen if you have previously shown the calendar,
+        since at that point the absolutely positioned <code>div</code>
+        will be properly hidden.
+    </p>
+    <div>
+        <iframe src="TestDatePicker.html" width="600" height="240">
+            <p>Iframe goes here</p>
+        </iframe>
+    </div>
+</body>
+</html>

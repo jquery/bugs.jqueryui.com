@@ -1,0 +1,27 @@
+Index: /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js
+===================================================================
+--- /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js	(revision 2970)
++++ /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js	(working copy)
+@@ -184,6 +184,22 @@
+ 		}
+ 
+ 		return (/fixed/).test(this.css('position')) || !scrollParent.length ? $(document) : scrollParent;
++	},
++
++	zIndex: function(zIndex) {
++		if (zIndex !== undefined) {
++			return this.css('zIndex', zIndex);
++		}
++
++		var elem = this[0];
++		while (elem) {
++			if (elem.style.zIndex !== '') {
++				return elem.style.zIndex;
++			}
++			elem = elem.parentNode;
++		}
++
++		return 0;
+ 	}
+ });
+ 

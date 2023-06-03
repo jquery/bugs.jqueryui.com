@@ -1,0 +1,39 @@
+*** e:/webapp/Code/Server/src/admin2/media/js/ui.dialog.js	2008-08-25 10:29:29.892301300 +0200
+--- e:/jqueryjs/ui/ui/ui.dialog.js	2008-08-25 09:56:18.410805900 +0200
+***************
+*** 395,412 ****
+  					return allow;
+  				});
+  			}, 1);
+! 
+  			// allow closing by pressing the escape key
+  			$(document).bind('keydown.dialog-overlay', function(e) {
+!                             if (options.closeOnEscape) {
+!                                 (e.keyCode && e.keyCode == $.keyCode.ESCAPE && dialog.close());
+!                             }
+  			});
+! 
+  			// handle window resize
+  			$(window).bind('resize.dialog-overlay', $.ui.dialog.overlay.resize);
+  		}
+! 
+  		var $el = $('<div/>').appendTo(document.body)
+  			.addClass('ui-dialog-overlay').css($.extend({
+  				borderWidth: 0, margin: 0, padding: 0,
+--- 395,410 ----
+  					return allow;
+  				});
+  			}, 1);
+! 			
+  			// allow closing by pressing the escape key
+  			$(document).bind('keydown.dialog-overlay', function(e) {
+! 				(e.keyCode && e.keyCode == $.keyCode.ESCAPE && dialog.close()); 
+  			});
+! 			
+  			// handle window resize
+  			$(window).bind('resize.dialog-overlay', $.ui.dialog.overlay.resize);
+  		}
+! 		
+  		var $el = $('<div/>').appendTo(document.body)
+  			.addClass('ui-dialog-overlay').css($.extend({
+  				borderWidth: 0, margin: 0, padding: 0,

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script type="text/JavaScript" language="JavaScript" src="http://code.jquery.com/jquery-1.2.6.js"><!-- jquery JS library--></script>
+    <script type="text/JavaScript" language="JavaScript" src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.core.js"><!-- jquery:ui:core JS library--></script>
+    <script type="text/JavaScript" language="JavaScript" src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.sortable.js"><!-- jquery:ui:sortable JS library--></script>
+
+</head>
+
+<body>
+    sortable
+    <div id="sortable" style="border:1px solid black">
+        <div>sortable item 1</div>
+        <div>sortable item 2</div>
+    </div>
+
+    <br />
+    <br />
+
+    During update:<br />
+    sortable has <span id="out-1">...</span> children.
+
+    <br />
+    <br />
+    During update:<br />
+    inner HTML
+    <div id="out-2"  style="border:1px solid black"> </div>
+
+
+    <script type="text/javascript">
+
+        jQuery( document ).ready( function () {
+
+            jQuery("#sortable").sortable({
+                update: function()
+                {
+                    jQuery("#out-1").text(
+                        jQuery(this).children().length
+                    );
+
+                    jQuery("#out-2").text(
+                        jQuery(this).html()
+                    );
+                    return true;
+                }
+            });
+
+        });
+
+    </script>
+
+
+</body>
+</html>

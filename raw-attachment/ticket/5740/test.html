@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Mobile Droppable Test</title>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/base/jquery-ui.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css" type="text/css" media="all" />
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js'></script>
+</head>
+<body>
+
+<style type="text/css">
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+	#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+	#sortable li span { position: absolute; margin-left: -1.3em; }
+</style>
+
+<div class="demo">
+
+<ul id="sortable">
+	<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+	<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+	<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+	<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+	<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+	<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+	<li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>
+</ul>
+
+</div><!-- End demo -->
+
+
+<script type="text/javascript">
+
+  function itouch_event_handler (e) {
+    var touches = e.changedTouches,
+      first = e.touches[0],
+      type = '';
+
+    switch (e.type) {
+      case 'touchstart':  type='mousedown'; break;
+      case 'touchmove':   type='mousemove'; break;
+      case 'touchend':    type='mouseup';   break;
+      default: return;
+    }
+
+    //initMouseEvent(type, canBubble, cancelable, view, clickCount,
+    //           screenX, screenY, clientX, clientY, ctrlKey,
+    //           altKey, shiftKey, metaKey, button, relatedTarget);
+    var se = document.createEvent('MouseEvent');
+    se.initMouseEvent(type, true, true, window, 1,
+                      first.screenX, first.screenY,
+                      first.clientX, first.clientY,
+                      false, false, false, false,
+                      0/*left*/, null);
+    first.target.dispatchEvent(se);
+    e.preventDefault();
+    return;
+  }
+
+  $(function() {
+    document.documentElement.style.webkitTouchCallout = 'none';
+    document.documentElement.addEventListener('touchstart',  itouch_event_handler, true);
+    document.documentElement.addEventListener('touchmove',   itouch_event_handler, true);
+    document.documentElement.addEventListener('touchend',    itouch_event_handler, true);
+    document.documentElement.addEventListener('touchcancel', itouch_event_handler, true);
+		$("#sortable").sortable();
+		$("#sortable").disableSelection();
+    return;
+  });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+Index: ui/ui.datepicker.js
+===================================================================
+--- ui/ui.datepicker.js	(revision 1110)
++++ ui/ui.datepicker.js	(working copy)
+@@ -128,7 +128,8 @@
+ 		rangeSeparator: ' - ', // Text between two dates in a range
+ 		altField: '', // Selector for an alternate field to store selected dates into
+ 		altFormat: '', // The date format to use for the alternate field
+-		constrainInput: true // The input is constrained by the current date format
++		constrainInput: true, // The input is constrained by the current date format
++		cancelBubbling: false // True to stop click events bubbling out of the datepicker, false to allow them
+ 	};
+ 	$.extend(this._defaults, this.regional['']);
+ 	this.dpDiv = $('<div id="' + this._mainDivId + '" style="display: none;"></div>');
+@@ -1349,11 +1350,11 @@
+ 		var isRTL = this._get(inst, 'isRTL');
+ 		// build the date picker HTML
+ 		var clear = (this._get(inst, 'mandatory') ? '' :
+-			'<div class="ui-datepicker-clear"><a onclick="jQuery.datepicker._clearDate(\'#' + inst.id + '\');"' +
++			'<div class="ui-datepicker-clear"><a onclick="jQuery.datepicker._clearDate(\'#' + inst.id + '\'); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);"' +
+ 			this._addStatus(showStatus, inst.id, this._get(inst, 'clearStatus'), initStatus) + '>' +
+ 			this._get(inst, 'clearText') + '</a></div>');
+ 		var controls = '<div class="ui-datepicker-control">' + (isRTL ? '' : clear) +
+-			'<div class="ui-datepicker-close"><a onclick="jQuery.datepicker._hideDatepicker();"' +
++			'<div class="ui-datepicker-close"><a onclick="jQuery.datepicker._hideDatepicker(); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);"' +
+ 			this._addStatus(showStatus, inst.id, this._get(inst, 'closeStatus'), initStatus) + '>' +
+ 			this._get(inst, 'closeText') + '</a></div>' + (isRTL ? clear : '')  + '</div>';
+ 		var prompt = this._get(inst, 'prompt');
+@@ -1398,9 +1399,9 @@
+ 			this._daylightSavingAdjust(new Date(drawYear, drawMonth - stepBigMonths, 1)),
+ 			this._getFormatConfig(inst)));
+ 		var prev = '<div class="ui-datepicker-prev">' + (this._canAdjustMonth(inst, -1, drawYear, drawMonth) ?
+-			(showBigPrevNext ? '<a onclick="jQuery.datepicker._adjustDate(\'#' + inst.id + '\', -' + stepBigMonths + ', \'M\');"' +
++			(showBigPrevNext ? '<a onclick="jQuery.datepicker._adjustDate(\'#' + inst.id + '\', -' + stepBigMonths + ', \'M\'); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);"' +
+ 			this._addStatus(showStatus, inst.id, this._get(inst, 'prevBigStatus'), initStatus) + '>' + prevBigText + '</a>' : '') +
+-			'<a onclick="jQuery.datepicker._adjustDate(\'#' + inst.id + '\', -' + stepMonths + ', \'M\');"' +
++			'<a onclick="jQuery.datepicker._adjustDate(\'#' + inst.id + '\', -' + stepMonths + ', \'M\'); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);"' +
+ 			this._addStatus(showStatus, inst.id, this._get(inst, 'prevStatus'), initStatus) + '>' + prevText + '</a>' :
+ 			(hideIfNoPrevNext ? '' : (showBigPrevNext ? '<label>' + prevBigText + '</label>' : '') +
+ 			'<label>' + prevText + '</label>')) + '</div>';
+@@ -1413,9 +1414,9 @@
+ 			this._daylightSavingAdjust(new Date(drawYear, drawMonth + stepBigMonths, 1)),
+ 			this._getFormatConfig(inst)));
+ 		var next = '<div class="ui-datepicker-next">' + (this._canAdjustMonth(inst, +1, drawYear, drawMonth) ?
+-			'<a onclick="jQuery.datepicker._adjustDate(\'#' + inst.id + '\', +' + stepMonths + ', \'M\');"' +
++			'<a onclick="jQuery.datepicker._adjustDate(\'#' + inst.id + '\', +' + stepMonths + ', \'M\'); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);"' +
+ 			this._addStatus(showStatus, inst.id, this._get(inst, 'nextStatus'), initStatus) + '>' + nextText + '</a>' +
+-			(showBigPrevNext ? '<a onclick="jQuery.datepicker._adjustDate(\'#' + inst.id + '\', +' + stepBigMonths + ', \'M\');"' +
++			(showBigPrevNext ? '<a onclick="jQuery.datepicker._adjustDate(\'#' + inst.id + '\', +' + stepBigMonths + ', \'M\'); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);"' +
+ 			this._addStatus(showStatus, inst.id, this._get(inst, 'nextBigStatus'), initStatus) + '>' + nextBigText + '</a>' : '') :
+ 			(hideIfNoPrevNext ? '' : '<label>' + nextText + '</label>' +
+ 			(showBigPrevNext ? '<label>' + nextBigText + '</label>' : ''))) + '</div>';
+@@ -1426,7 +1427,7 @@
+ 		var html = (closeAtTop && !inst.inline ? controls : '') +
+ 			'<div class="ui-datepicker-links">' + (isRTL ? next : prev) +
+ 			(this._isInRange(inst, gotoDate) ? '<div class="ui-datepicker-current">' +
+-			'<a onclick="jQuery.datepicker._gotoToday(\'#' + inst.id + '\');"' +
++			'<a onclick="jQuery.datepicker._gotoToday(\'#' + inst.id + '\'); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);"' +
+ 			this._addStatus(showStatus, inst.id, this._get(inst, 'currentStatus'), initStatus) + '>' +
+ 			currentText + '</a></div>' : '') + (isRTL ? prev : next) + '</div>' +
+ 			(prompt ? '<div class="' + this._promptClass + '"><span>' + prompt + '</span></div>' : '');
+@@ -1464,7 +1465,7 @@
+ 						status.replace(/D/, dayNamesShort[day]));
+ 					html += '<td' + ((dow + firstDay + 6) % 7 >= 5 ? ' class="ui-datepicker-week-end-cell"' : '') + '>' +
+ 						(!changeFirstDay ? '<span' :
+-						'<a onclick="jQuery.datepicker._changeFirstDay(\'#' + inst.id + '\', ' + day + ');"') +
++						'<a onclick="jQuery.datepicker._changeFirstDay(\'#' + inst.id + '\', ' + day + '); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);"') +
+ 						this._addStatus(showStatus, inst.id, dayStatus, initStatus) + ' title="' + dayNames[day] + '">' +
+ 						dayNamesMin[day] + (changeFirstDay ? '</a>' : '</span>') + '</td>';
+ 				}
+@@ -1510,7 +1511,7 @@
+ 							(highlightWeek ? '.parent().removeClass(\'' + this._weekOverClass + '\')' : '') + ';' + // unhighlight selection week
+ 							(!showStatus || (otherMonth && !showOtherMonths) ? '' : 'jQuery(\'#ui-datepicker-status-' +
+ 							inst.id + '\').html(\'' + initStatus + '\');') + '" onclick="jQuery.datepicker._selectDay(\'#' +
+-							inst.id + '\',' + drawMonth + ',' + drawYear + ', this);"') + '>' + // actions
++							inst.id + '\',' + drawMonth + ',' + drawYear + ', this); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);"') + '>' + // actions
+ 							(otherMonth ? (showOtherMonths ? printDate.getDate() : '&#xa0;') : // display for other months
+ 							(unselectable ? printDate.getDate() : '<a>' + printDate.getDate() + '</a>')) + '</td>'; // display for this month
+ 						printDate.setDate(printDate.getDate() + 1);
+@@ -1551,8 +1552,8 @@
+ 			var inMinYear = (minDate && minDate.getFullYear() == drawYear);
+ 			var inMaxYear = (maxDate && maxDate.getFullYear() == drawYear);
+ 			monthHtml += '<select class="ui-datepicker-new-month" ' +
+-				'onchange="jQuery.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'M\');" ' +
+-				'onclick="jQuery.datepicker._clickMonthYear(\'#' + inst.id + '\');"' +
++				'onchange="jQuery.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'M\'); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);" ' +
++				'onclick="jQuery.datepicker._clickMonthYear(\'#' + inst.id + '\'); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);"' +
+ 				this._addStatus(showStatus, inst.id, this._get(inst, 'monthStatus'), initStatus) + '>';
+ 			for (var month = 0; month < 12; month++) {
+ 				if ((!inMinYear || month >= minDate.getMonth()) &&
+@@ -1587,8 +1588,8 @@
+ 			year = (minDate ? Math.max(year, minDate.getFullYear()) : year);
+ 			endYear = (maxDate ? Math.min(endYear, maxDate.getFullYear()) : endYear);
+ 			html += '<select class="ui-datepicker-new-year" ' +
+-				'onchange="jQuery.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'Y\');" ' +
+-				'onclick="jQuery.datepicker._clickMonthYear(\'#' + inst.id + '\');"' +
++				'onchange="jQuery.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'Y\'); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);" ' +
++				'onclick="jQuery.datepicker._clickMonthYear(\'#' + inst.id + '\'); jQuery.datepicker._cancelBubbling(\'#' + inst.id + '\', event);"' +
+ 				this._addStatus(showStatus, inst.id, this._get(inst, 'yearStatus'), initStatus) + '>';
+ 			for (; year <= endYear; year++) {
+ 				html += '<option value="' + year + '"' +
+@@ -1703,6 +1704,26 @@
+ 			this._daylightSavingAdjust(new Date(year, month, day))) :
+ 			this._daylightSavingAdjust(new Date(inst.currentYear, inst.currentMonth, inst.currentDay)));
+ 		return this.formatDate(this._get(inst, 'dateFormat'), date, this._getFormatConfig(inst));
++	},
++	
++	/* Stop an event bubbling out of the datepicker */
++	_cancelBubbling: function(id, event) {
++		var target = $(id);
++		var inst = this._getInst(target[0]);
++		if (!this._get(inst, 'cancelBubbling'))
++			return;
++
++		// this code from http://blog.paranoidferret.com/?p=50
++		if(!event)
++			event = window.event;
++		if(event.stopPropagation) 
++			event.stopPropagation(); 
++		if(event.preventDefault) 
++			event.preventDefault(); 
++
++		event.cancelBubble = true; 
++		event.cancel = true; 
++		event.returnValue = false;		
+ 	}
+ });
+ 

@@ -1,0 +1,41 @@
+Index: /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js
+===================================================================
+--- /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js	(revision 2067)
++++ /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js	(working copy)
+@@ -171,6 +171,24 @@
+ 		}
+ 
+ 		return (/fixed/).test(this.css('position')) || !scrollParent.length ? $(document) : scrollParent;
++	},
++
++	bindFirst: function(types, data, fn) {
++		return this.each(function(index, elem) {
++			$.each(types.split(/\s+/), function(index, type) {
++				var eventType = type.split(".").shift(),
++					events = $.data(elem, "events"),
++					originalEvents = events && events[eventType] || null;
++
++				if (!originalEvents) {
++					return $(elem).bind(type, data, fn);
++				}
++
++				events[eventType] = {};
++				$(elem).bind(type, data, fn);
++				$.extend(events[eventType], originalEvents);
++			});
++		});
+ 	}
+ });
+ 
+@@ -377,9 +395,10 @@
+ 			.bind('mousedown.'+this.widgetName, function(event) {
+ 				return self._mouseDown(event);
+ 			})
+-			.bind('click.'+this.widgetName, function(event) {
++			.bindFirst('click.'+this.widgetName, function(event) {
+ 				if(self._preventClickEvent) {
+ 					self._preventClickEvent = false;
++					event.stopImmediatePropagation();
+ 					return false;
+ 				}
+ 			});

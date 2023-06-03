@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="pl">
+<head>
+	<title>Sortable test</title>
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/base/jquery-ui.css" type="text/css" rel="stylesheet" media="all" />
+	<style type="text/css">
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			border: 1px solid black;
+			width: 510px;
+			overflow: auto;
+		}
+		ul li {
+			float: left;
+			clear: left;
+			margin: 10px 0;
+			padding: 10px 0;
+			width: 250px;
+			background-color: #f0f0f0;
+			text-indent: 10px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>sport</li>
+		<li>koncert</li>
+		<li>festiwale</li>
+		<li>warszawa</li>
+		<li>myslovitz</li>
+	</ul>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+	$('ul').sortable({
+		opacity: 0.6,
+		cursor: 'move',
+	}).disableSelection();
+
+	$('ul li').each(function(index, value){
+		$(this).resizable({
+			maxHeight: 21,
+			maxWidth: 500,
+			minHeight: 21,
+			minWidth: 100,
+		});
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title></title>
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+	
+	div#header{
+		background: green;
+		height: 100px;
+	}
+
+	div#test{
+		background: blue;
+		height: 300px;
+	}
+
+	div#positionThis{
+		background: red;
+		height: 75px;
+		/* width: 100%; */
+		position: absolute;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="header"></div>
+
+<div id="test">
+	stuff in here
+</div>
+
+<div id="positionThis">
+	more stuff in here
+</div>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+$(function() {
+
+	$("#positionThis").position({
+	  my: "left top",
+	  at: "left bottom",
+	  of: "#test"
+	});
+
+});
+
+</script>
+</body>
+</html>

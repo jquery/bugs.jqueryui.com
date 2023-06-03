@@ -1,0 +1,108 @@
+--- ui_datepicker.js.orig	2009-05-02 19:29:00.000000000 +0200
++++ ui.datepicker.js	2009-05-15 08:34:30.000000000 +0200
+@@ -11,6 +11,18 @@
+  *	ui.core.js
+  */
+ 
++/* Testing for a Value in JavaScript Array
++ * http://snook.ca/archives/javascript/testing_for_a_v/ */
++function oc(a)
++{
++  var o = {};
++  for(var i=0;i<a.length;i++)
++  {
++    o[a[i]]='';
++  }
++  return o;
++}
++
+ (function($) { // hide the namespace
+ 
+ $.extend($.ui, { datepicker: { version: "1.7.1" } });
+@@ -54,6 +66,7 @@
+ 		firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
+ 		isRTL: false // True if right-to-left language, false if left-to-right
+ 	};
++	this.highlight = {};	
+ 	this._defaults = { // Global defaults for all the date picker instances
+ 		showOn: 'focus', // 'focus' for popup on focus,
+ 			// 'button' for trigger button, or 'both' for either
+@@ -419,6 +432,19 @@
+ 		}
+ 	},
+ 
++	/* Highlights specific dates with ui-state-active css class
++	 	@param  target   element - the target input field or division or span
++	 	@param  target   Array[Date()] - array of dates to highlight 	 	
++	 */
++	_setHighlightDatepicker: function(target, settings) {
++		var inst = this._getInst(target);
++		if (inst) {		
++			this.highlight = settings;
++			this._updateDatepicker(inst);
++			this._updateAlternate(inst);			
++		}
++	},
++
+ 	/* Get the date(s) for the first entry in a jQuery selection.
+ 	   @param  target  element - the target input field or division or span
+ 	   @return Date - the current date or
+@@ -430,6 +456,7 @@
+ 		return (inst ? this._getDate(inst) : null);
+ 	},
+ 
++
+ 	/* Handle keystrokes. */
+ 	_doKeyDown: function(event) {
+ 		var inst = $.datepicker._getInst(event.target);
+@@ -1252,7 +1279,7 @@
+ 			inst.currentYear, inst.currentMonth, inst.currentDay)));
+ 			return startDate;
+ 	},
+-
++		
+ 	/* Generate the HTML for the current state of the date picker. */
+ 	_generateHTML: function(inst) {
+ 		var today = new Date();
+@@ -1364,6 +1391,7 @@
+ 				var leadDays = (this._getFirstDayOfMonth(drawYear, drawMonth) - firstDay + 7) % 7;
+ 				var numRows = (isMultiMonth ? 6 : Math.ceil((leadDays + daysInMonth) / 7)); // calculate the number of rows to generate
+ 				var printDate = this._daylightSavingAdjust(new Date(drawYear, drawMonth, 1 - leadDays));
++				
+ 				for (var dRow = 0; dRow < numRows; dRow++) { // create date picker rows
+ 					calender += '<tr>';
+ 					var tbody = '';
+@@ -1389,8 +1417,9 @@
+ 							(unselectable ? '' : ' onclick="DP_jQuery.datepicker._selectDay(\'#' +
+ 							inst.id + '\',' + drawMonth + ',' + drawYear + ', this);return false;"') + '>' + // actions
+ 							(otherMonth ? (showOtherMonths ? printDate.getDate() : '&#xa0;') : // display for other months
+-							(unselectable ? '<span class="ui-state-default">' + printDate.getDate() + '</span>' : '<a class="ui-state-default' +
+-							(printDate.getTime() == today.getTime() ? ' ui-state-highlight' : '') +
++							(unselectable ? '<span class="ui-state-default">' + printDate.getDate() + '</span>' : '<a class="' +
++							(printDate.getTime() == today.getTime() ? ' ui-state-highlight' : '') +														
++							this._setHighlight(printDate) +
+ 							(printDate.getTime() >= currentDate.getTime() && printDate.getTime() <= endDate.getTime() ? // in current range
+ 							' ui-state-active' : '') + // highlight selected day
+ 							'" href="#">' + printDate.getDate() + '</a>')) + '</td>'; // display for this month
+@@ -1416,6 +1445,21 @@
+ 		return html;
+ 	},
+ 
++	/* check if given date belongs to any classes and return their names
++	 * return default 'ui-state-default' otherwise
++	 */
++	_setHighlight: function (printDate) {
++		/* return classes of the given date */
++		var classes = '';
++		var highlight = this.highlight;
++		for (var i in highlight) {
++			if (printDate in oc(highlight[i])) {
++				classes += ' ' + i;
++			}			
++		}
++		return (( classes == '') ? 'ui-state-default' : classes);  
++	},
++
+ 	/* Generate the month and year header. */
+ 	_generateMonthYearHeader: function(inst, drawMonth, drawYear, minDate, maxDate,
+ 			selectedDate, secondary, monthNames, monthNamesShort) {

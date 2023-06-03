@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Menu Layout Proof Of Concept</title>
+	<script type="text/javascript" src="/js/src/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/js/src/jquery/ui.core.js"></script>
+	<script type="text/javascript" src="/js/src/jquery/ui.draggable.js"></script>
+	<script type="text/javascript" src="/js/src/jquery/ui.droppable.js"></script>
+	<script type="text/javascript" src="/js/src/jquery/ui.sortable.js"></script>
+	
+	<script type="text/javascript">
+		
+		$(document).ready( function() {
+			$('.wx_menu_column').sortable({});
+			$('.wx_palette_item').draggable({
+				helper: function() {
+					return $(this).clone().removeAttr("id").appendTo(document.body)
+						.css({
+							zIndex: 100,
+							opacity: .7
+						});
+				}
+			});
+			$('#wx_link').data('connectToSortable.draggable', '.wx_menu_column');
+			$('#wx_formatted_content').data('connectToSortable.draggable', '.wx_menu_column');
+		});
+	</script>
+	<style>
+		ul {
+			list-style: none;
+			padding: 0;
+		}
+		#parent_list > li {
+			float: left;
+			width: 33%;
+		}
+		#build_palette {
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+
+<ul id="parent_list">
+<li><ul class="wx_menu_column">
+		<li>Testing Lists</li>
+		<li>Testing Lists</li>
+		<li>Testing Lists</li>
+		<li>Testing Lists</li>
+	</ul>
+</li>
+
+<li><ul class="wx_menu_column">
+		<li>Testing Lists</li>
+		<li>Testing Lists</li>
+		<li>Testing Lists</li>
+		<li>Testing Lists</li>
+	</ul>
+</li>
+
+<li><ul class="wx_menu_column">
+		<li>Testing Lists</li>
+		<li>Testing Lists</li>
+		<li>Testing Lists</li>
+		<li>Testing Lists</li>
+	</ul>
+</li>
+</ul>
+
+<div id="build_palette">
+<br /><br />
+<ul id="Fields">
+	<li><strong>Draggable Fields</strong></li>
+	<li class="wx_palette_item" id="wx_link">Link Field</li>
+	<li class="wx_palette_item" id="wx_formatted_content">Formatted Content Field</li>
+</ul>
+</div>
+
+</body>
+</html>

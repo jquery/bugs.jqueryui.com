@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link type="text/css" 			href="file:///C:\jquery-ui-1.7.2\development-bundle\themes\base\ui.all.css" rel="stylesheet" />
+	<script type="text/javascript" 	src ="file:///C:\jquery-ui-1.7.2\development-bundle\jquery-1.3.2.js"></script>
+	<script type="text/javascript" 	src ="file:///C:\jquery-ui-1.7.2\development-bundle\ui\ui.core.js"></script>
+	<script type="text/javascript" 	src ="file:///C:\jquery-ui-1.7.2\development-bundle\ui\ui.datepicker.js"></script>
+	<script type="text/javascript" 	src ="file:///C:\jquery-ui-1.7.2\development-bundle\ui\ui.draggable.js"></script>
+	<script type="text/javascript" 	src ="file:///C:\jquery-ui-1.7.2\development-bundle\ui\ui.resizable.js"></script>
+	<script type="text/javascript" 	src ="file:///C:\jquery-ui-1.7.2\development-bundle\ui\ui.dialog.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(
+			function()
+			{
+				$("#datepicker").datepicker(
+				{
+					changeMonth: true,
+					changeYear: true,
+					appendText: '(dd MM yyyy)',
+					dateFormat: 'd M yy',
+					minDate: -7,
+					maxDate:7
+				});
+			});
+
+		$(document).ready(function()
+		{
+			$("#dialog").dialog(
+			{
+				show:'slide',
+				buttons:
+				{
+					"Ok 0": 	function()
+						  	{
+						  		$(this).dialog("close");
+						  	},
+					"Ok 1": 	function()
+						  	{
+						  		$(this).dialog("close");
+						  	}
+				} ,
+				draggable: false,
+				modal: true,
+				resizable: true,
+				title:"Wow... what an error",
+				position:'center',
+
+			});
+	});
+
+	</script>
+</head>
+<body style="font-size:62.5%;">
+
+<input type="text" id="datepicker"/	>
+
+
+
+<div id="dialog" title="Dialog Title">I'm in a dialog</div>
+
+</body>
+</html>

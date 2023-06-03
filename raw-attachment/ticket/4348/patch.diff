@@ -1,0 +1,26 @@
+Index: ui.datepicker.js
+===================================================================
+--- ui.datepicker.js
++++ ui.datepicker.js
+@@ -245,8 +245,8 @@
+ 
+ 		this._pos = (pos ? (pos.length ? pos : [pos.pageX, pos.pageY]) : null);
+ 		if (!this._pos) {
+-			var browserWidth = window.innerWidth || document.documentElement.clientWidth ||	document.body.clientWidth;
+-			var browserHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
++			var browserWidth =  document.documentElement.clientWidth ||	document.body.clientWidth || window.innerWidth;
++			var browserHeight = document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight;
+ 			var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+ 			var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+ 			this._pos = // should use actual width/height below
+@@ -617,8 +617,8 @@
+ 		var dpHeight = inst.dpDiv.outerHeight();
+ 		var inputWidth = inst.input ? inst.input.outerWidth() : 0;
+ 		var inputHeight = inst.input ? inst.input.outerHeight() : 0;
+-		var viewWidth = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) + $(document).scrollLeft();
+-		var viewHeight = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) + $(document).scrollTop();
++		var viewWidth = (document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth) + $(document).scrollLeft();
++		var viewHeight = (document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight) + $(document).scrollTop();
+ 
+ 		offset.left -= (this._get(inst, 'isRTL') ? (dpWidth - inputWidth) : 0);
+ 		offset.left -= (isFixed && offset.left == inst.input.offset().left) ? $(document).scrollLeft() : 0;

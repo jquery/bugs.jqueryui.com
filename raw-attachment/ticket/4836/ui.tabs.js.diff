@@ -1,0 +1,10 @@
+91,93d90
+< 			var onlyLocation= location.toString().split('#')[0];
+< 			var locArray= onlyLocation.split('/');
+< 			var lastElement= locArray[locArray.length-1];
+95,97c92
+< 					(baseEl = $('base')[0]) && hrefBase === baseEl.href) ||
+< 					(hrefBase.indexOf('/') == -1 && hrefBase == lastElement)
+< 				) {
+---
+> 					(baseEl = $('base')[0]) && hrefBase === baseEl.href)) {

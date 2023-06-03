@@ -1,0 +1,31 @@
+Index: ui.datepicker.js
+===================================================================
+--- ui.datepicker.js	(revision 3312)
++++ ui.datepicker.js	(working copy)
+@@ -65,6 +65,7 @@
+ 		buttonText: '...', // Text for trigger button
+ 		buttonImage: '', // URL for trigger button image
+ 		buttonImageOnly: false, // True if the image appears alone, false if it appears on a button
++		disableAutoComplete: false,
+ 		hideIfNoPrevNext: false, // True to hide next/previous month links
+ 			// if not applicable, false to just disable them
+ 		navigationAsDateFormat: false, // True if date formatting applied to prev/today/next links
+@@ -173,6 +174,9 @@
+ 		var isRTL = this._get(inst, 'isRTL');
+ 		if (appendText)
+ 			input[isRTL ? 'before' : 'after']('<span class="' + this._appendClass + '">' + appendText + '</span>');
++		var doDisableAutoComplete = this._get(inst, 'disableAutoComplete');
++		if (doDisableAutoComplete)
++			input.attr('autocomplete', 'off');
+ 		var showOn = this._get(inst, 'showOn');
+ 		if (showOn == 'focus' || showOn == 'both') // pop-up date picker when in the marked field
+ 			input.focus(this._showDatepicker);
+@@ -1404,7 +1408,7 @@
+ 					drawMonth = 0;
+ 					drawYear++;
+ 				}
+-				calender += '</tbody></table>' + (isMultiMonth ? '</div>' + 
++				calender += '</tbody></table>' + (isMultiMonth ? '</div>' +
+ 							((numMonths[0] > 0 && col == numMonths[1]-1) ? '<div class="ui-datepicker-row-break"></div>' : '') : '');
+ 				group += calender;
+ 			}

@@ -1,0 +1,158 @@
+Index: ui.dialog.js
+===================================================================
+--- ui.dialog.js	(revision 2731)
++++ ui.dialog.js	(working copy)
+@@ -30,7 +30,9 @@
+ 		'ui-dialog ' +
+ 		'ui-widget ' +
+ 		'ui-widget-content ' +
+-		'ui-corner-all ';
++		'ui-corner-all ',
++        
++    uiDialogPool = {};
+ 
+ $.widget("ui.dialog", {
+ 
+@@ -63,7 +65,10 @@
+ 					'aria-labelledby': titleId
+ 				})
+ 				.mousedown(function(event) {
+-					self.moveToTop(false, event);
++					self.moveToTop(false, event, true);
++				})
++				.mouseup(function(event) {
++					self._fixZIndex(event);
+ 				}),
+ 
+ 			uiDialogContent = self.element
+@@ -126,6 +131,9 @@
+ 				.html(title)
+ 				.prependTo(uiDialogTitlebar);
+ 
++		// Title ID is unique to a dialog so we'll use that one to identify the dialogs.
++		uiDialogPool[titleId] = self;
++
+ 		uiDialogTitlebar.find("*").add(uiDialogTitlebar).disableSelection();
+ 
+ 		(options.draggable && $.fn.draggable && self._makeDraggable());
+@@ -150,6 +158,8 @@
+ 			.hide().appendTo('body');
+ 		self.uiDialog.remove();
+ 
++		uiDialogPool[self] = null;
++
+ 		(self.originalTitle && self.element.attr('title', self.originalTitle));
+ 
+ 		return self;
+@@ -195,7 +205,7 @@
+ 
+ 	// the force parameter allows us to move modal dialogs to their correct
+ 	// position on open
+-	moveToTop: function(force, event) {
++	moveToTop: function(force, event, isMouseEvent) {
+ 		var self = this,
+ 			options = self.options;
+ 		
+@@ -207,15 +217,44 @@
+ 		if (options.zIndex > $.ui.dialog.maxZ) {
+ 			$.ui.dialog.maxZ = options.zIndex;
+ 		}
+-		(self.overlay && self.overlay.$el.css('z-index', $.ui.dialog.overlay.maxZ = ++$.ui.dialog.maxZ));
+ 
+-		//Save and then restore scroll since Opera 9.5+ resets when parent z-Index is changed.
+-		//  http://ui.jquery.com/bugs/ticket/3193
+-		var saveScroll = { scrollTop: self.element.attr('scrollTop'), scrollLeft: self.element.attr('scrollLeft') };
+-		self.uiDialog.css('z-index', ++$.ui.dialog.maxZ);
+-		self.element.attr(saveScroll);
+-		self._trigger('focus', event);
++		// If this is a result of a mouse event drop other dialogs below the current one since Opera 9.5+ resets scroll positions when parent z-Index is changed.
++		// and the mouse event could be interaction with a scroll bar.
++		//  http://dev.jqueryui.com/ticket/3193
++		//  http://dev.jqueryui.com/ticket/4575
++		if (isMouseEvent) {
+ 
++			var orderedLayers = []
++			var layerCount = 0;
++			for (var dialogID in uiDialogPool)
++				if (uiDialogPool[dialogID] != self) {
++					orderedLayers.push(uiDialogPool[dialogID]);
++					layerCount++;
++					if (uiDialogPool[dialogID].overlay)
++						layerCount++;
++				}
++			orderedLayers.sort(function(d1, d2) { return d2.uiDialog.css('z-index') -
++			                                              d1.uiDialog.css('z-index'); });
++
++			// Leave room for the possible overlay
++			if (self.overlay) layerCount++;
++			
++			var topZ = self.uiDialog.css('z-index');
++			
++			// Move the dialogs back starting from the backmost dialog to prevent flickering.
++			for (var i = orderedLayers.length; i > 0; i--) {
++				var currentDialog = orderedLayers[i-1];
++				(currentDialog.overlay && currentDialog.overlay.$el.css('z-index', topZ - (layerCount--)));
++				currentDialog._setZIndex(topZ - (layerCount--));
++			}
++			
++		} else {
++			(self.overlay && self.overlay.$el.css('z-index', $.ui.dialog.overlay.maxZ = ++$.ui.dialog.maxZ));
++			self._setZIndex(++$.ui.dialog.maxZ);
++		}
++		
++		self._trigger('focus', event);	
++
+ 		return self;
+ 	},
+ 
+@@ -519,6 +558,50 @@
+ 
+ 		(this.uiDialog.is(':ui-resizable') &&
+ 			this.uiDialog.resizable('option', 'minHeight', this._minHeight()));
++	},
++
++	_fixZIndex: function() {
++		var orderedArray = [];
++		for (var dialogID in uiDialogPool)
++			orderedArray.push(uiDialogPool[dialogID]);
++
++		orderedArray.sort(function(d1, d2) { return d2.uiDialog.css('z-index') - d1.uiDialog.css('z-index') });
++
++		var zIndex = $.ui.dialog.maxZ;
++		
++		for (var i = 0; i < orderedArray.length; i++) {
++			var currentDialog = orderedArray[i];
++			currentDialog._setZIndex(zIndex--);
++			(currentDialog.overlay && currentDialog.overlay.$el.css('z-index', zIndex--));
++		}
++	},
++
++	_setZIndex: function(index) {
++		var self = this;
++		
++		// Store the scroll positions before modifying the z-index.
++		//  http://dev.jqueryui.com/ticket/3193
++		//  http://dev.jqueryui.com/ticket/4575
++		var saveScroll = []
++		self.uiDialog.find("*").each(function() {
++			var currentElement = $(this)
++			var scrollTop = currentElement.attr('scrollTop');
++			var scrollLeft = currentElement.attr('scrollLeft');
++			if (scrollTop || scrollLeft) {
++				saveScroll.push({ 
++					element: currentElement, 
++					attr: { scrollTop: currentElement.attr('scrollTop'),
++					        scrollLeft: currentElement.attr('scrollLeft') }
++				});
++			}
++		});
++
++		self.uiDialog.css('z-index', index);
++
++		for (var i = 0; i < saveScroll.length; i++) {
++			var savedScroll = saveScroll[i];
++			savedScroll.element.attr(savedScroll.attr);
++		}
+ 	}
+ });
+ 

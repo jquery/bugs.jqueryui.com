@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>jQuery UI Droppable - Accept Demo</title>
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/jquery-ui.min.js"></script>
+    <link type="text/css" href="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css" rel="stylesheet" />
+    <style type="text/css">
+    #droppable1,#droppable2 {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        padding: 0.5em;
+        float: left;
+        margin: 10px;
+    }
+    #droppable1 {
+        z-index: 20;
+        top: 100px;
+        left: 100px;
+    }
+    #droppable2 {
+        z-index: 22;
+        top: 130px;
+        left: 130px;
+    }
+
+    #draggable {
+        z-index: 25;
+        width: 100px;
+        height: 100px;
+        padding: 0.5em;
+        float: left;
+        margin: 10px 10px 10px 0;
+    }
+    </style>
+    <script type="text/javascript">
+    $(function() {
+        $("#draggable").draggable()
+
+        $("#droppable1").droppable({
+            accept: '#draggable',
+            activeClass: 'ui-state-hover',
+            hoverClass: 'ui-state-active',
+            drop: function(event, ui)
+            {
+                $(this).addClass('ui-state-highlight').find('p').html('Dropped!')
+            }
+        })
+
+        $("#droppable2").droppable({
+            accept: '#draggable',
+            activeClass: 'ui-state-hover',
+            hoverClass: 'ui-state-active',
+            drop: function(event, ui)
+            {
+                $(this).addClass('ui-state-highlight').find('p').html('Dropped!')
+            }
+        })
+    })
+    </script>
+
+</head>
+<body>
+<div class="demo">
+
+<div id="draggable" class="ui-widget-content">
+    <p>Drag me to my target</p>
+</div>
+
+<div id="droppable1" class="ui-widget-header">
+    <p>accept: '#draggable'</p>
+</div>
+<div id="droppable2" class="ui-widget-header">
+    <p>accept: '#draggable'</p>
+</div>
+</div><!-- End demo -->
+<ol>
+<li>
+    Try to drag draggable over two droppables.
+    There are positions when they both are hovered though only one should be.
+    I think that only one droppable should be hovered because only one could receive this draggable so only one should show that it's waiting.
+</li>
+<li>
+    When you drop draggable into intersection of droppable1 and droppable2 (when they are hovered) only droppable1 will receive draggable though droppable2 is on top.
+    And droppable2 will be keeping hoverClass untill next dragging.
+</li>
+</ol>
+</body>
+</html>

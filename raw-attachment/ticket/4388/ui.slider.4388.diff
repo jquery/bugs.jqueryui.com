@@ -1,0 +1,59 @@
+Index: ui.slider.js
+===================================================================
+--- ui.slider.js	(revision 2349)
++++ ui.slider.js	(working copy)
+@@ -34,14 +34,12 @@
+ 
+ 		if (o.range) {
+ 
++			this.range = $('<div></div>');
+ 			if (o.range === true) {
+-				this.range = $('<div></div>');
+ 				if (!o.values) o.values = [this._valueMin(), this._valueMin()];
+-				if (o.values.length && o.values.length != 2) {
++				if (o.values.length && o.values.length < 2) {
+ 					o.values = [o.values[0], o.values[0]];
+ 				}
+-			} else {
+-				this.range = $('<div></div>');
+ 			}
+ 
+ 			this.range
+@@ -473,23 +471,24 @@
+ 	_refreshValue: function(animate) {
+ 
+ 		var oRange = this.options.range, o = this.options, self = this;
++		var numOptions = this.options.values ? this.options.values.length : 0;
+ 
+-		if (this.options.values && this.options.values.length) {
+-			var vp0, vp1;
++		if (numOptions) {
++			var min = this._valueMin();
++			var diff = this._valueMax() - this._valueMin();
++			if (oRange === true) {
++				var firstHandlePercent = (this.values(0) - min) / diff * 100;
++				var rangePercent = (this.values(numOptions-1) - min) / diff * 100 - firstHandlePercent;
++				if (self.orientation == 'horizontal') {
++					self.range.stop(1,1)[animate ? 'animate' : 'css']({ left: firstHandlePercent + '%', width: rangePercent + '%' }, o.animate);
++				} else {
++					self.range.stop(1,1)[animate ? 'animate' : 'css']({ bottom: firstHandlePercent + '%', height: rangePercent + '%' }, o.animate);
++				}
++			}
+ 			this.handles.each(function(i, j) {
+-				var valPercent = (self.values(i) - self._valueMin()) / (self._valueMax() - self._valueMin()) * 100;
++				var valPercent = (self.values(i) - min) / diff * 100;
+ 				var _set = {}; _set[self.orientation == 'horizontal' ? 'left' : 'bottom'] = valPercent + '%';
+ 				$(this).stop(1,1)[animate ? 'animate' : 'css'](_set, o.animate);
+-				if (self.options.range === true) {
+-					if (self.orientation == 'horizontal') {
+-						(i == 0) && self.range.stop(1,1)[animate ? 'animate' : 'css']({ left: valPercent + '%' }, o.animate);
+-						(i == 1) && self.range[animate ? 'animate' : 'css']({ width: (valPercent - lastValPercent) + '%' }, { queue: false, duration: o.animate });
+-					} else {
+-						(i == 0) && self.range.stop(1,1)[animate ? 'animate' : 'css']({ bottom: (valPercent) + '%' }, o.animate);
+-						(i == 1) && self.range[animate ? 'animate' : 'css']({ height: (valPercent - lastValPercent) + '%' }, { queue: false, duration: o.animate });
+-					}
+-				}
+-				lastValPercent = valPercent;
+ 			});
+ 		} else {
+ 			var value = this.value(),

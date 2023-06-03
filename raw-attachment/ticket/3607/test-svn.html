@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Draggable Test (SVN)</title>
+	<script src="svn-trunk/jquery-1.2.6.js"></script>
+
+	<!-- Contains just draggable and UI core components -->
+	<script src="svn-trunk/ui/ui.core.js"></script>
+	<script src="svn-trunk/ui/ui.draggable.js"></script>
+
+	<script language="javascript">
+		$(function() {
+			$("#drag").draggable({
+				cursor: "move",
+				containment: "parent"
+			});
+		});
+	</script>
+	<style type="text/css">
+		#drag {width: 100px; height: 100px; background: red;}
+		#container {margin: 100px; border: 1px solid green; width: 200px; height: 200px;}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="drag"></div>
+	</div>
+</body>
+</html>

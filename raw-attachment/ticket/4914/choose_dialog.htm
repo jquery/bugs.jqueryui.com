@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>a</title>
+<link rel="shortcut icon" href="images/favicon.ico">
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.validate.pack.js"></script>
+<script type="text/javascript" src="js/jquery.bgiframe.pack.js"></script>
+<script type="text/javascript" src="js/jquery.tooltip.pack.js"></script>
+
+<link type="text/css" href="css/redmond/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-ui-1.7.2.core.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.7.2.dialog.js"></script>
+
+<style type="text/css">
+  /*demo page css*/
+  #ui-datepicker-div { font: 62.5% arial, sans-serif;}
+  div.ui-dialog {font: 62.5% arial, sans-serif;}
+  tr.tier  {background-color: rgb(184, 200, 227);}
+  tr.selected {background-color: rgb(233, 242, 255);}
+</style>
+<body >
+<!-- start header + nav container -->
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#chooseRange").click(function() {
+        $("#chooseRangeDialog").dialog("open");
+    });
+    
+    $("#chooseRangeDialog").dialog({
+        autoOpen: false,
+        bgiframe: true,
+        resizable: false,
+        modal: true
+    });
+});
+</script>
+
+
+<div id="chooseRangeDialog" title="Choose date range" style="display: none;">
+<form id="rangeForm" name="rangeForm" method="post" action="">
+  <table cellspacing="0" cellpadding="0" border="0">
+    <tr><td colspan="4" class="srchSideHead02"></td></tr>
+    <tr>
+      <td class="detailEditData04">from</td><td class="detailEditData04"><input class="detailEditTxt2 calendar" id="from1" name="from1" size="12" maxlength="9" value="02-Oct-09" type="text"/><br/></td>
+      <td class="detailEditData04">to</td><td class="detailEditData04"><input class="detailEditTxt2 calendar" id="to1" name="to1" size="12" maxlength="9" value="08-Oct-09" type="text"/><br/></td>
+    </tr>
+    <tr><td colspan="4" class="detailEditData04"><input type="radio" checked="checked">&nbsp;or</td></tr>
+    <tr>
+      <td class="detailEditData04">from</td><td class="detailEditData04"><input class="detailEditTxt2 calendar" id="from2" name="from2" size="12" maxlength="9" value="" type="text"/><br/></td>
+      <td class="detailEditData04">to</td><td class="detailEditData04"><input class="detailEditTxt2 calendar" id="to2" name="to2" size="12" maxlength="9" value="" type="text"/><br/></td>
+    </tr>
+    <tr><td colspan="4" class="detailEditData04"><input type="radio" checked="checked">&nbsp;or</td></tr>
+    <tr>
+      <td class="detailEditData04">from</td><td class="detailEditData04"><input class="detailEditTxt2 calendar" id="from3" name="from3" size="12" maxlength="9" value="" type="text"/><br/></td>
+      <td class="detailEditData04">to</td><td class="detailEditData04"><input class="detailEditTxt2 calendar" id="to3" name="to3" size="12" maxlength="9" value="" type="text"/><br/></td>
+    </tr>
+    <tr><td colspan="4" class="detailEditData04"><input type="radio" checked="checked">&nbsp;or</td></tr>
+    <tr>
+      <td class="detailEditData04">from</td><td class="detailEditData04"><input class="detailEditTxt2 calendar" id="from4" name="from4" size="12" maxlength="9" value="" type="text"/><br/></td>
+      <td class="detailEditData04">to</td><td class="detailEditData04"><input class="detailEditTxt2 calendar" id="to4" name="to4" size="12" maxlength="9" value="" type="text"/><br/></td>
+    </tr>
+    <tr><td colspan="4" class="detailEditData04"><input type="radio" checked="checked">&nbsp;or</td></tr>
+    <tr>
+      <td class="detailEditData04">from</td><td class="detailEditData04"><input class="detailEditTxt2 calendar" id="from5" name="from5" size="12" maxlength="9" value="" type="text"/><br/></td>
+      <td class="detailEditData04">to</td><td class="detailEditData04"><input class="detailEditTxt2 calendar" id="to5" name="to5" size="12" maxlength="9" value="" type="text"/><br/></td>
+    </tr>
+    <tr><td colspan="4" class="detailEditData04">&nbsp;</td></tr>
+    <tr><td colspan="4">
+        <a href="javascript:;" onClick="$('form[name=rangeForm] :input[type=text]').each(function() {this.value=''});" class="btnTxt03E">Clear<img src="icons/dot_refresh_med.gif" border="0"></a>
+        <a href="javascript:;" id="rangeForm_submit" class="btnTxt03E">Continue<img src="icons/dot_save_med.gif" border="0"></a>
+        <a href="javascript:;" onClick="$('#chooseRangeDialog').dialog('close');" class="btnTxt04">Cancel<img src="icons/dot_close_med.gif" border="0"></a>
+    </td></tr>
+  </table>
+</form>
+</div>
+
+<!-- end nav container -->
+<div class="subnav">
+    <a id="chooseRange" href="javascript:;" class="btnEditMed">
+    <img border="0" align="middle" src="icons/dot_edit_med.gif"/>
+    Choose date range</a>
+</div>
+</body>
+</html>
+

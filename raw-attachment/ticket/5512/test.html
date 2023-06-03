@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+<style type="text/css">
+#test {
+	display: block;
+	width: 20em;
+	background-color: #f88;
+}
+</style>
+
+</head>
+
+<body>
+
+<button id="init">Run Test</button>
+<button id="toggle">Toggle $.fx.off</button>
+<p id="test">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada facilisis ante, ut mollis purus semper id. Nulla lectus leo, malesuada eu pharetra eu, venenatis eget dolor. Maecenas sed augue eget orci faucibus iaculis quis porttitor est. Proin tempor mattis nisi ac pretium. In gravida felis sagittis odio facilisis id fermentum tellus vulputate. Aliquam odio velit, malesuada non vehicula id, vestibulum gravida lacus. Ut placerat ipsum non ante tempus egestas. Proin cursus dapibus velit, et fermentum orci rhoncus at. Nulla eget tincidunt arcu. Duis sapien velit, tempor eget tempor sed, ornare nec enim. Aenean quis nisi id est tempus consectetur non vitae nulla. Duis id ligula orci. Nunc mattis dui ut felis luctus elementum. Morbi ipsum metus, varius eu faucibus sit amet, cursus in risus. Donec semper dignissim venenatis. Donec id lacus dui. Vivamus bibendum lorem at nisi dictum a placerat augue euismod.</p>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#init").click(function() {
+		// Experiment Subject
+		var $test = $("#test");
+
+		// Control (This works)
+		$test
+			.hide("blind", {}, 2000)
+			.show("slide", {}, 2000)
+			.effect("highlight");
+	});
+
+	$("#toggle").click(function() {
+		$.fx.off = !$.fx.off;
+	});
+});
+</script>
+
+</body>
+
+</html>

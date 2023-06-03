@@ -1,0 +1,51 @@
+Index: jquery.ui.droppable.js
+===================================================================
+--- jquery.ui.droppable.js	(revision 3476)
++++ jquery.ui.droppable.js	(working copy)
+@@ -108,7 +108,7 @@
+ 				&& !inst.options.disabled
+ 				&& inst.options.scope == draggable.options.scope
+ 				&& inst.accept.call(inst.element[0], (draggable.currentItem || draggable.element))
+-				&& $.ui.intersect(draggable, $.extend(inst, { offset: inst.element.offset() }), inst.options.tolerance)
++				&& $.ui.intersect(draggable, $.extend(inst, { offset: inst.element.offset() }), inst.options.tolerance, event)
+ 			) { childrenIntersection = true; return false; }
+ 		});
+ 		if(childrenIntersection) return false;
+@@ -149,7 +149,7 @@
+ 	}
+ });
+ 
+-$.ui.intersect = function(draggable, droppable, toleranceMode) {
++$.ui.intersect = function(draggable, droppable, toleranceMode, event) {
+ 
+ 	if (!droppable.offset) return false;
+ 
+@@ -170,8 +170,8 @@
+ 				&& y2 - (draggable.helperProportions.height / 2) < b ); // Top Half
+ 			break;
+ 		case 'pointer':
+-			var draggableLeft = ((draggable.positionAbs || draggable.position.absolute).left + (draggable.clickOffset || draggable.offset.click).left),
+-				draggableTop = ((draggable.positionAbs || draggable.position.absolute).top + (draggable.clickOffset || draggable.offset.click).top),
++			var draggableLeft = event.pageX,
++				draggableTop = event.pageY,
+ 				isOver = $.ui.isOver(draggableTop, draggableLeft, t, l, droppable.proportions.height, droppable.proportions.width);
+ 			return isOver;
+ 			break;
+@@ -225,7 +225,7 @@
+ 		$.each($.ui.ddmanager.droppables[draggable.options.scope] || [], function() {
+ 
+ 			if(!this.options) return;
+-			if (!this.options.disabled && this.visible && $.ui.intersect(draggable, this, this.options.tolerance))
++			if (!this.options.disabled && this.visible && $.ui.intersect(draggable, this, this.options.tolerance, event))
+ 				dropped = this._drop.call(this, event);
+ 
+ 			if (!this.options.disabled && this.visible && this.accept.call(this.element[0],(draggable.currentItem || draggable.element))) {
+@@ -246,7 +246,7 @@
+ 		$.each($.ui.ddmanager.droppables[draggable.options.scope] || [], function() {
+ 
+ 			if(this.options.disabled || this.greedyChild || !this.visible) return;
+-			var intersects = $.ui.intersect(draggable, this, this.options.tolerance);
++			var intersects = $.ui.intersect(draggable, this, this.options.tolerance, event);
+ 
+ 			var c = !intersects && this.isover == 1 ? 'isout' : (intersects && this.isover == 0 ? 'isover' : null);
+ 			if(!c) return;

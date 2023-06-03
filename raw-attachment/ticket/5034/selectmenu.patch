@@ -1,0 +1,9 @@
+133c133
+< 		for(var i in selectOptionData){
+---
+>         for(var i = 0; i < selectOptionData.length; i += 1){
+514c514
+< })(jQuery);
+\ No newline at end of file
+---
+> })(jQuery);

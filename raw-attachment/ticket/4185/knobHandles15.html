@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Resizable knobHandles : jQuery UI 1.5</title>
+	<script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/tags/1.5.3/jquery-1.2.6.js"></script>
+	<script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/tags/1.5.3/ui/ui.core.js"></script>
+	<script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/tags/1.5.3/ui/ui.resizable.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		$("#default").resizable();
+		$("#knobHandles").resizable({ 
+			handles: "all", 
+			knobHandles: true 
+		});
+	});
+	</script>
+	<style type="text/css">
+	.ui-resizable { margin: 10px; padding: 10px; width: 150px; height: 150px; border: 1px solid black; }
+	</style>
+</head>
+
+<body>
+
+<h1>Resizable knobHandles : jQuery UI 1.5</h1>
+
+<div id="default">#default</div>
+
+<div id="knobHandles">#knobHandles</div>
+
+</body>
+</html>

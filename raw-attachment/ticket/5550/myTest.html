@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>jQuery UI Example Page</title>
+		<link type="text/css" href="css/cupertino/jquery-ui-1.8.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+
+				// Datepicker
+				$('#date').datepicker({
+					inline: true
+				});
+				
+				var dateFormat = $( "#date" ).datepicker( "option", "dateFormat" );
+				alert(dateFormat);
+				
+			});
+		</script>
+	</head>
+	<body>
+	<h1>My JQUERY UI TEST PAGE!</h1>
+
+	<p style="font-weight: bold; margin: 2em 0 1em; font-size: 1.3em;">SOME TEST COMPONENTS:</p>
+		
+		<!-- Datepicker -->
+		<h2 class="demoHeaders">Datepicker</h2>
+		Date: <input type="text" name="date" id="date" />
+	</body>
+</html>
+
+

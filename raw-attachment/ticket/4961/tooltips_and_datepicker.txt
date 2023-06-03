@@ -1,0 +1,53 @@
+<script type="text/javascript">
+  	var dArray = new Array();	
+    <?php genererTabJs();?>
+	
+	function setToolTips(){
+		jQuery(".calHighlight").tooltip({extraClass: "activite"});
+	}
+	
+  jQuery(document).ready(function(){
+  //Highlight les dates de calendriers dependant des valeurs dans dArray	  
+	var  hiDate = function (thedate){
+	
+			var day = thedate.getDate();
+			if(day < 10) day = '0'+day;
+			var month = thedate.getMonth() + 1;
+			if(month < 10) month = '0'+month;	
+			var year = thedate.getFullYear();
+			var cmpStr = year+'-'+month+'-'+day;
+			
+			//Récupérer le contenu de la date si possible
+			var i = 0;
+		
+			trouve = false;
+			while(!trouve && i < dArray.length)
+			{
+				if(dArray[i][0] == cmpStr)
+				{
+					setToolTips();
+					return [true, 'calHighlight', dArray[i][1]];
+				}
+				i = i+1;
+			}
+			setToolTips();
+			return [true, ''];
+		};
+		
+		var  onCMY = function (x,y,z){
+			setToolTips();
+		}
+					
+	  	jQuery(".datepicker").datepicker({ dateFormat: 'yy-mm-dd', beforeShowDay: hiDate, onChangeMonthYear: onCMY, onSelect: chooseDate, defaultDate:<?=$defaultDate?>});		
+	  	setToolTips();
+		
+		
+		// Recherche les activites par date selectionne
+		function chooseDate(thedate, inst){		
+			location.href="<?=$txtModuleCalAct[0]?>?date="+thedate;
+		}
+		
+		});	
+		
+
+	  </script>

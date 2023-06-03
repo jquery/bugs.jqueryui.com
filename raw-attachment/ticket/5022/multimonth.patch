@@ -1,0 +1,4 @@
+1408c1408
+< 				if (isMultiMonth && !( col == 0 && numMonths[1] == 1)) {
+---
+> 				if (isMultiMonth) {

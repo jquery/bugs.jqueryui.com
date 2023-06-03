@@ -1,0 +1,43 @@
+Index: ui.slider.js
+===================================================================
+--- ui.slider.js	(revision 2349)
++++ ui.slider.js	(working copy)
+@@ -85,6 +85,9 @@
+ 		this.handles.each(function(i) {
+ 			$(this).data("index.ui-slider-handle", i);
+ 		});
++		if (this.options.tooltips) {
++			this.handles.append('<span class="ui-slider-tooltip ui-widget-content ui-corner-all"></span>');
++		}
+ 
+ 		this.handles.keydown(function(event) {
+ 
+@@ -490,6 +493,9 @@
+ 					}
+ 				}
+ 				lastValPercent = valPercent;
++				if (o.tooltips) {	
++					$('.ui-slider-tooltip', this).text(o.tooltips[self.values(i)]);
++				}
+ 			});
+ 		} else {
+ 			var value = this.value(),
+@@ -499,7 +505,7 @@
+ 					? (value - valueMin) / (valueMax - valueMin) * 100
+ 					: 0;
+ 			var _set = {}; _set[self.orientation == 'horizontal' ? 'left' : 'bottom'] = valPercent + '%';
+-			this.handle.stop(1,1)[animate ? 'animate' : 'css'](_set, o.animate);
++			this.handle.stop(1,1)[animate ? 'animate' : 'css'](_set, o.animate).find('.ui-slider-tooltip').text(o.tooltips ? o.tooltips[self.value()] : '');
+ 
+ 			(oRange == "min") && (this.orientation == "horizontal") && this.range.stop(1,1)[animate ? 'animate' : 'css']({ width: valPercent + '%' }, o.animate);
+ 			(oRange == "max") && (this.orientation == "horizontal") && this.range[animate ? 'animate' : 'css']({ width: (100 - valPercent) + '%' }, { queue: false, duration: o.animate });
+@@ -525,7 +531,8 @@
+ 		range: false,
+ 		step: 1,
+ 		value: 0,
+-		values: null
++		values: null,
++		tooltips: null
+ 	}
+ });
+ 

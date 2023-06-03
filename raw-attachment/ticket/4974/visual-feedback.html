@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>jQuery UI Resizable - Visual feedback</title>
+	<link type="text/css" href="../../themes/base/ui.all.css" rel="stylesheet" />
+	<script type="text/javascript" src="../../jquery-1.3.2.js"></script>
+	<script type="text/javascript" src="../../ui/ui.core.js"></script>
+	<script type="text/javascript" src="../../ui/ui.resizable.js"></script>
+	<script type="text/javascript" src="../../ui/ui.draggable.js"></script>
+	<link type="text/css" href="../demos.css" rel="stylesheet" />
+	<style type="text/css">
+	#resizable { width: 150px; height: 150px; padding: 0.5em; position:absolute; }
+	#resizable h3 { text-align: center; margin: 0; }
+	.ui-resizable-ghost { border: 1px dotted gray; }
+	</style>
+	<script type="text/javascript">
+	$(function() {
+		$("#resizable").resizable({ ghost: true }).draggable({ handle:'h3' });
+	});
+	function setToZero()
+	{
+	}
+	</script>
+</head>
+<body>
+<div class="demo">
+<br/><br/><br/><br/>Originally, the div is below this text. <a href="#" onclick="$('#resizable').css('top',0)">Set div position to top:0</a> Now manually resize the div. The box "jumps" to its original position.
+
+<div id="resizable" class="ui-widget-content">
+	<h3 class="ui-widget-header">Ghost</h3>
+</div>
+
+</div><!-- End demo -->
+
+<div class="demo-description">
+
+</div><!-- End demo-description -->
+</body>
+</html>

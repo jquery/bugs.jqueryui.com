@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> 
+    <head> 
+        <title>Honorifics Test name Post nominals</title> 
+        <link rel="icon" href="/static/favicon.ico" type="x-icon" /> 
+        <link rel="shortcut icon" href="/static/favicon.ico" type="x-icon" /> 
+        
+            
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+            <meta http-equiv="Content-Language" value="en-US" /> 
+            
+            
+            
+            
+            
+        
+        
+        
+            <link rel="stylesheet" type="text/css" href="/static/css/style.css" /> 
+<link rel="stylesheet" type="text/css"
+href="/static/css/smoothness/jquery-ui-1.8.2.custom.css" /> 
+            
+            
+        
+        
+        
+    </head> 
+    <body> 
+        <div id="sidebar"> 
+        
+        </div> 
+        <div id="content"> 
+        
+            <div id="header"> 
+            
+                
+                <h1></h1> 
+                
+            
+            </div> 
+            
+            
+<h1> 
+    <span id="entity_honorifics_1" class="edit"> 
+        
+            Honorifics
+        
+    </span> 
+    <span id="entity_name_1" class="edit"> 
+        
+            Test name
+        
+    </span> 
+    <span id="entity_post_nominals_1" class="edit"> 
+        
+            Post nominals
+        
+    </span> 
+</h1> 
+ 
+ 
+<p id="entity_description_1" class="edit_textarea"> 
+    
+        Description
+    
+</p> 
+ 
+<!-- Work on handling department and location correctly. Dropdown menus --> 
+<p>Department:
+ 
+    <strong> 
+        <select name="department" id="department" class="autocomplete"> 
+        <option 
+        
+            selected="selected"
+        
+        value="department.-1">&mdash; Select &mdash;</option> 
+        
+            <option 
+            
+            value="department.1">Test name</option> 
+        
+        </select> 
+ 
+    </strong> 
+    <br /> 
+    Homepage:
+    
+        <a href="http://www.google.com"> 
+    
+    <strong class="edit_rightclick" id="entity_homepage_1"> 
+        
+            http://www.google.com
+        
+    </strong> 
+        
+            </a> 
+        
+    <br /> 
+    Email: 
+    <strong> 
+        
+        <span class="edit" id="EntityEmail_new_1"> 
+            Click to add email.
+        </span> 
+    </strong> 
+    <br /> 
+    Location:
+    <strong> 
+        <select name="location" id="location" class="autocomplete"> 
+        <option 
+        
+            selected="selected"
+        
+        value="location.-1">&mdash; Select &mdash;</option> 
+        
+            <option 
+            
+                selected="selected"
+            
+            value="location.1">Test location</option> 
+        
+        </select> 
+    </strong> 
+    <br /> 
+    Phone:
+    <strong class="edit" id="entity_phone_1"> 
+        
+            Phone
+        
+    </strong> 
+    <br /> 
+    Reports to:
+    <strong> 
+        <select name="reports_to" id="reports_to" class="autocomplete"> 
+        <option 
+        
+            selected="selected"
+        
+        value="reports_to_-1">&mdash; Select &mdash;</option> 
+        
+            <option 
+            
+            value="reports_to_1">Test name</option> 
+        
+        </select> 
+    </strong> 
+    <br /> 
+    Start date:
+    <strong> 
+        2010-07-30
+    </strong> 
+    <br /> 
+ 
+ 
+        
+        </div> 
+        <div id="footer"> 
+        
+            
+            
+        
+        </div> 
+    </body> 
+    
+        
+            
+<script language="JavaScript" type="text/javascript" src="/static/js/jquery.js"></script> 
+<script language="JavaScript" type="text/javascript" src="/static/js/jquery-ui.js"></script> 
+<script language="JavaScript" type="text/javascript" src="/static/js/jquery.jeditable.js"></script> 
+ 
+            
+            
+<script language="JavaScript" type="text/javascript"> 
+<!--
+function register_editables()
+    {
+    $(".edit").editable("/ajax/save",
+        {
+        cancel: "Cancel",
+        submit: "OK",
+        tooltip: "Click to edit.",
+        });
+    $(".edit").editable("/ajax/save",
+        {
+        cancel: "Cancel",
+        submit: "OK",
+        tooltip: "Click to edit.",
+        });
+    $(".edit_rightclick").editable("/ajax/save",
+        {
+        cancel: "Cancel",
+        submit: "OK",
+        tooltip: "Right click to edit.",
+        event: "contextmenu",
+        });
+    $(".edit_textarea").editable("/ajax/save",
+        {
+        cancel: "Cancel",
+        submit: "OK",
+        tooltip: "Click to edit.",
+        type: "textarea",
+        });
+    $(".edit_textarea").editable("/ajax/save",
+        {
+        cancel: "Cancel",
+        submit: "OK",
+        tooltip: "Click to edit.",
+        type: "textarea",
+        event: "contextmenu",
+        });
+    }
+ 
+function update_autocomplete(event, ui)
+    {
+    alert("Reached update_autocomplete");
+    var split_value = ui.item.value.split(".");
+    var field = split_value[0];
+    var id = split_value[1];
+    $.ajax({
+        data:
+            {
+            id: "Entity_" + field + "_" + 1,
+            value: id,
+            },
+        url: "/ajax/save", 
+        });
+    }
+ 
+$(function()
+    {
+    register_editables();
+    });
+ 
+/*
+    <style type="text/css">
+        .ui-button { margin-left: -1px; }
+        .ui-button-icon-only .ui-button-text { padding: 0.35em; } 
+        .ui-autocomplete-input { margin: 0; padding: 0.48em 0 0.47em 0.45em; }
+    </style>
+    <script type="text/javascript">
+    */
+    (function($) {
+        $.widget("ui.combobox", {
+            _create: function() {
+                var self = this;
+                var select = this.element.hide();
+                var input = $("<input>")
+                    .insertAfter(select)
+                    .autocomplete({
+                        source: function(request, response) {
+                            var matcher = new RegExp(request.term, "i");
+                            response(select.children("option").map(function() {
+                                var text = $(this).text();
+                                if (this.value && (!request.term || matcher.test(text)))
+                                    return {
+                                        id: this.value,
+                                        label: text.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(request.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>"),
+                                        value: text
+                                    };
+                            }));
+                        },
+                        delay: 0,
+                        change: function(event, ui) {
+                            if (!ui.item) {
+                                // remove invalid value, as it didn't match anything
+                                $(this).val("");
+                                return false;
+                            }
+                            select.val(ui.item.id);
+                            self._trigger("selected", event, {
+                                item: select.find("[value='" + ui.item.id + "']")
+                            });
+                            
+                        },
+                        minLength: 0
+                    })
+                    .addClass("ui-widget ui-widget-content ui-corner-left");
+                $("<button>&nbsp;</button>")
+                .attr("tabIndex", -1)
+                .attr("title", "Show All Items")
+                .insertAfter(input)
+                .button({
+                    icons: {
+                        primary: "ui-icon-triangle-1-s"
+                    },
+                    text: false
+                }).removeClass("ui-corner-all")
+                .addClass("ui-corner-right ui-button-icon")
+                .click(function() {
+                    // close if already visible
+                    if (input.autocomplete("widget").is(":visible")) {
+                        input.autocomplete("close");
+                        return;
+                    }
+                    // pass empty string as value to search for, displaying all results
+                    input.autocomplete("search", "");
+                    input.focus();
+                });
+            }
+        });
+ 
+    })(jQuery);
+    
+$(function()
+    {
+    $(".autocomplete").combobox();
+    $(".autocomplete").autocomplete({select: update_autocomplete});
+    $(".autocomplete").bind({"autocompleteselect": update_autocomplete});
+    $(".autocomplete").bind({"autocompletechange": update_autocomplete});
+    });
+ 
+// -->
+</script> 
+ 
+        
+    
+</html> 

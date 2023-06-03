@@ -1,0 +1,33 @@
+Index: ui.slider.js
+===================================================================
+--- ui.slider.js	(revision 2349)
++++ ui.slider.js	(working copy)
+@@ -316,13 +316,16 @@
+ 		var handle = this.handles[index];
+ 
+ 		if (this.options.values && this.options.values.length) {
++			
++			var oldVal = this.values(index);
+ 
+-			var otherVal = this.values(index ? 0 : 1);
++			if (oldVal < newVal && index < this.options.values.length - 1 && newVal > this.options.values[index+1]) 
++				newVal = this.options.values[index+1];
+ 
+-			if ((index == 0 && newVal >= otherVal) || (index == 1 && newVal <= otherVal))
+-				newVal = otherVal;
++			if (oldVal > newVal && index > 0 && newVal < this.options.values[index-1]) 
++				newVal = this.options.values[index-1];
+ 
+-			if (newVal != this.values(index)) {
++			if (newVal != oldVal) {
+ 				var newValues = this.values();
+ 				newValues[index] = newVal;
+ 				// A slide can be canceled by returning false from the slide callback
+@@ -331,7 +334,6 @@
+ 					value: newVal,
+ 					values: newValues
+ 				});
+-				var otherVal = this.values(index ? 0 : 1);
+ 				if (allowed !== false) {
+ 					this.values(index, newVal, ( event.type == 'mousedown' && this.options.animate ), true);
+ 				}

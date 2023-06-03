@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>jq-ui bug 3327</title>
+			<link rel="shortcut icon" href="../images/favicon.ico" />
+	<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+
+	
+			<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="../css/functional_demos.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="../css/chilli-recipes.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="../../../themes/default/ui.all.css" type="text/css" media="screen" title="Flora (Default)" />
+			<link rel="stylesheet" href="../../../themes/flora/flora.accordion.css" type="text/css" media="screen" title="Flora (Default)" />
+			<link rel="stylesheet" href="../../../themes/flora/flora.tabs.css" type="text/css" media="screen" title="Flora (Default)" />
+
+		
+					<script type="text/javascript" src="../../../jquery-1.2.6.js"></script>
+					<script type="text/javascript" src="../../../ui/ui.core.js"></script>
+					<script type="text/javascript" src="../../../ui/ui.dialog.js"></script>
+
+	<style type="text/css">
+		:focus {border: solid red}
+		body { color: white}
+	</style>
+
+	</head>
+	<body>
+		<p>Test file to recreate http://ui.jquery.com/bugs/ticket/3327</p>
+		<p>Note: using :focus {border: solid red} to make focus visually obvious.</p>
+		<p>To recreate:
+		<ol>
+		<li>Put this file in /demos/functional/templates/dialog.html and load in browser (we used FF3)</li>
+		<li>Once page has loaded you should see a button, and two open modal dialogs</li>
+		<ul><li>Bug also present with one dialog</li></ul>
+		<li>bug: focus does not appear in any modal dialog. Hit tab until the button below shows a red border (has focus), can't tab away.</li>
+		</ol>
+		</p>
+		<form>
+		<input id="button" type="button" value="open dialog"></input>
+		<div id="dialog">
+			<input type="text"></input><br />
+			jQuery UI Dialog
+	    </div>
+		<div id="dialog2">
+			<input type="text"></input><br />
+			jQuery UI Dialog2
+	    </div>
+		</form>
+		<script type="text/javascript">
+			$("#dialog").dialog({ modal: true });
+			$("#dialog2").dialog({ modal: true, position: "left"});
+			$("#button").click(function () {
+			$("#dialog").dialog("open");
+			$("#dialog2").dialog("open");
+			});
+		</script>
+	</body>
+</html>

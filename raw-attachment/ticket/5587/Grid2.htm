@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="redmond/jquery-ui-1.8.1.custom.css" rel="stylesheet" type="text/css" />
+    <script src="script/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="script/jquery-ui-1.8.1.custom.min.js" type="text/javascript"></script>
+    <style type="text/css" media="all">
+        .grid 
+        {
+        }
+        .grid-cell
+        {
+            border-style: solid;
+            border-color: Silver;
+            border-width: 0px 1px 1px 0px;
+            vertical-align: middle;
+            width: 100px;
+        }
+        .grid-column-title
+        {
+            float: left;
+            display: inline;
+            background-color: #F0FFFF;
+            overflow: hidden;
+            width: 700px;
+            border-style: solid;
+            border-color: Silver;
+            border-width: 1px 1px 0px 0px;
+        }
+        .grid-column-title-inner
+        {
+            border-style: solid;
+            border-color: Silver;
+            border-width: 0px 0px 0px 0px;
+            width: 939px;
+        }
+        .grid-column-title .grid-cell
+        {
+            float: left;
+            display: inline;
+            width: 100px;
+            vertical-align: middle;
+        }
+    </style>
+ 
+</head>
+<body>
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            var grid = $("#mygrid");
+            var rowHeight = 50;
+ 
+            grid.find(".grid-cell").css("height", rowHeight + "px");
+            grid.children(":eq(0)").css("height", (rowHeight + 1) + "px");
+ 
+            var resizeOpts = { handles: "e" }
+            var ele = grid.children(":eq(0)").children(":eq(0)").children();
+            ele.resizable(resizeOpts);
+        });
+    </script>
+    <h1>
+        Grid Example</h1>
+    <div id="mygrid" class="grid">
+        <div class="grid-column-title">
+            <div class="grid-column-title-inner">
+                <div class="grid-cell">
+                    column 0
+                </div>
+                <div class="grid-cell">
+                    Column 1
+                </div>
+                <div class="grid-cell">
+                    Column 2
+                </div>
+                <div class="grid-cell">
+                    Column 3
+                </div>
+                <div class="grid-cell">
+                    Column 4
+                </div>
+                <div class="grid-cell">
+                    Column 5
+                </div>
+                <div class="grid-cell">
+                    Column 6
+                </div>
+                <div class="grid-cell">
+                    Column 7
+                </div>
+                <div class="grid-cell">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

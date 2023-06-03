@@ -1,0 +1,25 @@
+diff -r1.1 jquery.ui.datepicker.js
+825c825
+< 			var date = new Date();
+---
+> 			var date = this._get(inst, 'todayDate') || new Date();
+1257c1257
+< 			this._determineDate(inst, this._get(inst, 'defaultDate'), new Date()));
+---
+> 			this._determineDate(inst, this._get(inst, 'defaultDate'), this._get(inst, 'todayDate') || new Date()));
+1263c1263
+< 			var date = new Date();
+---
+> 			var date = this._get(inst, 'todayDate') || new Date();
+1276c1276
+< 				$.datepicker._getDate(inst) : null) || new Date();
+---
+> 				$.datepicker._getDate(inst) : null) || $.datepicker._get(inst, 'todayDate') || new Date();
+1330c1330
+< 		date = this._restrictMinMax(inst, this._determineDate(inst, date, new Date()));
+---
+> 		date = this._restrictMinMax(inst, this._determineDate(inst, date, this._get(inst, 'todayDate') || new Date()));
+1352c1352
+< 		var today = new Date();
+---
+> 		var today = this._get(inst, 'todayDate') || new Date();

@@ -1,0 +1,42 @@
+Index: ui.datepicker.js
+===================================================================
+--- ui.datepicker.js	(revision 170)
++++ ui.datepicker.js	(working copy)
+@@ -260,6 +260,28 @@
+ 		return (inst ? inst._getDate() : null);
+ 	},
+ 
++	_isDateInRangeDatepicker: function(target) {
++		var inst = this._getInst(target._calId);
++		
++		return (inst ? inst._isInRange(this._getDateDatepicker(target)) : null);
++	},
++	
++	_isMinDateDatepicker: function(target) {
++		var inst    = this._getInst(target._calId);
++		var date    = this._getDateDatepicker(target);
++		var minDate = inst._getMinMaxDate('min', true);
++		
++		return (!minDate || date >= minDate);
++	},
++	
++	_isMaxDateDatepicker: function(target) {
++		var inst    = this._getInst(target._calId);
++		var date    = this._getDateDatepicker(target);
++		var maxDate = inst._getMinMaxDate('max', true);
++		
++		return (!maxDate || date <= maxDate);
++	},
++
+ 	/* Handle keystrokes. */
+ 	_doKeyDown: function(e) {
+ 		var inst = $.datepicker._getInst(this._calId);
+@@ -1425,7 +1447,7 @@
+    @return  jQuery object */
+ $.fn.datepicker = function(options){
+ 	var otherArgs = Array.prototype.slice.call(arguments, 1);
+-	if (typeof options == 'string' && (options == 'isDisabled' || options == 'getDate')) {
++	if (typeof options == 'string' && (options == 'isDisabled' || options == 'getDate' || options == 'isDateInRange' || options == 'isMinDate'|| options == 'isMaxDate' )) {
+ 		return $.datepicker['_' + options + 'Datepicker'].apply($.datepicker, [this[0]].concat(otherArgs));
+ 	}
+ 	return this.each(function() {

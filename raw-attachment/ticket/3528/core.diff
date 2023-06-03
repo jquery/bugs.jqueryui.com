@@ -1,0 +1,13 @@
+Index: ui.core.js
+===================================================================
+--- ui.core.js	(revision 847)
++++ ui.core.js	(working copy)
+@@ -256,7 +256,7 @@
+ 		var eventName = (type == this.widgetEventPrefix
+ 			? type : this.widgetEventPrefix + type);
+ 		e = e  || $.event.fix({ type: eventName, target: this.element[0] });
+-		return this.element.triggerHandler(eventName, [e, data], this.options[type]);
++		return this.element.triggerHandler(eventName, [e, $.extend({instance: this, options: this.options}, data)], this.options[type]);
+ 	}
+ };
+ 

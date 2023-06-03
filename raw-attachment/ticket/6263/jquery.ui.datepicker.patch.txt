@@ -1,0 +1,12 @@
+diff -u -r1.2 jquery.ui.datepicker.js
+--- jquery.ui.datepicker.js	28 Oct 2010 11:41:32 -0000	1.2
++++ jquery.ui.datepicker.js	4 Nov 2010 14:23:34 -0000
+@@ -615,7 +615,7 @@
+ 			$.datepicker._pos[1] += input.offsetHeight; // add the height
+ 		}
+ 		var isFixed = false;
+-		$(input).parents().each(function() {
++		$(input).parents(":not(body,html)").each(function() {
+ 			isFixed |= $(this).css('position') == 'fixed';
+ 			return !isFixed;
+ 		});

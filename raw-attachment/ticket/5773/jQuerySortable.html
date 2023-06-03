@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jQuery UI sortable containment parent first/last bug</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.js"></script>
+    <style type="text/css">#sortable{width:250px;padding:2px;border:1px solid;}#sortable>li{list-style:none;border:1px solid;margin:2px;}</style>
+</head>
+<body onload="$('#sortable').sortable({ containment: 'parent' });">
+    Move 0 above 1, then try to uncheck the checkbox.  Have to click it twice to uncheck it.<br /><br />
+    <ul id="sortable">
+        <li>1<input type="checkbox"/></li>
+        <li>0</li>
+    </ul>
+</body>
+</html>

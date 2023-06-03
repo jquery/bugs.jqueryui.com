@@ -1,0 +1,35 @@
+From 29c6e75f517876b9561245931777c117c625f874 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Carl=20F=C3=BCrstenberg?= <carl@excito.com>
+Date: Fri, 26 Mar 2010 21:06:51 +0100
+Subject: [PATCH] Subpixel rendering
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+As we can't really render an object on a subpixel, we can avoid the
+issue of bug #5280 by rounding the resulting values down to it's
+integer part. Though using Math.floor to handle negative values
+correctly.
+
+Signed-off-by: Carl Fürstenberg <carl@excito.com>
+---
+ ui/jquery.ui.position.js |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/ui/jquery.ui.position.js b/ui/jquery.ui.position.js
+index f01640e..f7ddc1e 100644
+--- a/ui/jquery.ui.position.js
++++ b/ui/jquery.ui.position.js
+@@ -127,6 +127,9 @@ $.fn.position = function( options ) {
+ 			}
+ 		});
+ 
++		position.top = Math.floor( position.top );
++		position.left = Math.floor( position.left );
++
+ 		if ( $.fn.bgiframe ) {
+ 			elem.bgiframe();
+ 		}
+-- 
+1.7.0
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBspanC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+ <head>
+		<link rel="stylesheet" href="css\smoothness\jquery-ui-1.8.custom.css" type="text/css" media="all" /> 
+    <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="jquery-ui-1.8.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$("#tabs").tabs({
+					fx: { opacity: 'toggle' }
+				});
+				
+				$('#debugButton').button().click(function(){
+					$('#tabs a:eq(1)').click();
+					setTimeout(function(){
+						$('#tabs a:eq(2)').click();
+					}, 300);
+				});
+			});
+		</script>
+ </head>
+ <body>
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">tab 1</a></li>
+			<li><a href="#tabs-2">tab 2</a></li>
+			<li><a href="#tabs-3">tab 3</a></li>
+		</ul>
+		<div id="tabs-1">
+			<p>tab 1 content</p>
+		</div>
+		<div id="tabs-2">
+			<p>tab 2 content</p>
+		</div>
+		<div id="tabs-3">
+			<p>tab 3 content</p>
+		</div>
+	</div>
+	<button id="debugButton">debug button</button>
+ </body>
+ </html>

@@ -1,0 +1,61 @@
+39a40
+> 		this._load();
+303a305,349
+> 	
+> 	_save:function(){
+> 		if(!this.options.history || !$.cookie){
+> 			return;
+> 		}
+> 		
+> 		var p;
+> 		if(typeof(this.options.position)=='string'){
+> 			p=this.options.position;
+> 		}else{
+> 			p=this.options.position[0]+','+this.options.position[1];
+> 		}
+> 		$.cookie('dialog'+this.element.attr('id'), p+';'+this.options.width+','+this.options.height, this.options.history)
+> 	},
+> 	
+> 	_load:function(){
+> 		if(!this.options.history || !$.cookie){
+> 			return;
+> 		}
+> 		
+> 		var settings;
+> 		if(settings=$.cookie('dialog'+this.element.attr('id'))){
+> 			settings=settings.split(';');
+> 			var p=settings[1].split(',');
+> 			
+> 			if(p[0]!='auto'){
+> 				p[0]=1*p[0];
+> 			}
+> 			this.options.width=p[0];
+> 			
+> 			if(p[1]!='auto'){
+> 				p[1]=1*p[1];
+> 			}
+> 			this.options.height=p[1];
+> 			
+> 			p=settings[0].split(',');
+> 			if(!p.length>1){
+> 				this.options.position=settings[0];
+> 			}else{
+> 				this.options.position=new Array();
+> 				this.options.position[0]=1*p[0];
+> 				this.options.position[1]=1*p[1];
+> 			}
+> 		}
+> 	},
+323a370,372
+> 				options.position = new Array();
+> 				options.position[0]=arguments[1].position.left;
+> 				options.position[1]=arguments[1].position.top;
+325a375
+> 				self._save();
+358a409
+> 				self._save();
+519c570,571
+< 		zIndex: 1000
+---
+> 		zIndex: 1000,
+> 		history:false

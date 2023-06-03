@@ -1,0 +1,22 @@
+Index: ui.slider.js
+===================================================================
+--- ui.slider.js	(revision 2612)
++++ ui.slider.js	(working copy)
+@@ -249,6 +249,7 @@
+ 		};
+ 
+ 		normValue = this._normValueFromMouse(position);
++		if(mouseOverHandle && !o.clickableTrough) return false;
+ 		this._slide(event, index, normValue);
+ 		return true;
+ 
+@@ -551,7 +552,8 @@
+ 		range: false,
+ 		step: 1,
+ 		value: 0,
+-		values: null
++		values: null,
++		clickableTrough : true
+ 	}
+ });
+ 

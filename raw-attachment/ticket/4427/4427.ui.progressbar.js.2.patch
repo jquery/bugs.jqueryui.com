@@ -1,0 +1,12 @@
+--- d:/Subversion/jQuery UI/Trunk/ui/ui.progressbar.js	Sun Apr 12 17:37:22 2009
++++ C:/Documents and Settings/Andrew/Local Settings/Temp/ui.progressbar-HEAD.7.js	Sun Apr 12 17:51:20 2009
+@@ -106,8 +106,7 @@
+ 	version: "@VERSION",
+ 	defaults: {
+ 		value: 0
+-	},
+-	getter: "value"
++	}
+ });
+ 
+ })(jQuery);

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+<style>
+     .draggable {
+      float: left;
+      width: 100px;
+      height: 50px;
+      background-color: blue;
+      border: 1px solid #000000;
+      text-align: center;
+     }
+     .droppable {
+      float: left;
+      width: 100px;
+      height: 50px;
+      background-color: palegreen;
+      border: 1px solid #000000;
+     }
+     .highlight {
+      float: left;
+      width: 100px;
+      height: 50px;
+      background-color: limegreen;
+      border: 1px solid #000000;
+     }
+     .occupied {
+      float: left;
+      width: 100px;
+      height: 50px;
+      background-color: lightpink;
+      border: 1px solid #000000;
+     }
+    </style>
+
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $( ".draggable" ).draggable( { 
+            snap: '.droppable', 
+            snapMode: 'inner',
+            snapTolerance: 25, 
+            revert: true
+        });
+        $( ".droppable" )
+                .droppable({
+                    drop: function( event, ui ) {
+                            $(this).removeClass( "droppable" );
+                            $(this).droppable('disable');
+                            $(this).addClass( "occupied" );
+                            $(ui.draggable).draggable( "option", "revert", "invalid" )   
+                        },
+                    
+                    // 1. out event is never triggered
+                    out: function( event, ui ) {
+                        $(this).removeClass( "occupied" ); 
+                        $(this).addClass( "droppable" );
+                        $(this).droppable('enable');
+                        
+                    },
+                    activate: function( event, ui) {
+                          
+                          // 2. try to uncomment...
+                          //$(this).addClass("highlight", 1000);
+
+                    }
+                })
+                    
+                .click( function( event, ui ) {
+                    if ($(this).hasClass("droppable")) {
+                        $(this).removeClass( "droppable" );
+                        $(this).droppable( 'disable' );
+                        $(this).addClass( "occupied" );
+                     
+                        var $newelem = $("<DIV class=\"draggable\" ><P>Drag me to my target</P></DIV>").appendTo($(this)).draggable({ 
+                            snap: '.droppable', 
+                            snapMode: 'inner',
+                            snapTolerance: 25, 
+                            revert: true
+                        });
+                    }
+                });
+        });
+                //$(this).text($(this).position().top);
+                //$(ui.draggable).css('position','absolute'); 
+                //$(ui.draggable).css('top',$(this).position().top); 
+                //$(ui.draggable).css('left',$(this).position().left);
+                //$(ui.draggable).text( $(ui.draggable).position().top)
+
+</script>
+
+
+
+
+
+<title>Test</title>
+</head>
+<body>
+
+<table border=0 cellpadding=0 cellspacing=2 class="yes">
+<tr align=center height=40><td></td><td rowspan="9" width=150></td><td></td><td rowspan="9" width=150></td><td></td></tr> 
+<tr><td class=droppable></td><td class=droppable></td><td class=droppable></td></tr>
+<tr><td class=droppable></td><td class=droppable></td><td class=droppable></td></tr>
+<tr><td class=droppable></td><td class=droppable></td><td class=droppable></td></tr>
+<tr><td class=occupied></td><td class=droppable></td><td class=occupied></td></tr>
+<tr><td class=droppable></td><td class=droppable></td><td class=occupied></td></tr>
+<tr><td class=droppable></td><td class=occupied></td><td class=occupied></td></tr>
+<tr><td class=droppable></td><td class=droppable></td><td class=occupied></td></tr>
+<tr><td class=droppable></td><td class=droppable></td><td class=droppable></td></tr>
+</table>
+  
+</body>
+</html>

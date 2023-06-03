@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+	<base href="http://dev.jqueryui.com/export/2134/trunk/">
+
+	<title>jQuery: disable draggable after drop</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<style type="text/css">
+	body { margin: 6em; }
+	li { border: 1px solid; padding: 0.5em; margin: 0.25em; list-style: square; }
+	</style>
+
+	<script type="text/javascript" src="jquery-1.3.2.js"></script>
+	<script type="text/javascript" src="ui/ui.core.js"></script>
+	<script type="text/javascript" src="ui/ui.draggable.js"></script>
+	<script type="text/javascript" src="ui/ui.droppable.js"></script>
+	<script type="text/javascript" src="ui/ui.sortable.js"></script>
+
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#draggable li').draggable({
+			helper: 'clone',
+		});
+
+		$("#droppable li").droppable({
+			drop: function(event, ui) {
+				$(this).html($(event.originalTarget).html());
+				$(ui.draggable).draggable('disable');
+			}
+		});
+	});
+	</script>
+</head>
+
+<body>
+
+<h2>Draggable</h2>
+
+<ul id="draggable">
+	<li>one</li>
+	<li>two</li>
+	<li>three</li>
+</ul>
+
+<h2>Droppable</h2>
+
+<ul id="droppable">
+	<li>apple</li>
+	<li>banana</li>
+	<li>cherry</li>
+</ul>
+
+</body>

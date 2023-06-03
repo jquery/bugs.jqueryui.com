@@ -1,0 +1,247 @@
+Index: D:/dev/private/jquery-ui/tests/visual/accordion/dl.html
+===================================================================
+--- D:/dev/private/jquery-ui/tests/visual/accordion/dl.html	(revision 0)
++++ D:/dev/private/jquery-ui/tests/visual/accordion/dl.html	(revision 0)
+@@ -0,0 +1,53 @@
++<!doctype html>
++<html>
++<head>
++	<title>Accordion Static Test : DL</title>
++	<link rel="stylesheet" href="../../static/static.css" type="text/css" />
++	<link rel="stylesheet" href="../../../themes/base/ui.base.css" type="text/css" />
++	<link rel="stylesheet" href="../../../themes/base/ui.theme.css" type="text/css" title="ui-theme" />
++	<script type="text/javascript" src="../../../jquery-1.3.1.js"></script>
++	<script type="text/javascript" src="../../../ui/ui.core.js"></script>
++	<script type="text/javascript" src="../../../ui/ui.accordion.js"></script>
++	<script type="text/javascript">
++		$(function() {
++			$("dl").accordion({
++				header: "dt"
++			})
++		});
++	</script>
++	<style type="text/css">
++  	/* Accordion
++	----------------------------------*/
++	.ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
++	.ui-accordion li {display: inline;}
++	.ui-accordion .ui-accordion-header-active { border-bottom: 0 !important; }
++	.ui-accordion .ui-accordion-header a { display: block; font-size: 1em; padding: .5em .5em .5em 2.2em; }
++	.ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
++	.ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; }
++	</style>
++</head>
++<body>
++
++<dl>
++		<dt>
++			<a href="#">Accordion Header 1</a>
++		</dt>
++		<dd>
++				Accordion Content 1
++		</dd>
++		<dt>
++			<a href="#">Accordion Header 2</a>
++		</dt>
++		<dd>
++				Accordion Content 2
++		</dd>
++		<dt>
++			<a href="#">Accordion Header 3</a>
++		</dt>
++		<dd>
++				Accordion Content 2
++		</dd>
++</dl>
++
++</body>
++</html>
+
+Property changes on: D:\dev\private\jquery-ui\tests\visual\accordion\dl.html
+___________________________________________________________________
+Name: svn:mime-type
+   + text/plain
+
+Index: D:/dev/private/jquery-ui/demos/accordion/default.html
+===================================================================
+--- D:/dev/private/jquery-ui/demos/accordion/default.html	(revision 1871)
++++ D:/dev/private/jquery-ui/demos/accordion/default.html	(working copy)
+@@ -20,59 +20,51 @@
+ <div class="demo">
+ 
+ <div id="accordion">
++	<h3><a href="#">Section 1</a></h3>
+ 	<div>
+-		<h3><a href="#">Section 1</a></h3>
+-		<div>
+-			<p>
+-			Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+-			ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+-			amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+-			odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+-			</p>
+-		</div>
++		<p>
++		Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
++		ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
++		amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
++		odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
++		</p>
+ 	</div>
++	<h3><a href="#">Section 2</a></h3>
+ 	<div>
+-		<h3><a href="#">Section 2</a></h3>
+-		<div>
+-			<p>
+-			Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+-			purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+-			velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+-			suscipit faucibus urna.
+-			</p>
+-		</div>
++		<p>
++		Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
++		purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
++		velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
++		suscipit faucibus urna.
++		</p>
+ 	</div>
++	<h3><a href="#">Section 3</a></h3>
+ 	<div>
+-		<h3><a href="#">Section 3</a></h3>
+-		<div>
+-			<p>
+-			Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+-			Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+-			ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+-			lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+-			</p>
+-			<ul>
+-				<li>List item one</li>
+-				<li>List item two</li>
+-				<li>List item three</li>
+-			</ul>
+-		</div>
++		<p>
++		Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
++		Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
++		ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
++		lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
++		</p>
++		<ul>
++			<li>List item one</li>
++			<li>List item two</li>
++			<li>List item three</li>
++		</ul>
+ 	</div>
++	<h3><a href="#">Section 4</a></h3>
+ 	<div>
+-		<h3><a href="#">Section 4</a></h3>
+-		<div>
+-			<p>
+-			Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+-			et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+-			faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+-			mauris vel est.
+-			</p>
+-			<p>
+-			Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
+-			Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+-			inceptos himenaeos.
+-			</p>
+-		</div>
++		<p>
++		Cras dictum. Pellentesque habitant morbi tristique senectus et netus
++		et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
++		faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
++		mauris vel est.
++		</p>
++		<p>
++		Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
++		Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
++		inceptos himenaeos.
++		</p>
+ 	</div>
+ </div>
+ 
+Index: D:/dev/private/jquery-ui/ui/ui.accordion.js
+===================================================================
+--- D:/dev/private/jquery-ui/ui/ui.accordion.js	(revision 1871)
++++ D:/dev/private/jquery-ui/ui/ui.accordion.js	(working copy)
+@@ -33,18 +33,14 @@
+ 
+ 		this.element.addClass("ui-accordion ui-widget ui-helper-reset");
+ 
+-		this.groups = this.element.children().addClass("ui-accordion-group");
+-		this.headers = this.groups.find("> :first-child").addClass("ui-accordion-header ui-helper-reset ui-state-default ui-corner-all")
++		this.headers = this.element.find(o.header).addClass("ui-accordion-header ui-helper-reset ui-state-default ui-corner-all")
+ 			.bind("mouseenter.accordion", function(){ $(this).addClass('ui-state-hover'); })
+ 			.bind("mouseleave.accordion", function(){ $(this).removeClass('ui-state-hover'); });
+ 
+ 		// wrap content elements in div against animation issues
+ 		this.headers
+ 			.next()
+-				.wrap("<div></div>")
+-				.addClass("ui-accordion-content")
+-				.parent()
+-					.addClass("ui-accordion-content-wrap ui-helper-reset ui-widget-content ui-corner-bottom");
++				.addClass("ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom");
+ 
+ 		this.active = this._findActive(this.active || o.active).toggleClass("ui-state-default").toggleClass("ui-state-active").toggleClass("ui-corner-all").toggleClass("ui-corner-top");
+ 		this.active.parent().addClass('ui-accordion-selected');
+@@ -330,6 +326,12 @@
+ 					});
+ 				};
+ 			}
++			
++			// fix the container height for avoid 1px shift of content below
++			if (o.autoHeight) {
++				this.heightStyle = this.element[0].style.height;
++				this.element.height( this.element.height() );
++			}
+ 
+ 			animations[easing](animOptions);
+ 
+@@ -364,9 +366,11 @@
+ 				overflow: ""
+ 			});
+ 		}
+-
++		
++		// reset fixed height
++		this.element.css("height", this.heightStyle);
++		
+ 		this._trigger('change', null, this.data);
+-
+ 	}
+ 
+ });
+@@ -405,15 +409,23 @@
+ 			var hideHeight = options.toHide.height(),
+ 				showHeight = options.toShow.height(),
+ 				difference = showHeight / hideHeight,
+-				overflow = options.toShow.css('overflow');
++				overflow = options.toShow.css('overflow'),
++				showProps = {},
++				hideProps = {},
++				fxAttrs = [ "height", "marginTop", "marginBottom", "paddingTop", "paddingBottom" ];
++			$.each(fxAttrs, function(i, prop) {
++				hideProps[prop] = 'hide';
++				showProps[prop] = parseFloat(options.toShow.css(prop));
++			});
+ 			options.toShow.css({ height: 0, overflow: 'hidden' }).show();
+-			options.toHide.filter(":hidden").each(options.complete).end().filter(":visible").animate({height:"hide"},{
+-				step: function(now) {
+-					var current = (hideHeight - now) * difference;
++			options.toHide.filter(":hidden").each(options.complete).end().filter(":visible").animate(hideProps,{
++				step: function(now, settings) {
++					var percentDone = (settings.start - settings.now) / settings.start,
++						current = percentDone * showProps[settings.prop];
+ 					if ($.browser.msie || $.browser.opera) {
+ 						current = Math.ceil(current);
+ 					}
+-					options.toShow.height( current );
++					options.toShow[0].style[settings.prop] = current + 'px';
+ 				},
+ 				duration: options.duration,
+ 				easing: options.easing,

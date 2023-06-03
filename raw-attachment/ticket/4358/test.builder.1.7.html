@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Nested Sortables Test. jQuery Page Builder</title>
+
+<script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/tags/1.7/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/tags/1.7/ui/ui.core.js"></script>
+<script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/tags/1.7/ui/ui.sortable.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    // sortable blocks
+    $('.buildCol').sortable({items: '.buildBlock', connectWith: '.buildCol'}); 
+    
+    // sortable columns
+    $('#buildWrapper').sortable({items: '.buildCol'});
+});
+</script>
+
+<style type="text/css" media="screen">
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000;
+	background-color: #fff;
+	margin: 10px;
+	padding: 0px;
+}
+
+h2 {
+	text-align: center;
+}
+
+.clear_both {
+	clear: both;
+	font-size: 1px;
+}
+
+#buildWrapper {
+	border: 1px solid #999;
+	background-color: #eee;
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+}
+
+.buildCol {
+	border: 1px solid #999;
+	background-color: #fff;
+	width: 340px;
+	margin: 2px;
+	float: left;
+	padding: 2px;
+}
+
+.buildColHeader {
+	font-weight: bold;
+	font-size: 13px;
+	text-align: center;
+	background-color:#09f;
+	color: #fff;
+	margin-bottom: 3px;
+	padding: 2px;
+}
+
+.buildBlock {
+	padding: 3px;
+	width: 120px;
+	background-color:#096;
+	color: #fff;
+	text-align: center;
+	margin: 0px auto 3px auto;
+}
+
+</style>
+
+</head>
+    <body>
+		
+		<h2>Nested Sortables Test. jQuery Page Builder.</h2>
+        
+        <!-- build area wrapper -->
+        <div id="buildWrapper">
+        	<!-- page columns -->
+            
+            <!-- column 1 -->
+            <div class="buildCol">
+                <!-- column header -->
+                <div class="buildColHeader">Welcome</div>
+                
+                <div class="buildBlocksWrap">
+	            	<!-- column blocks -->
+                    <div class="buildBlock">Hello</div>
+                    <div class="buildBlock">Login</div>
+                    <div class="buildBlock">News</div>
+                    <div class="buildBlock">Test</div>
+                </div>
+            </div>
+            <!-- /column 1 -->
+        	
+        	<!-- column 2 -->
+            <div class="buildCol">
+                <!-- column header -->
+                <div class="buildColHeader">Info</div>
+                
+                <div class="buildBlocksWrap">
+	            	<!-- column blocks -->
+                    <div class="buildBlock">RSS feed</div>
+                    <div class="buildBlock">About us</div>
+                    <div class="buildBlock">Contacts</div>
+                    <div class="buildBlock">Ads</div>
+                    <div class="buildBlock">Other</div>
+                </div>
+            </div>
+            <!-- /column 2 -->
+            
+            <div class="clear_both"></div>
+        </div>
+        <!-- /build area wrapper -->
+		
+    </body>
+</html>

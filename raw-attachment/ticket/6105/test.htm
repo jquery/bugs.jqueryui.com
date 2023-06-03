@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="jquery.ui.core.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#trap").disableSelection();
+			$("#notrap")
+				.disableSelection()
+				.attr("unselectable", "on");
+			$("#textbox").bind("focus", function () {
+				$("#info").text(document.activeElement.id);
+			});
+			$("#textbox").bind("blur", function () {
+				$("#info").text(document.activeElement.id);
+			});
+			$("#textbox").focus();
+		});
+	</script>
+</head>
+<body>
+	<input id="textbox" />
+	<div id="trap" style="background-color: red; width: 20px; height: 20px;"></diV>
+	<div id="notrap" style="background-color: yellow; width: 20px; height: 20px;"></diV>
+	<div id="info"></div>
+</body>
+</html>

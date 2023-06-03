@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Simple Resizable</title>
+<script type="text/javascript" src="jquery-1.2.6.js"></script>
+<script type="text/javascript" src="ui.core.js"></script>
+<script type="text/javascript" src="ui.draggable.js"></script>
+</head>
+
+<style type="text/css">
+body { margin:0; }
+#main {
+	position: absolute;
+	border: 30px solid black !important;
+}
+#foo {
+	width: 100px;
+	height: 100px;
+	background: #FF9C08;
+	color: white;
+}
+</style>
+
+<script type="text/javascript">
+$(function() {
+	$("#foo").draggable();
+	$("#log").append('$("#main").css("border") => ' + $("#main").css("border") + '<br>');
+	$("#log").append('$("#main").css("border-left-width") => ' + $("#main").css("border-left-width") + '<br>');
+});
+</script>
+
+<body>
+
+<div id="main" style="border: 1px solid black;">
+
+	<div id="foo">draggable</div>
+
+</div>
+
+<div id="log" style="position: absolute; top: 200px;">
+
+</div>
+
+</body>
+</html>

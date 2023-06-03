@@ -1,0 +1,32 @@
+48c48
+< 				.appendTo((options.draggable.containment ? options.draggable.containment : document.body))
+---
+> 				.appendTo(document.body)
+309c309,310
+< 		var defaults = {
+---
+> 
+> 		this.uiDialog.draggable({
+312c313
+< 			containment: 'document',
+---
+> 			containment: 'document',
+325,328c326,327
+< 			},
+< 
+< 		};
+< 		this.uiDialog.draggable($.extend(defaults,this.options.draggable));
+---
+> 			}
+> 		});
+338c337,338
+< 		var defaults= {
+---
+> 
+> 		this.uiDialog.resizable({
+360,362c360
+< 		};
+< 
+< 		this.uiDialog.resizable($.extend(defaults,this.options.resizable))
+---
+> 		})

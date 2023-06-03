@@ -1,0 +1,76 @@
+Index: tests/unit/dialog/dialog.html
+===================================================================
+--- tests/unit/dialog/dialog.html	(revision 3877)
++++ tests/unit/dialog/dialog.html	(working copy)
+@@ -35,8 +35,10 @@
+ <ol id="qunit-tests">
+ </ol>
+ 
+-<div id="main" style="position: absolute; top: -10000px; left: -10000px;">
+-</div>
++<form action="/">
++    <div id="main" style="position: absolute; top: -10000px; left: -10000px;">
++    </div>
++</form>
+ 
+ </body>
+ </html>
+Index: tests/unit/dialog/dialog_defaults.js
+===================================================================
+--- tests/unit/dialog/dialog_defaults.js	(revision 3877)
++++ tests/unit/dialog/dialog_defaults.js	(working copy)
+@@ -23,7 +23,8 @@
+ 	stack: true,
+ 	title: '',
+ 	width: 300,
+-	zIndex: 1000
++	zIndex: 1000,
++	dialogParent: document.body
+ };
+ 
+ commonWidgetTests('dialog', { defaults: dialog_defaults });
+Index: tests/unit/dialog/dialog_options.js
+===================================================================
+--- tests/unit/dialog/dialog_options.js	(revision 3877)
++++ tests/unit/dialog/dialog_options.js	(working copy)
+@@ -315,4 +315,17 @@
+ 	el.remove();
+ });
+ 
++test("dialogParent", function() {
++    expect(2);
++
++    el = $('<div></div>').dialog({ dialogParent: null });
++    same(dlg().parent().get(0), document.body, 'dialogParent null moves dialog outside of form');
++    el.remove();
++
++    el = $('<div></div>').dialog({ dialogParent: $('form:first').get(0) });
++    same(dlg().parent().get(0), $('form:first').get(0), 'dialogParent form:first keeps dialog inside of form');
++    el.remove();
++
++});
++
+ })(jQuery);
+Index: ui/jquery.ui.dialog.js
+===================================================================
+--- ui/jquery.ui.dialog.js	(revision 3877)
++++ ui/jquery.ui.dialog.js	(working copy)
+@@ -45,7 +45,8 @@
+ 		stack: true,
+ 		title: '',
+ 		width: 300,
+-		zIndex: 1000
++		zIndex: 1000,
++		dialogParent: null
+ 	},
+ 	_create: function() {
+ 		this.originalTitle = this.element.attr('title');
+@@ -57,7 +58,7 @@
+ 			titleId = $.ui.dialog.getTitleId(self.element),
+ 
+ 			uiDialog = (self.uiDialog = $('<div></div>'))
+-				.appendTo(document.body)
++				.appendTo(options.dialogParent == null ? document.body : options.dialogParent)
+ 				.hide()
+ 				.addClass(uiDialogClasses + options.dialogClass)
+ 				.css({

@@ -1,0 +1,11 @@
+--- vendors/js/jquery/ui/effects.scale.js	2008-06-11 19:17:34.000000000 +0200
++++ app/webroot/js/effects.scale.js	2008-06-11 19:17:07.000000000 +0200
+@@ -68,7 +68,7 @@
+ 			y: direction != 'horizontal' ? (percent / 100) : 1,
+ 			x: direction != 'vertical' ? (percent / 100) : 1
+ 		};
+-		el.to = {height: original.height * factor.y, width: original.width * factor.x}; // Set to state
++		el.to = o.options.to || {height: original.height * factor.y, width: original.width * factor.x}; // Set to state
+ 		if (origin) { // Calculate baseline shifts
+ 			var baseline = $.effects.getBaseline(origin, original);
+ 			el.from.top = (original.height - el.from.height) * baseline.y;

@@ -1,0 +1,86 @@
+Index: ui.datepicker.js
+===================================================================
+--- ui.datepicker.js	(revision 930)
++++ ui.datepicker.js	(working copy)
+@@ -473,7 +473,69 @@
+ 			this._setDateFromField(inst); 
+ 		return (inst ? this._getDate(inst) : null);
+ 	},
++
++	/* custom method for jquery validate */
++	_isDateInRangeDatepicker: function(target) {
++		var inst = this._getInst(target);
++
++		return (inst ? this._isInRange(inst, this._getDateDatepicker(target)) : null);
++	},
+ 	
++	/* custom method for jquery validate */
++	_isMinDateDatepicker: function(target) {
++		var inst    = this._getInst(target);
++
++		var date    = this._getDateDatepicker(target);
++		var minDate = this._getMinMaxDate(inst, 'min', true);
++		
++		return (!minDate || date >= minDate);
++	},
++	
++	/* custom method for jquery validate */
++	_isMaxDateDatepicker: function(target) {
++		var inst    = this._getInst(target);
++		
++		var date    = this._getDateDatepicker(target);
++		var maxDate = this._getMinMaxDate(inst, 'max', true);
++
++		return (!maxDate || date <= maxDate);
++	},
++	
++	/* custom method for jquery validate */
++	_isValidDateDatepicker: function(target) {
++		var inst       = this._getInst(target);
++		var dateFormat = this._get(inst, 'dateFormat');
++		
++		var dates = inst.input ? inst.input.val().split(this._get(inst, 'rangeSeparator')) : null;
++
++		try {
++			this.parseDate(dateFormat, dates[0]);
++			if ( typeof dates[1] != 'undefined' ) {
++				this.parseDate(dateFormat, dates[1]);
++			}
++			return true;
++		} catch(err) {
++			return false;
++		}
++	},
++	
++	/* custom method for jquery validate */
++	_getMinMaxRangeDateDatepicker: function(target, minMax) {
++		var inst = this._getInst(target);
++		var date = this._getDateDatepicker(target);
++
++		return (date == null ? this._getMinMaxDate(inst, minMax, true) : date );
++	},
++	
++	/* custom method for jquery validate */
++	_getMinMaxParsedDateDatepicker: function(target, minMax) {
++		var inst       = this._getInst(target);
++		var dateFormat = this._get(inst, 'dateFormat');
++		var dateminMax = this._getMinMaxDate(inst, minMax, true);
++
++		return this.formatDate(dateFormat, dateminMax);
++	},
++	
+ 	/* Handle keystrokes. */
+ 	_doKeyDown: function(e) {
+ 		var inst = $.datepicker._getInst(e.target);
+@@ -1730,7 +1792,10 @@
+ 	}
+ 	
+ 	var otherArgs = Array.prototype.slice.call(arguments, 1);
+-	if (typeof options == 'string' && (options == 'isDisabled' || options == 'getDate'))
++	if (typeof options == 'string' && (options == 'isDisabled' || options == 'getDate'
++		|| options == 'isDateInRange' || options == 'isMinDate'|| options == 'isMaxDate'
++		|| options == 'isValidDate' || options == 'getMinMaxParsedDate' || options == 'getMinMaxRangeDate' )
++	)
+ 		return $.datepicker['_' + options + 'Datepicker'].
+ 			apply($.datepicker, [this[0]].concat(otherArgs));
+ 	return this.each(function() {

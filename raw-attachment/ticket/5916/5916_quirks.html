@@ -1,0 +1,19 @@
+<html>
+
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
+
+<div id="dialog" title="Basic dialog"><br><br><br><br><br><br><br></div>
+
+<script>
+$("#dialog").dialog({
+	height:400,
+	dragStop: function() {
+		var height = $(this).closest('.ui-dialog').outerHeight();
+		$(this).html(height);
+	}
+});
+</script>
+
+</html>

@@ -1,0 +1,12 @@
+Index: ui/jquery.ui.tooltip.js
+===================================================================
+--- ui/jquery.ui.tooltip.js	(revision 3491)
++++ ui/jquery.ui.tooltip.js	(working copy)
+@@ -50,6 +50,7 @@
+ 	
+ 	show: function(target) {
+ 		var self = this;
++                if(target === undefined) target = this.element;
+ 		this.current = target;
+ 		this.currentTitle = target.attr("title");
+ 		var content = this.options.content.call(target[0], function(response) {

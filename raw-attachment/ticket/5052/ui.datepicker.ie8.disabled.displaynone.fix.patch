@@ -1,0 +1,4 @@
+572c572
+< 			if (inst.input[0].type != 'hidden')
+---
+> 			if (inst.input[0].type != 'hidden' && inst.input[0].disabled == false && $(inst.input[0]).is(":visible") == true)

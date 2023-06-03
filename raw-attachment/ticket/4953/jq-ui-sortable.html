@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+ <head>
+  <title> jquery / jquery UI bug? </title>
+  <script src="jquery-1.3.2.js"></script>
+  <script src="jquery-ui-1.7.full.js"></script>
+  <script>
+  $( function() { 
+
+		$('.sortableRows').sortable();
+
+		$('.otherButton').live('click', function(){alert('live clicked');});
+		$('.otherButton').click(function(){alert('normal clicked');});
+
+		$('.sortableRows .selectButton').click(function(){alert('#1 - normal clicked');});
+		$('.sortableRows .selectButton').live('click', function(){alert('#2 - live clicked');});
+
+		$('table').click( function(evt){
+			if( $(evt.target).is('.selectButton')){
+				alert('#3 - normal click on parent table');
+			}
+		});
+
+		$('table').live('click', function(evt){
+			if( $(evt.target).is('.selectButton')){
+				alert('#4 - live click on parent table');
+			}
+		});
+  });
+
+  </script>
+
+ </head>
+
+ <body>
+ Open this page in IE (I tried on IE8)<br>
+ Click any of the Select and the Otehr button and see they work.<br>
+ Now drag one of the yellow table rows to change its position<br>
+ Try clicking one of the Select buttons again: On the very first click only the handler #1 fires. 
+		<table border=1>
+			<tbody class="sortableRows">
+				<tr style="background-color:#ff9;">
+					<td>row 1</td>
+					<td><input type="button" class="selectButton" value="Select"></td>
+				</tr>
+				<tr style="background-color:#ff9;">
+					<td>row 2</td>
+					<td><input type="button" class="selectButton" value="Select"></td>
+				</tr>
+			</tbody>
+		</table>
+ </body>
+ <input type="button" class="otherButton" value="Other">
+</html>

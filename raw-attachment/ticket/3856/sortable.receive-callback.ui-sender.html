@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.3.js"></script>
+    <script type="text/javascript" src="http://view.jquery.com/tags/ui/testing/ui/ui.core.js"></script>
+    <script type="text/javascript" src="http://view.jquery.com/tags/ui/testing/ui/ui.sortable.js"></script>
+    <script type="text/javascript" src="http://view.jquery.com/tags/ui/testing/ui/ui.draggable.js"></script>
+    <script type="text/javascript" src="http://view.jquery.com/tags/ui/testing/ui/ui.droppable.js"></script>
+
+</head>
+
+<body>
+    #sortable
+    <div id="sortable" style="border:1px solid black">
+        <div>sortable item 1</div>
+        <div>sortable item 2</div>
+    </div>
+
+    <br />
+    <br />
+    #draggables
+    <div id="draggables" style="border:1px solid black">
+        <div>draggable 1</div>
+        <div>draggable 2</div>
+    </div>
+
+    <br />
+    <br />
+    receive:<br />
+    ui.sender
+    <div id="out-1"  style="border:1px solid black"> </div>
+
+
+    <script type="text/javascript">
+
+        jQuery( document ).ready( function () {
+
+            jQuery("#sortable").sortable({
+                receive: function(event, ui)
+                {
+                    jQuery("#out-1").text(
+                        "#" + jQuery(ui.sender).attr("id")
+                    );
+                    return true;
+                }
+            });
+
+            $("#draggables div").draggable({
+                helper: "clone",
+                connectToSortable: ["#sortable"]
+            });
+
+        });
+
+    </script>
+
+
+</body>
+</html>

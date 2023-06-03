@@ -1,0 +1,42 @@
+Index: ui/ui.progressbar.js
+===================================================================
+--- ui/ui.progressbar.js	(revision 840)
++++ ui/ui.progressbar.js	(working copy)
+@@ -23,7 +23,9 @@
+ 			text = options.text || '0%';
+ 		
+ 		this.element.addClass("ui-progressbar").width(options.width);
+-		
++		this.element.ariaRole("progressbar");
++		this.element.ariaState("valuemin","0");
++		this.element.ariaState("valuemax","100");
+ 		$.extend(this, {
+ 			active: false,
+ 			pixelState: 0,
+@@ -97,11 +99,13 @@
+ 	disable: function() {
+ 		this.element.addClass("ui-progressbar-disabled");
+ 		this.disabled = true;
++		this.element.ariaState("disabled", true);
+ 	},
+ 	
+ 	enable: function() {
+ 		this.element.removeClass("ui-progressbar-disabled");
+ 		this.disabled = false;
++		this.element.ariaState("disabled", false);
+ 	},
+ 	
+ 	pause: function() {
+@@ -120,9 +124,11 @@
+ 		this.bar.width(this.pixelState);
+ 		this.textElement.width(this.pixelState);
+ 		
++		var percent = Math.round(this.percentState);
+ 		if (this.options.range && !this.options.text) {
+-			this.textElement.html(Math.round(this.percentState) + '%');
++			this.textElement.html(percent + '%');
+ 		}
++		this.element.ariaState("valuenow", percent);
+ 		this._propagate('progress', this.ui());
+ 	},
+ 	

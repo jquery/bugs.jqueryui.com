@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" href="http://jqueryui.com/latest/themes/base/ui.all.css" rel="stylesheet" />
+  <script type="text/javascript" src="http://jqueryui.com/latest/jquery-1.3.2.js"></script>
+  <script type="text/javascript" src="http://jqueryui.com/latest/ui/ui.core.js"></script>
+  <script type="text/javascript" src="http://jqueryui.com/latest/ui/ui.draggable.js"></script>
+  <script type="text/javascript" src="http://jqueryui.com/latest/ui/ui.droppable.js"></script>
+  <style type="text/css">
+  	body { margin: 0; padding: 0; font: 62.5% arial,sans-serif; }
+  	div { font-size: 1.2em; font-weight: bold; }
+    .draggable { width: 75px; height: 25px; background: silver; padding: 10px; margin: 10px; border: 1px solid #333; cursor: pointer; }
+    #droppable { position: absolute; z-index: 50; left: -120px; top: 150px; width: 125px; height: 75px; background: gray; color: white; padding: 10px; border: 1px solid #333; display: block; }
+    #control { position: absolute; z-index: 60; left: -800px; top: 150px; width: 805px; height: 75px; background: gray; color: white; padding: 10px; border: 1px solid #333; }
+    #draggables { margin: 50px; }
+  </style>
+  <script type="text/javascript">
+  var dropped = false;
+  $(document).ready(function(){
+  	$("#control").hide();
+  	
+    $(".draggable").draggable({
+    	appendTo: 'body',
+    	helper: "clone",
+    	opacity: 0.8,
+    	revert: "invalid",
+    	revertDuration: 100,
+    	zIndex: 100,
+    	start: function(){
+    		//$("#droppable").css('left', '0');
+    		openDroppable();
+    		//$(this).draggable('option', 'zIndex', 100);
+    	},
+    	stop: function(){ 
+    		if(dropped){
+    			$(this).hide();
+    			setDroppable("Block: " + $(this).attr('id'));
+			} else {
+				resetDroppable();
+			}
+    		//$(this).css('zIndex', '1');
+    		//$(this).draggable('option', 'zIndex', 1);
+    	}
+    });
+    
+    enableDraggableClick();
+    
+    enableDroppableClick();
+    
+    $("#droppable").droppable({
+    	tolerance: 'touch',
+      	over: function(){
+      		dropped = true;
+      		alert('over');
+	  	},
+	  	out: function(){
+      		dropped = false;
+      		//alert('out');
+      	}
+    });  
+    
+    $("#btnCloseDroppable").click(function(){
+			resetDroppable();
+			return false;
+	}); 
+	
+	$("#btnCloseControl").click(function(){
+			resetControl();
+			return false;
+	}); 
+    
+  });
+  
+  function enableDroppableClick(){
+		$("#droppable").click(function(){
+			disableDraggables();
+			$("#control").show();
+			$("#control").animate( { left: "0"}, 500 );
+			disableDroppableClick();
+		});
+  }
+  
+  function disableDroppableClick(){
+  	$(this).unbind("click");
+  }
+  
+  function resetControl(){
+  	$("#control").animate( { left: "-800"}, 500, "swing", hideControl );
+  }
+  
+  function hideControl(){
+  	enableDraggables();
+  	enableDroppableClick();
+  	$("#control").hide();
+  }
+  
+  function enableDraggableClick(){
+  	$(".draggable").click(function(){
+    	$(this).hide();
+    	setDroppable("Block: " + $(this).attr('id'));
+    	openDroppable();
+    });
+  }
+  
+  function enableDraggables(){
+  	$(".draggable").draggable('enable');
+  	enableDraggableClick();
+  }
+  
+  function disableDraggables(){
+  	$(".draggable").draggable('disable');
+  	$(".draggable").unbind('click');
+  }
+  
+  function resetDroppable(){
+  	enableDraggables();
+  	dropped = false;
+  	//$("#droppable").css('left', '-120px');
+  	$("#droppable").animate( { left: "-120px"}, 250 );
+  	$("#droppable div").html('Drop Zone');
+  }
+  function setDroppable(val){
+  	disableDraggables();
+  	$("#droppable div").html(val);
+  }
+  function openDroppable(){
+  	$("#droppable").animate( { left: "0"}, 250 );
+  	//$("#droppable").css('left', '0');
+  }
+  </script>
+</head>
+<body>
+  
+<div id="droppable">
+	<div>Drop Zone</div>
+	<a href="#closeDroppable" id="btnCloseDroppable">Close</a>
+</div>
+<div id="control">
+	<div>Control Panel</div>
+	<a href="#closeControl" id="btnCloseControl">Close</a>
+</div>
+<div id="draggables">
+	<div class="draggable" id="1">1</div>
+	<div class="draggable" id="2">2</div>
+	<div class="draggable" id="3">3</div>
+	<div class="draggable" id="4">4</div>
+	<div class="draggable" id="5">5</div>
+</div>
+
+
+</body>
+</html>
+

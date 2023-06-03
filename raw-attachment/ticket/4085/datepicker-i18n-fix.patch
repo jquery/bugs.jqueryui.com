@@ -1,0 +1,659 @@
+Index: demos/datepicker/localization.html
+===================================================================
+--- demos/datepicker/localization.html	(Revision 2028)
++++ demos/datepicker/localization.html	(WorkingCopy)
+@@ -1,6 +1,7 @@
+ <!doctype html>
+ <html lang="en">
+ <head>
++	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+ 	<title>jQuery UI Datepicker - Localize calendar</title>
+ 	<link type="text/css" href="../../themes/base/ui.all.css" rel="stylesheet" />
+ 	<script type="text/javascript" src="../../jquery-1.3.1.js"></script>
+@@ -48,11 +49,10 @@
+ 	<link type="text/css" href="../demos.css" rel="stylesheet" />
+ 	<script type="text/javascript">
+ 	$(function() {
+-		$.datepicker.setDefaults($.extend({showMonthAfterYear: false}, $.datepicker.regional['']));
++		$.datepicker.setDefaults($.datepicker.regional['']);
+ 		$("#datepicker").datepicker($.datepicker.regional['fr']);
+ 		$("#locale").change(function() {
+-			$('#datepicker').datepicker('option', $.extend({showMonthAfterYear: false},
+-				$.datepicker.regional[$(this).val()]));
++			$('#datepicker').datepicker('option', $.datepicker.regional[$(this).val()]);
+ 		});
+ 	});
+ 	</script>
+Index: themes/base/ui.datepicker.css
+===================================================================
+--- themes/base/ui.datepicker.css	(Revision 2028)
++++ themes/base/ui.datepicker.css	(WorkingCopy)
+@@ -14,7 +14,6 @@
+ .ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+ .ui-datepicker select.ui-datepicker-month, 
+ .ui-datepicker select.ui-datepicker-year { width: 49%;}
+-.ui-datepicker .ui-datepicker-title select.ui-datepicker-year { float: right; }
+ .ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
+ .ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+ .ui-datepicker td { border: 0; padding: 1px; }
+Index: ui/i18n/ui.datepicker-ar.js
+===================================================================
+--- ui/i18n/ui.datepicker-ar.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-ar.js	(WorkingCopy)
+@@ -15,6 +15,8 @@
+ 		dayNamesShort: ['سبت', 'أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة'],
+ 		dayNamesMin: ['سبت', 'أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 0,
+-  isRTL: true};
++  isRTL: true,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['ar']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-bg.js
+===================================================================
+--- ui/i18n/ui.datepicker-bg.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-bg.js	(WorkingCopy)
+@@ -15,6 +15,8 @@
+         dayNamesShort: ['Нед','Пон','Вто','Сря','Чет','Пет','Съб'],
+         dayNamesMin: ['Не','По','Вт','Ср','Че','Пе','Съ'],
+         dateFormat: 'dd.mm.yy', firstDay: 1,
+-        isRTL: false};
++        isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+     $.datepicker.setDefaults($.datepicker.regional['bg']);
+ });
+Index: ui/i18n/ui.datepicker-ca.js
+===================================================================
+--- ui/i18n/ui.datepicker-ca.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-ca.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Dug','Dln','Dmt','Dmc','Djs','Dvn','Dsb'],
+ 		dayNamesMin: ['Dg','Dl','Dt','Dc','Dj','Dv','Ds'],
+ 		dateFormat: 'mm/dd/yy', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['ca']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-cs.js
+===================================================================
+--- ui/i18n/ui.datepicker-cs.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-cs.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
+ 		dayNamesMin: ['ne','po','út','st','čt','pá','so'],
+ 		dateFormat: 'dd.mm.yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['cs']);
+ });
+Index: ui/i18n/ui.datepicker-da.js
+===================================================================
+--- ui/i18n/ui.datepicker-da.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-da.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
+ 		dayNamesMin: ['Sø','Ma','Ti','On','To','Fr','Lø'],
+         dateFormat: 'dd-mm-yy', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+     $.datepicker.setDefaults($.datepicker.regional['da']);
+ });
+Index: ui/i18n/ui.datepicker-de.js
+===================================================================
+--- ui/i18n/ui.datepicker-de.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-de.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+ 		dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+ 		dateFormat: 'dd.mm.yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['de']);
+ });
+Index: ui/i18n/ui.datepicker-el.js
+===================================================================
+--- ui/i18n/ui.datepicker-el.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-el.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Κυρ','Δευ','Τρι','Τετ','Πεμ','Παρ','Σαβ'],
+ 		dayNamesMin: ['Κυ','Δε','Τρ','Τε','Πε','Πα','Σα'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['el']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-eo.js
+===================================================================
+--- ui/i18n/ui.datepicker-eo.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-eo.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Dim','Lun','Mar','Mer','Ĵaŭ','Ven','Sab'],
+ 		dayNamesMin: ['Di','Lu','Ma','Me','Ĵa','Ve','Sa'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['eo']);
+ });
+Index: ui/i18n/ui.datepicker-es.js
+===================================================================
+--- ui/i18n/ui.datepicker-es.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-es.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Dom','Lun','Mar','Mi&eacute;','Juv','Vie','S&aacute;b'],
+ 		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','S&aacute;'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['es']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-fa.js
+===================================================================
+--- ui/i18n/ui.datepicker-fa.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-fa.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['ي','د','س','چ','پ','ج', 'ش'],
+ 		dayNamesMin: ['ي','د','س','چ','پ','ج', 'ش'],
+ 		dateFormat: 'yy/mm/dd', firstDay: 6,
+-  isRTL: true};
++  isRTL: true,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['fa']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-fi.js
+===================================================================
+--- ui/i18n/ui.datepicker-fi.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-fi.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNames: ['Sunnuntai','Maanantai','Tiistai','Keskiviikko','Torstai','Perjantai','Lauantai'],
+ 		dayNamesMin: ['Su','Ma','Ti','Ke','To','Pe','La'],
+         dateFormat: 'dd.mm.yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+     $.datepicker.setDefaults($.datepicker.regional['fi']);
+ });
+Index: ui/i18n/ui.datepicker-fr.js
+===================================================================
+--- ui/i18n/ui.datepicker-fr.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-fr.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
+ 		dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['fr']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-he.js
+===================================================================
+--- ui/i18n/ui.datepicker-he.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-he.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['א\'','ב\'','ג\'','ד\'','ה\'','ו\'','שבת'],
+ 		dayNamesMin: ['א\'','ב\'','ג\'','ד\'','ה\'','ו\'','שבת'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 0,
+-		isRTL: true};
++		isRTL: true,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['he']);
+ });
+Index: ui/i18n/ui.datepicker-hr.js
+===================================================================
+--- ui/i18n/ui.datepicker-hr.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-hr.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Ned','Pon','Uto','Sri','Čet','Pet','Sub'],
+ 		dayNamesMin: ['Ne','Po','Ut','Sr','Če','Pe','Su'],
+ 		dateFormat: 'dd.mm.yy.', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['hr']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-hu.js
+===================================================================
+--- ui/i18n/ui.datepicker-hu.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-hu.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Vas', 'Hét', 'Ked', 'Sze', 'Csü', 'Pén', 'Szo'],
+ 		dayNamesMin: ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'],
+ 		dateFormat: 'yy-mm-dd', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['hu']);
+ });
+Index: ui/i18n/ui.datepicker-hy.js
+===================================================================
+--- ui/i18n/ui.datepicker-hy.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-hy.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['կիր','երկ','երք','չրք','հնգ','ուրբ','շբթ'],
+ 		dayNamesMin: ['կիր','երկ','երք','չրք','հնգ','ուրբ','շբթ'],
+ 		dateFormat: 'dd.mm.yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['hy']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-id.js
+===================================================================
+--- ui/i18n/ui.datepicker-id.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-id.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Min','Sen','Sel','Rab','kam','Jum','Sab'],
+ 		dayNamesMin: ['Mg','Sn','Sl','Rb','Km','jm','Sb'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['id']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-is.js
+===================================================================
+--- ui/i18n/ui.datepicker-is.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-is.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Sun','M&aacute;n','&THORN;ri','Mi&eth;','Fim','F&ouml;s','Lau'],
+ 		dayNamesMin: ['Su','M&aacute;','&THORN;r','Mi','Fi','F&ouml;','La'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['is']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-it.js
+===================================================================
+--- ui/i18n/ui.datepicker-it.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-it.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'],
+ 		dayNamesMin: ['Do','Lu','Ma','Me','Gio','Ve','Sa'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['it']);
+ });
+Index: ui/i18n/ui.datepicker-ja.js
+===================================================================
+--- ui/i18n/ui.datepicker-ja.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-ja.js	(WorkingCopy)
+@@ -15,6 +15,7 @@
+ 		dayNamesMin: ['日','月','火','水','木','金','土'],
+ 		dateFormat: 'yy/mm/dd', firstDay: 0,
+ 		isRTL: false,
+-		showMonthAfterYear: true};
++		showMonthAfterYear: true,
++		yearUnit: '年'};
+ 	$.datepicker.setDefaults($.datepicker.regional['ja']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-ko.js
+===================================================================
+--- ui/i18n/ui.datepicker-ko.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-ko.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['일','월','화','수','목','금','토'],
+ 		dayNamesMin: ['일','월','화','수','목','금','토'],
+ 		dateFormat: 'yy-mm-dd', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['ko']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-lt.js
+===================================================================
+--- ui/i18n/ui.datepicker-lt.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-lt.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['sek','pir','ant','tre','ket','pen','šeš'],
+ 		dayNamesMin: ['Se','Pr','An','Tr','Ke','Pe','Še'],
+ 		dateFormat: 'yy-mm-dd', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['lt']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-lv.js
+===================================================================
+--- ui/i18n/ui.datepicker-lv.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-lv.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['svt','prm','otr','tre','ctr','pkt','sst'],
+ 		dayNamesMin: ['Sv','Pr','Ot','Tr','Ct','Pk','Ss'],
+ 		dateFormat: 'dd-mm-yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['lv']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-ms.js
+===================================================================
+--- ui/i18n/ui.datepicker-ms.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-ms.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Aha','Isn','Sel','Rab','kha','Jum','Sab'],
+ 		dayNamesMin: ['Ah','Is','Se','Ra','Kh','Ju','Sa'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['ms']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-nl.js
+===================================================================
+--- ui/i18n/ui.datepicker-nl.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-nl.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
+ 		dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional.nl);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-no.js
+===================================================================
+--- ui/i18n/ui.datepicker-no.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-no.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
+ 		dayNamesMin: ['Sø','Ma','Ti','On','To','Fr','Lø'],
+         dateFormat: 'yy-mm-dd', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+     $.datepicker.setDefaults($.datepicker.regional['no']);
+ });
+Index: ui/i18n/ui.datepicker-pl.js
+===================================================================
+--- ui/i18n/ui.datepicker-pl.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-pl.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Nie','Pn','Wt','Śr','Czw','Pt','So'],
+ 		dayNamesMin: ['N','Pn','Wt','Śr','Cz','Pt','So'],
+ 		dateFormat: 'yy-mm-dd', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['pl']);
+ });
+Index: ui/i18n/ui.datepicker-pt-BR.js
+===================================================================
+--- ui/i18n/ui.datepicker-pt-BR.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-pt-BR.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+ 		dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['pt-BR']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-ro.js
+===================================================================
+--- ui/i18n/ui.datepicker-ro.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-ro.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Dum', 'Lun', 'Mar', 'Mie', 'Joi', 'Vin', 'Sam'],
+ 		dayNamesMin: ['Du','Lu','Ma','Mi','Jo','Vi','Sa'],
+ 		dateFormat: 'mm/dd/yy', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['ro']);
+ });
+Index: ui/i18n/ui.datepicker-ru.js
+===================================================================
+--- ui/i18n/ui.datepicker-ru.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-ru.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+ 		dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+ 		dateFormat: 'dd.mm.yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['ru']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-sk.js
+===================================================================
+--- ui/i18n/ui.datepicker-sk.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-sk.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Ned','Pon','Uto','Str','Štv','Pia','Sob'],
+ 		dayNamesMin: ['Ne','Po','Ut','St','Št','Pia','So'],
+ 		dateFormat: 'dd.mm.yy', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['sk']);
+ });
+Index: ui/i18n/ui.datepicker-sl.js
+===================================================================
+--- ui/i18n/ui.datepicker-sl.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-sl.js	(WorkingCopy)
+@@ -15,6 +15,8 @@
+ 		dayNamesShort: ['Ned','Pon','Tor','Sre','&#x10C;et','Pet','Sob'],
+ 		dayNamesMin: ['Ne','Po','To','Sr','&#x10C;e','Pe','So'],
+ 		dateFormat: 'dd.mm.yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['sl']);
+ });
+Index: ui/i18n/ui.datepicker-sq.js
+===================================================================
+--- ui/i18n/ui.datepicker-sq.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-sq.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Di','Hë','Ma','Më','En','Pr','Sh'],
+ 		dayNamesMin: ['Di','Hë','Ma','Më','En','Pr','Sh'],
+ 		dateFormat: 'dd.mm.yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['sq']);
+ });
+Index: ui/i18n/ui.datepicker-sv.js
+===================================================================
+--- ui/i18n/ui.datepicker-sv.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-sv.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNames: ['Söndag','Måndag','Tisdag','Onsdag','Torsdag','Fredag','Lördag'],
+ 		dayNamesMin: ['Sö','Må','Ti','On','To','Fr','Lö'],
+         dateFormat: 'yy-mm-dd', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+     $.datepicker.setDefaults($.datepicker.regional['sv']);
+ });
+Index: ui/i18n/ui.datepicker-th.js
+===================================================================
+--- ui/i18n/ui.datepicker-th.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-th.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['อา.','จ.','อ.','พ.','พฤ.','ศ.','ส.'],
+ 		dayNamesMin: ['อา.','จ.','อ.','พ.','พฤ.','ศ.','ส.'],
+ 		dateFormat: 'dd/mm/yy', firstDay: 0,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['th']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-tr.js
+===================================================================
+--- ui/i18n/ui.datepicker-tr.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-tr.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+ 		dayNamesMin: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+ 		dateFormat: 'dd.mm.yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['tr']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-uk.js
+===================================================================
+--- ui/i18n/ui.datepicker-uk.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-uk.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['нед','пнд','вів','срд','чтв','птн','сбт'],
+ 		dayNamesMin: ['Нд','Пн','Вт','Ср','Чт','Пт','Сб'],
+ 		dateFormat: 'dd.mm.yy', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['uk']);
+ });
+\ No newline at end of file
+Index: ui/i18n/ui.datepicker-zh-CN.js
+===================================================================
+--- ui/i18n/ui.datepicker-zh-CN.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-zh-CN.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+ 		dayNamesMin: ['日','一','二','三','四','五','六'],
+ 		dateFormat: 'yy-mm-dd', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+ });
+Index: ui/i18n/ui.datepicker-zh-TW.js
+===================================================================
+--- ui/i18n/ui.datepicker-zh-TW.js	(Revision 2028)
++++ ui/i18n/ui.datepicker-zh-TW.js	(WorkingCopy)
+@@ -14,6 +14,8 @@
+ 		dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
+ 		dayNamesMin: ['日','一','二','三','四','五','六'],
+ 		dateFormat: 'yy/mm/dd', firstDay: 1,
+-		isRTL: false};
++		isRTL: false,
++		showMonthAfterYear: false,
++		yearUnit: ''};
+ 	$.datepicker.setDefaults($.datepicker.regional['zh-TW']);
+ });
+Index: ui/ui.datepicker.js
+===================================================================
+--- ui/ui.datepicker.js	(Revision 2028)
++++ ui/ui.datepicker.js	(WorkingCopy)
+@@ -52,7 +52,9 @@
+ 		dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'], // Column headings for days starting at Sunday
+ 		dateFormat: 'mm/dd/yy', // See format options on parseDate
+ 		firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
+-		isRTL: false // True if right-to-left language, false if left-to-right
++		isRTL: false, // True if right-to-left language, false if left-to-right
++		showMonthAfterYear: false, // True if the year select precedes month, false for month then year
++		yearUnit: '' // Display text for year unit
+ 	};
+ 	this._defaults = { // Global defaults for all the date picker instances
+ 		showOn: 'focus', // 'focus' for popup on focus,
+@@ -71,7 +73,6 @@
+ 		gotoCurrent: false, // True if today link goes back to current selection instead
+ 		changeMonth: false, // True if month can be selected directly, false if only prev/next
+ 		changeYear: false, // True if year can be selected directly, false if only prev/next
+-		showMonthAfterYear: false, // True if the year select precedes month, false for month then year
+ 		yearRange: '-10:+10', // Range of years to display in drop-down,
+ 			// either relative to current year (-nn:+nn) or absolute (nnnn:nnnn)
+ 		showOtherMonths: false, // True to show dates in other months, false to leave blank
+@@ -1419,6 +1420,7 @@
+ 		var changeMonth = this._get(inst, 'changeMonth');
+ 		var changeYear = this._get(inst, 'changeYear');
+ 		var showMonthAfterYear = this._get(inst, 'showMonthAfterYear');
++		var yearUnit = this._get(inst, 'yearUnit');
+ 		var html = '<div class="ui-datepicker-title">';
+ 		var monthHtml = '';
+ 		// month selection
+@@ -1444,7 +1446,7 @@
+ 			html += monthHtml + ((secondary || changeMonth || changeYear) && (!(changeMonth && changeYear)) ? '&#xa0;' : '');
+ 		// year selection
+ 		if (secondary || !changeYear)
+-			html += '<span class="ui-datepicker-year">' + drawYear + '</span>';
++			html += '<span class="ui-datepicker-year">' + drawYear + yearUnit + '</span>';
+ 		else {
+ 			// determine range of years to display
+ 			var years = this._get(inst, 'yearRange').split(':');
+@@ -1469,12 +1471,12 @@
+ 			for (; year <= endYear; year++) {
+ 				html += '<option value="' + year + '"' +
+ 					(year == drawYear ? ' selected="selected"' : '') +
+-					'>' + year + '</option>';
++					'>' + year + yearUnit + '</option>';
+ 			}
+ 			html += '</select>';
+ 		}
+ 		if (showMonthAfterYear)
+-			html += (secondary || changeMonth || changeYear ? '&#xa0;' : '') + monthHtml;
++			html += ((secondary || changeMonth || changeYear) && (!(changeMonth && changeYear)) ? '&#xa0;' : '') + monthHtml;
+ 		html += '</div>'; // Close datepicker_header
+ 		return html;
+ 	},

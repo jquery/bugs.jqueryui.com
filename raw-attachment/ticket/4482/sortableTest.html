@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#sortable").sortable();
+});
+</script>
+<style type="text/css">
+#sortable {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+#sortable li {
+	margin: 5px 0;
+	padding: 5px;
+	background: gray;
+	border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<ul id="sortable">
+	<li>variable</li>
+	<li>variable<br/>content</li>
+	<li>Variable<br/>content<br/>size</li>
+	<li>variable<br/>content<br/>size<br/>doesn't</li>
+	<li>variable<br/>content<br/>size<br/>doesn't<br/>work</li>
+	<li>variable<br/>content<br/>size<br/>doesn't<br/>work<br/>in</li>
+	<li>variable<br/>content<br/>size<br/>doesn't<br/>work<br/>in<br/>IE</li>
+</ul>
+</body>
+</html>

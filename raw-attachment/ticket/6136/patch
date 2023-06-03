@@ -1,0 +1,15 @@
+--- jquery.ui.dialog.js.old	2010-10-01 12:11:49.000000000 -0700
++++ jquery.ui.dialog.js	2010-10-01 12:12:12.000000000 -0700
+@@ -330,10 +330,10 @@
+ 
+ 				if (event.target === last[0] && !event.shiftKey) {
+ 					first.focus(1);
+-					return false;
++					return;
+ 				} else if (event.target === first[0] && event.shiftKey) {
+ 					last.focus(1);
+-					return false;
++					return;
+ 				}
+ 			});
+ 		}

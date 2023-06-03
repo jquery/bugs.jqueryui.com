@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    </head>
+    <body>
+
+        <br/><br/><br/>
+        <br/><br/><br/>
+        <br/><br/><br/>
+        <br/><br/><br/>
+        <h1>Position Absolute Test</h1>
+        
+        <a href="#optsMenu1">test - no position set - Fails</a>
+        <div id="optsMenu1" style="position: absolute; width:100px;height:100px;border:1px solid #000; background: #CCC; display:none">TEST</div>
+        <br/>
+        <a href="#optsMenu2">test - left set - Fails</a>
+        <div id="optsMenu2" style="position: absolute; left: 0px;  width:100px;height:100px;border:1px solid #000; background: #DCC; display:none">TEST</div>
+        <br/>
+        <a href="#optsMenu3">test - top set - Passes</a>
+        <div id="optsMenu3" style="position: absolute; top: 0px; width:100px;height:100px;border:1px solid #000; background: #CDC; display:none">TEST</div>
+        <br/>
+        <a href="#optsMenu4">test - top and left set - Passes</a>
+        <div id="optsMenu4" style="position: absolute; top: 0px; left: 0px; width:100px;height:100px;border:1px solid #000; background: #CCD; display:none">TEST</div>
+        <br/>
+        
+        <script type="text/javascript">
+            
+            jQuery("a").click(
+                function(e){ 
+                    
+                    jQuery( this.hash ).css( "display", "block" )
+                                        .position({
+                                            my: "left top",
+                                            of: jQuery(this),
+                                            offset: "10px 10px",
+                                            at: "right bottom"
+                                        });
+                                        
+                    e.preventDefault();
+                
+                }
+            );
+            
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,23 @@
+20c20
+< 			options = $.extend({"speed": 'slow'}, this.options);
+---
+> 			options = this.options;
+36c36
+< 		this._refreshValue(false);
+---
+> 		this._refreshValue();
+70c70
+< 				this._refreshValue(true);
+---
+> 				this._refreshValue();
+98c98
+< 	_refreshValue: function(animate) {
+---
+> 	_refreshValue: function() {
+101,102c101
+< 		animate && this.options.easing && this.valueDiv.animate({'width': value + '%'}, this.options.speed, this.options.easing) ||
+< 			this.valueDiv.width(value + '%');
+---
+> 		this.valueDiv.width(value + '%');
+104d102
+< 

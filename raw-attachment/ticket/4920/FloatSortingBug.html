@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+	<title>test site</title>
+	
+	<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'></script>
+	<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js'></script>
+
+	<style>
+		
+		.float1 {
+			float: left;  /* try to comment or delete this line and you will see that all wlll work fine */
+			width: 48%;
+			background-color: #CDFECD;
+			padding: 3px;
+		}
+	
+		.blank {
+			background-color: #2B65EC;
+			width: 100px;
+			height: 20px;
+		}
+	</style>
+	
+</head>
+
+<body>
+	
+	<div id="mainSortingContainer">
+	
+		<div class="sorting_item">
+			<div class="float1">float element 1</div>
+			<div class="float1">float element 1</div>
+		</div>
+		<div class="sorting_item">
+			<div class="float1">float element 2</div>
+			<div class="float1">float element 2</div>
+		</div>
+		<div class="sorting_item">
+			<div class="float1">float element 3</div>
+			<div class="float1">float element 3</div>
+		</div>
+		
+		<div style="clear:both;"></div>
+	</div>
+	
+	<script>
+		$(document).ready(function(){
+			$('#mainSortingContainer').sortable({
+					placeholder:	'blank',
+					item:	'div.sorting_item'
+				}
+			);
+	
+		});
+	</script>
+		
+</body>

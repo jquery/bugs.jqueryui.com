@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>jQUery dialog title field bug</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/ui-lightness/jquery-ui.css">
+		<style type="text/css">label, textarea { display: block; }</style>
+	</head>
+
+	<body>
+		<form title="ignored">
+			<label>Title: <input name="title"></label>
+			<label>Content: <textarea name="content"></textarea></label>
+		</form>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("form").dialog({ });
+			});
+		</script>
+	</body>
+</html>

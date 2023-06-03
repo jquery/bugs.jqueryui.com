@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" href="http://jquery-ui.googlecode.com/svn/tags/latest/themes/base/jquery-ui.css" type="text/css" media="all" />
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.3/prototype.js"></script>
+        
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+        
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        
+        <title>Test</title>
+        
+        <script language="JavaScript" type="text/javascript">
+            jQuery.noConflict();
+            
+            jQuery(function(){
+                jQuery('#support').dialog({
+                    autoOpen: true
+                });
+            });
+        </script>
+    </head>
+    
+    <body style="cursor: auto;">
+        <div aria-labelledby="ui-dialog-title-support" role="dialog" tabindex="-1" class="ui-dialog ui-widget ui-widget-content ui-corner-all  ui-draggable ui-resizable" style="display: block; z-index: 1008; outline-color: -moz-use-text-color; outline-style: none; outline-width: 0px; position: absolute; height: auto; width: 300px; top: 154.5px; left: 486px;">
+            <div style="-moz-user-select: none;" unselectable="on" class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                <span style="-moz-user-select: none;" unselectable="on" id="ui-dialog-title-support" class="ui-dialog-title">&nbsp;</span>
+                <a style="-moz-user-select: none;" unselectable="on" role="button" class="ui-dialog-titlebar-close ui-corner-all" href="#">
+                    <span style="-moz-user-select: none;" unselectable="on" class="ui-icon ui-icon-closethick">close</span>
+                </a>
+            </div>
+            <div style="width: auto; display: block; min-height: 112px; height: auto;" class="ui-dialog-content ui-widget-content" id="support">TEST</div>
+            <div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-n"></div>
+            <div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-e"></div>
+            <div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-s"></div>
+            <div style="-moz-user-select: none;" unselectable="on" class="ui-resizable-handle ui-resizable-w"></div>
+            <div unselectable="on" style="z-index: 1001; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se"></div>
+            <div unselectable="on" style="z-index: 1002; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-sw"></div>
+            <div unselectable="on" style="z-index: 1003; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-ne"></div>
+            <div unselectable="on" style="z-index: 1004; -moz-user-select: none;" class="ui-resizable-handle ui-resizable-nw"></div>
+        </div>
+    </body>
+</html>

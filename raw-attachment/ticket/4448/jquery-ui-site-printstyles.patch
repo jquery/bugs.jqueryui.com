@@ -1,0 +1,13 @@
+Index: classes/functions.php
+===================================================================
+--- classes/functions.php	(revision 1017)
++++ classes/functions.php	(working copy)
+@@ -2,7 +2,7 @@
+ 
+ 
+ function UI_generateCSSLinks(&$item, $key = null) {
+-	$item = '<link rel="stylesheet" href="'.$item.trString($item).'" type="text/css" media="screen" />';
++	$item = '<link rel="stylesheet" href="'.$item.trString($item).'" type="text/css" media="all" />';
+ }
+ 
+ function UI_generateJSLinks(&$item, $key = null) {

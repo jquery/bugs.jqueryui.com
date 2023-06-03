@@ -1,0 +1,39 @@
+Index: functional/css/functional_demos.css
+===================================================================
+--- functional/css/functional_demos.css	(revision 1187)
++++ functional/css/functional_demos.css	(working copy)
+@@ -195,11 +195,11 @@
+ 	float: left; padding: 5px;
+ }
+ 
+-#accordionDemo, select {
++#accordionDemo, #accordionDemoFillSpace, select {
+ 	position: relative;
+ 	font-size: 12px;
+ }
+-#accordionDemo h3 {
++#accordionDemo h3, #accordionDemoFillSpace h3 {
+ 	padding: 0;
+ }
+ 
+Index: functional/templates/ui.accordion.html
+===================================================================
+--- functional/templates/ui.accordion.html	(revision 1187)
++++ functional/templates/ui.accordion.html	(working copy)
+@@ -19,6 +19,16 @@
+ 					{ desc: 'Simple Accordion Mouse over', source: '$("#accordionDemo").accordion({event: "mouseover", header:".ui-accordion-header"});' },
+ 					{ desc: 'Simple Accordion', source: '$("#accordionDemo").accordion({ header: ".ui-accordion-header"});' }
+ 				]
++			},
++			{
++				title: 'Fill space accordion',
++				html: { url: 'templates/ui.accordion.fillspace.html' },
++				destroy: '$("#accordionDemoFillSpace").accordion("destroy");',
++
++				options: [
++					{ desc: 'Simple Accordion Mouse over', source: '$("#accordionDemoFillSpace").accordion({event: "mouseover", fillSpace: true, header:".ui-accordion-header"});' },
++					{ desc: 'Simple Accordion', source: '$("#accordionDemoFillSpace").accordion({fillSpace: true, header: ".ui-accordion-header"});' }
++				]
+ 			}
+ 		]
+ 

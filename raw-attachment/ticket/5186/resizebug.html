@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <link media="all" type="text/css" href="http://jquery-ui.googlecode.com/svn/tags/latest/themes/base/jquery-ui.css" rel="stylesheet">
+    <script type="text/javascript">
+    $(function(){
+    var t1= $("<div>")
+            .appendTo("#container")
+            .css({
+                "background": "white",
+                "border": "1px solid black",
+                "height": "100px",
+                "width": "100px"
+            })
+            .resizable({
+                containment: 'parent'
+            })
+            .bind( "resize", function(e,ui) {
+
+                if (!ui) return false; t2.css({
+                    "height": ui.size.height
+                    //Fix it totally
+                    //$(e.target).height()
+                    "width": ui.size.width
+                    //Fix it totally
+                    //$(e.target).width()
+                });
+
+            });
+
+    var t2=$("<div>")
+            .appendTo(t1)
+            .css({
+                "background": "red",
+                "border": "none",
+                "height": "100%",
+                "position": "relative",
+                "width": "100%"
+            });
+
+    });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 500px; height: 500px; background-color:green;">
+</div>
+</body>
+</html>

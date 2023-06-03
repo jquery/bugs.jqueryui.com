@@ -1,0 +1,20 @@
+--- ui.tabs.js	2009-06-15 17:16:32.000000000 +0100
++++ new-ui.tabs.js	2009-06-15 17:25:43.000000000 +0100
+@@ -38,7 +38,8 @@
+ 	},
+ 
+ 	_tabId: function(a) {
+-		return a.title && a.title.replace(/\s/g, '_').replace(/[^A-Za-z0-9\-_:\.]/g, '') ||
++		return this.options.panelId ||
++			a.title && a.title.replace(/\s/g, '_').replace(/[^A-Za-z0-9\-_:\.]/g, '') ||
+ 			this.options.idPrefix + $.data(a);
+ 	},
+ 
+@@ -623,6 +624,7 @@
+ 		event: 'click',
+ 		fx: null, // e.g. { height: 'toggle', opacity: 'toggle', duration: 200 }
+ 		idPrefix: 'ui-tabs-',
++		panelId: null,
+ 		panelTemplate: '<div></div>',
+ 		spinner: '<em>Loading&#8230;</em>',
+ 		tabTemplate: '<li><a href="#{href}"><span>#{label}</span></a></li>'

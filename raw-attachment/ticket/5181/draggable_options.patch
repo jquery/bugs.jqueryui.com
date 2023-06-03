@@ -1,0 +1,54 @@
+Index: draggable_options.js
+===================================================================
+--- draggable_options.js	(revision 3797)
++++ draggable_options.js	(working copy)
+@@ -158,6 +158,49 @@
+ 	})
+ });
+ 
++
++test("{ containment: Array x1,y1,x2,y2 }", function() {
++	
++	var el_offset, x1 ,x2,y1,y2
++	var dragged_el_x2 , dragged_el_y2, x2y2offsetAfter
++	
++	// create a containment area 20 pixel around this element
++
++	el_offset = $("#draggable1").offset();
++	x1 = el_offset.left - 20;
++	y1 = el_offset.left	- 20;
++	x2 = x1 + $("#draggable1").outerHeight(true) + 20;
++	y2 = y1 + $("#draggable1").outerWidth(true) + 20;
++
++	el = $("#draggable1").draggable({ containment:[ x1, y1, x2, y2 ] });
++	
++	
++	// drag it passed the containment area top and left
++	drag(el, -25, -25);
++	var expected = {
++		left: x1,
++		top: y1
++	}
++	same(offsetAfter, expected, 'insure containment by array, top left corner');
++	
++	
++	// drag it passed the containment area right and down 
++	drag(el, 400 ,400);
++	
++	//calculate the x,y position of the elements bottom right corner after dragging
++	var x2y2offsetAfter = {
++		left: offsetAfter.left + $("#draggable1").outerHeight(true),
++  		top: offsetAfter.top + $("#draggable1").outerWidth(true)
++	}
++	var expected = {
++		left: x2,
++		top: y2
++	}
++	same(x2y2offsetAfter , expected, 'insure containment by array, bottom right corner');
++	
++});
++
++
+ test("{ containment: false }, default", function() {
+ 	equals(draggable_defaults.containment, false);
+ 

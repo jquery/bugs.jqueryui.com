@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title></title>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery_ui.js"></script>
+
+  <script type="text/javascript">
+  <!--
+  $(document).ready(function()
+  {
+    $("ul#gallery").sortable(
+    {
+      tolerance:"pointer",
+      update: function()
+      {
+        $("li[id^='gal_img']").each(function(idx, item)
+        {
+          $(item).attr("id", "gal_img" + idx);
+        });
+      }
+    });
+
+    $("img.change_img_state").click(function()
+    {
+      alert($(this).parents("li[id^='gal_img']").attr("id"));
+    });
+  });
+  //-->
+  </script>
+
+  <style type="text/css">
+  <!--
+    ul#gallery { margin:0; padding:0; list-style:none; }
+    ul#gallery li { width:auto; float:left; margin:0; padding:0; margin-bottom:5px; margin-right:5px; }
+    ul#gallery li div.imgbox { width:120px; height:100px; margin-bottom:5px; margin-right:5px; }
+    ul#gallery li div.imgbox div.imgmove { width:auto; height:5px; font-size:5px; cursor:move; background-color:#B80000; }
+    ul#gallery li div.imgbox div.imgactions { width:auto; background-color:#C8C8C8; }
+    ul#gallery li div.imgbox div.imgactions img { margin:2px 1px 0 1px; }
+  -->
+  </style>
+</head>
+
+<body>
+  <ul id="gallery">
+    <li id="gal_img0">
+      <div class="imgbox">
+        <div class="imgmove"></div>
+        <div class="imgactions">
+          <img class="change_img_state" width="16" height="16" src="" alt="click_me">
+
+        </div>
+        <img class="gallerimg" src="" alt="">
+      </div>
+    </li>
+    <li id="gal_img1">
+      <div class="imgbox">
+        <div class="imgmove"></div>
+        <div class="imgactions">
+          <img class="change_img_state" width="16" height="16" src="" alt="click_me">
+
+        </div>
+        <img class="gallerimg" src="" alt="">
+      </div>
+    </li>
+  </ul>
+</body>
+</html>
