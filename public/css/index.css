@@ -11,15 +11,15 @@
 
 /* Theme colors */
 :root {
-  --primary-color: #192839;
-  --secondary-color: #0f67a1;
+  --primary-color: #000000;
+  --secondary-color: #ff9c08;
 
   --text-color: #222;
   --text-color-dark-bg: #fff;
-  --text-color-link: var(--secondary-color);
-  --text-color-link-hover: #0e3a58;
-  --text-color-link-active: #1695e9;
-  --text-color-link-visited: var(--secondary-color);
+  --text-color-link: #bb0000;
+  --text-color-link-hover: #f00000;
+  --text-color-link-active: #ff2424;
+  --text-color-link-visited: #cc0000;
   --text-color-link-disabled: #998;
   --main-link-hover-bg-color: #eee;
   --text-shadow-color: #fcfcfc;
@@ -30,11 +30,13 @@
 
   --footer-text-color-link: #5DB0E6;
 
-  --background-color: #39414a;
+  --background-color: #5f5f5f;
+  --main-background-start-color: #1a1a1a;
+  --main-background-end-color: var(--background-color);
   --nav-background-color: var(--primary-color);
-  --secondary-nav-background-color: var(--secondary-color);
-  --main-background-start-color: #000000;
-  --main-background-end-color: #181c21;
+  --secondary-nav-start-color: #2d2d2d;
+  --secondary-nav-end-color: #060606;
+  --secondary-nav-box-shadow: #313131;
   --content-background-color: #fafafa;
   --sidenav-header-background-color: #ddd;
   --banner-background-color: var(--primary-color);
@@ -43,8 +45,7 @@
   --footer-background-end-color: #0f1923;
 
   --nav-text-link-color: white;
-  --nav-hover-link-color: rgba(0, 0, 0, 0.2);
-  --nav-active-link-color: #176092;
+  --nav-hover-link-color: rgba(255, 255, 255, 0.2);
 
   --border-color: #e4e4e4;
   --border-radius: 4px;
@@ -70,16 +71,29 @@ body {
   font-family: var(--font-family);
   font-size: 100%;
   color: var(--text-color);
-  background-color: var(--background-color);
   line-height: 1.4;
 }
 html {
   overflow-y: auto;
+  background-color: var(--background-color);
+}
+html:before {
+  content: '';
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: 900px;
+  background: linear-gradient(
+    to bottom,
+    var(--main-background-start-color),
+    var(--main-background-start-color) 25%,
+    var(--main-background-end-color)
+  );
+  z-index: -1;
 }
 body {
-  background-image: url(/img/bg-interior-tile-drk.jpg);
-  background-repeat: repeat-x;
-  background-position: 50% 80px;
+  background: url(/img/body_bg.jpg) no-repeat center 80px;
 }
 
 /* Banner */
@@ -269,13 +283,14 @@ header h1 {
   font-size: 0.75rem;
   padding: 0 1em;
   text-decoration: none;
-  border-bottom: 1px dotted var(--nav-text-link-color);
+  border-bottom: 2px solid transparent;
   white-space: nowrap;
   width: 100%;
 }
 .nav li:not(.active) a:hover,
 .nav li:not(.active) a:active {
   background-color: var(--nav-hover-link-color);
+  border-bottom-color: var(--secondary-color);
 }
 .nav a,
 .nav a:visited,
@@ -284,7 +299,7 @@ header h1 {
   color: var(--nav-text-link-color);
 }
 .nav .active a {
-  border-bottom: 2px solid var(--nav-active-link-color);
+  border-bottom-color: var(--secondary-color);
 }
 #jq-siteLogo {
   margin-top: 1em;
@@ -295,7 +310,12 @@ header h1 {
 }
 #jq-secondaryNavigation {
   padding: 0 0.5em;
-  background-color: var(--secondary-nav-background-color);
+  background: linear-gradient(
+    to bottom,
+    var(--secondary-nav-start-color),
+    var(--secondary-nav-end-color)
+  );
+  box-shadow: 0 -2px 1px var(--secondary-nav-box-shadow), 0 2px 1px black;
 }
 #jq-secondaryNavigation a {
   font-size: 0.8125rem;
@@ -503,6 +523,9 @@ a.ext-link .icon {
 }
 
 @media(min-width: 920px) {
+  html:before{
+    top: 60px;
+  }
   body {
     background-position-y: 60px;
   }
