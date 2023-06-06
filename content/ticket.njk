@@ -22,7 +22,7 @@
     ticketAttachments: (data) => {
       return data.attachments.filter((attachment) => attachment.id === data.ticket.id)
     },
-    title: "#{{ ticket.id }} ({{ ticket.summary }}) - jQuery - Bug Tracker"
+    title: "#{{ ticket.id }} ({{ ticket.summary }}) - jQuery UI - Bug Tracker"
   },
   permalink: '/ticket/{{ ticket.id }}/',
   tags: ['tickets']

@@ -6,7 +6,7 @@ layout: layouts/base.njk
 
 ---
 
-jQuery issues have moved to [GitHub](https://github.com/jquery/jquery/issues).
+jQuery UI issues have moved to [GitHub](https://github.com/jquery/jquery-ui/issues).
 
 This site is now a static version of the old Trac bugs site.
 

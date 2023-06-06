@@ -14,7 +14,9 @@
   border: 1px solid var(--ticket-info-border-color);
   border-radius: var(--border-radius);
   padding: 0.5em 0.75em;
-  margin-bottom: 0.5em;
+  margin: 0 auto 0.5em;
+  width: 100%;
+  max-width: 580px;
 }
 .ticket-number {
   font-size: 1.15rem;

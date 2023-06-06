@@ -6,30 +6,9 @@
   width: 100%;
   position: relative;
 }
-#search:before {
-  content: 'Search Tickets';
-  position: absolute;
-  right: 100%;
-  top: 50%;
-  transform: translate(-10px, -50%);
-  color: #fff;
-  font-size: 0.8125rem;
-  font-style: italic;
-  white-space: nowrap;
-}
-#search:after {
-  content: '';
-  display: block;
-  position: absolute;
-  right: -22px;
-  top: -4px;
-  width: 35px;
-  height: 35px;
-  background: url(/img/icon-search.png) 0 0 no-repeat;
-  z-index: 2;
-}
 .pagefind-ui__search-input {
   width: 100%;
+  border: 1px solid var(--border-color);
 }
 .pagefind-ui__search-clear {
   display: inline-block;
@@ -116,7 +95,6 @@
 @media(min-width: 920px) {
   #search {
     width: auto;
-    margin-right: 22px;
   }
   .pagefind-ui__search-input {
     width: 300px;

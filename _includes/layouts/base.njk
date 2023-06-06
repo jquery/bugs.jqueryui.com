@@ -79,60 +79,51 @@
               </ul>
             </nav>
             <nav id="jq-secondaryNavigation">
-              <h2 class="visually-hidden">jQuery Core navigation menu</h2>
+              <h2 class="visually-hidden">jQuery UI navigation menu</h2>
               <ul class="nav">
                 <li class="jq-download">
-                  <a href="https://jquery.com/download/">
+                  <a href="https://jqueryui.com/download/">
                     Download
                   </a>
                 </li>
                 <li class="jq-documentation">
-                  <a href="https://api.jquery.com/">
-                    Documentation
+                  <a href="https://jqueryui.com/demos/">
+                    Demos &amp; Documentation
                   </a>
                 </li>
-                <li class="jq-tutorials">
-                  <a href="https://learn.jquery.com/">
-                    Tutorials
+                <li class="jq-themes">
+                  <a href="https://jqueryui.com/themeroller/">
+                    Themes
                   </a>
                 </li>
-                <li class="jq-bugTracker">
-                  <a href="https://github.com/jquery/jquery/issues">
-                    Bug Tracker
+                <li class="jq-development">
+                  <a href="https://jqueryui.com/development/">
+                    Development
                   </a>
                 </li>
-                <li class="jq-discussion">
-                  <a href="https://forum.jquery.com/">
-                    Discussion
+                <li class="jq-support">
+                  <a href="https://jqueryui.com/support/">
+                    Support
                   </a>
                 </li>
               </ul>
             </nav>
           </div>
         </div>
-        <div id="bug-tracker-form" class="flex-column flex-between-center">
-          <h1>Bug Tracker</h1>
-          <div id="search"></div>
-          {# <form class="flex-row flex-start-center" action="/search" method="get">
-            <label for="jq-primarySearch">Search Tickets</label>
-            <input type="text" value="" title="Search jQuery" name="q" id="jq-primarySearch">
-            <button type="submit" name="go" id="jq-searchButton">
-              <span class="visually-hidden">Search</span>
-            </button>
-          </form> #}
-        </div>
       </header>
-      <main id="skip" class="flex-column">
-        <h2 class="visually-hidden">Side navigation</h2>
-        <nav id="jq-sidenav" class="flex-column white-box">
-          <h5 class="sidenav-header">Bug Tracker</h5>
+      <main id="skip" class="flex-column white-box">
+        <h2 class="visually-hidden">Search and Top Navigation</h2>
+        <div class="flex-row flex-end-center">
+          <div id="search"></div>
+        </div>
+        <nav id="jq-topnav" class="flex-column flex-start-center">
           <a href="/newticket">New Ticket</a>
           <a href="/report">View Tickets</a>
           <a href="/ticketgraph">Ticket Graph</a>
           <a href="/roadmap">Roadmap</a>
           <a href="/timeline">Recent Changes</a>
         </nav>
-        <div id="jq-content" class="white-box">
+        <div id="jq-content" class="flex-column">
           {{ content | safe }}
         </div>
       </main>
@@ -148,7 +139,7 @@
           element: "#search",
           showImages: false,
           translations: {
-            placeholder: '',
+            placeholder: 'Search tickets',
             zero_results: 'No matches found.'
           }
         })

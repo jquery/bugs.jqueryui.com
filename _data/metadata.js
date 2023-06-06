@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'jQuery - Bug Tracker',
+  title: 'jQuery UI - Bug Tracker',
   url: 'https://bugs.jqueryui.com/',
   language: 'en',
   description: 'Static archive of the old bugs.jqueryui.com Trac site.',
