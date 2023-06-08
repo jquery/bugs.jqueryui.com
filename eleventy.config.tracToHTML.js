@@ -35,7 +35,7 @@ module.exports = function tracToHTML(text) {
       })
       // Linkify http links in brackets
       .replace(
-        /(^|\s)(?:\[https?:\/\/([^ ]+) "([^"]+)"\])|(?:\[https?:\/\/([^\s\]]+)(?: ([^\]]+))?\])/g,
+        /(^|\s)(?:(?:\[https?:\/\/([^ ]+) "([^"]+)"\])|(?:\[https?:\/\/([^\s\]]+)(?: ([^\]]+))?\]))/g,
         function (_match, space, quotedurl, quotedtext, url, text) {
           return `${space || ''}<a href="${
             quotedurl || url
@@ -46,7 +46,7 @@ module.exports = function tracToHTML(text) {
       )
       // Linkify hash links in brackets
       .replace(
-        /(^|\s)(?:\[(#[^ ]+) "([^"]+)"\])|(?:\[(#[^\s\]]+)(?: ([^\]]+))?\])/g,
+        /(^|\s)(?:(?:\[(#[^ ]+) "([^"]+)"\])|(?:\[(#[^\s\]]+)(?: ([^\]]+))?\]))/g,
         function (_match, space, quotedurl, quotedtext, url, text) {
           return `${space || ''}<a href="${
             quotedurl || url
@@ -57,7 +57,7 @@ module.exports = function tracToHTML(text) {
       )
       // Linkify CamelCase links in brackets
       .replace(
-        /(^|\s)(?:\[([A-Z][a-z]+[A-Z][^ ]+) "([^"]+)"\])|(?:\[([A-Z][a-z]+[A-Z][^\s\]]+)(?: ([^\]]+))?\])/g,
+        /(^|\s)(?:(?:\[([A-Z][a-z]+[A-Z][^ ]+) "([^"]+)"\])|(?:\[([A-Z][a-z]+[A-Z][^\s\]]+)(?: ([^\]]+))?\]))/g,
         function (_match, space, quotedpage, quotedtext, page, text) {
           return `${space || ''}<a href="/wiki/${quotedpage || page}">${
             quotedtext || text || page
@@ -66,7 +66,7 @@ module.exports = function tracToHTML(text) {
       )
       // Linkify trac links
       .replace(
-        /(^|\s)(?:\[trac:([^ ]+) "([^"]+)"\])|(?:\[trac:([^\s\]]+)(?: ([^\]]+))?\])/g,
+        /(^|\s)(?:(?:\[trac:([^ ]+) "([^"]+)"\])|(?:\[trac:([^\s\]]+)(?: ([^\]]+))?\]))/g,
         function (_match, space, quotepage, quotedtext, page, text) {
           return `${space || ''}<a href="https://trac.edgewall.org/intertrac/${
             quotepage || page
