@@ -6,6 +6,7 @@
   --ticket-description-title-color: #663;
   --ticket-changes-text-color: #663;
   --ticket-changes-box-shadow: #f2f2f2;
+  --ticket-number-color: #844;
 }
 
 .ticket-info {
@@ -19,19 +20,17 @@
   max-width: 580px;
 }
 .ticket-number {
-  font-size: 1.15rem;
+  font-size: 1.45rem;
   font-weight: bold;
   margin-right: 0.5em;
+  text-decoration: none;
+}
+.ticket-number[href],
+.ticket-number[href]:visited {
+  color: var(--ticket-number-color);
 }
 .ticket-info span {
-  font-size: 0.8125em;
   font-weight: bold;
-}
-
-.ticket-status,
-.ticket-type,
-.ticket-resolution {
-  text-transform: uppercase;
 }
 
 .missing {
@@ -40,7 +39,6 @@
 
 .ticket-title {
   border-bottom: 1px solid #bbb;
-  margin-top: 1em;
   padding-bottom: 0.25em;
   font-weight: bold;
   font-size: 1.1875rem;
@@ -111,6 +109,9 @@
 details {
   padding: 0.5em 0;
   font-size: 0.8125rem;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
 }
 summary {
   color: var(--text-color-link);

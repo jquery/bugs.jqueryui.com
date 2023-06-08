@@ -56,12 +56,12 @@
 
 <div class="ticket-info">
   <div class="flex-row flex-between-start">
-    <h3>
+    <h2>
       <a href="{{ pagination.url }}" class="ticket-number">#{{ ticket.id }}</a>
       <span class="ticket-status">{{ ticket.status }}</span>
       <span class="ticket-type">{{ ticket.type }}</span>
       <span class="ticket-resolution">({{ ticket.resolution }})</span>
-    </h3>
+    </h2>
 
     <div class="ticket-dates">
       <p>Opened {{ ticket.time | yearsAgo }}</p>

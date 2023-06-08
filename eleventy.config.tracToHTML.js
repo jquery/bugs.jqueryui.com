@@ -27,36 +27,40 @@ module.exports = function tracToHTML(text) {
         )
         return `<pre class="wiki"></pre>`
       })
+      // Linkify http links outside brackets
+      .replace(/(^|\s)(https?:\/\/[^\s]+)/g, function (_match, space, url) {
+        return `${space}<a href="${url}" class="ext-link"><span class="icon"></span>${url}</a>`
+      })
       // Linkify http links in brackets
       .replace(
-        /\[(https?:\/\/[^\s\]]+)(?:\s+([^\]]+))?\]/g,
-        function (_match, url, text) {
-          return `<a href="${url}" class="ext-link"><span class="icon"></span>${
+        /(^|\s)\[(https?:\/\/[^\s\]]+)(?:\s+([^\]]+))?\]/g,
+        function (_match, space, url, text) {
+          return `${space}<a href="${url}" class="ext-link"><span class="icon"></span>${
             text || url
           }</a>`
         }
       )
       // Linkify hash links in brackets
       .replace(
-        /\[(#[^\s\]]+)(?:\s+([^\]]+))?\]/g,
-        function (_match, url, text) {
-          return `<a href="${url}" class="ext-link"><span class="icon"></span>${
+        /(^|\s)\[(#[^\s\]]+)(?:\s+([^\]]+))?\]/g,
+        function (_match, space, url, text) {
+          return `${space}<a href="${url}" class="ext-link"><span class="icon"></span>${
             text || url
           }</a>`
         }
       )
       // Linkify CamelCase links in brackets
       .replace(
-        /\[([A-Z][a-z]+[A-Z][\w#-]+)(?:\s+([^\]]+))?\]/g,
-        function (_match, page, text) {
-          return `<a href="/wiki/${page}">${text || page}</a>`
+        /(^|\s)\[([A-Z][a-z]+[A-Z][\w#-]+)(?:\s+([^\]]+))?\]/g,
+        function (_match, space, page, text) {
+          return `${space}<a href="/wiki/${page}">${text || page}</a>`
         }
       )
       // Linkify trac links
       .replace(
-        /(?:\[trac:([^ ]+) "([^"]+)"\])|(?:\[trac:([^\s\]]+)(?: ([^\]]+))?\])/g,
-        function (_match, quotepage, quotedtext, page, text) {
-          return `<a href="https://trac.edgewall.org/intertrac/${
+        /(^|\s)(?:\[trac:([^ ]+) "([^"]+)"\])|(?:\[trac:([^\s\]]+)(?: ([^\]]+))?\])/g,
+        function (_match, space, quotepage, quotedtext, page, text) {
+          return `${space}<a href="https://trac.edgewall.org/intertrac/${
             quotepage || page
           }" class="ext-link"><span class="icon"></span>${
             quotedtext || text || page

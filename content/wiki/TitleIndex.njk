@@ -9,7 +9,7 @@ eleventyImport:
 
 <p>Below is an index of all the wiki pages that were available on the old site.</p>
 
-<div class="flex-column">
+<div class="flex-column items-start">
   {% for wiki in collections.wiki %}
     <a href="{{ wiki.url }}" class="wiki-index-link">{{ wiki.data.title }}</a>
   {% endfor %}
