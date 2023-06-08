@@ -29,13 +29,17 @@ module.exports = function tracToHTML(text) {
       })
       // Linkify http links outside brackets
       .replace(/(^|\s)(https?:\/\/[^\s]+)/g, function (_match, space, url) {
-        return `${space}<a href="${url}" class="ext-link"><span class="icon"></span>${url}</a>`
+        return `${
+          space || ''
+        }<a href="${url}" class="ext-link"><span class="icon"></span>${url}</a>`
       })
       // Linkify http links in brackets
       .replace(
         /(^|\s)\[(https?:\/\/[^\s\]]+)(?:\s+([^\]]+))?\]/g,
         function (_match, space, url, text) {
-          return `${space}<a href="${url}" class="ext-link"><span class="icon"></span>${
+          return `${
+            space || ''
+          }<a href="${url}" class="ext-link"><span class="icon"></span>${
             text || url
           }</a>`
         }
@@ -44,7 +48,9 @@ module.exports = function tracToHTML(text) {
       .replace(
         /(^|\s)\[(#[^\s\]]+)(?:\s+([^\]]+))?\]/g,
         function (_match, space, url, text) {
-          return `${space}<a href="${url}" class="ext-link"><span class="icon"></span>${
+          return `${
+            space || ''
+          }<a href="${url}" class="ext-link"><span class="icon"></span>${
             text || url
           }</a>`
         }
@@ -53,14 +59,14 @@ module.exports = function tracToHTML(text) {
       .replace(
         /(^|\s)\[([A-Z][a-z]+[A-Z][\w#-]+)(?:\s+([^\]]+))?\]/g,
         function (_match, space, page, text) {
-          return `${space}<a href="/wiki/${page}">${text || page}</a>`
+          return `${space || ''}<a href="/wiki/${page}">${text || page}</a>`
         }
       )
       // Linkify trac links
       .replace(
         /(^|\s)(?:\[trac:([^ ]+) "([^"]+)"\])|(?:\[trac:([^\s\]]+)(?: ([^\]]+))?\])/g,
         function (_match, space, quotepage, quotedtext, page, text) {
-          return `${space}<a href="https://trac.edgewall.org/intertrac/${
+          return `${space || ''}<a href="https://trac.edgewall.org/intertrac/${
             quotepage || page
           }" class="ext-link"><span class="icon"></span>${
             quotedtext || text || page
@@ -74,9 +80,9 @@ module.exports = function tracToHTML(text) {
         /(^|\s)(!)?([A-Z][a-z]+[A-Z]\w+(?:#\w+)?)(?!\w)/g,
         function (_match, space, excl, page) {
           if (excl) {
-            return `${space}${page}`
+            return `${space || ''}${page}`
           }
-          return `${space}<a href="/wiki/${page}">${page}</a>`
+          return `${space || ''}<a href="/wiki/${page}">${page}</a>`
         }
       )
       // Convert ---- to <hr>
