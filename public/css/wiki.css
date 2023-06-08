@@ -1,4 +1,5 @@
-.wiki, .wiki a {
+.wiki,
+.wiki a {
   font-size: 0.8125rem;
 }
 
@@ -27,13 +28,13 @@
 .wiki-content h4,
 .wiki-content h5,
 .wiki-content h6 {
-  text-transform: uppercase;
   font-weight: bold;
   margin: 1em 0 0.5em;
 }
 
-.wiki-content h1 {
-  font-size: 1.1rem;
+.wiki-content h1,
+.wiki-content h1 a {
+  font-size: 1.1875rem;
 }
 .wiki-content h2 {
   font-size: 1rem;

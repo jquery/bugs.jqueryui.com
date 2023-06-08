@@ -1,5 +1,5 @@
 const rasterisks = /^\s*\* /
-const rheaders = /^ *(\=+) *([^\n\r]+) *\1? *$/
+const rheaders = /^ *(\=+) *([^\n\r]+?)[=\s]*$/
 let listStarted = false
 
 function escapeHTML(string) {
@@ -35,31 +35,33 @@ module.exports = function tracToHTML(text) {
       })
       // Linkify http links in brackets
       .replace(
-        /(^|\s)\[(https?:\/\/[^\s\]]+)(?:\s+([^\]]+))?\]/g,
-        function (_match, space, url, text) {
-          return `${
-            space || ''
-          }<a href="${url}" class="ext-link"><span class="icon"></span>${
-            text || url
+        /(^|\s)(?:\[https?:\/\/([^ ]+) "([^"]+)"\])|(?:\[https?:\/\/([^\s\]]+)(?: ([^\]]+))?\])/g,
+        function (_match, space, quotedurl, quotedtext, url, text) {
+          return `${space || ''}<a href="${
+            quotedurl || url
+          }" class="ext-link"><span class="icon"></span>${
+            quotedtext || text || url
           }</a>`
         }
       )
       // Linkify hash links in brackets
       .replace(
-        /(^|\s)\[(#[^\s\]]+)(?:\s+([^\]]+))?\]/g,
-        function (_match, space, url, text) {
-          return `${
-            space || ''
-          }<a href="${url}" class="ext-link"><span class="icon"></span>${
-            text || url
+        /(^|\s)(?:\[(#[^ ]+) "([^"]+)"\])|(?:\[(#[^\s\]]+)(?: ([^\]]+))?\])/g,
+        function (_match, space, quotedurl, quotedtext, url, text) {
+          return `${space || ''}<a href="${
+            quotedurl || url
+          }" class="ext-link"><span class="icon"></span>${
+            quotedtext || text || url
           }</a>`
         }
       )
       // Linkify CamelCase links in brackets
       .replace(
-        /(^|\s)\[([A-Z][a-z]+[A-Z][\w#-]+)(?:\s+([^\]]+))?\]/g,
-        function (_match, space, page, text) {
-          return `${space || ''}<a href="/wiki/${page}">${text || page}</a>`
+        /(^|\s)(?:\[([A-Z][a-z]+[A-Z][^ ]+) "([^"]+)"\])|(?:\[([A-Z][a-z]+[A-Z][^\s\]]+)(?: ([^\]]+))?\])/g,
+        function (_match, space, quotedpage, quotedtext, page, text) {
+          return `${space || ''}<a href="/wiki/${quotedpage || page}">${
+            quotedtext || text || page
+          }</a>`
         }
       )
       // Linkify trac links
@@ -77,7 +79,7 @@ module.exports = function tracToHTML(text) {
       .replace(/#(\d+)(?!<=>)/g, `<a href="/ticket/$1">$&</a>`)
       // Linkify CamelCase to wiki
       .replace(
-        /(^|\s)(!)?([A-Z][a-z]+[A-Z]\w+(?:#\w+)?)(?!\w)/g,
+        /(^|\s)(!)?([A-Z][a-z]+[A-Z][\w:]+(?:#\w+)?)(?!\w)/g,
         function (_match, space, excl, page) {
           if (excl) {
             return `${space || ''}${page}`
