@@ -1,8 +1,8 @@
-const rasterisks = /^\s*\* /
+const rlists = /^\s*([\*-] )/
 const rblockquote = /^\s*&gt; /
 const rheaders = /^ *(\=+) *([^\n\r]+?)[=\s]*$/
 
-const space = '(^|\\s)'
+const space = '(^|\\s|\\()'
 const quoted = ' "([^"]+)"'
 const bracketed = '(?: ([^\\]]+))?'
 
@@ -11,6 +11,7 @@ const url = `(https?://${urlpart})`
 const relativeLink = `(/${urlpart})`
 const hashLink = `(#${urlpart})`
 const camelCaseLink = `([A-Z][a-z]+[A-Z]${urlpart})`
+const tracTicketLink = `trac:#(${urlpart})`
 const tracLink = `trac:(${urlpart})`
 const wikiLink = `wiki:(${urlpart})`
 const wikipediaLink = `wikipedia:(${urlpart})`
@@ -44,6 +45,12 @@ module.exports = function tracToHTML(text) {
       )
       return `<pre class="wiki"></pre>`
     })
+    // Convert ---- to <hr>
+    .replace(/^--+$/gm, '<hr />')
+    // Replace three single quotes with <strong>
+    .replace(/'''([^']+?)'''/g, '<strong>$1</strong>')
+    // Replace two slashses with <em>
+    .replace(/(?<!:)\/\/([^\/]+?)\/\//g, '<em>$1</em>')
     // Linkify http links outside brackets
     .replace(new RegExp(`${space}${url}`, 'g'), function (_match, space, url) {
       return `${
@@ -104,6 +111,20 @@ module.exports = function tracToHTML(text) {
         }</a>`
       }
     )
+    // Linkify trac ticket links
+    .replace(
+      new RegExp(
+        `${space}(?:(?:\\[${tracTicketLink}${quoted}\\])|(?:\\[${tracTicketLink}${bracketed}\\]))`,
+        'ig'
+      ),
+      function (_match, space, quotepage, quotedtext, page, text) {
+        return `${space || ''}<a href="https://trac.edgewall.org/ticket/${
+          quotepage || page
+        }" class="ext-link"><span class="icon"></span>${
+          quotedtext || text || page
+        }</a>`
+      }
+    )
     // Linkify trac links
     .replace(
       new RegExp(
@@ -146,8 +167,11 @@ module.exports = function tracToHTML(text) {
         }</a>`
       }
     )
-    // Linkify ticket references (avoid trac ticket links)
-    .replace(/#(\d+)(?!<=>)/g, `<a href="/ticket/$1">$&</a>`)
+    // Linkify ticket references
+    .replace(
+      new RegExp(`${space}#(\\d+)`, 'g'),
+      `$1<a href="/ticket/$2">#$2</a>`
+    )
     // Linkify CamelCase to wiki
     .replace(
       new RegExp(`${space}(!)?${camelCaseLink}`, 'g'),
@@ -158,10 +182,6 @@ module.exports = function tracToHTML(text) {
         return `${space || ''}<a href="/wiki/${page}">${page}</a>`
       }
     )
-    // Convert ---- to <hr>
-    .replace(/^--+$/gm, '<hr />')
-    // Replace three single quotes with <strong>
-    .replace(/'''([^']+)'''/g, '<strong>$1</strong>')
     // Remove certain trac macros
     .replace(/\[\[([^\]]+)\]\]/g, function (match, name) {
       for (const macro in excludeMacros) {
@@ -171,9 +191,10 @@ module.exports = function tracToHTML(text) {
     })
     // Replace double newlines with paragraphs
     .split(/(?:\r?\n)/g)
+    // Work on single lines
     .map((line) => {
       let ret = ''
-      if (listStarted && !rasterisks.test(line)) {
+      if (listStarted && !rlists.test(line)) {
         listStarted = false
         ret += '</ul>'
       } else if (blockquoteStarted && !rblockquote.test(line)) {
@@ -186,14 +207,6 @@ module.exports = function tracToHTML(text) {
       if (line.startsWith('<pre')) {
         return ret + line
       }
-      // Blockquotes
-      if (rblockquote.test(line)) {
-        if (!blockquoteStarted) {
-          blockquoteStarted = true
-          ret += '<blockquote>'
-        }
-        return ret + line.replace(rblockquote, ' ')
-      }
       // Headers
       if (rheaders.test(line)) {
         return (
@@ -204,13 +217,22 @@ module.exports = function tracToHTML(text) {
           })
         )
       }
-      if (rasterisks.test(line)) {
+      // Lists
+      if (rlists.test(line)) {
         line = line.replace(
-          /(^|\s+)\* ([^\n]+)/g,
+          /(^|\s+)[\*-] ([^]+)/g,
           `$1${listStarted ? '' : '<ul>'}<li>$2</li>`
         )
         listStarted = true
         return ret + line
+      }
+      // Blockquotes
+      if (rblockquote.test(line)) {
+        if (!blockquoteStarted) {
+          blockquoteStarted = true
+          ret += '<blockquote>'
+        }
+        return ret + line.replace(rblockquote, ' ')
       }
       return ret + `<p>${line}</p>`
     })
