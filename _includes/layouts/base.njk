@@ -25,6 +25,15 @@
     <style>
       {% getBundle "css" %}
     </style>
+    {# These are in the njk so the path prefix is respected #}
+    {%- css %}
+    body {
+      background: url({{ '/img/body_bg.jpg' | htmlBaseUrl }}) no-repeat center 80px;
+    }
+    a.extlink .icon {
+      background: url({{ '/img/extlink.png' | htmlBaseUrl }}) 0 50% no-repeat;
+    }
+    {% endcss %}
     {#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
     {# <link rel="stylesheet" href="{% getBundleFileUrl 'css' %}"> #}
   </head>

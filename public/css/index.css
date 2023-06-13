@@ -93,9 +93,6 @@ html:before {
   );
   z-index: -1;
 }
-body {
-  background: url(/img/body_bg.jpg) no-repeat center 80px;
-}
 
 /* Banner */
 .banner {
@@ -544,7 +541,6 @@ footer a[href]:active {
 }
 a.ext-link .icon {
   padding-left: 15px;
-  background: url(/img/extlink.png) 0 50% no-repeat;
 }
 
 @media (max-width: 919px) {
