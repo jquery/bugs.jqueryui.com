@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 ---
 
-<link rel="stylesheet" href="/css/wiki.css" />
+{%- css %}{% include "public/css/wiki.css" %}{% endcss %}
 
 <div class="wiki flex-column">
   <div class="breadcrumbs-nav flex-row">

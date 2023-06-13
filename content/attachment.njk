@@ -24,7 +24,7 @@
 {# Include syntax highligher CSS #}
 {%- css %}{% include "node_modules/prismjs/themes/prism.min.css" %}{% endcss %}
 {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
-<link rel="stylesheet" href="/css/attachment.css" />
+{%- css %}{% include "public/css/attachment.css" %}{% endcss %}
 
 <div class="flex-column attachment">
   <nav class="content-nav">
