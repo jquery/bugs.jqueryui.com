@@ -60,7 +60,7 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": null
+    "percent": 100
   },
   {
     "name": "1.6rc3",
@@ -69,7 +69,7 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": null
+    "percent": 100
   },
   {
     "name": "1.6rc4",
@@ -78,7 +78,7 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": null
+    "percent": 100
   },
   {
     "name": "1.6rc5",
@@ -114,7 +114,7 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": null
+    "percent": 100
   },
   {
     "name": "1.7.1",
@@ -132,7 +132,7 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": null
+    "percent": 100
   },
   {
     "name": "1.6",
@@ -177,7 +177,7 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": null
+    "percent": 100
   },
   {
     "name": "1.8rc1",
@@ -186,7 +186,7 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": null
+    "percent": 100
   },
   {
     "name": "1.8rc2",
@@ -195,7 +195,7 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": null
+    "percent": 100
   },
   {
     "name": "1.8rc3",
@@ -204,7 +204,7 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": null
+    "percent": 100
   },
   {
     "name": "1.8",
