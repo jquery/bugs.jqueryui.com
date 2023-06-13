@@ -5,6 +5,7 @@
 #search {
   width: 100%;
   position: relative;
+  min-height: 25px;
 }
 .pagefind-ui__search-input {
   width: 100%;

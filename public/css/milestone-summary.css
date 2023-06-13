@@ -45,15 +45,17 @@
 }
 
 .milestone-name-link {
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: bold;
-  text-transform: uppercase;
   text-decoration: none;
   padding: 0.2em 0.375em;
   box-shadow: 1px 1px 0.5em 0 var(--milestone-name-box-shadow-color);
 }
-.milestone-name-link:hover {
-  text-decoration: underline;
+.milestone-name-link[href],
+.milestone-name-link[href]:visited,
+.milestone-name-link[href]:hover,
+.milestone-name-link[href]:active {
+  color: black;
 }
 .milestone-name {
   color: var(--milestone-name-color);

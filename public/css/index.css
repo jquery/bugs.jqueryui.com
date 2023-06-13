@@ -603,6 +603,7 @@ a.ext-link .icon {
   }
   #jq-primaryNavigation a {
     height: 27px;
+    align-self: flex-end;
   }
   #jq-secondaryNavigation {
     border-radius: var(--border-radius);
