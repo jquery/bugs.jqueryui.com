@@ -43,7 +43,7 @@ jobs:
         env:
           NODE_ENV: production
           NODE_OPTIONS: '--max_old_space_size=4096'
-        run: npm run build -- --pathprefix="${{ steps.pages.outputs.base_url }}/"
+        run: npm run build -- --pathprefix="${{ steps.pages.outputs.base_path }}/"
         # run: npm run build -- --pathprefix="/bugs.jqueryui.com/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
