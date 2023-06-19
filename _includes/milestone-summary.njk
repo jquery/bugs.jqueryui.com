@@ -2,9 +2,9 @@
 
 <div class="milestone-summary">
   {% if milestone.completed != 0 %}
-    <p class="date">Completed {{ milestone.completed | yearsAgo }}</p>
+    <p class="date">Completed {{ milestone.completed | readableDate }}</p>
   {% elif milestone.due != 0 %}
-    <p class="date">Due {{ milestone.due | yearsAgo }}</p>
+    <p class="date">Due {{ milestone.due | readableDate }}</p>
   {% else %}
     <p class="date">No date set</p>
   {% endif %}

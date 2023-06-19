@@ -39,6 +39,7 @@
 
 .ticket-title {
   border-bottom: 1px solid #bbb;
+  margin-top: 1em;
   padding-bottom: 0.25em;
   font-weight: bold;
   font-size: 1.1875rem;

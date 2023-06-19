@@ -86,16 +86,6 @@ module.exports = function (eleventyConfig) {
   })
 
   // Filters
-  eleventyConfig.addFilter('yearsAgo', (datetime) => {
-    const date = new Date(datetime / 1000)
-    const now = new Date()
-    const years = now.getFullYear() - date.getFullYear()
-    if (years > 0) {
-      return `${years} year${years === 1 ? '' : 's'} ago`
-    }
-    return DateTime.fromJSDate(date, { zone: 'utc' }).toFormat('dd LLLL yyyy')
-  })
-
   eleventyConfig.addFilter('isImage', (filename) => {
     return /\.(jpg|jpeg|png|webp|gif|tiff|avif|svg)$/i.test(filename)
   })
@@ -113,10 +103,11 @@ module.exports = function (eleventyConfig) {
     return `${kilos.toFixed(1)} KB`
   })
 
-  eleventyConfig.addFilter('readableDate', (dateObj, format, zone) => {
+  eleventyConfig.addFilter('readableDate', (datetime, format, zone) => {
     // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
-    return DateTime.fromJSDate(dateObj, { zone: zone || 'utc' }).toFormat(
-      format || 'dd LLLL yyyy'
+    const date = new Date(datetime / 1000)
+    return DateTime.fromJSDate(date, { zone: zone || 'utc' }).toFormat(
+      format || 'LLLL dd, yyyy hh:mma z'
     )
   })
 

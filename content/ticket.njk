@@ -64,12 +64,12 @@
     </h2>
 
     <div class="ticket-dates">
-      <p>Opened {{ ticket.time | yearsAgo }}</p>
+      <p>Opened {{ ticket.time | readableDate }}</p>
       {% if ticket.status == 'closed' and ticket.closedtime %}
-        <p>Closed {{ ticket.closedtime | yearsAgo }}</p>
+        <p>Closed {{ ticket.closedtime | readableDate }}</p>
       {% endif %}
       {% if not ticket.closedtime or ticket.closedtime != ticket.changetime %}
-        <p>Last modified {{ ticket.changetime | yearsAgo }}</p>
+        <p>Last modified {{ ticket.changetime | readableDate }}</p>
       {% endif %}
     </div>
   </div>
@@ -149,7 +149,7 @@
     {% for attachment in ticketAttachments %}
       <li>
         <a href="/attachment/ticket/{{ attachment.id }}/{{ attachment.filename }}/index.html">{{ attachment.filename }}</a> ({{ attachment.size | bytesToKilos }}) - added by {{ attachment.author }}
-        <strong>{{ attachment.time | yearsAgo }}</strong>.<br />
+        <strong>{{ attachment.time | readableDate }}</strong>.<br />
         {{ attachment.description | tracToHTML | safe }}
       </li>
     {% endfor %}
@@ -161,7 +161,7 @@
   {% for change in ticket.changes %}
     <div class="ticket-change flex-column" id="comment:{{ loop.index }}">
       <h3 class="flex-row flex-between-start ticket-change-header">
-        <span>Changed {{ change.time | yearsAgo }} by <span class="author">{{ change.author }}</span></span>
+        <span>Changed {{ change.time | readableDate }} by <span class="author">{{ change.author }}</span></span>
         <a class="ticket-change-link" href="#comment:{{ loop.index }}">comment:{{ loop.index }}</a>
       </h3>
 
