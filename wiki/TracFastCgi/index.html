@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-pagefind-meta="title">TracFastCgi</title>
+    <meta name="description" content="Static archive of the old bugs.jqueryui.com Trac site.">
+    
+<link rel="icon" href="/bugs.jqueryui.com/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/bugs.jqueryui.com/favicon.svg">
+<link rel="apple-touch-icon" href="/bugs.jqueryui.com/apple-touch-icon.png">
+    
+    
+    
+    
+    
+    
+    
+    <style>
+      .wiki,.wiki a{font-size:.8125rem}.breadcrumbs-nav{position:absolute;top:.625em;left:1em;gap:.25em}.breadcrumbs-nav-first[href],.breadcrumbs-nav-first[href]:visited{color:#998}.breadcrumbs-nav a{font-size:.625rem}.wiki-content{padding:1em 1.5em;border-radius:var(--border-radius);border:1px solid var(--border-color)}.wiki-content h2,.wiki-content h3,.wiki-content h4,.wiki-content h5,.wiki-content h6{font-weight:700;margin:1em 0 .5em}.wiki-content h1,.wiki-content h1 a{font-size:1.1875rem}.wiki-content h2{font-size:1rem}.wiki-content h3{font-size:.9rem}.wiki-content h4{font-size:.8rem}.wiki-content h5{font-size:.75rem}.wiki-content h6{font-size:.7rem}.wiki-index-link{margin:0 0 .5em}:root{--font-family:'Arial','Helvetica','Verdana','sans-serif';--font-family-header:var(--font-family);--font-family-alternate:Verdana,Arial,'Bitstream Vera Sans',Helvetica,sans-serif;--font-family-monospace:Monaco,Andale Mono WT,Andale Mono,Lucida Console,Lucida Sans Typewriter,DejaVu Sans Mono,Bitstream Vera Sans Mono,Liberation Mono,Nimbus Mono L,Courier New,Courier,monospace}:root{--primary-color:#000000;--secondary-color:#ff9c08;--text-color:#222;--text-color-dark-bg:#fff;--text-color-link:#bb0000;--text-color-link-hover:#f00000;--text-color-link-active:#ff2424;--text-color-link-visited:#cc0000;--text-color-link-disabled:#998;--main-link-hover-bg-color:#eee;--text-shadow-color:#fcfcfc;--button-color:var(--secondary-color);--button-hover-color:#a36200;--button-text-color:#fff;--background-color:#5f5f5f;--main-background-start-color:#1a1a1a;--main-background-end-color:var(--background-color);--top-nav-hover-start-color:#414240;--top-nav-hover-mid-color:#323530;--top-nav-hover-end-color:#292b28;--nav-background-color:var(--primary-color);--secondary-nav-start-color:#2d2d2d;--secondary-nav-end-color:#060606;--secondary-nav-box-shadow:#313131;--content-background-color:#fafafa;--banner-background-color:var(--primary-color);--footer-background-start-color:#000000;--footer-background-end-color:#141400;--footer-text-color-link:#bbb;--nav-text-link-color:white;--nav-hover-link-color:rgba(255, 255, 255, 0.2);--border-color:#e4e4e4;--border-radius:6px;--input-border-color:white;--blockquote-border-color:#b44;--pre-color:#333;--pre-background-color:#fff;--code-color:#600;--code-background-color:var(--content-background-color);--syntax-tab-size:2}*{box-sizing:border-box}body,html{padding:0;margin:0 auto;font-family:var(--font-family);font-size:100%;color:var(--text-color);line-height:1.4}html{overflow-y:auto;background-color:var(--background-color)}html:before{content:'';position:absolute;top:80px;left:0;right:0;height:900px;background:linear-gradient(to bottom,var(--main-background-start-color),var(--main-background-start-color) 25%,var(--main-background-end-color));z-index:-1}.banner{width:100%;height:80px;background-color:var(--banner-background-color);color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.2);text-align:center;font-size:.875rem;padding:0 .25em}.banner a[href],.banner a[href]:visited{color:#5cb5f0}.banner a[href]:hover{color:var(--text-color-link-hover)}.banner a[href]:active{color:var(--text-color-link-active)}th,tr{font-family:var(--font-family-alternate)}.container{width:100%;max-width:956px;margin:0 auto;overflow:hidden}h1,h2,h3,h4,h5,h6{font-family:var(--font-family-header);font-weight:400;margin:0;padding:0;letter-spacing:0}h1,h2,h3,h4{letter-spacing:-.018em}h1{font-size:1.25rem;font-weight:700}h2{font-size:1rem;font-weight:700}.visually-hidden{clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}p{line-height:1.5;margin:.5em 0 1em}p:last-child{margin-bottom:0}ul{margin:0}li{line-height:1.5}hr{width:100%}blockquote{margin:-.3em 0 0 0;border-style:solid;border-width:0 0 0 2px;padding-left:.4em;border-color:var(--blockquote-border-color)}a[href]{color:var(--text-color-link)}a[href]:visited{color:var(--text-color-link-visited)}a[href]:hover{color:var(--text-color-link-hover)}a[href]:active{color:var(--text-color-link-active)}a[aria-disabled=true]{color:var(--text-color-link-disabled)}main{padding:1rem}table{margin:1em 0}table td,table th{padding-right:1em}code,pre{font-family:var(--font-family-monospace)}pre:not([class*=language-]){margin:.5em 0;-moz-tab-size:var(--syntax-tab-size);-o-tab-size:var(--syntax-tab-size);tab-size:var(--syntax-tab-size);-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;width:100%;padding:.25em;font-size:.6875rem;border-radius:var(--border-radius);overflow-x:auto;background:var(--pre-background-color);color:var(--pre-color);border:1px solid #000;text-align:left}code{color:var(--code-color);border:1px solid var(--border-color);border-radius:.25em;padding:0 .3em;background:var(--code-background-color);word-break:break-all}pre[class*=language-] code{color:unset;border:none;border-radius:0;padding:0;background:0 0;word-break:normal}.strikethrough{text-decoration:line-through}header{position:relative;height:95px;display:flex;flex-wrap:wrap;padding:0 1em}.nav{display:flex;flex-direction:column;padding:0;list-style:none}.nav a{display:flex;align-items:center;height:35px;font-size:.75rem;padding:0 1em;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;width:100%}.nav li:not(.active) a:active,.nav li:not(.active) a:hover{background-color:var(--nav-hover-link-color);border-bottom-color:var(--secondary-color)}.nav a,.nav a:active,.nav a:hover,.nav a:visited{color:var(--nav-text-link-color)}.nav a:active{background:linear-gradient(to bottom,var(--secondary-nav-end-color),var(--secondary-nav-start-color))}.nav .active a{border-bottom-color:var(--secondary-color)}#jq-siteLogo{margin-top:1em}#jq-primaryNavigation{padding:0 .5em;background-color:var(--nav-background-color)}#jq-secondaryNavigation{padding:0 .5em;background:linear-gradient(to bottom,var(--secondary-nav-start-color),var(--secondary-nav-end-color));box-shadow:0 -2px 1px var(--secondary-nav-box-shadow),0 2px 1px #000}#jq-secondaryNavigation a{font-size:.8125rem}#jq-content{position:relative;width:100%}.content-nav{font-size:.8125rem;margin:1.2em 0;align-self:flex-end}.content-nav ul{list-style:none}.content-nav li{padding:0 .75em}.content-nav li:not(:last-of-type){border-right:1px solid var(--border-color)}.hamburger-lines{position:relative;width:18px;height:14px;align-self:center}.hamburger-line{width:100%;height:2px;background-color:#fff;transition:opacity .2s ease-in-out,transform .2s ease-in-out}.hamburger-toggle:checked+.hamburger-lines span:first-of-type{transform:rotateZ(45deg) translate(4px,4.5px) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:nth-of-type(2){transform:rotateZ(135deg) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:last-of-type{transform:translateY(-8px) scale(0);opacity:0}.hamburger-toggle:checked~#jq-menus{transform:none;opacity:1}form{gap:.5em}label{font-style:italic;font-size:.8125rem;font-weight:700}input{border:1px solid var(--input-border-color);border-radius:var(--border-radius);height:25px;padding:0 .5em;color:var(--text-color)}button{display:block;border:0;padding:5px 10px;border-radius:var(--border-radius);background:var(--button-color);color:var(--button-text-color);font-size:.875rem;cursor:pointer}button:active,button:hover{background-color:var(--button-hover-color)}button:active{box-shadow:inset 0 0 5px #000}main{padding:1em;gap:1em}main a[href]:active,main a[href]:hover{background-color:var(--main-link-hover-bg-color)}#jq-topnav{gap:.25em}#jq-topnav a{width:100%;display:block;font-family:var(--font-family-alternate);font-size:.625rem;padding:.1em 1.5em;text-decoration:none;border:2px solid var(--border-color);color:#000;box-shadow:0 1px 2px rgba(0,0,0,.5);text-align:center;border-radius:var(--border-radius)}#jq-topnav a:active,#jq-topnav a:hover{color:#fff;border-color:var(--top-nav-hover-end-color)}#jq-topnav a:hover{background:linear-gradient(to bottom,var(--top-nav-hover-start-color),var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-end-color))}#jq-topnav a:active{background:linear-gradient(to bottom,var(--top-nav-hover-end-color),var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-start-color))}footer{background-color:var(--nav-background-color);background:var(--nav-background-color) linear-gradient(to bottom,var(--footer-background-start-color),var(--footer-background-end-color));padding:2em;margin-bottom:2em;color:var(--text-color-dark-bg);border:2px solid transparent;border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius)}footer a[href],footer a[href]:visited{color:var(--footer-text-color-link)}footer a[href]:active,footer a[href]:hover{background-color:var(--main-link-hover-bg-color);color:#000}.flex-row{display:flex;flex-direction:row}.flex-column{display:flex;flex-direction:column}.flex-between-start{justify-content:space-between;align-items:flex-start}.flex-between-center{justify-content:space-between;align-items:center}.flex-start-center{justify-content:flex-start;align-items:center}.flex-end-center{justify-content:flex-end;align-items:center}.flex-center{display:flex;justify-content:center;align-items:center}.items-start{align-items:start}.white-box{background-color:var(--content-background-color);border:1px solid var(--border-color)}a.ext-link .icon{padding-left:15px}@media (max-width:919px){#jq-menus{position:absolute;top:95px;height:calc(100vh - 95px);left:0;right:0;background-color:var(--nav-background-color);z-index:1;transition:transform .2s ease-in-out,opacity .2s ease-in-out;transform:translateX(100%);opacity:0;display:flex;flex-direction:column-reverse;justify-content:flex-end}}@media (min-width:920px){html:before{top:60px}body{background-position-y:60px}.banner{height:60px;font-size:1rem}header{height:125px;padding:0 0 0 2em}#jq-topnav{flex-direction:row;align-self:flex-end;gap:0}#jq-topnav a{width:auto;border-radius:0}#jq-topnav a:first-of-type{border-radius:var(--border-radius) 0 0 var(--border-radius)}#jq-topnav a:last-of-type{border-radius:0 var(--border-radius) var(--border-radius) 0}.nav{flex-direction:row}.nav a{width:auto}#jq-primaryNavigation a{height:27px;align-self:flex-end}#jq-secondaryNavigation{border-radius:var(--border-radius);margin-top:2em}#jq-siteLogo{align-self:flex-end}main{flex-grow:1;min-height:520px;font-size:.75rem}.hamburger-lines{display:none}.content-nav{margin-top:.4em}}:root{--pagefind-ui-background-color:#fff}#search{width:100%;position:relative;min-height:25px}.pagefind-ui__search-input{width:100%;border:1px solid var(--border-color)}.pagefind-ui__search-clear{display:inline-block;position:absolute;width:25px;height:25px;right:15px;top:0;padding:0 0 0 25px;overflow:hidden;background-color:transparent;z-index:1}.pagefind-ui__search-clear:active,.pagefind-ui__search-clear:hover{background-color:rgba(0,0,0,.2)}.pagefind-ui__search-clear:after{content:'×';position:absolute;top:0;left:0;right:0;bottom:0;font-weight:700;font-size:1.5rem;line-height:26px;text-align:center;color:var(--text-color);opacity:1}.pagefind-ui__hidden{display:none}.pagefind-ui__suppressed{display:none}.pagefind-ui__drawer{position:absolute;top:100%;left:0;right:0;height:350px;background-color:var(--pagefind-ui-background-color);border:1px solid var(--border-color);border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius);box-shadow:0 2px 4px rgba(0,0,0,.2);padding:10px;color:var(--text-color);font-size:.875rem;overflow-y:auto;word-break:break-word;z-index:1}.pagefind-ui__results-area{width:100%}.pagefind-ui__results{padding-left:20px}.pagefind-ui__result{margin-bottom:10px;vertical-align:top}.pagefind-ui__result-thumb{display:flex;flex-direction:column}.pagefind-ui__result-thumb .pagefind-ui__result-image{max-width:150px}.pagefind-ui__message{font-weight:700;text-transform:uppercase;font-size:1rem}.pagefind-ui__button{width:100%;padding:10px;margin-top:2em}@media(min-width:920px){#search{width:auto}.pagefind-ui__search-input{width:300px}.pagefind-ui__search-clear{right:auto;left:270px}.pagefind-ui__drawer{left:-200px;height:500px;padding:15px}}body{background:url(/bugs.jqueryui.com/img/body_bg.jpg) no-repeat center 80px}a.ext-link .icon{background:url(/bugs.jqueryui.com/img/extlink.png) 0 50% no-repeat}
+    </style>
+    
+  </head>
+  <body>
+    <div class="banner flex-center">
+      <span>jQuery UI issues have moved to <a href="https://github.com/jquery/jquery-ui/issues">GitHub</a>. This site is now a static archive of the old <a href="https://trac.edgewall.org/">Trac</a> bugs site. <br>Some functions and pages are no longer available.</span>
+    </div>
+    <div class="container">
+      <a href="#skip" class="visually-hidden">Skip to main content</a>
+      <header class="flex-column">
+        <div class="flex-row flex-between-start">
+          <a id="jq-siteLogo" href="/bugs.jqueryui.com/" title="jQuery UI Bugs Home">
+            <img src="/bugs.jqueryui.com/img/logo.svg" width="253" alt="jQuery UI">
+          </a>
+          <input class="hamburger-toggle visually-hidden" id="jq-menutoggle" type="checkbox">
+          <label aria-label="Toggle Menu" for="jq-menutoggle" class="hamburger-lines flex-column flex-between-center">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </label>
+          <div id="jq-menus" class="flex-column">
+            <nav id="jq-primaryNavigation">
+              <h2 class="visually-hidden">jQuery UI sites navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-jquery">
+                  <a href="https://jquery.com/" title="jQuery Home">jQuery</a>
+                </li>
+                <li class="jq-plugins">
+                  <a href="https://plugins.jquery.com/" title="jQuery Plugins">Plugins</a>
+                </li>
+                <li class="jq-ui active">
+                  <a href="https://jqueryui.com/" title="jQuery UI">UI</a>
+                </li>
+                <li class="jq-meetup">
+                  <a href="https://meetups.jquery.com/" title="jQuery Meetups">Meetups</a>
+                </li>
+                <li class="jq-forum">
+                  <a href="https://forum.jquery.com/" title="jQuery Forum">Forum</a>
+                </li>
+                <li class="jq-blog">
+                  <a href="https://blog.jquery.com/" title="jQuery Blog">Blog</a>
+                </li>
+                <li class="jq-about">
+                  <a href="https://openjsf.org" title="About jQuery and OpenJS">About</a>
+                </li>
+                <li class="jq-donate">
+                  <a href="https://openjsf.org/about/project-funding-opportunities/" title="Donate to OpenJS">Donate</a>
+                </li>
+              </ul>
+            </nav>
+            <nav id="jq-secondaryNavigation">
+              <h2 class="visually-hidden">jQuery UI navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-download">
+                  <a href="https://jqueryui.com/download/">
+                    Download
+                  </a>
+                </li>
+                <li class="jq-documentation">
+                  <a href="https://jqueryui.com/demos/">
+                    Demos &amp; Documentation
+                  </a>
+                </li>
+                <li class="jq-themes">
+                  <a href="https://jqueryui.com/themeroller/">
+                    Themes
+                  </a>
+                </li>
+                <li class="jq-development">
+                  <a href="https://jqueryui.com/development/">
+                    Development
+                  </a>
+                </li>
+                <li class="jq-support">
+                  <a href="https://jqueryui.com/support/">
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main id="skip" class="flex-column white-box">
+        <h2 class="visually-hidden">Search and Top Navigation</h2>
+        <div class="flex-row flex-end-center">
+          <div id="search"></div>
+        </div>
+        <nav id="jq-topnav" class="flex-column flex-start-center">
+          <a href="/bugs.jqueryui.com/newticket">New Ticket</a>
+          <a href="/bugs.jqueryui.com/report">View Tickets</a>
+          <a href="/bugs.jqueryui.com/ticketgraph">Ticket Graph</a>
+          <a href="/bugs.jqueryui.com/roadmap">Roadmap</a>
+          <a href="/bugs.jqueryui.com/timeline">Recent Changes</a>
+        </nav>
+        <div id="jq-content" class="flex-column">
+          
+
+<div class="wiki flex-column">
+  <div class="breadcrumbs-nav flex-row">
+    <a href="/bugs.jqueryui.com/" class="breadcrumbs-nav-first">wiki:</a>
+    
+      <a href="/bugs.jqueryui.com/wiki/TracFastCgi/">TracFastCgi</a>
+    
+  </div>
+  <nav class="content-nav">
+    <ul class="flex-row">
+      <li>
+        <a href="/bugs.jqueryui.com/">Start Page</a>
+      </li>
+      <li>
+        <a href="/bugs.jqueryui.com/wiki/TitleIndex">Index</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="wiki-content">
+    
+<h1>Trac with <a href="/bugs.jqueryui.com/wiki/FastCGI">FastCGI</a></h1><p><a href="https://fastcgi-archives.github.io" class="ext-link"><span class="icon"></span>FastCGI</a> interface allows Trac to remain resident much like with <a href="/bugs.jqueryui.com/wiki/TracModPython" class="ext-link"><span class="icon"></span>mod_python</a> or <a href="/bugs.jqueryui.com/wiki/TracModWSGI" class="ext-link"><span class="icon"></span>mod_wsgi</a>. It is faster than external CGI interfaces which must start a new process for each request. Additionally, it is supported by a much wider variety of web servers.</p><p>Note that unlike mod_python, <a href="/bugs.jqueryui.com/wiki/FastCGI">FastCGI</a> supports <a href="https://httpd.apache.org/docs/suexec.html" class="ext-link"><span class="icon"></span>Apache <a href="/bugs.jqueryui.com/wiki/SuEXEC">SuEXEC</a></a>, ie run with different permissions than the web server runs with. <code>mod_wsgi</code> supports the <code>WSGIDaemonProcess</code> with user / group parameters to achieve the same effect.</p><p><strong>Note for Windows:</strong> Trac's <a href="/bugs.jqueryui.com/wiki/FastCGI">FastCGI</a> does not run under Windows, as Windows does not implement <code>Socket.fromfd</code>, which is used by <code>_fcgi.py</code>. If you want to connect to IIS, you may want to try <a href="https://trac.edgewall.org/intertrac/TracOnWindowsIisAjp" class="ext-link"><span class="icon"></span>AJP</a>/[trac:TracOnWindowsIisAjp ISAPI].</p><h2>Apache configuration</h2><p>There are two <a href="/bugs.jqueryui.com/wiki/FastCGI">FastCGI</a> modules commonly available for Apache: <code>mod_fastcgi</code> and <code>mod_fcgid</code> (preferred). The latter is more up-to-date.</p><p>The following sections focus on the FCGI specific setup, see also <a href="/bugs.jqueryui.com/wiki/TracModWSGI#ConfiguringAuthentication" class="ext-link"><span class="icon"></span>TracModWSGI#ConfiguringAuthentication</a> for configuring the authentication in Apache.</p><p>Regardless of which cgi module is used, be sure the web server has executable permissions on the cgi-bin folder. While <a href="/bugs.jqueryui.com/wiki/FastCGI">FastCGI</a> will throw specific permissions errors, mod_fcgid will throw an ambiguous error if this has not been done: <code>Connection reset by peer: mod_fcgid: error reading data from FastCGI server</code>.</p><h3>Set up with <code>mod_fastcgi</code></h3><p><code>mod_fastcgi</code> uses <code>FastCgiIpcDir</code> and <code>FastCgiConfig</code> directives that should be added to an appropriate Apache configuration file:</p><pre class="wiki"># Enable fastcgi for .fcgi files
+# (If you're using a distro package for mod_fcgi, something like
+# this is probably already present)
+&lt;IfModule mod_fastcgi.c&gt;
+   AddHandler fastcgi-script .fcgi
+   FastCgiIpcDir /var/lib/apache2/fastcgi 
+&lt;/IfModule&gt;
+LoadModule fastcgi_module /usr/lib/apache2/modules/mod_fastcgi.so
+</pre><p>Setting <code>FastCgiIpcDir</code> is optional if the default is suitable. Note that the <code>LoadModule</code> line must be after the <code>IfModule</code> group.</p><p>Configure <code>ScriptAlias</code> or similar options as described in <a href="/bugs.jqueryui.com/wiki/TracCgi">TracCgi</a>, but calling <code>trac.fcgi</code> instead of <code>trac.cgi</code>.</p><p>Add the following to the Apache configuration file (below the <code>FastCgiIpcDir</code> line) if you intend to set up the <code>TRAC_ENV</code> as an overall default:</p><pre class="wiki">FastCgiConfig -initial-env TRAC_ENV=/path/to/env/trac
+</pre><p>Alternatively, you can serve multiple Trac projects in a directory by adding this:</p><pre class="wiki">FastCgiConfig -initial-env TRAC_ENV_PARENT_DIR=/parent/dir/of/projects
+</pre><p>You can also specify the <code>PYTHON_EGG_CACHE</code> environment variable using a second <code>-initial-env</code> directive:</p><pre class="wiki">FastCgiConfig -initial-env TRAC_ENV=/var/lib/trac \\ 
+    -initial-env PYTHON_EGG_CACHE=/var/lib/trac/plugin-cache
+</pre><h3>Set up with <code>mod_fcgid</code></h3><p>Configure <code>ScriptAlias</code> (see <a href="/bugs.jqueryui.com/wiki/TracCgi">TracCgi</a> for details), but call <code>trac.fcgi</code> instead of <code>trac.cgi</code>:</p><pre class="wiki">ScriptAlias /trac /path/to/www/trac/cgi-bin/trac.fcgi/
+</pre><p>Note the slash at the end.</p><p>To set up Trac environment for <code>mod_fcgid</code> it is necessary to use <code>DefaultInitEnv</code> directive. It cannot be used in <code>Directory</code> or <code>Location</code> context, so if you need to support multiple projects, try the alternative environment setup below:</p><pre class="wiki">DefaultInitEnv TRAC_ENV /path/to/env/trac/
+</pre><h3>Alternative environment setup</h3><p>A better method to specify the path to the Trac environment is to embed the path into <code>trac.fcgi</code> script itself. That doesn't require configuration of the server environment variables, works for both <a href="https://trac.edgewall.org/intertrac/FastCgi" class="ext-link"><span class="icon"></span>FastCgi</a> modules as well as for <a href="https://www.lighttpd.net/" class="ext-link"><span class="icon"></span>lighttpd</a> and CGI:</p><pre class="wiki">import os
+os.environ['TRAC_ENV'] = "/path/to/projectenv"
+</pre><p>or:</p><pre class="wiki">import os
+os.environ['TRAC_ENV_PARENT_DIR'] = "/path/to/project/parent/dir"
+</pre><p>With this method different projects can be supported by using different <code>.fcgi</code> scripts with different <code>ScriptAliases</code>.</p><p>See <a href="https://coderanger.net/~coderanger/httpd/fcgi_example.conf" class="ext-link"><span class="icon"></span>this fcgid example config</a> which uses a ScriptAlias directive with trac.fcgi with a trailing / like this:</p><pre class="wiki">ScriptAlias / /srv/tracsite/cgi-bin/trac.fcgi/
+</pre><h2>Cherokee Configuration</h2><p>Configuring <a href="http://cherokee-project.com/" class="ext-link"><span class="icon"></span>Cherokee</a> with Trac is straightforward, if you spawn Trac as an SCGI process. You can either start it manually, or better yet, automatically by letting Cherokee spawn the server whenever it is down.</p><p>First set up an information source in cherokee-admin with a local interpreter:</p><pre class="wiki">
+Host:
+localhost:4433
+
+Interpreter:
+/usr/bin/tracd —single-env —daemonize —protocol=scgi —hostname=localhost —port=4433 /path/to/project/
+</pre><p>If the port was not reachable, the interpreter command would be launched. Note that, in the definition of the information source, you will have to manually launch the spawner if you use a ''Remote host'' as ''Information source'' instead of a ''Local interpreter''.</p><p>After doing this, we will just have to create a new rule managed by the SCGI handler to access Trac. It can be created in a new virtual server, trac.example.net for instance, and will only need two rules. The <strong>default</strong> one will use the SCGI handler associated to the previously created information source.</p><p>The second rule will be there to serve the few static files needed to correctly display the Trac interface. Create it as ''Directory rule'' for ''/common'' and just set it to the ''Static files'' handler and with a ''Document root'' that points to the appropriate files: ''$TRAC_LOCAL/htdocs/'' (where $TRAC_LOCAL is a directory defined by the user or the system administrator to place local Trac resources).</p><p><strong>Note:</strong> If the tracd process fails to start up, and Cherokee displays a 503 error page, you might be missing the <a href="https://www.saddi.com/software/flup/" class="ext-link"><span class="icon"></span>python-flup</a> package (<a href="https://trac.edgewall.org/ticket/9903" class="ext-link"><span class="icon"></span>9903</a>). Python-flup is a dependency which provides Trac with SCGI capability. You can install it on Debian based systems with:</p><pre class="wiki">sudo apt-get install python-flup
+</pre><h2>Lighttpd Configuration</h2><p>The <a href="/bugs.jqueryui.com/wiki/FastCGI">FastCGI</a> front-end was developed primarily for use with alternative webservers, such as <a href="https://www.lighttpd.net/" class="ext-link"><span class="icon"></span>Lighttpd</a>.</p><p>Lighttpd is a secure, fast, compliant and very flexible web-server that has been optimized for high-performance environments. It has a very low memory footprint compared to other web servers and takes care of CPU load.</p><p>For using <code>trac.fcgi</code>(prior to 0.11) / fcgi_frontend.py (0.11) with Lighttpd add the following to your lighttpd.conf:</p><pre class="wiki">
+#var.fcgi_binary="/usr/bin/python /path/to/fcgi_frontend.py" # 0.11 if installed with easy_setup, it is inside the egg directory
+var.fcgi_binary="/path/to/cgi-bin/trac.fcgi" # 0.10 name of prior fcgi executable
+fastcgi.server = ("/trac" =&gt;
+   
+                   ("trac" =&gt;
+                     ("socket" =&gt; "/tmp/trac-fastcgi.sock",
+                      "bin-path" =&gt; fcgi_binary,
+                      "check-local" =&gt; "disable",
+                      "bin-environment" =&gt;
+                        ("TRAC_ENV" =&gt; "/path/to/projenv")
+                     )
+                   )
+                 )
+</pre><p>Note that you will need to add a new entry to <code>fastcgi.server</code> for each separate Trac instance that you wish to run. Alternatively, you may use the <code>TRAC_ENV_PARENT_DIR</code> variable instead of <code>TRAC_ENV</code> as described above, and you may set one of the two in <code>trac.fcgi</code> instead of in <code>lighttpd.conf</code> using <code>bin-environment</code>, as in the section above on Apache configuration.</p><p>Note that Lighttpd has a bug related to 'SCRIPT_NAME' and 'PATH_INFO' when the uri of fastcgi.server is '/' instead of '/trac' in this example (see <a href="https://trac.edgewall.org/ticket/2418" class="ext-link"><span class="icon"></span>2418</a>). This is fixed in Lighttpd 1.5, and under Lighttpd 1.4.23 or later the workaround is to add <code>"fix-root-scriptname" =&gt; "enable"</code> as a parameter of fastcgi.server.</p><p>For using two projects with lighttpd add the following to your <code>lighttpd.conf</code>:</p><pre class="wiki">
+fastcgi.server = ("/first" =&gt;
+                   ("first" =&gt;
+                    ("socket" =&gt; "/tmp/trac-fastcgi-first.sock",
+                     "bin-path" =&gt; fcgi_binary,
+                     "check-local" =&gt; "disable",
+                     "bin-environment" =&gt;
+                       ("TRAC_ENV" =&gt; "/path/to/projenv-first")
+                    )
+                  ),
+                  "/second" =&gt;
+                    ("second" =&gt;
+                    ("socket" =&gt; "/tmp/trac-fastcgi-second.sock",
+                     "bin-path" =&gt; fcgi_binary,
+                     "check-local" =&gt; "disable",
+                     "bin-environment" =&gt;
+                       ("TRAC_ENV" =&gt; "/path/to/projenv-second")
+                    )
+                  )
+                )
+</pre><p>Note that the field values are different. If you prefer setting the environment variables in the <code>.fcgi</code> scripts, then copy/rename <code>trac.fcgi</code>, eg to <code>first.fcgi</code> and <code>second.fcgi</code>, and reference them in the above settings.</p><p>Note that the above will result in different processes in any event, even if both are running from the same <code>trac.fcgi</code> script.</p><pre class="wiki">#!div class=important
+'''Note:''' The order in which the server.modules are loaded is very important: if mod_auth is not loaded '''before''' mod_fastcgi, then the server will fail to authenticate the user.
+</pre><p>For authentication you should enable mod_auth in lighttpd.conf 'server.modules', select auth.backend and auth rules:</p><pre class="wiki">
+server.modules              = (
+...
+  "mod_auth",
+...
+)
+
+auth.backend               = "htpasswd"
+
+# Separated password files for each project
+# See "Conditional Configuration" in
+# https://redmine.lighttpd.net/projects/lighttpd/repository/entry/doc/configuration.txt?rev=lighttpd-1.4.28
+
+$HTTP["url"] =~ "^/first/" {
+  auth.backend.htpasswd.userfile = "/path/to/projenv-first/htpasswd.htaccess"
+}
+$HTTP["url"] =~ "^/second/" {
+  auth.backend.htpasswd.userfile = "/path/to/projenv-second/htpasswd.htaccess"
+}
+
+# Enable auth on trac URLs, see
+# https://redmine.lighttpd.net/projects/lighttpd/repository/entry/doc/authentication.txt?rev=lighttpd-1.4.28
+
+auth.require = ("/first/login" =&gt;
+                ("method"  =&gt; "basic",
+                 "realm"   =&gt; "First project",
+                 "require" =&gt; "valid-user"
+                ),
+                "/second/login" =&gt;
+                ("method"  =&gt; "basic",
+                 "realm"   =&gt; "Second project",
+                 "require" =&gt; "valid-user"
+                )
+               )
+
+</pre><p>Note that Lighttpd (v1.4.3) stops if the password file doesn't exist.</p><p>Note that Lighttpd doesn't support 'valid-user' in versions prior to 1.3.16.</p><p>Conditional configuration is also useful for mapping static resources, ie serving out images and CSS directly instead of through <a href="/bugs.jqueryui.com/wiki/FastCGI">FastCGI</a>:</p><pre class="wiki">
+# Aliasing functionality is needed
+server.modules += ("mod_alias")
+
+# Set up an alias for the static resources
+alias.url = ("/trac/chrome/common" =&gt; "/usr/share/trac/htdocs")
+
+# Use negative lookahead, matching all requests that ask for any resource under /trac, EXCEPT in
+# /trac/chrome/common, and use FastCGI for those
+$HTTP["url"] =~ "^/trac(?!/chrome/common)" {
+# Even if you have other fastcgi.server declarations for applications other than Trac, do NOT use += here
+fastcgi.server = ("/trac" =&gt;
+                   ("trac" =&gt;
+                     ("socket" =&gt; "/tmp/trac-fastcgi.sock",
+                      "bin-path" =&gt; fcgi_binary,
+                      "check-local" =&gt; "disable",
+                      "bin-environment" =&gt;
+                        ("TRAC_ENV" =&gt; "/path/to/projenv")
+                     )
+                   )
+                 )
+}
+</pre><p>The technique can be easily adapted for use with multiple projects by creating aliases for each of them, and wrapping the fastcgi.server declarations inside conditional configuration blocks.</p><p>Also there is another way to handle multiple projects and it uses <code>TRAC_ENV_PARENT_DIR</code> instead of <code>TRAC_ENV</code> as well as global authentication:</p><pre class="wiki">
+#  This is for handling multiple projects
+  alias.url       = ( "/trac/" =&gt; "/path/to/trac/htdocs/" )
+
+  fastcgi.server += ("/projects"  =&gt;
+                      ("trac" =&gt;
+                        (
+                          "socket" =&gt; "/tmp/trac.sock",
+                          "bin-path" =&gt; fcgi_binary,
+                          "check-local" =&gt; "disable",
+                          "bin-environment" =&gt;
+                            ("TRAC_ENV_PARENT_DIR" =&gt; "/path/to/parent/dir/of/projects/" )
+                        )
+                      )
+                    )
+#And here starts the global auth configuration
+  auth.backend = "htpasswd"
+  auth.backend.htpasswd.userfile = "/path/to/unique/htpassword/file/trac.htpasswd"
+  $HTTP["url"] =~ "^/projects/.*/login$" {
+    auth.require = ("/" =&gt;
+                     (
+                       "method"  =&gt; "basic",
+                       "realm"   =&gt; "trac",
+                       "require" =&gt; "valid-user"
+                     )
+                   )
+  }
+</pre><p>Changing date/time format also supported by lighttpd over environment variable LC_TIME:</p><pre class="wiki">
+fastcgi.server = ("/trac" =&gt;
+                   ("trac" =&gt;
+                     ("socket" =&gt; "/tmp/trac-fastcgi.sock",
+                      "bin-path" =&gt; fcgi_binary,
+                      "check-local" =&gt; "disable",
+                      "bin-environment" =&gt;
+                        ("TRAC_ENV" =&gt; "/path/to/projenv",
+                        "LC_TIME" =&gt; "ru_RU")
+                     )
+                   )
+                 )
+</pre><p>For details about languages specification see <a href="https://trac.edgewall.org/intertrac/TracFaq" class="ext-link"><span class="icon"></span>TracFaq</a> question 2.13.</p><p>Other important information like the <a href="/bugs.jqueryui.com/wiki/TracInstall#MappingStaticResources" class="ext-link"><span class="icon"></span>mapping static resources advices</a> are useful for non-fastcgi specific installation aspects.</p><p>Relaunch Lighttpd and browse to <code>http://yourhost.example.org/trac</code> to access Trac.</p><p>Note about running Lighttpd with reduced permissions: If nothing else helps and trac.fcgi doesn't start with Lighttpd settings <code>server.username = "www-data"</code>, <code>server.groupname = "www-data"</code>, then in the <code>bin-environment</code> section set <code>PYTHON_EGG_CACHE</code> to the home directory of <code>www-data</code> or some other directory accessible to this account for writing.</p><h2>LiteSpeed Configuration</h2><p>The <a href="/bugs.jqueryui.com/wiki/FastCGI">FastCGI</a> front-end was developed primarily for use with alternative webservers, such as <a href="https://www.litespeedtech.com/" class="ext-link"><span class="icon"></span>LiteSpeed</a>.</p><p>LiteSpeed web server is an event-driven asynchronous Apache replacement designed from the ground-up to be secure, scalable, and operate with minimal resources. LiteSpeed can operate directly from an Apache config file and is targeted for business-critical environments.</p><p> 1. Please make sure you have a working install of a Trac project. Test install with "tracd" first.</p><p> 1. Create a Virtual Host for this setup. From now on we will refer to this vhost as TracVhost. For this tutorial we will be assuming that your Trac project will be accessible via:</p><pre class="wiki">
+http://yourdomain.com/trac/
+</pre><p> 1. Go "!TracVhost → External Apps" tab and create a new "External Application":</p><pre class="wiki">
+Name: MyTracFCGI	
+Address: uds://tmp/lshttpd/mytracfcgi.sock
+Max Connections: 10
+Environment: TRAC_ENV=/fullpathto/mytracproject/ &lt;--- path to root folder of trac project
+Initial Request Timeout (secs): 30
+Retry Timeout (secs): 0
+Persistent Connection	Yes
+Connection Keepalive Timeout: 30
+Response Bufferring: No	
+Auto Start: Yes
+Command: /usr/share/trac/cgi-bin/trac.fcgi  &lt;--- path to trac.fcgi
+Back Log: 50
+Instances: 10
+</pre><p> 1. Optional: If you need to use htpasswd based authentication. Go to "!TracVhost → Security" tab and create a new security Realm:</p><p> </p><pre class="wiki">
+DB Type: Password File
+Realm Name: MyTracUserDB               &lt;--- any name you wish and referenced later
+User DB Location: /fullpathto/htpasswd &lt;--- path to your htpasswd file
+</pre><p></p><p> If you don’t have a htpasswd file or don’t know how to create the entries within one, go to <a href="http://sherylcanter.com/encrypt.php," class="ext-link"><span class="icon"></span>http://sherylcanter.com/encrypt.php,</a> to generate the user:password combos.</p><p> 1. Go to "!PythonVhost → Contexts" and create a new FCGI Context:</p><p> </p><pre class="wiki">
+URI: /trac/                              &lt;--- URI path to bind to python fcgi app we created	
+Fast CGI App: [VHost Level] MyTractFCGI  &lt;--- select the Trac fcgi extapp we just created
+Realm: TracUserDB                        &lt;--- only if (4) is set. select realm created in (4)
+</pre><p></p><p> 1. Modify <code>/fullpathto/mytracproject/conf/trac.ini</code>:</p><p> </p><pre class="wiki">
+#find/set base_rul, url, and link variables
+base_url = http://yourdomain.com/trac/ &lt;--- base url to generate correct links to
+url = http://yourdomain.com/trac/      &lt;--- link of project
+link = http://yourdomain.com/trac/     &lt;--- link of graphic logo
+</pre><p></p><p> 1. Restart LiteSpeed: <code>lswsctrl restart</code>, and access your new Trac project at </p><pre class="wiki">http://yourdomain.com/trac/</pre>.<p></p><h2>Nginx Configuration</h2><p><a href="https://nginx.org/en/" class="ext-link"><span class="icon"></span>Nginx</a> is able to communicate with <a href="/bugs.jqueryui.com/wiki/FastCGI">FastCGI</a> processes, but can not spawn them. So you need to start <a href="/bugs.jqueryui.com/wiki/FastCGI">FastCGI</a> server for Trac separately.</p><p> 1. Nginx configuration with basic authentication handled by Nginx - confirmed to work on 0.6.32</p><p> </p><pre class="wiki">    server {
+        listen       10.9.8.7:443;
+        server_name  trac.example;
+
+        ssl                  on;
+        ssl_certificate      /etc/ssl/trac.example.crt;
+        ssl_certificate_key  /etc/ssl/trac.example.key;
+
+        ssl_session_timeout  5m;
+
+        ssl_protocols  SSLv2 SSLv3 TLSv1;
+        ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+        ssl_prefer_server_ciphers   on;
+
+        # it makes sense to serve static resources through Nginx (or `<code></code>`)
+        location ~ /chrome/(.*) {
+             alias /home/trac/instance/static/htdocs/$1;
+        }
+
+        # You can copy this whole location to `<code></code>`
+        # and remove the auth entries below if you want Trac to enforce
+        # authorization where appropriate instead of needing to authenticate
+        # for accessing the whole site.
+        # (Or `<code></code>`.)
+        location ~ (/.*) {
+            auth_basic            "trac realm";
+            auth_basic_user_file /home/trac/htpasswd;
+
+            # socket address
+            fastcgi_pass   unix:/home/trac/run/instance.sock;
+
+            # python - wsgi specific
+            fastcgi_param HTTPS on;
+
+            ## WSGI REQUIRED VARIABLES
+            # WSGI application name - trac instance prefix.
+	    # (Or `<code></code>`.)
+            fastcgi_param  SCRIPT_NAME        "";
+            fastcgi_param  PATH_INFO          $1;
+
+            ## WSGI NEEDED VARIABLES - trac warns about them
+            fastcgi_param  REQUEST_METHOD     $request_method;
+            fastcgi_param  SERVER_NAME        $server_name;
+            fastcgi_param  SERVER_PORT        $server_port;
+            fastcgi_param  SERVER_PROTOCOL    $server_protocol;
+            fastcgi_param  QUERY_STRING       $query_string;
+
+            # For Nginx authentication to work - do not forget to comment these
+            # lines if not using Nginx for authentication
+            fastcgi_param  AUTH_USER          $remote_user;
+            fastcgi_param  REMOTE_USER        $remote_user;
+
+            # for ip to work
+            fastcgi_param REMOTE_ADDR         $remote_addr;
+
+            # For attchments to work
+            fastcgi_param    CONTENT_TYPE     $content_type;
+            fastcgi_param    CONTENT_LENGTH   $content_length;
+        }
+    }
+</pre><p></p><p> 1. Modified trac.fcgi:</p><p> </p><pre class="wiki">#!/usr/bin/env python
+import os
+sockaddr = '/home/trac/run/instance.sock'
+os.environ['TRAC_ENV'] = '/home/trac/instance'
+
+try:
+     from trac.web.main import dispatch_request
+     import trac.web._fcgi
+
+     fcgiserv = trac.web._fcgi.WSGIServer(dispatch_request, 
+          bindAddress = sockaddr, umask = 7)
+     fcgiserv.run()
+
+except SystemExit:
+    raise
+except Exception, e:
+    print 'Content-Type: text/plain\\r\\n\\r\\n',
+    print 'Oops...'
+    print
+    print 'Trac detected an internal error:'
+    print
+    print e
+    print
+    import traceback
+    import StringIO
+    tb = StringIO.StringIO()
+    traceback.print_exc(file=tb)
+    print tb.getvalue()
+
+</pre><p></p><p> 1. Reload nginx and launch trac.fcgi: </p><p> </p><pre class="wiki">trac@trac.example ~ $ ./trac-standalone-fcgi.py 
+</pre><p></p><p>The above assumes that:</p> <ul><li>There is a user named 'trac' for running Trac instances and keeping Trac environments in its home directory</li> <li><code>~ [/some/prefix]/chrome/(.*)</code> contains a Trac environment</li> <li><code>location [/some/prefix](/login)</code> contains authentication information</li> <li><code>~ location /some/prefix(/.*)</code> is owned by the same group the Nginx runs under</li>  <li>and if your system is Linux the <code>fastcgi_param  SCRIPT_NAME  /some/prefix</code> has setgid bit set (<code>/home/trac/instance</code>)</li>  <li>and patch from <a href="https://trac.edgewall.org/ticket/7239" class="ext-link"><span class="icon"></span>7239</a> is applied, or you'll have to fix the socket file permissions every time</li></ul><p>Unfortunately Nginx does not support variable expansion in fastcgi_pass directive. </p><p>Thus it is not possible to serve multiple Trac instances from one server block. </p><p>If you worry enough about security, run Trac instances under separate users. </p><p>Another way to run Trac as a FCGI external application is offered in <a href="https://trac.edgewall.org/ticket/6224" class="ext-link"><span class="icon"></span>6224</a>.</p><p></p><hr><p></p><p>See also: <a href="/bugs.jqueryui.com/wiki/TracGuide">TracGuide</a>, <a href="/bugs.jqueryui.com/wiki/TracInstall">TracInstall</a>, <a href="/bugs.jqueryui.com/wiki/TracModWSGI" class="ext-link"><span class="icon"></span>ModWSGI</a>, <a href="/bugs.jqueryui.com/wiki/TracCgi" class="ext-link"><span class="icon"></span>CGI</a>, <a href="/bugs.jqueryui.com/wiki/TracModPython" class="ext-link"><span class="icon"></span>ModPython</a>, <a href="https://trac.edgewall.org/intertrac/TracNginxRecipe" class="ext-link"><span class="icon"></span>TracNginxRecipe</a></p>
+
+  </div>
+</div>
+        </div>
+      </main>
+      <footer>
+        Copyright &copy; 2023
+        <a href="https://openjsf.org">The OpenJS Foundation</a>
+      </footer>
+    </div>
+    <script src="/bugs.jqueryui.com/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({
+          element: "#search",
+          showImages: false,
+          translations: {
+            placeholder: 'Search tickets',
+            zero_results: 'No matches found.'
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

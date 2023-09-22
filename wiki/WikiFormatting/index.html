@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-pagefind-meta="title">WikiFormatting</title>
+    <meta name="description" content="Static archive of the old bugs.jqueryui.com Trac site.">
+    
+<link rel="icon" href="/bugs.jqueryui.com/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/bugs.jqueryui.com/favicon.svg">
+<link rel="apple-touch-icon" href="/bugs.jqueryui.com/apple-touch-icon.png">
+    
+    
+    
+    
+    
+    
+    
+    <style>
+      .wiki,.wiki a{font-size:.8125rem}.breadcrumbs-nav{position:absolute;top:.625em;left:1em;gap:.25em}.breadcrumbs-nav-first[href],.breadcrumbs-nav-first[href]:visited{color:#998}.breadcrumbs-nav a{font-size:.625rem}.wiki-content{padding:1em 1.5em;border-radius:var(--border-radius);border:1px solid var(--border-color)}.wiki-content h2,.wiki-content h3,.wiki-content h4,.wiki-content h5,.wiki-content h6{font-weight:700;margin:1em 0 .5em}.wiki-content h1,.wiki-content h1 a{font-size:1.1875rem}.wiki-content h2{font-size:1rem}.wiki-content h3{font-size:.9rem}.wiki-content h4{font-size:.8rem}.wiki-content h5{font-size:.75rem}.wiki-content h6{font-size:.7rem}.wiki-index-link{margin:0 0 .5em}:root{--font-family:'Arial','Helvetica','Verdana','sans-serif';--font-family-header:var(--font-family);--font-family-alternate:Verdana,Arial,'Bitstream Vera Sans',Helvetica,sans-serif;--font-family-monospace:Monaco,Andale Mono WT,Andale Mono,Lucida Console,Lucida Sans Typewriter,DejaVu Sans Mono,Bitstream Vera Sans Mono,Liberation Mono,Nimbus Mono L,Courier New,Courier,monospace}:root{--primary-color:#000000;--secondary-color:#ff9c08;--text-color:#222;--text-color-dark-bg:#fff;--text-color-link:#bb0000;--text-color-link-hover:#f00000;--text-color-link-active:#ff2424;--text-color-link-visited:#cc0000;--text-color-link-disabled:#998;--main-link-hover-bg-color:#eee;--text-shadow-color:#fcfcfc;--button-color:var(--secondary-color);--button-hover-color:#a36200;--button-text-color:#fff;--background-color:#5f5f5f;--main-background-start-color:#1a1a1a;--main-background-end-color:var(--background-color);--top-nav-hover-start-color:#414240;--top-nav-hover-mid-color:#323530;--top-nav-hover-end-color:#292b28;--nav-background-color:var(--primary-color);--secondary-nav-start-color:#2d2d2d;--secondary-nav-end-color:#060606;--secondary-nav-box-shadow:#313131;--content-background-color:#fafafa;--banner-background-color:var(--primary-color);--footer-background-start-color:#000000;--footer-background-end-color:#141400;--footer-text-color-link:#bbb;--nav-text-link-color:white;--nav-hover-link-color:rgba(255, 255, 255, 0.2);--border-color:#e4e4e4;--border-radius:6px;--input-border-color:white;--blockquote-border-color:#b44;--pre-color:#333;--pre-background-color:#fff;--code-color:#600;--code-background-color:var(--content-background-color);--syntax-tab-size:2}*{box-sizing:border-box}body,html{padding:0;margin:0 auto;font-family:var(--font-family);font-size:100%;color:var(--text-color);line-height:1.4}html{overflow-y:auto;background-color:var(--background-color)}html:before{content:'';position:absolute;top:80px;left:0;right:0;height:900px;background:linear-gradient(to bottom,var(--main-background-start-color),var(--main-background-start-color) 25%,var(--main-background-end-color));z-index:-1}.banner{width:100%;height:80px;background-color:var(--banner-background-color);color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.2);text-align:center;font-size:.875rem;padding:0 .25em}.banner a[href],.banner a[href]:visited{color:#5cb5f0}.banner a[href]:hover{color:var(--text-color-link-hover)}.banner a[href]:active{color:var(--text-color-link-active)}th,tr{font-family:var(--font-family-alternate)}.container{width:100%;max-width:956px;margin:0 auto;overflow:hidden}h1,h2,h3,h4,h5,h6{font-family:var(--font-family-header);font-weight:400;margin:0;padding:0;letter-spacing:0}h1,h2,h3,h4{letter-spacing:-.018em}h1{font-size:1.25rem;font-weight:700}h2{font-size:1rem;font-weight:700}.visually-hidden{clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}p{line-height:1.5;margin:.5em 0 1em}p:last-child{margin-bottom:0}ul{margin:0}li{line-height:1.5}hr{width:100%}blockquote{margin:-.3em 0 0 0;border-style:solid;border-width:0 0 0 2px;padding-left:.4em;border-color:var(--blockquote-border-color)}a[href]{color:var(--text-color-link)}a[href]:visited{color:var(--text-color-link-visited)}a[href]:hover{color:var(--text-color-link-hover)}a[href]:active{color:var(--text-color-link-active)}a[aria-disabled=true]{color:var(--text-color-link-disabled)}main{padding:1rem}table{margin:1em 0}table td,table th{padding-right:1em}code,pre{font-family:var(--font-family-monospace)}pre:not([class*=language-]){margin:.5em 0;-moz-tab-size:var(--syntax-tab-size);-o-tab-size:var(--syntax-tab-size);tab-size:var(--syntax-tab-size);-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;width:100%;padding:.25em;font-size:.6875rem;border-radius:var(--border-radius);overflow-x:auto;background:var(--pre-background-color);color:var(--pre-color);border:1px solid #000;text-align:left}code{color:var(--code-color);border:1px solid var(--border-color);border-radius:.25em;padding:0 .3em;background:var(--code-background-color);word-break:break-all}pre[class*=language-] code{color:unset;border:none;border-radius:0;padding:0;background:0 0;word-break:normal}.strikethrough{text-decoration:line-through}header{position:relative;height:95px;display:flex;flex-wrap:wrap;padding:0 1em}.nav{display:flex;flex-direction:column;padding:0;list-style:none}.nav a{display:flex;align-items:center;height:35px;font-size:.75rem;padding:0 1em;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;width:100%}.nav li:not(.active) a:active,.nav li:not(.active) a:hover{background-color:var(--nav-hover-link-color);border-bottom-color:var(--secondary-color)}.nav a,.nav a:active,.nav a:hover,.nav a:visited{color:var(--nav-text-link-color)}.nav a:active{background:linear-gradient(to bottom,var(--secondary-nav-end-color),var(--secondary-nav-start-color))}.nav .active a{border-bottom-color:var(--secondary-color)}#jq-siteLogo{margin-top:1em}#jq-primaryNavigation{padding:0 .5em;background-color:var(--nav-background-color)}#jq-secondaryNavigation{padding:0 .5em;background:linear-gradient(to bottom,var(--secondary-nav-start-color),var(--secondary-nav-end-color));box-shadow:0 -2px 1px var(--secondary-nav-box-shadow),0 2px 1px #000}#jq-secondaryNavigation a{font-size:.8125rem}#jq-content{position:relative;width:100%}.content-nav{font-size:.8125rem;margin:1.2em 0;align-self:flex-end}.content-nav ul{list-style:none}.content-nav li{padding:0 .75em}.content-nav li:not(:last-of-type){border-right:1px solid var(--border-color)}.hamburger-lines{position:relative;width:18px;height:14px;align-self:center}.hamburger-line{width:100%;height:2px;background-color:#fff;transition:opacity .2s ease-in-out,transform .2s ease-in-out}.hamburger-toggle:checked+.hamburger-lines span:first-of-type{transform:rotateZ(45deg) translate(4px,4.5px) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:nth-of-type(2){transform:rotateZ(135deg) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:last-of-type{transform:translateY(-8px) scale(0);opacity:0}.hamburger-toggle:checked~#jq-menus{transform:none;opacity:1}form{gap:.5em}label{font-style:italic;font-size:.8125rem;font-weight:700}input{border:1px solid var(--input-border-color);border-radius:var(--border-radius);height:25px;padding:0 .5em;color:var(--text-color)}button{display:block;border:0;padding:5px 10px;border-radius:var(--border-radius);background:var(--button-color);color:var(--button-text-color);font-size:.875rem;cursor:pointer}button:active,button:hover{background-color:var(--button-hover-color)}button:active{box-shadow:inset 0 0 5px #000}main{padding:1em;gap:1em}main a[href]:active,main a[href]:hover{background-color:var(--main-link-hover-bg-color)}#jq-topnav{gap:.25em}#jq-topnav a{width:100%;display:block;font-family:var(--font-family-alternate);font-size:.625rem;padding:.1em 1.5em;text-decoration:none;border:2px solid var(--border-color);color:#000;box-shadow:0 1px 2px rgba(0,0,0,.5);text-align:center;border-radius:var(--border-radius)}#jq-topnav a:active,#jq-topnav a:hover{color:#fff;border-color:var(--top-nav-hover-end-color)}#jq-topnav a:hover{background:linear-gradient(to bottom,var(--top-nav-hover-start-color),var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-end-color))}#jq-topnav a:active{background:linear-gradient(to bottom,var(--top-nav-hover-end-color),var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-start-color))}footer{background-color:var(--nav-background-color);background:var(--nav-background-color) linear-gradient(to bottom,var(--footer-background-start-color),var(--footer-background-end-color));padding:2em;margin-bottom:2em;color:var(--text-color-dark-bg);border:2px solid transparent;border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius)}footer a[href],footer a[href]:visited{color:var(--footer-text-color-link)}footer a[href]:active,footer a[href]:hover{background-color:var(--main-link-hover-bg-color);color:#000}.flex-row{display:flex;flex-direction:row}.flex-column{display:flex;flex-direction:column}.flex-between-start{justify-content:space-between;align-items:flex-start}.flex-between-center{justify-content:space-between;align-items:center}.flex-start-center{justify-content:flex-start;align-items:center}.flex-end-center{justify-content:flex-end;align-items:center}.flex-center{display:flex;justify-content:center;align-items:center}.items-start{align-items:start}.white-box{background-color:var(--content-background-color);border:1px solid var(--border-color)}a.ext-link .icon{padding-left:15px}@media (max-width:919px){#jq-menus{position:absolute;top:95px;height:calc(100vh - 95px);left:0;right:0;background-color:var(--nav-background-color);z-index:1;transition:transform .2s ease-in-out,opacity .2s ease-in-out;transform:translateX(100%);opacity:0;display:flex;flex-direction:column-reverse;justify-content:flex-end}}@media (min-width:920px){html:before{top:60px}body{background-position-y:60px}.banner{height:60px;font-size:1rem}header{height:125px;padding:0 0 0 2em}#jq-topnav{flex-direction:row;align-self:flex-end;gap:0}#jq-topnav a{width:auto;border-radius:0}#jq-topnav a:first-of-type{border-radius:var(--border-radius) 0 0 var(--border-radius)}#jq-topnav a:last-of-type{border-radius:0 var(--border-radius) var(--border-radius) 0}.nav{flex-direction:row}.nav a{width:auto}#jq-primaryNavigation a{height:27px;align-self:flex-end}#jq-secondaryNavigation{border-radius:var(--border-radius);margin-top:2em}#jq-siteLogo{align-self:flex-end}main{flex-grow:1;min-height:520px;font-size:.75rem}.hamburger-lines{display:none}.content-nav{margin-top:.4em}}:root{--pagefind-ui-background-color:#fff}#search{width:100%;position:relative;min-height:25px}.pagefind-ui__search-input{width:100%;border:1px solid var(--border-color)}.pagefind-ui__search-clear{display:inline-block;position:absolute;width:25px;height:25px;right:15px;top:0;padding:0 0 0 25px;overflow:hidden;background-color:transparent;z-index:1}.pagefind-ui__search-clear:active,.pagefind-ui__search-clear:hover{background-color:rgba(0,0,0,.2)}.pagefind-ui__search-clear:after{content:'×';position:absolute;top:0;left:0;right:0;bottom:0;font-weight:700;font-size:1.5rem;line-height:26px;text-align:center;color:var(--text-color);opacity:1}.pagefind-ui__hidden{display:none}.pagefind-ui__suppressed{display:none}.pagefind-ui__drawer{position:absolute;top:100%;left:0;right:0;height:350px;background-color:var(--pagefind-ui-background-color);border:1px solid var(--border-color);border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius);box-shadow:0 2px 4px rgba(0,0,0,.2);padding:10px;color:var(--text-color);font-size:.875rem;overflow-y:auto;word-break:break-word;z-index:1}.pagefind-ui__results-area{width:100%}.pagefind-ui__results{padding-left:20px}.pagefind-ui__result{margin-bottom:10px;vertical-align:top}.pagefind-ui__result-thumb{display:flex;flex-direction:column}.pagefind-ui__result-thumb .pagefind-ui__result-image{max-width:150px}.pagefind-ui__message{font-weight:700;text-transform:uppercase;font-size:1rem}.pagefind-ui__button{width:100%;padding:10px;margin-top:2em}@media(min-width:920px){#search{width:auto}.pagefind-ui__search-input{width:300px}.pagefind-ui__search-clear{right:auto;left:270px}.pagefind-ui__drawer{left:-200px;height:500px;padding:15px}}body{background:url(/bugs.jqueryui.com/img/body_bg.jpg) no-repeat center 80px}a.ext-link .icon{background:url(/bugs.jqueryui.com/img/extlink.png) 0 50% no-repeat}
+    </style>
+    
+  </head>
+  <body>
+    <div class="banner flex-center">
+      <span>jQuery UI issues have moved to <a href="https://github.com/jquery/jquery-ui/issues">GitHub</a>. This site is now a static archive of the old <a href="https://trac.edgewall.org/">Trac</a> bugs site. <br>Some functions and pages are no longer available.</span>
+    </div>
+    <div class="container">
+      <a href="#skip" class="visually-hidden">Skip to main content</a>
+      <header class="flex-column">
+        <div class="flex-row flex-between-start">
+          <a id="jq-siteLogo" href="/bugs.jqueryui.com/" title="jQuery UI Bugs Home">
+            <img src="/bugs.jqueryui.com/img/logo.svg" width="253" alt="jQuery UI">
+          </a>
+          <input class="hamburger-toggle visually-hidden" id="jq-menutoggle" type="checkbox">
+          <label aria-label="Toggle Menu" for="jq-menutoggle" class="hamburger-lines flex-column flex-between-center">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </label>
+          <div id="jq-menus" class="flex-column">
+            <nav id="jq-primaryNavigation">
+              <h2 class="visually-hidden">jQuery UI sites navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-jquery">
+                  <a href="https://jquery.com/" title="jQuery Home">jQuery</a>
+                </li>
+                <li class="jq-plugins">
+                  <a href="https://plugins.jquery.com/" title="jQuery Plugins">Plugins</a>
+                </li>
+                <li class="jq-ui active">
+                  <a href="https://jqueryui.com/" title="jQuery UI">UI</a>
+                </li>
+                <li class="jq-meetup">
+                  <a href="https://meetups.jquery.com/" title="jQuery Meetups">Meetups</a>
+                </li>
+                <li class="jq-forum">
+                  <a href="https://forum.jquery.com/" title="jQuery Forum">Forum</a>
+                </li>
+                <li class="jq-blog">
+                  <a href="https://blog.jquery.com/" title="jQuery Blog">Blog</a>
+                </li>
+                <li class="jq-about">
+                  <a href="https://openjsf.org" title="About jQuery and OpenJS">About</a>
+                </li>
+                <li class="jq-donate">
+                  <a href="https://openjsf.org/about/project-funding-opportunities/" title="Donate to OpenJS">Donate</a>
+                </li>
+              </ul>
+            </nav>
+            <nav id="jq-secondaryNavigation">
+              <h2 class="visually-hidden">jQuery UI navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-download">
+                  <a href="https://jqueryui.com/download/">
+                    Download
+                  </a>
+                </li>
+                <li class="jq-documentation">
+                  <a href="https://jqueryui.com/demos/">
+                    Demos &amp; Documentation
+                  </a>
+                </li>
+                <li class="jq-themes">
+                  <a href="https://jqueryui.com/themeroller/">
+                    Themes
+                  </a>
+                </li>
+                <li class="jq-development">
+                  <a href="https://jqueryui.com/development/">
+                    Development
+                  </a>
+                </li>
+                <li class="jq-support">
+                  <a href="https://jqueryui.com/support/">
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main id="skip" class="flex-column white-box">
+        <h2 class="visually-hidden">Search and Top Navigation</h2>
+        <div class="flex-row flex-end-center">
+          <div id="search"></div>
+        </div>
+        <nav id="jq-topnav" class="flex-column flex-start-center">
+          <a href="/bugs.jqueryui.com/newticket">New Ticket</a>
+          <a href="/bugs.jqueryui.com/report">View Tickets</a>
+          <a href="/bugs.jqueryui.com/ticketgraph">Ticket Graph</a>
+          <a href="/bugs.jqueryui.com/roadmap">Roadmap</a>
+          <a href="/bugs.jqueryui.com/timeline">Recent Changes</a>
+        </nav>
+        <div id="jq-content" class="flex-column">
+          
+
+<div class="wiki flex-column">
+  <div class="breadcrumbs-nav flex-row">
+    <a href="/bugs.jqueryui.com/" class="breadcrumbs-nav-first">wiki:</a>
+    
+      <a href="/bugs.jqueryui.com/wiki/WikiFormatting/">WikiFormatting</a>
+    
+  </div>
+  <nav class="content-nav">
+    <ul class="flex-row">
+      <li>
+        <a href="/bugs.jqueryui.com/">Start Page</a>
+      </li>
+      <li>
+        <a href="/bugs.jqueryui.com/wiki/TitleIndex">Index</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="wiki-content">
+    
+<h1><a href="/bugs.jqueryui.com/wiki/WikiFormatting">WikiFormatting</a></h1><p>Wiki markup is a core feature in Trac, tightly integrating all the other parts of Trac into a flexible and unified whole.</p><p>Trac has a powerful wiki rendering engine that implements a subset of the commands from other popular Wikis, such as <a href="https://moinmo.in/" class="ext-link"><span class="icon"></span>MoinMoin</a> and <a href="https://trac.edgewall.org/intertrac/WikiCreole" class="ext-link"><span class="icon"></span>WikiCreole</a>.</p><p>The sections below provide an overview for the most common syntax, each link in the ''Category'' column leads you to the more detailed explanation later in this page.</p><p>The following wiki pages present the advanced features of the Trac wiki markup in more depth: </p> <ul><li><a href="/bugs.jqueryui.com/wiki/TracLinks">TracLinks</a> covers all the possible ways to refer to any Trac resource or parts thereof.</li> <li><a href="/bugs.jqueryui.com/wiki/WikiPageNames">WikiPageNames</a> covers the various names a wiki page can take, whether in <a href="/bugs.jqueryui.com/wiki/CamelCase">CamelCase</a> or not.</li> <li><a href="/bugs.jqueryui.com/wiki/WikiMacros">WikiMacros</a> lists the macros available for generating dynamic content.</li> <li><a href="/bugs.jqueryui.com/wiki/WikiProcessors">WikiProcessors</a> and <a href="/bugs.jqueryui.com/wiki/WikiHtml">WikiHtml</a> details how parts of the wiki text can be processed in special ways.</li> <li><a href="https://trac.edgewall.org/intertrac/wiki:TracDev/Proposals/AdvancedWikiOperations" class="ext-link"><span class="icon"></span>AdvancedWikiOperations</a> provides some operations in uncommon or administrative scenarios.</li></ul><h2>Common wiki markup</h2><p>||= <strong>Category</strong> =||= <strong>Wiki Markup</strong> =||= <strong>Display</strong> =||</p><p>|-----------------------------------------------------------</p><pre class="wiki">#!th rowspan=3
+[#FontStyles Font Styles]
+</pre><p>|| <code>'''bold'''</code>, <code>''italic''</code>, <code>'''''Wikipedia style'''''</code> || \\</p><p>|| <strong>bold</strong>, ''italic'', ''<strong>Wikipedia style</strong>'' ||</p><p>|| <code>**bold**</code>, <code>//italic//</code>, <code>**//!WikiCreole style//**</code> || \\</p><p>|| **bold**, <em>italic</em>, **<em>!WikiCreole style</em>** ||</p><p>|| </p><pre class="wiki"><code></code></pre> || \\<p></p><p>|| <code>monospaced (''other markup ignored'')</code> ||</p><p>|-----------------------------------------------------------</p><p>||= <a href="#Headings" class="ext-link"><span class="icon"></span>Headings</a> =||\\</p><pre class="wiki">#!td 
+ {{{
+ == Level 2
+ === Level 3 ^([#hn note])^
+ </pre><p>}}}</p><pre class="wiki">#!td style="padding-left: 2em"
+== Level 2
+=== Level 3 ^([#hn note])^
+</pre><p>|-----------------------------------------------------------</p><p>||= <a href="#Paragraphs" class="ext-link"><span class="icon"></span>Paragraphs</a>  =||\\</p><pre class="wiki"> {{{
+ First paragraph
+ on multiple lines.
+
+ Second paragraph.
+ </pre><p>}}}</p><pre class="wiki">First paragraph
+on multiple lines.
+
+Second paragraph.
+</pre><p>|-----------------------------------------------------------</p><p>||= <a href="#Lists" class="ext-link"><span class="icon"></span>Lists</a> =||\\</p><pre class="wiki"> {{{
+ * bullet list
+   on multiple lines
+   1. nested list
+     a. different numbering 
+        styles
+ </pre><p>}}}</p><pre class="wiki">* bullet list
+  on multiple lines
+  1. nested list
+    a. different numbering
+       styles
+</pre><p>|-----------------------------------------------------------</p><pre class="wiki">[#DefinitionLists Definition Lists]
+</pre><pre class="wiki"> {{{
+  term:: definition on
+         multiple lines
+ </pre><p>}}}</p><pre class="wiki"> term:: definition on
+        multiple lines
+</pre><p>|-----------------------------------------------------------</p><p>||= <a href="#PreformattedText" class="ext-link"><span class="icon"></span>Preformatted Text</a> =||\\</p><pre class="wiki"> {{{
+ {{{
+ multiple lines, ''no wiki'',
+       white space respected
+ </pre><p> }}}</p><p>}}}</p><pre class="wiki"> {{{
+ multiple lines, ''no wiki'',
+       white space respected
+ </pre><p>}}}</p><p>|-----------------------------------------------------------</p><p>||= <a href="#Blockquotes" class="ext-link"><span class="icon"></span>Blockquotes</a> =||\\</p><pre class="wiki"> {{{
+   if there's some leading
+   space the text is quoted
+ </pre><p>}}}</p><pre class="wiki"> if there's some leading
+ space the text is quoted
+</pre><p>|-----------------------------------------------------------</p><p>||= <a href="#DiscussionCitations" class="ext-link"><span class="icon"></span>Discussion Citations</a> =||\\</p><pre class="wiki"> {{{
+ &gt;&gt; ... (I said)
+ &gt; (he replied)
+ </pre><p>}}}</p><pre class="wiki">&gt;&gt;... (I said)
+&gt; (he replied)
+</pre><p>|-----------------------------------------------------------</p><p>||= <a href="#Tables" class="ext-link"><span class="icon"></span>Tables</a> =||\\</p><pre class="wiki"> {{{
+ ||= Table Header =|| Cell ||
+ ||||  (details below)  ||
+ </pre><p>}}}</p><pre class="wiki">||= Table Header =|| Cell ||
+||||  (details below)  ||
+</pre><p>|-----------------------------------------------------------</p><pre class="wiki">#!th rowspan=2
+[#Links Links]
+</pre><p>|| <code>monospaced (''other markup ignored'')</code> ||\\</p><p>|| <a href="https://trac.edgewall.org" class="ext-link"><span class="icon"></span>https://trac.edgewall.org</a> ||</p><p>|| <code>https://trac.edgewall.org</code> ||\\</p><p>|| <a href="/bugs.jqueryui.com/wiki/WikiFormatting">WikiFormatting</a> (<a href="/bugs.jqueryui.com/wiki/CamelCase">CamelCase</a>) ||</p><p>|-----------------------------------------------------------</p><pre class="wiki">#!th rowspan=5
+[#TracLinks TracLinks]
+</pre><p>|| <code>WikiFormatting (CamelCase)</code>, <code>wiki:WikiFormatting</code> ||\\</p><p>|| wiki:WikiFormatting, wiki:"WikiFormatting" ||</p><p>|| <code>wiki:"WikiFormatting"</code>, <code>#1 (ticket)</code>, <code>[1] (changeset)</code> ||\\</p><p>|| <a href="/bugs.jqueryui.com/ticket/1">#1</a> (ticket), [1] (changeset), {1} (report) ||</p><p>|| <code>{1} (report)</code> ||\\</p><p>|| ticket:1, ticket:1#comment:1, comment:1:ticket:1 ||</p><p>|| <code>ticket:1, ticket:1#comment:1, comment:1:ticket:1</code>, <code>Ticket [ticket:1]</code> ||\\</p><p>|| Ticket [ticket:1], [ticket:1 ticket one] ||</p><p>|| <code>[ticket:1 ticket one]</code>, <code>Ticket [[ticket:1]]</code> ||\\</p><p>|| Ticket [[ticket:1]], [[ticket:1|ticket one]] ||</p><p>|-----------------------------------------------------------</p><pre class="wiki">#!th rowspan=2 
+[#SettingAnchors Setting Anchors]
+</pre><p>|| <code>[[ticket:1|ticket one]]</code> ||\\</p><p>|| [=#point1 (1)] First... ||</p><p>|| <code>[=#point1 (1)] First...</code> ||\\</p><p>|| see <a href="#point1" class="ext-link"><span class="icon"></span>(1)</a> ||</p><p>|-----------------------------------------------------------</p><pre class="wiki">#!th rowspan=3
+[#Escaping Escaping Markup]
+</pre><p>|| <code>see [#point1 (1)]</code> ||\\</p><p>|| !'' doubled quotes ||</p><p>|| <code>!'' doubled quotes</code>, <code>!wiki:WikiFormatting</code> ||\\</p><p>|| !wiki:WikiFormatting, WikiFormatting ||</p><p>|| [[html(&lt;code&gt;<code>!WikiFormatting</code> triple curly brackets&lt;/code&gt;)]] ||\\</p><p>|| <code>{{{-}}}</code> triple curly brackets ||</p><p>|-----------------------------------------------------------</p><p>||= <a href="#Images" class="ext-link"><span class="icon"></span>Images</a> =|| <code>{{{-}}}</code>''link''<code>[[Image(</code> || [[Image(htdocs:../common/trac_logo_mini.png)]] ||</p><p>|-----------------------------------------------------------</p><pre class="wiki">#!th rowspan=2
+[#Macros Macros]
+</pre><p>|| <code>)]]</code> ||  ''(short list of all available macros)''  ||</p><p>|| <code>[[MacroList(*)]]</code> ||  ''(help for the Image macro)''  ||</p><p>|-----------------------------------------------------------</p><p>||= <a href="#Processors" class="ext-link"><span class="icon"></span>Processors</a> =||\\</p><pre class="wiki"> {{{
+ {{{#!div style="font-size: 80%"
+ Code highlighting:
+   {{{#!python
+   hello = lambda: "world"
+   </pre><p> }}}</p><p> }}}</p><p>}}}</p><pre class="wiki">#!td style="padding-left: 2em"
+ {{{#!div style="font-size: 80%"
+ Code highlighting:
+   {{{#!python 
+   hello = lambda: "world"
+   </pre><p> }}}</p><p>}}}</p><p>|-----------------------------------------------------------</p><p>||= <a href="#Comments" class="ext-link"><span class="icon"></span>Comments</a> =||\\</p><pre class="wiki"> {{{
+ {{{#!comment
+ Note to Editors: ...
+ </pre><p> }}}</p><p>}}}</p><p>||  ''(comment is shown in edit mode only)''  ||</p><p>|-----------------------------------------------------------</p><p>||= <a href="#Miscellaneous" class="ext-link"><span class="icon"></span>Miscellaneous</a> =||\\</p><pre class="wiki"> {{{
+ Line [[br]] break 
+ Line \\\\ break
+ ----
+ </pre><p>}}}</p><pre class="wiki">#!td style="padding-left: 2em"
+Line [[br]] break
+Line \\\\ break
+----
+</pre><h2>Font Styles</h2><p>The Trac wiki supports the following font styles:</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+   * '''bold''', 
+     ''' triple quotes !''' 
+     can be bold too if prefixed by ! ''', 
+   * ''italic''
+   * '''''bold italic''''' or ''italic and
+     ''' italic bold ''' ''
+   * __underline__
+   * {{{monospace</pre> or <code>[[Image?]]</code><p>     (hence <code>monospace</code> or </p><pre class="wiki">`</pre> quoting)<p></p>   <ul><li>~~strike-through~~</li>   <li>^superscript^ </li>   <li>,,subscript,,</li>   <li>**also bold**, <em>italic as well</em>, </li></ul><p>     and **'' bold italic **'' <em>(since 0.12)</em></p>   <ul><li>[[span(style=color: #FF0000, a red text )]]</li></ul><p>  }}}</p><p>}}}</p><pre class="wiki"> * '''bold''', 
+   ''' triple quotes !''' 
+   can be bold too if prefixed by ! ''', 
+ * ''italic''
+ * '''''bold italic''''' or ''italic and
+   ''' italic bold ''' ''
+ * __underline__
+ * {{{monospace</pre> or <code>{{{</code><p>   (hence <code>monospace</code> or </p><pre class="wiki">`</pre> quoting)<p></p> <ul><li>~~strike-through~~</li> <li>^superscript^ </li> <li>,,subscript,,</li> <li>**also bold**, <em>italic as well</em>, </li></ul><p>   and **'' bold italic **'' <em>(since 0.12)</em></p> <ul><li>[[span(style=color: #FF0000, a red text )]]</li></ul><p>}}}</p><p>Notes:</p> <ul><li><code>{{{</code> and <pre class="wiki"><code></code></pre> commands not only select a monospace font, but also treat their content as verbatim text, meaning that no further wiki processing is done on this text.</li> <li><pre class="wiki"> ! </pre> tells wiki parser to not take the following characters as wiki format, so pay attention to put a space after <code>{{{...}}}</code>, e.g. when ending bold.</li> <li>all the font styles marks have to be used in opening/closing pairs, </li></ul><p>   and they must nest properly; in particular, an <code>...</code> italic can't be paired </p><p>   with a <code>!</code> one, and <code>''</code> can't be paired with <code>//</code>.</p><h2>Headings</h2><p>You can create a heading by starting a line with one up to six ''equal'' characters (<code>'''</code>) followed by a single space and the headline text. </p><p>[=#hn]</p><p>The headline text can be followed by the same number of <code>**</code> characters, but this is not mandatory. That is, <code>=</code> is identical to <code>=</code>.</p><p>Finally, the heading might optionally be followed by an explicit id. If not, an implicit but nevertheless readable id will be generated.</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  = Heading =
+  == Subheading
+  === About ''this'' ===
+  === Explicit id === #using-explicit-id-in-heading
+  == Subheading #sub2
+</pre><p>}}}</p><pre class="wiki">#!td style="padding: 1em;"
+  {{{
+  #!div
+  = Heading =
+  == Subheading
+  === About ''this'' ===
+  === Explicit id === #using-explicit-id-in-heading
+  == Subheading #sub2
+  </pre><p>}}}</p><h2>Paragraphs</h2><p>A new text paragraph is created whenever two blocks of text are separated by one or more empty lines.</p><p>A forced line break can also be inserted, using:</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  Line 1[[BR]]Line 2
+  </pre><p>  </p><pre class="wiki">
+  Paragraph
+  one
+
+  Paragraph 
+  two
+  </pre><p></p><p>}}}</p><pre class="wiki">  Line 1[[BR]]Line 2
+
+  Paragraph 
+  one
+
+  Paragraph 
+  two
+</pre><h2>Lists</h2><p>The wiki supports both ordered/numbered and unordered lists.</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+   * Item 1
+     * Item 1.1
+        * Item 1.1.1   
+        * Item 1.1.2
+        * Item 1.1.3
+     * Item 1.2
+   * Item 2
+  - items can start at the beginning of a line
+    and they can span multiple lines
+    - be careful though to continue the line 
+    with the appropriate indentation, otherwise
+  that will start a new paragraph...
+  
+   1. Item 1
+     a. Item 1.a
+     a. Item 1.b
+        i. Item 1.b.i
+        i. Item 1.b.ii
+   1. Item 2
+  And numbered lists can also be restarted
+  with an explicit number:
+   3. Item 3
+  </pre><p>}}}</p><pre class="wiki"> * Item 1
+   * Item 1.1
+      * Item 1.1.1   
+      * Item 1.1.2
+      * Item 1.1.3
+   * Item 1.2
+ * Item 2
+- items can start at the beginning of a line
+  and they can span multiple lines
+  - be careful though to continue the line 
+  with the appropriate indentation, otherwise
+that will start a new paragraph...
+
+ 1. Item 1
+   a. Item 1.a
+   a. Item 1.b
+      i. Item 1.b.i
+      i. Item 1.b.ii
+ 1. Item 2
+And numbered lists can also be restarted with an explicit number:
+ 3. Item 3
+</pre><h2>Definition Lists</h2><p>The wiki also supports definition lists.</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+   llama::
+     some kind of mammal, with hair
+   ppython::
+     some kind of reptile, without hair
+     (can you spot the typo?)
+  </pre><p>}}}</p><pre class="wiki"> llama::
+   some kind of mammal, with hair
+ ppython::
+   some kind of reptile, without hair
+   (can you spot the typo?)
+</pre><p>Note that you need a space in front of the defined term.</p><h2>Preformatted Text</h2><p>Block containing preformatted text are suitable for source code snippets, notes and examples. Use three ''curly braces'' wrapped around the text to define a block quote. The curly braces need to be on a separate line.</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  {{{
+  def HelloWorld():
+      print '''Hello World'''
+  </pre><p>  }}}</p><p>}}}</p><pre class="wiki">  {{{
+  def HelloWorld():
+      print '''Hello World'''
+  </pre><p>}}}</p><p>Note that this kind of block is also used for selecting lines that should be processed through <a href="/bugs.jqueryui.com/wiki/WikiProcessors">WikiProcessors</a>.</p><h2>Blockquotes</h2><p>In order to mark a paragraph as blockquote, indent that paragraph with two spaces.</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">{{{
+Paragraph
+  This text is a quote from someone else.
+</pre><p>}}}</p><pre class="wiki">Paragraph
+  This text is a quote from someone else.
+</pre><h2>Discussion Citations</h2><p>To delineate a citation in an ongoing discussion thread, such as the ticket comment area, email-like citation marks (<code>=== Section3 ===</code>, <code>=== Section3</code>, etc.) may be used.  </p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  &gt;&gt; Someone's original text
+  &gt; Someone else's reply text
+  &gt;  - which can be any kind of Wiki markup
+  My reply text
+  </pre><p>}}}</p><pre class="wiki">&gt;&gt; Someone's original text
+&gt; Someone else's reply text
+&gt;  - which can be any kind of Wiki markup
+My reply text
+</pre><h2>Tables</h2><h3>Simple Tables</h3><p>Simple tables can be created:</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  ||Cell 1||Cell 2||Cell 3||
+  ||Cell 4||Cell 5||Cell 6||
+  </pre><p>}}}</p><pre class="wiki">#!td style="padding: 2em;"
+||Cell 1||Cell 2||Cell 3||
+||Cell 4||Cell 5||Cell 6||
+</pre><p>Cell headings can be specified by wrapping the content in a pair of <code>&gt;</code> characters.</p><p>Note that the <code>&gt;&gt;</code> characters have to stick to the cell separators:</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  ||        ||= stable =||= latest =||
+  ||= 0.10 =||  0.10.5  || 0.10.6dev||
+  ||= 0.11 =||  0.11.6  || 0.11.7dev||
+  </pre><p>}}}</p><pre class="wiki">#!td style="padding: 2em;"
+||        ||= stable =||= latest =||
+||= 0.10 =||  0.10.5  || 0.10.6dev||
+||= 0.11 =||  0.11.6  || 0.11.7dev||
+</pre><p>Finally, specifying an empty cell means that the next non empty cell will span the empty cells:</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  || 1 || 2 || 3 ||
+  |||| 1-2 || 3 ||
+  || 1 |||| 2-3 ||
+  |||||| 1-2-3 ||
+  </pre><p>}}}</p><pre class="wiki">#!td style="padding: 2em;"
+|| 1 || 2 || 3 ||
+|||| 1-2 || 3 ||
+|| 1 |||| 2-3 ||
+|||||| 1-2-3 ||
+</pre><p>Note that if the content of a cell sticks to one side of the cell and only one, then the text will be aligned on that side:</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  ||=Text =||= Numbers =||
+  ||left align    ||        1.0||
+  ||  center      ||        4.5||
+  ||      right align||     4.5||
+  || default alignment ||   2.5||
+  ||default||         2.5||
+  ||  default ||      2.5||
+  || default ||       2.5||
+  </pre><p>}}}</p><pre class="wiki">#!td style="padding: 2em;"
+||=Text =||= Numbers =||
+||left align    ||        1.0||
+||  center      ||        4.5||
+||      right align||     4.5||
+|| default alignment ||   2.5||
+||default||         2.5||
+||  default ||      2.5||
+|| default ||       2.5||
+</pre><p>If contrary to the example above, the cells in your table contain more text, it might be convenient to spread a table row over multiple lines of markup. The <code>=</code> character placed at the end of a line after a cell separator tells Trac to not start a new row for the cells on the next line:</p><p>||= Wiki Markup =||</p><pre class="wiki">  {{{
+  || this is column 1 [https://trac.edgewall.org/newticket new ticket] || \\
+  || this is column 2 [https://trac.edgewall.org/roadmap the road ahead] || \\
+  || that's column 3 and last one ||
+  </pre><p>}}}</p><p>|-------------</p><p>||= Display =||</p><pre class="wiki">#!td style="padding: 2em;"
+|| this is column 1 [https://trac.edgewall.org/newticket new ticket] || \\
+|| this is column 2 [https://trac.edgewall.org/roadmap the road ahead] || \\
+|| that's column 3 and last one ||
+</pre><h3>Complex Tables</h3><p>If the possibilities offered by the simple pipe-based markup (<code>=</code>) for tables described above are not enough for your needs, you can create more elaborate tables by using <a href="#Processors-example-tables" class="ext-link"><span class="icon"></span>WikiProcessor based tables</a>.</p><h2>Links</h2><p>Hyperlinks are automatically created for <a href="/bugs.jqueryui.com/wiki/WikiPageNames">WikiPageNames</a> and URLs. WikiPageLinks can be disabled by prepending an exclamation mark (<code>\\</code>), such as <code>||</code>.</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  TitleIndex, https://www.edgewall.com/, !NotAlink
+  </pre><p>}}}</p><pre class="wiki">TitleIndex, https://www.edgewall.com/, !NotAlink
+</pre><p>Links can be given a more descriptive title by writing the link followed by a space and a title and all this inside square brackets. </p><p>If the descriptive title is omitted, then the explicit prefix is discarded, unless the link is an external link. This can be useful for wiki pages not adhering to the <a href="/bugs.jqueryui.com/wiki/WikiPageNames">WikiPageNames</a> convention.</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+   * [https://www.edgewall.com Edgewall Software]
+   * [wiki:TitleIndex Title Index] 
+   * [wiki:TitleIndex] 
+   * [wiki:ISO9000]
+  </pre><p>}}}</p><pre class="wiki">   * [https://www.edgewall.com Edgewall Software]
+   * [wiki:TitleIndex Title Index] 
+   * [wiki:TitleIndex] 
+   * [wiki:ISO9000]
+</pre><p>Following the <a href="https://trac.edgewall.org/intertrac/WikiCreole" class="ext-link"><span class="icon"></span>WikiCreole</a> trend, the descriptive title can also be specified by writing the link followed by a pipe (<code>!</code>) and a title and all this inside <em>double</em> square brackets. </p><pre class="wiki">  {{{
+   * [[https://www.edgewall.com|Edgewall Software]]
+   * [[wiki:TitleIndex|Title Index]]
+     or even [[TitleIndex|Title Index]]
+   * [[wiki:TitleIndex]]
+     ''' but not ![[TitleIndex]]! '''
+   * [[ISO9000]]
+  </pre><p>}}}</p><pre class="wiki">   * [[https://www.edgewall.com|Edgewall Software]]
+   * [[wiki:TitleIndex|Title Index]]
+     or even [[TitleIndex|Title Index]]
+   * [[wiki:TitleIndex]]
+     ''' but not ![[TitleIndex]]! '''
+   * [[ISO9000]]
+</pre><p><strong>Note</strong>: the <a href="https://trac.edgewall.org/intertrac/WikiCreole" class="ext-link"><span class="icon"></span>WikiCreole</a> style for links is quick to type and certainly looks familiar as it is the one used on Wikipedia and in many other wikis. Unfortunately it conflicts with the syntax for <a href="#Macros" class="ext-link"><span class="icon"></span>macros</a>.</p><p>So in the rare case when you need to refer to a page which is named after a macro (typical examples being <a href="/bugs.jqueryui.com/wiki/TitleIndex">TitleIndex</a>, <a href="/bugs.jqueryui.com/wiki/InterTrac">InterTrac</a> and <a href="/bugs.jqueryui.com/wiki/InterWiki">InterWiki</a>), by writing <code>!WikiPageLink</code> you will actually call the macro instead of linking to the page.</p><h2>Trac Links</h2><p>Wiki pages can link directly to other parts of the Trac system. Pages can refer to tickets, reports, changesets, milestones, source files and other Wiki pages using the following notations:</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+   * Tickets: #1 or ticket:1
+   * Reports: {1} or report:1
+   * Changesets: r1, [1] or changeset:1
+   * ...
+   * targeting other Trac instances, 
+     so called InterTrac links:
+     - Tickets: #Trac1 or Trac:ticket:1
+     - Changesets: [Trac1] or Trac:changeset:1
+  </pre><p>}}}</p><pre class="wiki"> * Tickets: #1 or ticket:1
+ * Reports: {1} or report:1
+ * Changesets: r1, [1] or changeset:1
+ * ... 
+ * targeting other Trac instances, 
+   so called InterTrac links:
+   - Tickets: #Trac1 or Trac:ticket:1
+   - Changesets: [Trac1] or Trac:changeset:1
+</pre><p>There are many more flavors of Trac links, see <a href="/bugs.jqueryui.com/wiki/TracLinks">TracLinks</a> for more in-depth information and a reference for all the default link resolvers.</p><h2>Setting Anchors</h2><p>An anchor, or more correctly speaking, an <a href="https://www.w3.org/TR/REC-html40/struct/links.html#h-12.2.1" class="ext-link"><span class="icon"></span>anchor name</a> can be added explicitly at any place in the Wiki page, to uniquely identify a position in the document:</p><pre class="wiki">
+[=#point1]
+</pre><p>This syntax was chosen to match the format for explicitly naming the header id <a href="#Headings" class="ext-link"><span class="icon"></span>documented above</a>:</p><pre class="wiki">
+== Long title == #title
+</pre><p>It is also very close to the syntax for the corresponding link to that anchor:</p><pre class="wiki">
+[#point1]
+</pre><p>Optionally, a label can be given to the anchor:</p><pre class="wiki">
+[=#point1 '''Point 1''']
+</pre><p>||= Wiki Markup =||= Display =||</p><p>|----------------------------------</p><pre class="wiki">  {{{
+  [#point2 jump to the second point]
+
+  ...
+
+  Point2:  [=#point2] Jump here
+  </pre><p>}}}</p><pre class="wiki">  [#point2 jump to the second point]
+
+  ...
+
+  Point2:  [=#point2] Jump here
+</pre><p>For more complex anchors (eg when a custom title is wanted), you can use the Span macro: <code>|</code>.</p><h2>Escaping Links, <a href="/bugs.jqueryui.com/wiki/WikiPageNames">WikiPageNames</a> and other Markup == #Escaping</h2><p>You may avoid making hyperlinks out of <a href="/bugs.jqueryui.com/wiki/TracLinks">TracLinks</a> by preceding an expression with a single exclamation mark (<code>[[TitleIndex]]</code>).</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+   !NoHyperLink
+   !#42 is not a link
+  </pre><p>  </p><pre class="wiki">
+Various forms of escaping for list markup:
+ ^^- escaped minus sign \\\\
+ ^^1. escaped number  \\\\
+ ^^* escaped asterisk sign
+  </pre><p></p><p>}}}</p><pre class="wiki"> !NoHyperLink
+ !#42 is not a link
+
+Various forms of escaping for list markup:
+ ^^- escaped minus sign \\\\
+ ^^1. escaped number  \\\\
+ ^^* escaped asterisk sign
+</pre><h2>Images</h2><p>Urls ending with <code>[[span(id=point2, class=wikianchor, title=Point 2, ^(2)^)]]</code>, <code>!</code> or <code>.png</code> are no longer automatically interpreted as image links, and converted to <code>.gif</code> tags.</p><p>You now have to use the ![[Image]] macro. The simplest way to include an image is to upload it as attachment to the current page, and put the filename in a macro call like <code>.jpg</code>.</p><p>In addition to the current page, it is possible to refer to other resources:</p> <ul><li><code>&lt;img&gt;</code> (referring to attachment on another page)</li> <li><code>[[Image(picture.gif)]]</code> (file attached to a ticket)</li> <li><code>[[Image(wiki:WikiFormatting:picture.gif)]]</code> (referring to a file inside the <a href="/bugs.jqueryui.com/wiki/TracEnvironment">environment</a> <code>[[Image(ticket:1:picture.gif)]]</code> directory)</li> <li><code>[[Image(htdocs:picture.gif)]]</code> (a file in repository)</li></ul><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  [[Image(htdocs:../common/trac_logo_mini.png)]]
+  </pre><p>}}}</p><pre class="wiki">[[Image(htdocs:../common/trac_logo_mini.png)]]
+</pre><p>See <a href="/bugs.jqueryui.com/wiki/WikiMacros">WikiMacros</a> for further documentation on the <code>htdocs</code> macro, which has several useful options (<code>[[Image(source:/trunk/trac/htdocs/trac_logo_mini.png)]]</code>, <code>[[Image()]]</code>, etc.)</p><h2>Macros</h2><p>Macros are ''custom functions'' that insert dynamic content in a page.</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  [[RecentChanges(Trac,3)]]
+  </pre><p>}}}</p><pre class="wiki">#!td style="padding-left: 2em"
+[[RecentChanges(Trac,3)]]
+</pre><p>See <a href="/bugs.jqueryui.com/wiki/WikiMacros">WikiMacros</a> for more information, and a list of installed macros.</p><p>The detailed help for a specific macro can also be obtained more directly by appending a <code>title=</code> to the macro name.</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  [[MacroList?]]
+  </pre><p>}}}</p><pre class="wiki">#!td style="padding-left: 2em"
+[[MacroList?]]
+</pre><h2>Processors</h2><p>Trac supports alternative markup formats using <a href="/bugs.jqueryui.com/wiki/WikiProcessors">WikiProcessors</a>. For example, processors are used to write pages in </p><p><a href="/bugs.jqueryui.com/wiki/WikiRestructuredText" class="ext-link"><span class="icon"></span>reStructuredText</a> or <a href="/bugs.jqueryui.com/wiki/WikiHtml" class="ext-link"><span class="icon"></span>HTML</a>. </p><p>||= Wiki Markup =||= Display =||</p><p>|--------------------------------------------------------</p><pre class="wiki">#!td align="center" colspan=2 style="border: 0px; font-size: 90%"
+
+   [=#Processors-example-html Example 1:] HTML
+
+</pre><p>|--------------------------------------------------------</p><pre class="wiki">#!td style="border: 0px"
+  {{{
+  {{{#!html
+  &lt;h1 style="text-align: right; color: blue"&gt;
+   HTML Test
+  &lt;/h1&gt;
+  </pre><p>  }}}</p><p>}}}</p><pre class="wiki">#!td valign="top"  style="border: 0px"
+
+{{{#!html
+&lt;h1 style="text-align: right; color: blue"&gt;HTML Test&lt;/h1&gt;
+</pre><p>}}}</p><p>|--------------------------------------------------------</p><pre class="wiki">#!td align="center" colspan=2 style="border: 0px; font-size: 90%"
+
+   [=#Processors-example-highlight Example 2:] Code Highlighting
+
+</pre><p>|--------------------------------------------------------</p><pre class="wiki">#!td style="border: 0px"
+  {{{
+  {{{#!python
+  class Test:
+  
+      def __init__(self):
+          print "Hello World"
+  if __name__ == '__main__':
+     Test()
+  </pre><p>  }}}</p><p>}}}</p><pre class="wiki">#!td valign="top"  style="border: 0px"
+
+{{{#!python
+class Test:
+    def __init__(self):
+        print "Hello World"
+if __name__ == '__main__':
+   Test()
+</pre><p>}}}</p><p>|--------------------------------------------------------</p><pre class="wiki">#!td align="center" colspan=2 style="border: 0px; font-size: 90%"
+
+       [=#Processors-example-tables Example 3:] Complex Tables
+
+</pre><p>|--------------------------------------------------------</p><pre class="wiki">#!td style="border: 0px"
+  {{{
+  {{{#!th rowspan=4 align=justify
+  With the <code></code> and <code></code> processors,
+  table cells can contain any content:
+  </pre><p>  |----------------</p><p>  </p><pre class="wiki">    - lists
+    - embedded tables
+    - simple multiline content
+  </pre><p></p><p>  |----------------</p><p>  </p><pre class="wiki">  As processors can be easily nested, 
+  so can be tables:
+    {{{#!th
+    Example:
+    </pre><p></p><p>    </p><pre class="wiki">#!td style="background: #eef"
+    || must be at the third level now... ||
+    </pre><p></p><p>  }}}</p><p>  |----------------</p><p>  </p><pre class="wiki">  Even when you don't have complex markup,
+  this form of table cells can be convenient
+  to write content on multiple lines.
+  </pre><p></p><p>  }}}</p><p>}}}</p><pre class="wiki">#!td  valign="top"  style="border: 0px"
+
+  {{{#!th rowspan=4 align=justify
+  With the <code></code> and <code></code> processors,
+  table cells can contain any content:
+  </pre><p>  |----------------</p><p>  </p><pre class="wiki">    - lists
+    - embedded tables
+    - simple multiline content
+  </pre><p></p><p>  |----------------</p><p>  </p><pre class="wiki">  As processors can be easily nested, 
+  so can be tables:
+    {{{#!th
+    Example:
+    </pre><p></p><p>    </p><pre class="wiki">#!td style="background: #eef"
+    || must be at the third level now... ||
+    </pre><p></p><p>  }}}</p><p>  |----------------</p><p>  </p><pre class="wiki">  Even when you don't have complex markup,
+  this form of table cells can be convenient
+  to write content on multiple lines.
+  </pre><p></p><p>}}}</p><p>See <a href="/bugs.jqueryui.com/wiki/WikiProcessors">WikiProcessors</a> for more information.</p><h2>Comments</h2><p>Comments can be added to the plain text. These will not be rendered and will not display in any other format than plain text.</p><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  {{{
+  Nothing to
+  {{{#!comment
+  Your comment for editors here
+  </pre><p>  see.</p><p>  }}}</p><p>}}}</p><pre class="wiki">  Nothing to
+  {{{#!comment
+  Your comment for editors here
+  </pre><p>  see.</p><p>}}}</p><h2>Miscellaneous</h2><p>||= Wiki Markup =||= Display =||</p><pre class="wiki">  Horizontal line:
+  {{{
+  Four or more dashes will be replaced 
+  by a horizontal line (&lt;HR&gt;)
+  ----
+  See?
+  </pre><p>}}}</p><pre class="wiki">Four or more dashes will be replaced
+by a horizontal line (&lt;HR&gt;)
+----
+See?
+</pre><p>|----------------------------------</p><pre class="wiki">  Two examples of line breaks:
+  {{{
+  "macro" style [[BR]] line break
+  </pre><p>  or:</p><p>  </p><pre class="wiki">
+  !WikiCreole style \\\\ line\\\\break
+  </pre><p></p><p>}}}</p><pre class="wiki">"macro" style [[BR]] line break
+
+!WikiCreole style \\\\ line\\\\break
+</pre><p>|----------------------------------</p>
+
+  </div>
+</div>
+        </div>
+      </main>
+      <footer>
+        Copyright &copy; 2023
+        <a href="https://openjsf.org">The OpenJS Foundation</a>
+      </footer>
+    </div>
+    <script src="/bugs.jqueryui.com/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({
+          element: "#search",
+          showImages: false,
+          translations: {
+            placeholder: 'Search tickets',
+            zero_results: 'No matches found.'
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

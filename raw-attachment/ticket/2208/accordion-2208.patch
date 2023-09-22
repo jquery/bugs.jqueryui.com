@@ -1,0 +1,43 @@
+258,290d257
+< /**
+<  * Given the activated element and an object describing the disabled selectors,
+<  * returns true if the element is disabled, otherwise false. If "excepts" is a
+<  * string, checks if "clicked" matches that selector. If "excepts" is an array,
+<  * checks if "clicked" matches any of the selectors in the array.
+<  *
+<  * @param clicked The activated element.
+<  * @param excepts Either a single selector or an array of selectors.
+<  * @return true if "clicked" matches any of the selectors.
+<  */
+< function isDisabled(clicked, excepts) {
+< 
+<     if (!excepts) {
+<         return false;
+<     }
+< 
+<     if (typeof excepts == 'string') {
+<         return clicked.is(excepts);
+<     }
+< 
+<     if (excepts instanceof Array) {
+<         for (i in excepts) {
+<             if (clicked.is(excepts[i])) {
+<                 return true;
+<             }
+<         }
+<         return false;
+<     }
+< 
+<     return false;
+< }
+< 
+< 
+322,324c289,290
+< 	// if animations are still active, or the active header is the target, or
+< 	// the element matches the exceptFor selector, ignore click
+< 	if (options.running || (options.alwaysOpen && clickedActive) || isDisabled(clicked, options.exceptFor)) {
+---
+> 	// if animations are still active, or the active header is the target, ignore click
+> 	if (options.running || (options.alwaysOpen && clickedActive)) {
+370d335
+<         exceptFor: null,

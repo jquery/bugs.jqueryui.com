@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-pagefind-meta="title">TracModWSGI</title>
+    <meta name="description" content="Static archive of the old bugs.jqueryui.com Trac site.">
+    
+<link rel="icon" href="/bugs.jqueryui.com/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/bugs.jqueryui.com/favicon.svg">
+<link rel="apple-touch-icon" href="/bugs.jqueryui.com/apple-touch-icon.png">
+    
+    
+    
+    
+    
+    
+    
+    <style>
+      .wiki,.wiki a{font-size:.8125rem}.breadcrumbs-nav{position:absolute;top:.625em;left:1em;gap:.25em}.breadcrumbs-nav-first[href],.breadcrumbs-nav-first[href]:visited{color:#998}.breadcrumbs-nav a{font-size:.625rem}.wiki-content{padding:1em 1.5em;border-radius:var(--border-radius);border:1px solid var(--border-color)}.wiki-content h2,.wiki-content h3,.wiki-content h4,.wiki-content h5,.wiki-content h6{font-weight:700;margin:1em 0 .5em}.wiki-content h1,.wiki-content h1 a{font-size:1.1875rem}.wiki-content h2{font-size:1rem}.wiki-content h3{font-size:.9rem}.wiki-content h4{font-size:.8rem}.wiki-content h5{font-size:.75rem}.wiki-content h6{font-size:.7rem}.wiki-index-link{margin:0 0 .5em}:root{--font-family:'Arial','Helvetica','Verdana','sans-serif';--font-family-header:var(--font-family);--font-family-alternate:Verdana,Arial,'Bitstream Vera Sans',Helvetica,sans-serif;--font-family-monospace:Monaco,Andale Mono WT,Andale Mono,Lucida Console,Lucida Sans Typewriter,DejaVu Sans Mono,Bitstream Vera Sans Mono,Liberation Mono,Nimbus Mono L,Courier New,Courier,monospace}:root{--primary-color:#000000;--secondary-color:#ff9c08;--text-color:#222;--text-color-dark-bg:#fff;--text-color-link:#bb0000;--text-color-link-hover:#f00000;--text-color-link-active:#ff2424;--text-color-link-visited:#cc0000;--text-color-link-disabled:#998;--main-link-hover-bg-color:#eee;--text-shadow-color:#fcfcfc;--button-color:var(--secondary-color);--button-hover-color:#a36200;--button-text-color:#fff;--background-color:#5f5f5f;--main-background-start-color:#1a1a1a;--main-background-end-color:var(--background-color);--top-nav-hover-start-color:#414240;--top-nav-hover-mid-color:#323530;--top-nav-hover-end-color:#292b28;--nav-background-color:var(--primary-color);--secondary-nav-start-color:#2d2d2d;--secondary-nav-end-color:#060606;--secondary-nav-box-shadow:#313131;--content-background-color:#fafafa;--banner-background-color:var(--primary-color);--footer-background-start-color:#000000;--footer-background-end-color:#141400;--footer-text-color-link:#bbb;--nav-text-link-color:white;--nav-hover-link-color:rgba(255, 255, 255, 0.2);--border-color:#e4e4e4;--border-radius:6px;--input-border-color:white;--blockquote-border-color:#b44;--pre-color:#333;--pre-background-color:#fff;--code-color:#600;--code-background-color:var(--content-background-color);--syntax-tab-size:2}*{box-sizing:border-box}body,html{padding:0;margin:0 auto;font-family:var(--font-family);font-size:100%;color:var(--text-color);line-height:1.4}html{overflow-y:auto;background-color:var(--background-color)}html:before{content:'';position:absolute;top:80px;left:0;right:0;height:900px;background:linear-gradient(to bottom,var(--main-background-start-color),var(--main-background-start-color) 25%,var(--main-background-end-color));z-index:-1}.banner{width:100%;height:80px;background-color:var(--banner-background-color);color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.2);text-align:center;font-size:.875rem;padding:0 .25em}.banner a[href],.banner a[href]:visited{color:#5cb5f0}.banner a[href]:hover{color:var(--text-color-link-hover)}.banner a[href]:active{color:var(--text-color-link-active)}th,tr{font-family:var(--font-family-alternate)}.container{width:100%;max-width:956px;margin:0 auto;overflow:hidden}h1,h2,h3,h4,h5,h6{font-family:var(--font-family-header);font-weight:400;margin:0;padding:0;letter-spacing:0}h1,h2,h3,h4{letter-spacing:-.018em}h1{font-size:1.25rem;font-weight:700}h2{font-size:1rem;font-weight:700}.visually-hidden{clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}p{line-height:1.5;margin:.5em 0 1em}p:last-child{margin-bottom:0}ul{margin:0}li{line-height:1.5}hr{width:100%}blockquote{margin:-.3em 0 0 0;border-style:solid;border-width:0 0 0 2px;padding-left:.4em;border-color:var(--blockquote-border-color)}a[href]{color:var(--text-color-link)}a[href]:visited{color:var(--text-color-link-visited)}a[href]:hover{color:var(--text-color-link-hover)}a[href]:active{color:var(--text-color-link-active)}a[aria-disabled=true]{color:var(--text-color-link-disabled)}main{padding:1rem}table{margin:1em 0}table td,table th{padding-right:1em}code,pre{font-family:var(--font-family-monospace)}pre:not([class*=language-]){margin:.5em 0;-moz-tab-size:var(--syntax-tab-size);-o-tab-size:var(--syntax-tab-size);tab-size:var(--syntax-tab-size);-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;width:100%;padding:.25em;font-size:.6875rem;border-radius:var(--border-radius);overflow-x:auto;background:var(--pre-background-color);color:var(--pre-color);border:1px solid #000;text-align:left}code{color:var(--code-color);border:1px solid var(--border-color);border-radius:.25em;padding:0 .3em;background:var(--code-background-color);word-break:break-all}pre[class*=language-] code{color:unset;border:none;border-radius:0;padding:0;background:0 0;word-break:normal}.strikethrough{text-decoration:line-through}header{position:relative;height:95px;display:flex;flex-wrap:wrap;padding:0 1em}.nav{display:flex;flex-direction:column;padding:0;list-style:none}.nav a{display:flex;align-items:center;height:35px;font-size:.75rem;padding:0 1em;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;width:100%}.nav li:not(.active) a:active,.nav li:not(.active) a:hover{background-color:var(--nav-hover-link-color);border-bottom-color:var(--secondary-color)}.nav a,.nav a:active,.nav a:hover,.nav a:visited{color:var(--nav-text-link-color)}.nav a:active{background:linear-gradient(to bottom,var(--secondary-nav-end-color),var(--secondary-nav-start-color))}.nav .active a{border-bottom-color:var(--secondary-color)}#jq-siteLogo{margin-top:1em}#jq-primaryNavigation{padding:0 .5em;background-color:var(--nav-background-color)}#jq-secondaryNavigation{padding:0 .5em;background:linear-gradient(to bottom,var(--secondary-nav-start-color),var(--secondary-nav-end-color));box-shadow:0 -2px 1px var(--secondary-nav-box-shadow),0 2px 1px #000}#jq-secondaryNavigation a{font-size:.8125rem}#jq-content{position:relative;width:100%}.content-nav{font-size:.8125rem;margin:1.2em 0;align-self:flex-end}.content-nav ul{list-style:none}.content-nav li{padding:0 .75em}.content-nav li:not(:last-of-type){border-right:1px solid var(--border-color)}.hamburger-lines{position:relative;width:18px;height:14px;align-self:center}.hamburger-line{width:100%;height:2px;background-color:#fff;transition:opacity .2s ease-in-out,transform .2s ease-in-out}.hamburger-toggle:checked+.hamburger-lines span:first-of-type{transform:rotateZ(45deg) translate(4px,4.5px) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:nth-of-type(2){transform:rotateZ(135deg) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:last-of-type{transform:translateY(-8px) scale(0);opacity:0}.hamburger-toggle:checked~#jq-menus{transform:none;opacity:1}form{gap:.5em}label{font-style:italic;font-size:.8125rem;font-weight:700}input{border:1px solid var(--input-border-color);border-radius:var(--border-radius);height:25px;padding:0 .5em;color:var(--text-color)}button{display:block;border:0;padding:5px 10px;border-radius:var(--border-radius);background:var(--button-color);color:var(--button-text-color);font-size:.875rem;cursor:pointer}button:active,button:hover{background-color:var(--button-hover-color)}button:active{box-shadow:inset 0 0 5px #000}main{padding:1em;gap:1em}main a[href]:active,main a[href]:hover{background-color:var(--main-link-hover-bg-color)}#jq-topnav{gap:.25em}#jq-topnav a{width:100%;display:block;font-family:var(--font-family-alternate);font-size:.625rem;padding:.1em 1.5em;text-decoration:none;border:2px solid var(--border-color);color:#000;box-shadow:0 1px 2px rgba(0,0,0,.5);text-align:center;border-radius:var(--border-radius)}#jq-topnav a:active,#jq-topnav a:hover{color:#fff;border-color:var(--top-nav-hover-end-color)}#jq-topnav a:hover{background:linear-gradient(to bottom,var(--top-nav-hover-start-color),var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-end-color))}#jq-topnav a:active{background:linear-gradient(to bottom,var(--top-nav-hover-end-color),var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-start-color))}footer{background-color:var(--nav-background-color);background:var(--nav-background-color) linear-gradient(to bottom,var(--footer-background-start-color),var(--footer-background-end-color));padding:2em;margin-bottom:2em;color:var(--text-color-dark-bg);border:2px solid transparent;border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius)}footer a[href],footer a[href]:visited{color:var(--footer-text-color-link)}footer a[href]:active,footer a[href]:hover{background-color:var(--main-link-hover-bg-color);color:#000}.flex-row{display:flex;flex-direction:row}.flex-column{display:flex;flex-direction:column}.flex-between-start{justify-content:space-between;align-items:flex-start}.flex-between-center{justify-content:space-between;align-items:center}.flex-start-center{justify-content:flex-start;align-items:center}.flex-end-center{justify-content:flex-end;align-items:center}.flex-center{display:flex;justify-content:center;align-items:center}.items-start{align-items:start}.white-box{background-color:var(--content-background-color);border:1px solid var(--border-color)}a.ext-link .icon{padding-left:15px}@media (max-width:919px){#jq-menus{position:absolute;top:95px;height:calc(100vh - 95px);left:0;right:0;background-color:var(--nav-background-color);z-index:1;transition:transform .2s ease-in-out,opacity .2s ease-in-out;transform:translateX(100%);opacity:0;display:flex;flex-direction:column-reverse;justify-content:flex-end}}@media (min-width:920px){html:before{top:60px}body{background-position-y:60px}.banner{height:60px;font-size:1rem}header{height:125px;padding:0 0 0 2em}#jq-topnav{flex-direction:row;align-self:flex-end;gap:0}#jq-topnav a{width:auto;border-radius:0}#jq-topnav a:first-of-type{border-radius:var(--border-radius) 0 0 var(--border-radius)}#jq-topnav a:last-of-type{border-radius:0 var(--border-radius) var(--border-radius) 0}.nav{flex-direction:row}.nav a{width:auto}#jq-primaryNavigation a{height:27px;align-self:flex-end}#jq-secondaryNavigation{border-radius:var(--border-radius);margin-top:2em}#jq-siteLogo{align-self:flex-end}main{flex-grow:1;min-height:520px;font-size:.75rem}.hamburger-lines{display:none}.content-nav{margin-top:.4em}}:root{--pagefind-ui-background-color:#fff}#search{width:100%;position:relative;min-height:25px}.pagefind-ui__search-input{width:100%;border:1px solid var(--border-color)}.pagefind-ui__search-clear{display:inline-block;position:absolute;width:25px;height:25px;right:15px;top:0;padding:0 0 0 25px;overflow:hidden;background-color:transparent;z-index:1}.pagefind-ui__search-clear:active,.pagefind-ui__search-clear:hover{background-color:rgba(0,0,0,.2)}.pagefind-ui__search-clear:after{content:'×';position:absolute;top:0;left:0;right:0;bottom:0;font-weight:700;font-size:1.5rem;line-height:26px;text-align:center;color:var(--text-color);opacity:1}.pagefind-ui__hidden{display:none}.pagefind-ui__suppressed{display:none}.pagefind-ui__drawer{position:absolute;top:100%;left:0;right:0;height:350px;background-color:var(--pagefind-ui-background-color);border:1px solid var(--border-color);border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius);box-shadow:0 2px 4px rgba(0,0,0,.2);padding:10px;color:var(--text-color);font-size:.875rem;overflow-y:auto;word-break:break-word;z-index:1}.pagefind-ui__results-area{width:100%}.pagefind-ui__results{padding-left:20px}.pagefind-ui__result{margin-bottom:10px;vertical-align:top}.pagefind-ui__result-thumb{display:flex;flex-direction:column}.pagefind-ui__result-thumb .pagefind-ui__result-image{max-width:150px}.pagefind-ui__message{font-weight:700;text-transform:uppercase;font-size:1rem}.pagefind-ui__button{width:100%;padding:10px;margin-top:2em}@media(min-width:920px){#search{width:auto}.pagefind-ui__search-input{width:300px}.pagefind-ui__search-clear{right:auto;left:270px}.pagefind-ui__drawer{left:-200px;height:500px;padding:15px}}body{background:url(/bugs.jqueryui.com/img/body_bg.jpg) no-repeat center 80px}a.ext-link .icon{background:url(/bugs.jqueryui.com/img/extlink.png) 0 50% no-repeat}
+    </style>
+    
+  </head>
+  <body>
+    <div class="banner flex-center">
+      <span>jQuery UI issues have moved to <a href="https://github.com/jquery/jquery-ui/issues">GitHub</a>. This site is now a static archive of the old <a href="https://trac.edgewall.org/">Trac</a> bugs site. <br>Some functions and pages are no longer available.</span>
+    </div>
+    <div class="container">
+      <a href="#skip" class="visually-hidden">Skip to main content</a>
+      <header class="flex-column">
+        <div class="flex-row flex-between-start">
+          <a id="jq-siteLogo" href="/bugs.jqueryui.com/" title="jQuery UI Bugs Home">
+            <img src="/bugs.jqueryui.com/img/logo.svg" width="253" alt="jQuery UI">
+          </a>
+          <input class="hamburger-toggle visually-hidden" id="jq-menutoggle" type="checkbox">
+          <label aria-label="Toggle Menu" for="jq-menutoggle" class="hamburger-lines flex-column flex-between-center">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </label>
+          <div id="jq-menus" class="flex-column">
+            <nav id="jq-primaryNavigation">
+              <h2 class="visually-hidden">jQuery UI sites navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-jquery">
+                  <a href="https://jquery.com/" title="jQuery Home">jQuery</a>
+                </li>
+                <li class="jq-plugins">
+                  <a href="https://plugins.jquery.com/" title="jQuery Plugins">Plugins</a>
+                </li>
+                <li class="jq-ui active">
+                  <a href="https://jqueryui.com/" title="jQuery UI">UI</a>
+                </li>
+                <li class="jq-meetup">
+                  <a href="https://meetups.jquery.com/" title="jQuery Meetups">Meetups</a>
+                </li>
+                <li class="jq-forum">
+                  <a href="https://forum.jquery.com/" title="jQuery Forum">Forum</a>
+                </li>
+                <li class="jq-blog">
+                  <a href="https://blog.jquery.com/" title="jQuery Blog">Blog</a>
+                </li>
+                <li class="jq-about">
+                  <a href="https://openjsf.org" title="About jQuery and OpenJS">About</a>
+                </li>
+                <li class="jq-donate">
+                  <a href="https://openjsf.org/about/project-funding-opportunities/" title="Donate to OpenJS">Donate</a>
+                </li>
+              </ul>
+            </nav>
+            <nav id="jq-secondaryNavigation">
+              <h2 class="visually-hidden">jQuery UI navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-download">
+                  <a href="https://jqueryui.com/download/">
+                    Download
+                  </a>
+                </li>
+                <li class="jq-documentation">
+                  <a href="https://jqueryui.com/demos/">
+                    Demos &amp; Documentation
+                  </a>
+                </li>
+                <li class="jq-themes">
+                  <a href="https://jqueryui.com/themeroller/">
+                    Themes
+                  </a>
+                </li>
+                <li class="jq-development">
+                  <a href="https://jqueryui.com/development/">
+                    Development
+                  </a>
+                </li>
+                <li class="jq-support">
+                  <a href="https://jqueryui.com/support/">
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main id="skip" class="flex-column white-box">
+        <h2 class="visually-hidden">Search and Top Navigation</h2>
+        <div class="flex-row flex-end-center">
+          <div id="search"></div>
+        </div>
+        <nav id="jq-topnav" class="flex-column flex-start-center">
+          <a href="/bugs.jqueryui.com/newticket">New Ticket</a>
+          <a href="/bugs.jqueryui.com/report">View Tickets</a>
+          <a href="/bugs.jqueryui.com/ticketgraph">Ticket Graph</a>
+          <a href="/bugs.jqueryui.com/roadmap">Roadmap</a>
+          <a href="/bugs.jqueryui.com/timeline">Recent Changes</a>
+        </nav>
+        <div id="jq-content" class="flex-column">
+          
+
+<div class="wiki flex-column">
+  <div class="breadcrumbs-nav flex-row">
+    <a href="/bugs.jqueryui.com/" class="breadcrumbs-nav-first">wiki:</a>
+    
+      <a href="/bugs.jqueryui.com/wiki/TracModWSGI/">TracModWSGI</a>
+    
+  </div>
+  <nav class="content-nav">
+    <ul class="flex-row">
+      <li>
+        <a href="/bugs.jqueryui.com/">Start Page</a>
+      </li>
+      <li>
+        <a href="/bugs.jqueryui.com/wiki/TitleIndex">Index</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="wiki-content">
+    
+<h1>Trac and mod_wsgi</h1><p><a href="https://github.com/GrahamDumpleton/mod_wsgi" class="ext-link"><span class="icon"></span>mod_wsgi</a> is an Apache module for running WSGI-compatible Python applications directly on top of the Apache webserver. The mod_wsgi adapter is written completely in C and provides very good performance.</p><h2>The <code>trac.wsgi</code> script</h2><p>Trac can be run on top of mod_wsgi with the help of an application script, which is a Python file saved with a <code>.wsgi</code> extension. </p><p>A robust and generic version of this file can be created using the <code>trac-admin &lt;env&gt; deploy &lt;dir&gt;</code> command which automatically substitutes the required paths, see <a href="/bugs.jqueryui.com/wiki/TracInstall">TracInstall</a>#cgi-bin. The script should be sufficient for most installations and users not wanting more information can proceed to <a href="#Mappingrequeststothescript" class="ext-link"><span class="icon"></span>configuring Apache</a>.</p><p>If you are using Trac with multiple projects, you can specify their common parent directory in <code>trac.wsgi</code>:</p><pre class="wiki">def application(environ, start_request):
+    # Add this when you have multiple projects
+    environ.setdefault('trac.env_parent_dir', '/usr/share/trac/projects')  
+    ..
+</pre><p>Directories residing in <code>trac.env_parent_dir</code> that are not environment directories will display an error message on the [TracInterfaceCustomization#ProjectList project index page]. The directories can be excluded by listing them in a <code>.tracignore</code> file residing in <code>trac.env_parent_dir</code>. Unix <a href="https://docs.python.org/2/library/fnmatch.html" class="ext-link"><span class="icon"></span>shell-style wildcard patterns</a> can be used in the newline separated list of directories.</p><h3>A very basic script</h3><p>In its simplest form, the script could be:</p><pre class="wiki">import os
+
+os.environ['TRAC_ENV'] = '/usr/local/trac/mysite'
+os.environ['PYTHON_EGG_CACHE'] = '/usr/local/trac/mysite/eggs'
+
+import trac.web.main
+application = trac.web.main.dispatch_request
+</pre><p>The <code>TRAC_ENV</code> variable should naturally be the directory for your Trac environment, and the <code>PYTHON_EGG_CACHE</code> should be a directory where Python can temporarily extract Python eggs. If you have several Trac environments in a directory, you can also use <code>TRAC_ENV_PARENT_DIR</code> instead of <code>TRAC_ENV</code>.</p><p>On Windows:</p> <ul><li>If run under the user's session, the Python Egg cache can be found in <code>%AppData%\\Roaming</code>, for example:</li></ul><pre class="wiki">os.environ['PYTHON_EGG_CACHE'] = r'C:\\Users\\Administrator\\AppData\\Roaming\\Python-Eggs'
+</pre> <ul><li>If run under a Window service, you should create a directory for Python Egg cache:</li></ul><pre class="wiki">os.environ['PYTHON_EGG_CACHE'] = r'C:\\Trac-Python-Eggs'
+</pre><h3>A more elaborate script</h3><p>If you are using multiple <code>.wsgi</code> files (for example one per Trac environment) you must ''not'' use <code>os.environ['TRAC_ENV']</code> to set the path to the Trac environment. Using this method may lead to Trac delivering the content of another Trac environment, as the variable may be filled with the path of a previously viewed Trac environment. </p><p>To solve this problem, use the following <code>.wsgi</code> file instead:</p><pre class="wiki">import os
+
+os.environ['PYTHON_EGG_CACHE'] = '/usr/local/trac/mysite/eggs'
+
+import trac.web.main
+def application(environ, start_response):
+  environ['trac.env_path'] = '/usr/local/trac/mysite' 
+  return trac.web.main.dispatch_request(environ, start_response)
+</pre><p>For clarity, you should give this file a <code>.wsgi</code> extension. You should probably put the file in its own directory, since you will expose it to Apache. </p><p>If you have installed Trac and Python eggs in a path different from the standard one, you should add that path by adding the following code at the top of the wsgi script:</p><pre class="wiki">import site
+site.addsitedir('/usr/local/trac/lib/python2.4/site-packages')
+</pre><p>Change it according to the path you installed the Trac libs at.</p><h2>Mapping requests to the script</h2><p>After preparing your .wsgi script, add the following to your Apache configuration file, typically <code>httpd.conf</code>:</p><pre class="wiki">WSGIScriptAlias /trac /usr/local/trac/mysite/apache/mysite.wsgi
+
+&lt;Directory /usr/local/trac/mysite/apache&gt;
+    WSGIApplicationGroup %{GLOBAL}
+    # For Apache 2.2
+    &lt;IfModule !mod_authz_core.c&gt;
+        Order deny,allow
+        Allow from all
+    &lt;/IfModule&gt;
+    # For Apache 2.4
+    &lt;IfModule mod_authz_core.c&gt;
+        Require all granted
+    &lt;/IfModule&gt;
+&lt;/Directory&gt;
+</pre><p>Here, the script is in a subdirectory of the Trac environment.</p><p>If you followed the directions [TracInstall#cgi-bin Generating the Trac cgi-bin directory], your Apache configuration file should look like following:</p><pre class="wiki">WSGIScriptAlias /trac /usr/share/trac/cgi-bin/trac.wsgi
+
+&lt;Directory /usr/share/trac/cgi-bin&gt;
+    WSGIApplicationGroup %{GLOBAL}
+    # For Apache 2.2
+    &lt;IfModule !mod_authz_core.c&gt;
+        Order deny,allow
+        Allow from all
+    &lt;/IfModule&gt;
+    # For Apache 2.4
+    &lt;IfModule mod_authz_core.c&gt;
+        Require all granted
+    &lt;/IfModule&gt;
+&lt;/Directory&gt;
+</pre><p>In order to let Apache run the script, access to the directory in which the script resides is opened up to all of Apache. Additionally, the <code>WSGIApplicationGroup</code> directive ensures that Trac is always run in the first Python interpreter created by mod_wsgi. This is necessary because the Subversion Python bindings, which are used by Trac, don't always work in other sub-interpreters and may cause requests to hang or cause Apache to crash. After adding this configuration, restart Apache, and then it should work.</p><p>To test the setup of Apache, mod_wsgi and Python itself (ie without involving Trac and dependencies), this simple wsgi application can be used to make sure that requests gets served (use as only content in your <code>.wsgi</code> script):</p><pre class="wiki">def application(environ, start_response):
+        start_response('200 OK',[('Content-type','text/html')])
+        return ['&lt;html&gt;&lt;body&gt;Hello World!&lt;/body&gt;&lt;/html&gt;']
+</pre><p>For more information about using the mod_wsgi specific directives, see the <a href="https://code.google.com/archive/p/modwsgi/wikis" class="ext-link"><span class="icon"></span>mod_wsgi's wiki</a> and more specifically the <a href="https://code.google.com/archive/p/modwsgi/wikis/IntegrationWithTrac.wiki" class="ext-link"><span class="icon"></span>IntegrationWithTrac</a> page.</p><h2>Configuring Authentication</h2><p>The following sections describe different methods for setting up authentication. See also <a href="https://httpd.apache.org/docs/2.4/howto/auth.html" class="ext-link"><span class="icon"></span>Authentication, Authorization and Access Control</a> in the Apache guide.</p><h3>Using Basic Authentication</h3><p>The simplest way to enable authentication with Apache is to create a password file. Use the <code>htpasswd</code> program as follows:</p><pre class="wiki">$ htpasswd -c /somewhere/trac.htpasswd admin
+New password: &lt;type password&gt;
+Re-type new password: &lt;type password again&gt;
+Adding password for user admin
+</pre><p>After the first user, you don't need the "-c" option anymore:</p><pre class="wiki">$ htpasswd /somewhere/trac.htpasswd john
+New password: &lt;type password&gt;
+Re-type new password: &lt;type password again&gt;
+Adding password for user john
+</pre><p>See the man page for <code>htpasswd</code> for full documentation.</p><p>After you've created the users, you can set their permissions using <a href="/bugs.jqueryui.com/wiki/TracPermissions">TracPermissions</a>.</p><p>Now, you need to enable authentication against the password file in the Apache configuration:</p><pre class="wiki">&lt;Location "/trac/login"&gt;
+  AuthType Basic
+  AuthName "Trac"
+  AuthUserFile /somewhere/trac.htpasswd
+  Require valid-user
+&lt;/Location&gt;
+</pre><p>If you are hosting multiple projects, you can use the same password file for all of them:</p><pre class="wiki">&lt;LocationMatch "/trac/[^/]+/login"&gt;
+  AuthType Basic
+  AuthName "Trac"
+  AuthUserFile /somewhere/trac.htpasswd
+  Require valid-user
+&lt;/LocationMatch&gt;
+</pre><p>Note that neither a file nor a directory named 'login' needs to exist. See also the <a href="https://httpd.apache.org/docs/2.4/mod/mod_auth_basic.html" class="ext-link"><span class="icon"></span>mod_auth_basic</a> documentation.</p><h3>Using Digest Authentication</h3><p>For better security, it is recommended that you either enable SSL or at least use the "digest" authentication scheme instead of "Basic".</p><p>You have to create your <code>.htpasswd</code> file with the <code>htdigest</code> command instead of <code>htpasswd</code>, as follows:</p><pre class="wiki">$ htdigest -c /somewhere/trac.htpasswd trac admin
+</pre><p>The "trac" parameter above is the "realm", and will have to be reused in the Apache configuration in the AuthName directive:</p><pre class="wiki">&lt;Location "/trac/login"&gt;
+  AuthType Digest
+  AuthName "trac"
+  AuthDigestDomain /trac
+  AuthUserFile /somewhere/trac.htpasswd
+  Require valid-user
+&lt;/Location&gt;
+</pre><p>For multiple environments, you can use the same <code>LocationMatch</code> as described with the previous method.</p><p><strong>Note</strong>: <code>Location</code> cannot be used inside .htaccess files, but must instead live within the main httpd.conf file. If you are on a shared server, you therefore will not be able to provide this level of granularity.</p><p>Don't forget to activate the mod_auth_digest. For example, on a Debian 4.0r1 (etch) system:</p><pre class="wiki">  LoadModule auth_digest_module /usr/lib/apache2/modules/mod_auth_digest.so
+</pre><p>See also the <a href="https://httpd.apache.org/docs/2.4/mod/mod_auth_basic.html" class="ext-link"><span class="icon"></span>mod_auth_digest</a> documentation.</p><h3>Using LDAP Authentication</h3><p>Configuration for <a href="https://httpd.apache.org/docs/2.4/mod/mod_ldap.html" class="ext-link"><span class="icon"></span>mod_ldap</a> authentication in Apache is more involved (httpd 2.2+ and <a href="/bugs.jqueryui.com/wiki/OpenLDAP">OpenLDAP</a>: slapd 2.3.19).</p><p>1. You need to load the following modules in Apache httpd.conf:</p><pre class="wiki">  LoadModule ldap_module modules/mod_ldap.so
+  LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
+</pre><p>1. Your httpd.conf also needs to look something like:</p><pre class="wiki">&lt;Location /trac/&gt;
+  # (if you're using it, mod_python specific settings go here)
+  Order deny,allow
+  Deny from all
+  Allow from 192.168.11.0/24
+  AuthType Basic
+  AuthName "Trac"
+  AuthBasicProvider "ldap"
+  AuthLDAPURL "ldap://127.0.0.1/dc=example,dc=co,dc=ke?uid?sub?(objectClass=inetOrgPerson)"
+  authzldapauthoritative Off
+  Require valid-user
+&lt;/Location&gt;
+</pre><p>1. You can use the LDAP interface as a way to authenticate to a Microsoft Active Directory. Use the following as your LDAP URL:</p><pre class="wiki">  AuthLDAPURL "ldap://directory.example.com:3268/DC=example,DC=com?sAMAccountName?sub?(objectClass=user)"
+</pre><p> You will also need to provide an account for Apache to use when checking credentials. As this password will be listed in plain text in the configuration, you need to use an account specifically for this task:</p><pre class="wiki">  AuthLDAPBindDN ldap-auth-user@example.com
+  AuthLDAPBindPassword "password"
+</pre><p> The whole section looks like:</p><pre class="wiki">&lt;Location /trac/&gt;
+  # (if you're using it, mod_python specific settings go here)
+  Order deny,allow
+  Deny from all
+  Allow from 192.168.11.0/24
+  AuthType Basic
+  AuthName "Trac"
+  AuthBasicProvider "ldap"
+  AuthLDAPURL "ldap://adserver.company.com:3268/DC=company,DC=com?sAMAccountName?sub?(objectClass=user)"
+  AuthLDAPBindDN       ldap-auth-user@company.com
+  AuthLDAPBindPassword "the_password"
+  authzldapauthoritative Off
+  # require valid-user
+  Require ldap-group CN=Trac Users,CN=Users,DC=company,DC=com
+&lt;/Location&gt;
+</pre><p>Note 1: This is the case where the LDAP search will get around the multiple OUs, conecting to the Global Catalog Server portion of AD. Note the port is 3268, not the normal LDAP 389. The GCS is basically a "flattened" tree which allows searching for a user without knowing to which OU they belong.</p><p>Note 2: You can also require the user be a member of a certain LDAP group, instead of just having a valid login:</p><pre class="wiki">  Require ldap-group CN=Trac Users,CN=Users,DC=example,DC=com
+</pre><p>See also:</p> <ul><li><a href="https://httpd.apache.org/docs/2.4/mod/mod_authnz_ldap.html" class="ext-link"><span class="icon"></span>mod_authnz_ldap</a>, documentation for mod_authnz_ldap.   </li> <li><a href="https://httpd.apache.org/docs/2.4/mod/mod_ldap.html" class="ext-link"><span class="icon"></span>mod_ldap</a>, documentation for mod_ldap, which provides connection pooling and a shared cache.</li> <li><a href="https://trac-hacks.org/wiki/LdapPlugin" class="ext-link"><span class="icon"></span>TracHacks:LdapPlugin</a> for storing <a href="/bugs.jqueryui.com/wiki/TracPermissions">TracPermissions</a> in LDAP.</li></ul><h3>Using SSPI Authentication</h3><p>If you are using Apache on Windows, you can use mod_auth_sspi to provide single-sign-on. Download the module from the SourceForge <a href="https://sourceforge.net/projects/mod-auth-sspi/" class="ext-link"><span class="icon"></span>mod-auth-sspi project</a> and then add the following to your VirtualHost:</p><pre class="wiki">&lt;Location /trac/login&gt;
+  AuthType SSPI
+  AuthName "Trac Login"
+  SSPIAuth On
+  SSPIAuthoritative On
+  SSPIDomain MyLocalDomain
+  SSPIOfferBasic On
+  SSPIOmitDomain Off
+  SSPIBasicPreferred On
+  Require valid-user
+&lt;/Location&gt;
+</pre><p>Using the above, usernames in Trac will be of the form <code>DOMAIN\\username</code>, so you may have to re-add permissions and such. If you do not want the domain to be part of the username, set <code>SSPIOmitDomain On</code> instead.</p><p>Some common problems with SSPI authentication: <a href="https://trac.edgewall.org/ticket/1055" class="ext-link"><span class="icon"></span>1055</a>, <a href="https://trac.edgewall.org/ticket/1168" class="ext-link"><span class="icon"></span>1168</a> and <a href="https://trac.edgewall.org/ticket/3338" class="ext-link"><span class="icon"></span>3338</a>.</p><p>See also <a href="https://trac.edgewall.org/intertrac/TracOnWindows/Advanced" class="ext-link"><span class="icon"></span>TracOnWindows/Advanced</a>.</p><h3>Using CA SiteMinder Authentication</h3><p>Setup CA SiteMinder to protect your Trac login URL, for example <code>/trac/login</code>. Also, make sure the policy is set to include the HTTP_REMOTE_USER variable. If your site allows it, you can set this in <code>LocalConfig.conf</code>:</p><pre class="wiki">RemoteUserVar="WHATEVER_IT_SHOULD_BE"
+SetRemoteUser="YES"
+</pre><p>The specific variable is site-dependent. Ask your site administrator. If your site does not allow the use of <code>LocalConfig.conf</code> for security reasons, have your site administrator set the policy on the server to set REMOTE_USER.</p><p>Also add a LogOffUri parameter to the agent configuration, for example <code>/trac/logout</code>.</p><p>Then modify the trac.wsgi script generated using <code>trac-admin &lt;env&gt; deploy &lt;dir&gt;</code> to add the following lines, which extract the <code>HTTP_REMOTE_USER</code> variable and set it to <code>REMOTE_USER</code>:</p><pre class="wiki">def application(environ, start_request): 
+    # Set authenticated username on CA SiteMinder to REMOTE_USER variable 
+    # strip() is used to remove any spaces on the end of the string
+    if 'HTTP_SM_USER' in environ: 
+        environ['REMOTE_USER'] = environ['HTTP_REMOTE_USER'].strip()
+    ...
+</pre><p>You do not need any Apache "Location" directives.</p><h3>Example: Apache/mod_wsgi with Basic Authentication, Trac being at the root of a virtual host</h3><p>Per the mod_wsgi documentation linked to above, here is an example Apache configuration that:</p> <ul><li>serves the Trac instance from a virtualhost subdomain</li> <li>uses Apache basic authentication for Trac authentication.</li></ul><p>If you want your Trac to be served from eg !http://trac.my-proj.my-site.org, then from the folder eg <code>/home/trac-for-my-proj</code>, if you used the command <code>trac-admin the-env initenv</code> to create a folder <code>the-env</code>, and you used <code>trac-admin the-env deploy the-deploy</code> to create a folder <code>the-deploy</code>, then first:</p><p>Create the htpasswd file:</p><pre class="wiki">cd /home/trac-for-my-proj/the-env
+htpasswd -c htpasswd firstuser
+### and add more users to it as needed:
+htpasswd htpasswd seconduser
+</pre><p>Keep the file above your document root for security reasons.</p><p>Create this file for example <code>/etc/apache2/sites-enabled/trac.my-proj.my-site.org.conf</code> on Ubuntu with the following content:</p><pre class="wiki">&lt;Directory /home/trac-for-my-proj/the-deploy/cgi-bin/trac.wsgi&gt;
+  WSGIApplicationGroup %{GLOBAL}
+  Order deny,allow
+  Allow from all
+&lt;/Directory&gt;
+
+&lt;VirtualHost *:80&gt;
+  ServerName trac.my-proj.my-site.org
+  DocumentRoot /home/trac-for-my-proj/the-env/htdocs/
+  WSGIScriptAlias / /home/trac-for-my-proj/the-deploy/cgi-bin/trac.wsgi
+  &lt;Location '/'&gt;
+    AuthType Basic
+    AuthName "Trac"
+    AuthUserFile /home/trac-for-my-proj/the-env/htpasswd
+    Require valid-user
+  &lt;/Location&gt;
+&lt;/VirtualHost&gt;
+
+</pre><p>For subdomains to work you would probably also need to alter <code>/etc/hosts</code> and add A-Records to your host's DNS.</p><h2>Troubleshooting</h2><h3>Use a recent version</h3><p>Please use either version 1.6, 2.4 or later of <code>mod_wsgi</code>. Versions prior to 2.4 in the 2.X branch have problems with some Apache configurations that use WSGI file wrapper extension. This extension is used in Trac to serve up attachments and static media files such as style sheets. If you are affected by this problem, attachments will appear to be empty and formatting of HTML pages will appear not to work due to style sheet files not loading properly. Another frequent symptom is that binary attachment downloads are truncated. See mod_wsgi tickets <a href="https://code.google.com/archive/p/modwsgi/issues/100" class="ext-link"><span class="icon"></span>#100</a> and <a href="https://code.google.com/archive/p/modwsgi/issues/132" class="ext-link"><span class="icon"></span>#132</a>.</p><p><strong>Note</strong>: using mod_wsgi 2.5 and Python 2.6.1 gave an Internal Server Error on my system (Apache 2.2.11 and Trac 0.11.2.1). Upgrading to Python 2.6.2 (as suggested <a href="https://www.mail-archive.com/modwsgi@googlegroups.com/msg01917.html" class="ext-link"><span class="icon"></span>here</a>) solved this for me-- Graham Shanks</p><p>If you plan to use <code>mod_wsgi</code> in embedded mode on Windows or with the MPM worker on Linux, then you will need version 3.4 or greater. See <a href="https://trac.edgewall.org/ticket/10675" class="ext-link"><span class="icon"></span>10675</a> for details.</p><h3>Getting Trac to work nicely with SSPI and 'Require Group'</h3><p>If you have set Trac up on Apache, Win32 and configured SSPI, but added a 'Require group' option to your Apache configuration, then the SSPIOmitDomain option is probably not working. If it is not working, your usernames in Trac probably look like 'DOMAIN\\user' rather than 'user'.</p><p>This WSGI script fixes that:</p><pre class="wiki">import os
+import trac.web.main
+
+os.environ['TRAC_ENV'] = '/usr/local/trac/mysite'
+os.environ['PYTHON_EGG_CACHE'] = '/usr/local/trac/mysite/eggs'
+
+def application(environ, start_response):
+    if "\\\\" in environ['REMOTE_USER']:
+        environ['REMOTE_USER'] = environ['REMOTE_USER'].split("\\\\", 1)[1]
+    return trac.web.main.dispatch_request(environ, start_response)
+</pre><h3>Trac with <a href="/bugs.jqueryui.com/wiki/PostgreSQL">PostgreSQL</a></h3><p>When using the mod_wsgi adapter with multiple Trac instances and <a href="/bugs.jqueryui.com/wiki/PostgreSQL">PostgreSQL</a> (or <a href="/bugs.jqueryui.com/wiki/MySQL">MySQL</a>?) as the database, the server ''may'' create a lot of open database connections and thus <a href="/bugs.jqueryui.com/wiki/PostgreSQL">PostgreSQL</a> processes.</p><p>A somewhat brutal workaround is to disable connection pooling in Trac. This is done by setting <code>poolable = False</code> in <code>trac.db.postgres_backend</code> on the <code>PostgreSQLConnection</code> class.</p><p>But it is not necessary to edit the source of Trac. The following lines in <code>trac.wsgi</code> will also work:</p><pre class="wiki">import trac.db.postgres_backend
+trac.db.postgres_backend.PostgreSQLConnection.poolable = False
+</pre><p>or</p><pre class="wiki">import trac.db.mysql_backend
+trac.db.mysql_backend.MySQLConnection.poolable = False
+</pre><p>Now Trac drops the connection after serving a page and the connection count on the database will be kept low.</p><p><em>This is not a recommended approach though. See also the notes at the bottom of the [https:</em>code.google.com/archive/p/modwsgi/wikis/IntegrationWithTrac.wiki mod_wsgi's <a href="/bugs.jqueryui.com/wiki/IntegrationWithTrac">IntegrationWithTrac</a>] wiki page.//</p><h3>Missing Headers and Footers</h3><p>If python optimizations are enabled, then headers and footers will not be rendered. An error will be raised in Trac 1.0.11 and later when optimizations are enabled.</p><p>In your WSGI configuration file, the <code>WSGIPythonOptimize</code> setting must be set to <code>0</code> (<code>1</code> or <code>2</code> will not work):</p><pre class="wiki">    WSGIPythonOptimize 0
+</pre><p>On Ubuntu, the WSGI mod configuration is at <code>/etc/apache2/mods-enabled/wsgi.conf</code>.</p><p>The same issue is seen with <code>PythonOptimize On</code> in [TracModPython#Pagelayoutissues <a href="/bugs.jqueryui.com/wiki/ModPython">ModPython</a>].</p><h3>Other resources</h3><p>For more troubleshooting tips, see also the [TracModPython#Troubleshooting mod_python troubleshooting] section, as most Apache-related issues are quite similar, plus discussion of potential <a href="https://code.google.com/archive/p/modwsgi/wikis/ApplicationIssues.wiki" class="ext-link"><span class="icon"></span>application issues</a> when using mod_wsgi. The wsgi page also has a <a href="https://code.google.com/archive/p/modwsgi/wikis/IntegrationWithTrac.wiki" class="ext-link"><span class="icon"></span>Integration With Trac</a> document.</p><p></p><hr><p></p><p>See also: <a href="/bugs.jqueryui.com/wiki/TracGuide">TracGuide</a>, <a href="/bugs.jqueryui.com/wiki/TracInstall">TracInstall</a>, <a href="/bugs.jqueryui.com/wiki/TracFastCgi" class="ext-link"><span class="icon"></span>FastCGI</a>, <a href="/bugs.jqueryui.com/wiki/TracModPython" class="ext-link"><span class="icon"></span>ModPython</a>, <a href="https://trac.edgewall.org/intertrac/TracNginxRecipe" class="ext-link"><span class="icon"></span>TracNginxRecipe</a></p>
+
+  </div>
+</div>
+        </div>
+      </main>
+      <footer>
+        Copyright &copy; 2023
+        <a href="https://openjsf.org">The OpenJS Foundation</a>
+      </footer>
+    </div>
+    <script src="/bugs.jqueryui.com/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({
+          element: "#search",
+          showImages: false,
+          translations: {
+            placeholder: 'Search tickets',
+            zero_results: 'No matches found.'
+          }
+        })
+      })
+    </script>
+  </body>
+</html>
