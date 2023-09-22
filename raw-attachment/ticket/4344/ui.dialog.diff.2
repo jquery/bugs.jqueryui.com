@@ -1,0 +1,66 @@
+Index: ui/ui.dialog.js
+===================================================================
+--- ui/ui.dialog.js	(revision 2482)
++++ ui/ui.dialog.js	(working copy)
+@@ -284,14 +284,29 @@
+ 		(typeof buttons == 'object' && buttons !== null &&
+ 			$.each(buttons, function() { return !(hasButtons = true); }));
+ 		if (hasButtons) {
+-			$.each(buttons, function(name, fn) {
++			$.each(buttons, function(name, options) {
++				//check for legacy click callbacks
++				if($.isFunction(options)) {
++				    options = {click: options}
++				} 
++				
++				var o = $.extend({}, $.ui.dialog.defaults.buttonOptions, options);
++				var classes = 'ui-state-default';
++				if(o.cornerAll) {
++				    classes += ' ui-corner-all';
++				}
++				if(o.priority) {
++				    classes += ' ui-priority-'+o.priority;
++				}
++				if(o.disabled) {
++				    classes += ' ui-state-disabled';
++				}
++				
+ 				$('<button type="button"></button>')
+-					.addClass(
+-						'ui-state-default ' +
+-						'ui-corner-all'
+-					)
++					.addClass(classes)
++					.attr('id', o.id)
+ 					.text(name)
+-					.click(function() { fn.apply(self.element[0], arguments); })
++					.click(function() { o.click.apply(self.element[0], arguments); })
+ 					.hover(
+ 						function() {
+ 							$(this).addClass('ui-state-hover');
+@@ -305,8 +320,8 @@
+ 					})
+ 					.blur(function() {
+ 						$(this).removeClass('ui-state-focus');
+-					})
+-					.appendTo(uiDialogButtonPane);
++					}).appendTo(uiDialogButtonPane);
++					
+ 			});
+ 			uiDialogButtonPane.appendTo(self.uiDialog);
+ 		}
+@@ -529,7 +544,13 @@
+ 		stack: true,
+ 		title: '',
+ 		width: 300,
+-		zIndex: 1000
++		zIndex: 1000,
++		buttonOptions: {
++			disabled: false,
++			id: '',
++			cornerAll: true,
++			click: function() {}
++		}
+ 	},
+ 
+ 	uuid: 0,

@@ -1,0 +1,56 @@
+<html>
+<head>
+<script type="text/javascript" src="./js-global/jquery.js"></script>
+<script type="text/javascript" src="./js-global/jquery-ui.js"></script>
+<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="./ckeditor/adapters/jquery.js"></script>
+<script type="text/javascript">
+$(function() {
+ $("#list").sortable({
+ placeholder: 'ui-state-highlight'
+ });
+ $("#list").disableSelection();
+
+ for (i=0;i<10;i++)
+ {
+ addEditor();
+ }
+});
+
+
+
+
+  function addEditor()
+   {
+     var editor_fields = document.editors.elements["editor[]"];
+
+     var editorAmount = 0;
+
+   if (editor_fields.length)
+   {
+     editorAmount = editor_fields.length;
+   }
+   else
+   {
+     editorAmount = 1;
+   }
+
+ var newElem = $('#editor_container' + editorAmount).clone().attr('id', 'editor_container' + (editorAmount + 1));
+
+ newElem.html("<textarea class='editor' name='editor[]' id='editor" + (editorAmount + 1) + "' rows='4' cols='30'></textarea>");
+
+ $("#editor_container" + editorAmount).after(newElem);
+
+ $("#editor" + (editorAmount + 1)).ckeditor();
+ }
+</script>
+</head>
+<body>
+
+<form name="editors">
+<ul id="list">
+<li name="editor_container1" id="editor_container1"><textarea name='editor[]' id='editor1' rows='4' cols='30'></textarea></li>
+</ul>
+</form>
+</body>
+</html>

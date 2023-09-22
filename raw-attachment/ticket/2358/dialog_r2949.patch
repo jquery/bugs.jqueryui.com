@@ -1,0 +1,43 @@
+Index: ../jquery/1.7.2/ui/ui.dialog.js
+===================================================================
+--- ../jquery/1.7.2/ui/ui.dialog.js	(revision 2949)
++++ ../jquery/1.7.2/ui/ui.dialog.js	(working copy)
+@@ -169,6 +169,21 @@
+ 			})
+ 			: self.uiDialog.hide() && self._trigger('close', event));
+ 
++    if ( !!this.options.hide && !!this.options.hide.effect ) {
++      this.options.hide.effect == "fade" ? 
++        this.uiDialog.fadeOut(this.options.hide.speed, function() {
++          self._trigger('close', event);
++        })
++        : this.uiDialog.hide(this.options.hide.effect,this.options.hide.options,this.options.hide.speed, function() {
++          self._trigger('close', event);
++        });
++    } else {
++      this.options.hide == "fade" ?
++        this.uiDialog.fadeOut() :
++        this.uiDialog.hide();
++      self._trigger('close', event);
++    }
++
+ 		$.ui.dialog.overlay.resize();
+ 
+ 		self._isOpen = false;
+@@ -221,7 +236,15 @@
+ 		(uiDialog.next().length && uiDialog.appendTo('body'));
+ 		this._size();
+ 		this._position(options.position);
+-		uiDialog.show(options.show);
++    if ( !!this.options.show && !!this.options.show.effect ) {
++      this.options.show.effect == "fade" ?
++        this.uiDialog.fadeIn(this.options.show.speed) : 
++        this.uiDialog.show(this.options.show.effect,this.options.show.options,this.options.show.speed);
++    } else {
++      this.options.show == "fade" ? 
++        this.uiDialog.fadeIn() : 
++        this.uiDialog.show(this.options.show);
++    }
+ 		this.moveToTop(true);
+ 
+ 		// prevent tabbing out of modal dialogs

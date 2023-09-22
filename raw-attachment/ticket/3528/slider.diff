@@ -1,0 +1,55 @@
+Index: ui.slider.js
+===================================================================
+--- ui.slider.js	(revision 847)
++++ ui.slider.js	(working copy)
+@@ -22,6 +22,7 @@
+ 	plugins: {},
+ 	ui: function(e) {
+ 		return {
++			instance: this,
+ 			options: this.options,
+ 			handle: this.currentHandle,
+ 			value: this.options.axis != "both" || !this.options.axis ? Math.round(this.value(null,this.options.axis == "vertical" ? "y" : "x")) : {
+@@ -31,9 +32,11 @@
+ 			range: this._getRange()
+ 		};
+ 	},
+-	_propagate: function(n,e) {
+-		$.ui.plugin.call(this, n, [e, this.ui()]);
+-		this.element.triggerHandler(n == "slide" ? n : "slide"+n, [e, this.ui()], this.options[n]);
++	_propagate: function(n,e,extra) {
++		e = e  || $.event.fix({ type: n, target: this.element[0] });
++		extra = $.extend(this.ui(), extra);
++		$.ui.plugin.call(this, n, [e, extra]);
++		this.element.triggerHandler(n == "slide" ? n : "slide"+n, [e, extra], this.options[n]);
+ 	},
+ 	destroy: function() {
+ 		
+@@ -365,7 +368,7 @@
+ 		return false;
+ 	},
+ 	
+-	moveTo: function(value, handle, noPropagation) {
++	moveTo: function(value, handle, callerInfo) {
+ 		
+ 		var o = this.options;
+ 		
+@@ -433,12 +436,12 @@
+ 			y: Math.round(this._convertValue(y, "y")) || 0
+ 		};
+ 		
+-		if (!noPropagation) {
+-			this._propagate('start', null);
+-			this._propagate("slide", null);
+-			this._propagate('stop', null);
+-			this._propagate('change', null);
+-		}
++		
++		this._propagate('start', null, {callerInfo: callerInfo});
++		this._propagate("slide", null, {callerInfo: callerInfo});
++		this._propagate('stop', null, {callerInfo: callerInfo});
++		this._propagate('change', null, {callerInfo: callerInfo});
++		
+ 	}
+ });
+ 

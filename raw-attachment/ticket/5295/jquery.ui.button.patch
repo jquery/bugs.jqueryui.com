@@ -1,0 +1,24 @@
+Index: ui/jquery.ui.button.js
+===================================================================
+--- ui/jquery.ui.button.js	(revision 3871)
++++ ui/jquery.ui.button.js	(working copy)
+@@ -54,9 +54,6 @@
+ 				}
+ 			})
+ 			.bind( "mouseleave.button", function() {
+-				if ( options.disabled ) {
+-					return;
+-				}
+ 				$( this ).removeClass( hoverClass );
+ 			})
+ 			.bind( "focus.button", function() {
+@@ -118,9 +115,6 @@
+ 					});
+ 				})
+ 				.bind( "mouseup.button", function() {
+-					if ( options.disabled ) {
+-						return;
+-					}
+ 					$( this ).removeClass( "ui-state-active" );
+ 				})
+ 				.bind( "keydown.button", function(event) {

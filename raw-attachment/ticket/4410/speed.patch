@@ -1,0 +1,24 @@
+Index: ui/ui.sortable.js
+===================================================================
+--- ui/ui.sortable.js	(revision 2391)
++++ ui/ui.sortable.js	(working copy)
+@@ -52,9 +52,6 @@
+ 
+ 		if(this.options.disabled || this.options.type == 'static') return false;
+ 
+-		//We have to refresh the items data once first
+-		this._refreshItems(event);
+-
+ 		//Find out if the clicked node (or one of its parents) is a actual item in this.items
+ 		var currentItem = null, self = this, nodes = $(event.target).parents().each(function() {
+ 			if($.data(this, 'sortable-item') == self) {
+@@ -83,7 +80,8 @@
+ 		var o = this.options, self = this;
+ 		this.currentContainer = this;
+ 
+-		//We only need to call refreshPositions, because the refreshItems call has been moved to mouseCapture
++		// moving the refreshItems call to mouseCapture slows things down big time with large lists
++		this._refreshItems(event);
+ 		this.refreshPositions();
+ 
+ 		//Create and append the visible helper

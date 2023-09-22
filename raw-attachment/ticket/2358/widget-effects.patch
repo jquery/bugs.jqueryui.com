@@ -1,0 +1,17 @@
+Index: /Users/sgonzale/Documents/workspace/jQuery UI/ui/effects.core.js
+===================================================================
+--- /Users/sgonzale/Documents/workspace/jQuery UI/ui/effects.core.js	(revision 2756)
++++ /Users/sgonzale/Documents/workspace/jQuery UI/ui/effects.core.js	(working copy)
+@@ -133,6 +133,12 @@
+ 
+ function _normalizeArguments(effect, options, speed, callback) {
+ 	// shift params for method overloading
++	if (typeof effect == 'object') {
++		callback = speed;
++		speed = options;
++		options = effect;
++		effect = options.effect;
++	}
+ 	if ($.isFunction(options)) {
+ 		callback = options;
+ 		speed = null;

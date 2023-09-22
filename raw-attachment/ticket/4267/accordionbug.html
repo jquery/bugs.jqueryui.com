@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	
+	
+	
+<link rel="stylesheet" type="text/css" href="public/css/blue-diamond/ui.all.css" media="print, projection, screen" title="blue-diamond">
+
+ <style type="text/css" media="screen, projection">@media screen {body {font: 62.5% Verdana, sans-serif; margin: 50px;}
+	 	           #dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+		           #dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+		           ul#icons {margin: 0; padding: 0;}
+		           ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+		           ul#icons span.ui-icon {float: left; margin: 0 4px;}}
+@media print {body {font: 62.5% Verdana, sans-serif; margin: 0px;}
+                   #head-divPanelBox {display:none;}
+                   #divLeftBox {display:none;}
+                   #divLeftNavBox {display:none;}
+                   #divRightBox {display:none;}
+                   #divRightNavBox {display:none;}
+                   #divWinLottery {display:inline;}
+                   #divMiddleBox{display:none;}
+                   #divMiddleNavBox{display:none;}
+                   #datepicker{display:none;}
+                   #foot-divPanelBox{display:none;}}
+</style>		
+
+	
+	
+ <script type="text/javascript" src="public/js/jquery-1.3.1.js"></script>
+ <script type="text/javascript" src="public/js/jquery-ui-personalized-1.6rc6.min.js"></script>
+
+
+ <script type="text/javascript">
+         $(document).ready(function(){
+         jQuery('#A-left-nav').accordion({header: "h3", active: 7, icons: {'header': 'ui-icon-extlink','headerSelected': 'ui-icon-arrow-1-s'}, autoheight: true, fillSpace: true, event:  'dblclick'});});
+ </script>
+
+</head>
+
+
+<div id="divBodyBox" style=" position: absolute; left: 8px; right: 8px; top: 78px; bottom: 66px; border: 0px solid #ff9000;">
+
+<div id="divLeftBox" style=" position: absolute; left: 0px; top: 0px; bottom: 0px; border: 0px solid #ff9000; width: 173px;"><div id="A-left-nav" style=" position: absolute; overflow: hidden; left: 1px; top: 154px; bottom: 0px; width: 175px; border: 0px solid #ff9000;">
+	
+<div id="A-left-nav" style=" position: absolute; overflow: hidden; left: 0px; right: 0px; top: 0px; bottom: 0px; border: 0px solid #ff9000;">
+
+<h3><a href="#">Login/LogOut:</a></h3><div><div id="divArcLogin"></div></div><h3><a href="#">MyFunction # 2</a></h3><div><p></p></div><h3><a href="#">MyFunction # 3</a></h3><div><p></p></div><h3><a href="#">MyFunction # 4</a></h3><div><p></p></div><h3><a href="#">Lottery Numbers</a></h3>
+<div><div id="divWinOptions" style="width: 80%">
+
+<select id="WinType" name="WinMenu">
+<option value="6/49" selected="t">6/49</option>
+<option value="Super7">Super7</option>
+</select>
+
+&nbsp;&nbsp;
+
+<select id="WinSets" name="WinMenu" onchange="getWinResults(WinType.value, this.value)">
+<option value="1">1</option><option value="2">2</option>
+<option value="3">3</option>
+<option value="4" selected="t">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+</select><br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<input id="WinSave" type="submit" name="AccButton" value="Save">
+&nbsp;&nbsp;
+<input id="WinClose" type="submit" name="AccButton" value="Close"><br><br>
+</div></div><h3><a href="#">MyFunction # 6</a></h3>
+<div><p></p></div><h3><a href="#">MyFunction # 7</a></h3><div><p></p></div><h3><a href="#"></a></h3><div><p></p></div></div></div></div></div></body>

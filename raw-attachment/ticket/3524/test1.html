@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="jquery-1.2.6.js"></script>
+  
+  <script>
+  $(document).ready(function(){
+    //form dialog
+	$("#test1").click(function(){
+			$("#example").css("display","block");
+			$("#example").dialog(
+				{ 
+					width:450,
+					height:300,
+				    buttons: { 
+				        "Subscribe": function() { 
+				            if (validEmail())
+							{
+								//send form data
+							}
+				        }, 
+				        "Cancel": function() { 
+				            $(this).dialog("close"); 
+				        } 				
+				    } 
+				}	
+			);
+	
+	});
+  });
+  
+  function validEmail()
+  {
+	if ($('#email').val() == "")
+	{
+		$('#emailvalidate').html("<img src='validationicons/bullet_error.png'>This field is required!");
+		return false;
+	}
+	else 
+	{
+		var r = new RegExp("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$","i");
+		if (!r.test($('#email').val()))
+		{
+			$('#emailvalidate').html("<img src='validationicons/bullet_error.png'>Must be a valid email!");
+			return false;
+		}	
+		else
+			$('#emailvalidate').html("<img src='validationicons/accept.png'>");
+	}	
+	return true;
+  }
+  </script>
+<style>
+.validation
+{
+	color:red;
+}
+</style> 
+</head>
+<body>
+  <link rel="stylesheet" href="themes/estrategies/estrategies.css" type="text/css" media="screen" title="Flora (Default)">
+<script type="text/javascript" src="ui/packed/ui.core.packed.js"></script>
+<script type="text/javascript" src="ui/packed/ui.dialog.packed.js"></script>
+<script type="text/javascript" src="ui/packed/ui.draggable.packed.js"></script>
+
+<button id="test1">Show</button>
+<div id="example" title="Subscribe to our newsletter" style="display:none;">
+<table>
+	<tr>
+		<td style="width:130px;">First name:</td>
+		<td><input type="text" id="firstname"></td>
+	</tr>
+	<tr>
+		<td>Last name:</td>
+		<td><input type="text" id="lastname"></td>
+	</tr>
+	<tr>
+		<td>Responding as:</td>
+		<td>
+			<input type="radio" name="responding" value="0">A Parent
+			<input type="radio" name="responding" value="1">A Teacher<br>
+			Other  <input type="text" id="ra" style="display:block;">
+		</td>
+	</tr>	
+	<tr>
+		<td>Email:</td>
+		<td><input type="text" id="email"> <div id="emailvalidate" class="validation"></div></td>
+	</tr>
+</table>
+<div id="sendForm"></div>	
+</div>
+</body>
+</html>

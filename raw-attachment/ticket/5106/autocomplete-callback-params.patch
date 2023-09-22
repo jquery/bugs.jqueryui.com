@@ -1,0 +1,21 @@
+Index: jquery.ui.autocomplete.js
+===================================================================
+--- jquery.ui.autocomplete.js	(revision 3749)
++++ jquery.ui.autocomplete.js	(working copy)
+@@ -219,14 +219,14 @@
+ 			.menu({
+ 				focus: function( event, ui ) {
+ 					var item = ui.item.data( "item.autocomplete" );
+-					if ( false !== self._trigger( "focus", null, { item: item } ) ) {
++					if ( false !== self._trigger( "focus", event, item ) ) {
+ 						// use value to match what will end up in the input
+ 						self.element.val( item.value );
+ 					}
+ 				},
+ 				selected: function( event, ui ) {
+ 					var item = ui.item.data( "item.autocomplete" );
+-					if ( false !== self._trigger( "select", event, { item: item } ) ) {
++					if ( false !== self._trigger( "select", event, item ) ) {
+ 						self.element.val( item.value );
+ 					}
+ 					self.close( event );

@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-pagefind-meta="title">#8498 (date picker show error with same input control with same id in different forms in one html file) - jQuery UI - Bug Tracker</title>
+    <meta name="description" content="Static archive of the old bugs.jqueryui.com Trac site.">
+    
+<link rel="icon" href="/bugs.jqueryui.com/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/bugs.jqueryui.com/favicon.svg">
+<link rel="apple-touch-icon" href="/bugs.jqueryui.com/apple-touch-icon.png">
+    
+    
+    
+    
+    
+    
+    
+    <style>
+      :root{--ticket-info-background-color:#ffd;--ticket-info-border-color:#dd9;--ticket-table-border-color:#eed;--ticket-date-text-color:#996;--ticket-description-title-color:#663;--ticket-changes-text-color:#663;--ticket-changes-box-shadow:#f2f2f2;--ticket-number-color:#844}.ticket-info{position:relative;background-color:var(--ticket-info-background-color);border:1px solid var(--ticket-info-border-color);border-radius:var(--border-radius);padding:.5em .75em;margin:0 auto .5em;width:100%;max-width:580px}.ticket-number{font-size:1.45rem;font-weight:700;margin-right:.5em;text-decoration:none}.ticket-number[href],.ticket-number[href]:visited{color:var(--ticket-number-color)}.ticket-info span{font-weight:700}.missing{color:var(--text-color-link-disabled)}.ticket-title{border-bottom:1px solid #bbb;margin-top:1em;padding-bottom:.25em;font-weight:700;font-size:1.1875rem}.ticket-dates{color:var(--ticket-date-text-color);font-size:.8125rem}.ticket-dates p{margin:0 0 .5em}.ticket-properties{width:100%;text-align:left;font-size:.65rem;border-top:1px solid var(--ticket-table-border-color);margin:0}.ticket-properties th{font-weight:400;width:20%}.ticket-properties td,.ticket-properties th{padding:.25em .5em;border-bottom:1px dashed var(--ticket-table-border-color)}.ticket-info-bottom{padding:.5em}.ticket-description{font-size:.8125rem;margin-top:.5em}.ticket-description h2,.ticket-description h3,.ticket-description h4,.ticket-description h5,.ticket-description h6{text-transform:uppercase;font-weight:400}.ticket-description h1{font-size:1.1rem}.ticket-description h2{font-size:1rem}.ticket-description h3{font-size:.9rem}.ticket-description h4{font-size:.8rem}.ticket-description h5{font-size:.75rem}.ticket-description h6{font-size:.7rem}.ticket-description-title{color:var(--ticket-description-title-color);font-size:.75rem}details{padding:.5em 0;font-size:.8125rem;width:100%;max-width:580px;margin:0 auto}summary{color:var(--text-color-link);font-weight:700;font-size:.875rem;text-decoration:underline;cursor:pointer;text-shadow:.04em .04em var(--text-shadow-color)}.ticket-attachments{font-size:.75em}.ticket-comment-body{width:100%;padding-top:.5em}.ticket-change{margin:1em 0;clear:both}.ticket-change-header{font-size:.875rem;font-weight:700;box-shadow:1.4px 2.8px 5.6px 0 var(--ticket-changes-box-shadow)}.ticket-change-link{font-size:.85em}.ticket-change-content{width:100%}.ticket-changes{background-color:var(--ticket-info-background-color);border:1px solid var(--ticket-info-border-color);border-radius:var(--border-radius);color:var(--ticket-changes-text-color);font-size:.7rem;float:right;clear:right;margin:2em 0 1em 1.5em}.ticket-changes th{text-align:right;font-weight:400;text-transform:capitalize}.ticket-changes td,.ticket-changes th{padding:.25em;vertical-align:baseline}.ticket-changes .change-field-new{font-weight:700}:root{--font-family:'Arial','Helvetica','Verdana','sans-serif';--font-family-header:var(--font-family);--font-family-alternate:Verdana,Arial,'Bitstream Vera Sans',Helvetica,sans-serif;--font-family-monospace:Monaco,Andale Mono WT,Andale Mono,Lucida Console,Lucida Sans Typewriter,DejaVu Sans Mono,Bitstream Vera Sans Mono,Liberation Mono,Nimbus Mono L,Courier New,Courier,monospace}:root{--primary-color:#000000;--secondary-color:#ff9c08;--text-color:#222;--text-color-dark-bg:#fff;--text-color-link:#bb0000;--text-color-link-hover:#f00000;--text-color-link-active:#ff2424;--text-color-link-visited:#cc0000;--text-color-link-disabled:#998;--main-link-hover-bg-color:#eee;--text-shadow-color:#fcfcfc;--button-color:var(--secondary-color);--button-hover-color:#a36200;--button-text-color:#fff;--background-color:#5f5f5f;--main-background-start-color:#1a1a1a;--main-background-end-color:var(--background-color);--top-nav-hover-start-color:#414240;--top-nav-hover-mid-color:#323530;--top-nav-hover-end-color:#292b28;--nav-background-color:var(--primary-color);--secondary-nav-start-color:#2d2d2d;--secondary-nav-end-color:#060606;--secondary-nav-box-shadow:#313131;--content-background-color:#fafafa;--banner-background-color:var(--primary-color);--footer-background-start-color:#000000;--footer-background-end-color:#141400;--footer-text-color-link:#bbb;--nav-text-link-color:white;--nav-hover-link-color:rgba(255, 255, 255, 0.2);--border-color:#e4e4e4;--border-radius:6px;--input-border-color:white;--blockquote-border-color:#b44;--pre-color:#333;--pre-background-color:#fff;--code-color:#600;--code-background-color:var(--content-background-color);--syntax-tab-size:2}*{box-sizing:border-box}body,html{padding:0;margin:0 auto;font-family:var(--font-family);font-size:100%;color:var(--text-color);line-height:1.4}html{overflow-y:auto;background-color:var(--background-color)}html:before{content:'';position:absolute;top:80px;left:0;right:0;height:900px;background:linear-gradient(to bottom,var(--main-background-start-color),var(--main-background-start-color) 25%,var(--main-background-end-color));z-index:-1}.banner{width:100%;height:80px;background-color:var(--banner-background-color);color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.2);text-align:center;font-size:.875rem;padding:0 .25em}.banner a[href],.banner a[href]:visited{color:#5cb5f0}.banner a[href]:hover{color:var(--text-color-link-hover)}.banner a[href]:active{color:var(--text-color-link-active)}th,tr{font-family:var(--font-family-alternate)}.container{width:100%;max-width:956px;margin:0 auto;overflow:hidden}h1,h2,h3,h4,h5,h6{font-family:var(--font-family-header);font-weight:400;margin:0;padding:0;letter-spacing:0}h1,h2,h3,h4{letter-spacing:-.018em}h1{font-size:1.25rem;font-weight:700}h2{font-size:1rem;font-weight:700}.visually-hidden{clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}p{line-height:1.5;margin:.5em 0 1em}p:last-child{margin-bottom:0}ul{margin:0}li{line-height:1.5}hr{width:100%}blockquote{margin:-.3em 0 0 0;border-style:solid;border-width:0 0 0 2px;padding-left:.4em;border-color:var(--blockquote-border-color)}a[href]{color:var(--text-color-link)}a[href]:visited{color:var(--text-color-link-visited)}a[href]:hover{color:var(--text-color-link-hover)}a[href]:active{color:var(--text-color-link-active)}a[aria-disabled=true]{color:var(--text-color-link-disabled)}main{padding:1rem}table{margin:1em 0}table td,table th{padding-right:1em}code,pre{font-family:var(--font-family-monospace)}pre:not([class*=language-]){margin:.5em 0;-moz-tab-size:var(--syntax-tab-size);-o-tab-size:var(--syntax-tab-size);tab-size:var(--syntax-tab-size);-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;width:100%;padding:.25em;font-size:.6875rem;border-radius:var(--border-radius);overflow-x:auto;background:var(--pre-background-color);color:var(--pre-color);border:1px solid #000;text-align:left}code{color:var(--code-color);border:1px solid var(--border-color);border-radius:.25em;padding:0 .3em;background:var(--code-background-color);word-break:break-all}pre[class*=language-] code{color:unset;border:none;border-radius:0;padding:0;background:0 0;word-break:normal}.strikethrough{text-decoration:line-through}header{position:relative;height:95px;display:flex;flex-wrap:wrap;padding:0 1em}.nav{display:flex;flex-direction:column;padding:0;list-style:none}.nav a{display:flex;align-items:center;height:35px;font-size:.75rem;padding:0 1em;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;width:100%}.nav li:not(.active) a:active,.nav li:not(.active) a:hover{background-color:var(--nav-hover-link-color);border-bottom-color:var(--secondary-color)}.nav a,.nav a:active,.nav a:hover,.nav a:visited{color:var(--nav-text-link-color)}.nav a:active{background:linear-gradient(to bottom,var(--secondary-nav-end-color),var(--secondary-nav-start-color))}.nav .active a{border-bottom-color:var(--secondary-color)}#jq-siteLogo{margin-top:1em}#jq-primaryNavigation{padding:0 .5em;background-color:var(--nav-background-color)}#jq-secondaryNavigation{padding:0 .5em;background:linear-gradient(to bottom,var(--secondary-nav-start-color),var(--secondary-nav-end-color));box-shadow:0 -2px 1px var(--secondary-nav-box-shadow),0 2px 1px #000}#jq-secondaryNavigation a{font-size:.8125rem}#jq-content{position:relative;width:100%}.content-nav{font-size:.8125rem;margin:1.2em 0;align-self:flex-end}.content-nav ul{list-style:none}.content-nav li{padding:0 .75em}.content-nav li:not(:last-of-type){border-right:1px solid var(--border-color)}.hamburger-lines{position:relative;width:18px;height:14px;align-self:center}.hamburger-line{width:100%;height:2px;background-color:#fff;transition:opacity .2s ease-in-out,transform .2s ease-in-out}.hamburger-toggle:checked+.hamburger-lines span:first-of-type{transform:rotateZ(45deg) translate(4px,4.5px) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:nth-of-type(2){transform:rotateZ(135deg) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:last-of-type{transform:translateY(-8px) scale(0);opacity:0}.hamburger-toggle:checked~#jq-menus{transform:none;opacity:1}form{gap:.5em}label{font-style:italic;font-size:.8125rem;font-weight:700}input{border:1px solid var(--input-border-color);border-radius:var(--border-radius);height:25px;padding:0 .5em;color:var(--text-color)}button{display:block;border:0;padding:5px 10px;border-radius:var(--border-radius);background:var(--button-color);color:var(--button-text-color);font-size:.875rem;cursor:pointer}button:active,button:hover{background-color:var(--button-hover-color)}button:active{box-shadow:inset 0 0 5px #000}main{padding:1em;gap:1em}main a[href]:active,main a[href]:hover{background-color:var(--main-link-hover-bg-color)}#jq-topnav{gap:.25em}#jq-topnav a{width:100%;display:block;font-family:var(--font-family-alternate);font-size:.625rem;padding:.1em 1.5em;text-decoration:none;border:2px solid var(--border-color);color:#000;box-shadow:0 1px 2px rgba(0,0,0,.5);text-align:center;border-radius:var(--border-radius)}#jq-topnav a:active,#jq-topnav a:hover{color:#fff;border-color:var(--top-nav-hover-end-color)}#jq-topnav a:hover{background:linear-gradient(to bottom,var(--top-nav-hover-start-color),var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-end-color))}#jq-topnav a:active{background:linear-gradient(to bottom,var(--top-nav-hover-end-color),var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-start-color))}footer{background-color:var(--nav-background-color);background:var(--nav-background-color) linear-gradient(to bottom,var(--footer-background-start-color),var(--footer-background-end-color));padding:2em;margin-bottom:2em;color:var(--text-color-dark-bg);border:2px solid transparent;border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius)}footer a[href],footer a[href]:visited{color:var(--footer-text-color-link)}footer a[href]:active,footer a[href]:hover{background-color:var(--main-link-hover-bg-color);color:#000}.flex-row{display:flex;flex-direction:row}.flex-column{display:flex;flex-direction:column}.flex-between-start{justify-content:space-between;align-items:flex-start}.flex-between-center{justify-content:space-between;align-items:center}.flex-start-center{justify-content:flex-start;align-items:center}.flex-end-center{justify-content:flex-end;align-items:center}.flex-center{display:flex;justify-content:center;align-items:center}.items-start{align-items:start}.white-box{background-color:var(--content-background-color);border:1px solid var(--border-color)}a.ext-link .icon{padding-left:15px}@media (max-width:919px){#jq-menus{position:absolute;top:95px;height:calc(100vh - 95px);left:0;right:0;background-color:var(--nav-background-color);z-index:1;transition:transform .2s ease-in-out,opacity .2s ease-in-out;transform:translateX(100%);opacity:0;display:flex;flex-direction:column-reverse;justify-content:flex-end}}@media (min-width:920px){html:before{top:60px}body{background-position-y:60px}.banner{height:60px;font-size:1rem}header{height:125px;padding:0 0 0 2em}#jq-topnav{flex-direction:row;align-self:flex-end;gap:0}#jq-topnav a{width:auto;border-radius:0}#jq-topnav a:first-of-type{border-radius:var(--border-radius) 0 0 var(--border-radius)}#jq-topnav a:last-of-type{border-radius:0 var(--border-radius) var(--border-radius) 0}.nav{flex-direction:row}.nav a{width:auto}#jq-primaryNavigation a{height:27px;align-self:flex-end}#jq-secondaryNavigation{border-radius:var(--border-radius);margin-top:2em}#jq-siteLogo{align-self:flex-end}main{flex-grow:1;min-height:520px;font-size:.75rem}.hamburger-lines{display:none}.content-nav{margin-top:.4em}}:root{--pagefind-ui-background-color:#fff}#search{width:100%;position:relative;min-height:25px}.pagefind-ui__search-input{width:100%;border:1px solid var(--border-color)}.pagefind-ui__search-clear{display:inline-block;position:absolute;width:25px;height:25px;right:15px;top:0;padding:0 0 0 25px;overflow:hidden;background-color:transparent;z-index:1}.pagefind-ui__search-clear:active,.pagefind-ui__search-clear:hover{background-color:rgba(0,0,0,.2)}.pagefind-ui__search-clear:after{content:'×';position:absolute;top:0;left:0;right:0;bottom:0;font-weight:700;font-size:1.5rem;line-height:26px;text-align:center;color:var(--text-color);opacity:1}.pagefind-ui__hidden{display:none}.pagefind-ui__suppressed{display:none}.pagefind-ui__drawer{position:absolute;top:100%;left:0;right:0;height:350px;background-color:var(--pagefind-ui-background-color);border:1px solid var(--border-color);border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius);box-shadow:0 2px 4px rgba(0,0,0,.2);padding:10px;color:var(--text-color);font-size:.875rem;overflow-y:auto;word-break:break-word;z-index:1}.pagefind-ui__results-area{width:100%}.pagefind-ui__results{padding-left:20px}.pagefind-ui__result{margin-bottom:10px;vertical-align:top}.pagefind-ui__result-thumb{display:flex;flex-direction:column}.pagefind-ui__result-thumb .pagefind-ui__result-image{max-width:150px}.pagefind-ui__message{font-weight:700;text-transform:uppercase;font-size:1rem}.pagefind-ui__button{width:100%;padding:10px;margin-top:2em}@media(min-width:920px){#search{width:auto}.pagefind-ui__search-input{width:300px}.pagefind-ui__search-clear{right:auto;left:270px}.pagefind-ui__drawer{left:-200px;height:500px;padding:15px}}body{background:url(/bugs.jqueryui.com/img/body_bg.jpg) no-repeat center 80px}a.ext-link .icon{background:url(/bugs.jqueryui.com/img/extlink.png) 0 50% no-repeat}
+    </style>
+    
+  </head>
+  <body>
+    <div class="banner flex-center">
+      <span>jQuery UI issues have moved to <a href="https://github.com/jquery/jquery-ui/issues">GitHub</a>. This site is now a static archive of the old <a href="https://trac.edgewall.org/">Trac</a> bugs site. <br>Some functions and pages are no longer available.</span>
+    </div>
+    <div class="container">
+      <a href="#skip" class="visually-hidden">Skip to main content</a>
+      <header class="flex-column">
+        <div class="flex-row flex-between-start">
+          <a id="jq-siteLogo" href="/bugs.jqueryui.com/" title="jQuery UI Bugs Home">
+            <img src="/bugs.jqueryui.com/img/logo.svg" width="253" alt="jQuery UI">
+          </a>
+          <input class="hamburger-toggle visually-hidden" id="jq-menutoggle" type="checkbox">
+          <label aria-label="Toggle Menu" for="jq-menutoggle" class="hamburger-lines flex-column flex-between-center">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </label>
+          <div id="jq-menus" class="flex-column">
+            <nav id="jq-primaryNavigation">
+              <h2 class="visually-hidden">jQuery UI sites navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-jquery">
+                  <a href="https://jquery.com/" title="jQuery Home">jQuery</a>
+                </li>
+                <li class="jq-plugins">
+                  <a href="https://plugins.jquery.com/" title="jQuery Plugins">Plugins</a>
+                </li>
+                <li class="jq-ui active">
+                  <a href="https://jqueryui.com/" title="jQuery UI">UI</a>
+                </li>
+                <li class="jq-meetup">
+                  <a href="https://meetups.jquery.com/" title="jQuery Meetups">Meetups</a>
+                </li>
+                <li class="jq-forum">
+                  <a href="https://forum.jquery.com/" title="jQuery Forum">Forum</a>
+                </li>
+                <li class="jq-blog">
+                  <a href="https://blog.jquery.com/" title="jQuery Blog">Blog</a>
+                </li>
+                <li class="jq-about">
+                  <a href="https://openjsf.org" title="About jQuery and OpenJS">About</a>
+                </li>
+                <li class="jq-donate">
+                  <a href="https://openjsf.org/about/project-funding-opportunities/" title="Donate to OpenJS">Donate</a>
+                </li>
+              </ul>
+            </nav>
+            <nav id="jq-secondaryNavigation">
+              <h2 class="visually-hidden">jQuery UI navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-download">
+                  <a href="https://jqueryui.com/download/">
+                    Download
+                  </a>
+                </li>
+                <li class="jq-documentation">
+                  <a href="https://jqueryui.com/demos/">
+                    Demos &amp; Documentation
+                  </a>
+                </li>
+                <li class="jq-themes">
+                  <a href="https://jqueryui.com/themeroller/">
+                    Themes
+                  </a>
+                </li>
+                <li class="jq-development">
+                  <a href="https://jqueryui.com/development/">
+                    Development
+                  </a>
+                </li>
+                <li class="jq-support">
+                  <a href="https://jqueryui.com/support/">
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main id="skip" class="flex-column white-box">
+        <h2 class="visually-hidden">Search and Top Navigation</h2>
+        <div class="flex-row flex-end-center">
+          <div id="search"></div>
+        </div>
+        <nav id="jq-topnav" class="flex-column flex-start-center">
+          <a href="/bugs.jqueryui.com/newticket">New Ticket</a>
+          <a href="/bugs.jqueryui.com/report">View Tickets</a>
+          <a href="/bugs.jqueryui.com/ticketgraph">Ticket Graph</a>
+          <a href="/bugs.jqueryui.com/roadmap">Roadmap</a>
+          <a href="/bugs.jqueryui.com/timeline">Recent Changes</a>
+        </nav>
+        <div id="jq-content" class="flex-column">
+          
+
+<div class="flex-column" data-pagefind-body="">
+  
+
+  <nav class="content-nav">
+    <ul class="flex-row">
+      
+        <li>
+          <a href="/bugs.jqueryui.com/ticket/8497/">← Previous Ticket</a>
+        
+      
+      
+        </li><li>
+          <a href="/bugs.jqueryui.com/ticket/8499/">Next Ticket →</a>
+        </li>
+      
+    </ul>
+  </nav>
+
+
+<div class="ticket-info">
+  <div class="flex-row flex-between-start">
+    <h2>
+      <a href="." class="ticket-number">#8498</a>
+      <span class="ticket-status">closed</span>
+      <span class="ticket-type">bug</span>
+      <span class="ticket-resolution">(notabug)</span>
+    </h2>
+
+    <div class="ticket-dates">
+      <p>Opened August 14, 2012 04:59PM UTC</p>
+      
+        <p>Closed August 14, 2012 08:44PM UTC</p>
+      
+      
+        <p>Last modified August 15, 2012 12:01PM UTC</p>
+      
+    </div>
+  </div>
+
+  <h1 class="ticket-title">date picker show error with same input control with same id in different forms in one html file</h1>
+
+  <table class="ticket-properties">
+    <tr>
+      <th>Reported by:</th>
+      <td>
+        dvinayaksutar@gmail.com
+      </td>
+      <th>Owned by:</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>
+        Priority:
+      </th>
+      <td>
+        minor
+      </td>
+      
+        <th class="missing">Milestone:</th>
+      
+      <td>
+        <a href="/bugs.jqueryui.com/milestone/1.9.0">1.9.0</a>
+      </td>
+    </tr>
+    <tr>
+      <th>Component:</th>
+      <td>ui.datepicker</td>
+      
+        <th>Version:</th>
+      
+      <td>1.8.22</td>
+    </tr>
+    <tr>
+      
+        <th class="missing">Keywords:</th>
+      
+      <td></td>
+      
+        <th class="missing">Cc:</th>
+      
+      <td></td>
+    </tr>
+    <tr>
+      <th class="missing">
+        Blocked by:
+      </th>
+      <td></td>
+      <th class="missing">
+        Blocking:
+      </th>
+      <td></td>
+    </tr>
+  </table>
+  <div class="ticket-info-bottom">
+    <h5 class="ticket-description-title">Description</h5>
+    <div class="ticket-description"><p>date picker show error with same input control with same id in different forms in one html file</p><p>for first input it shows correct value but for second input control it updates value of first input control</p><p>sample html file </p><p>&lt;!DOCTYPE html PUBLIC "-<em>W3C</em>DTD XHTML 1.0 Transitional<em>EN" "http:</em>www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</p><p>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;</p><p>&lt;head&gt;</p><p>    &lt;title&gt;&lt;/title&gt;</p><p>    &lt;script src="../jScr/jquery-min.js" type="text/javascript"&gt;&lt;/script&gt;</p><p>    &lt;script src="../jScr/jquery-ui-min.js" type="text/javascript"&gt;&lt;/script&gt;</p><p>    &lt;script src="../jScr/jquery-ui-timepicker-addon.js" type="text/javascript"&gt;&lt;/script&gt;</p><p>    &lt;script type="text/javascript" language="javascript"&gt;</p><p>        $(document).ready(function () {</p><p>            $('.dt').datetimepicker({ dateFormat: 'dd/mm/yy', timeFormat: 'hh:mm' }).attr('size', 17); //.empty_value($.get(wSer + "/GetDate", { format: '1' }, function (data) { alert(data); $(this).val(data); }), false, '');</p><p>        });</p><p>    &lt;/script&gt;</p><p>&lt;/head&gt;</p><p>&lt;body&gt;</p><p>    &lt;form action=""&gt;</p><p>        &lt;input id="test" type="text" class="dt" /&gt;</p><p>    &lt;/form&gt;</p><p>    &lt;form action=""&gt;</p><p>        &lt;input id="test" type="text" class="dt" /&gt;</p><p>    &lt;/form&gt;</p><p>&lt;/body&gt;</p><p>&lt;/html&gt;</p></div>
+  </div>
+</div>
+
+<details>
+  <summary class="ticket-details-summary">Attachments (0)</summary>
+
+  <ul class="ticket-attachments">
+    
+  </ul>
+</details>
+
+<details open="">
+  <summary class="ticket-details-summary">Change History (4)</summary>
+  
+    <div class="ticket-change flex-column" id="comment:1">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed August 14, 2012 05:02PM UTC by <span class="author">dvinayaksutar@gmail.com</span></span>
+        <a class="ticket-change-link" href="#comment:1">comment:1</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>please check this code...</p><p>&lt;!DOCTYPE html PUBLIC "-<em>W3C</em>DTD XHTML 1.0 Transitional<em>EN" "http:</em>www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</p><p>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;</p><p>&lt;head&gt;</p><p>    &lt;title&gt;&lt;/title&gt;</p><p>    &lt;script src="../jScr/jquery-min.js" type="text/javascript"&gt;&lt;/script&gt;</p><p>    &lt;script src="../jScr/jquery-ui-min.js" type="text/javascript"&gt;&lt;/script&gt;</p><p>    &lt;script src="../jScr/jquery-ui-timepicker-addon.js" type="text/javascript"&gt;&lt;/script&gt;</p><p>    &lt;script type="text/javascript" language="javascript"&gt;</p><p>        $(document).ready(function () {</p><p>            $('.dt').datetimepicker({ dateFormat: 'dd/mm/yy', timeFormat: 'hh:mm' }).attr('size', 17);         });</p><p>    &lt;/script&gt;</p><p>&lt;/head&gt;</p><p>&lt;body&gt;</p><p>    &lt;form action=""&gt;</p><p>        &lt;input id="test" type="text" class="dt" /&gt;</p><p>    &lt;/form&gt;</p><p>    &lt;form action=""&gt;</p><p>        &lt;input id="test" type="text" class="dt" /&gt;</p><p>    &lt;/form&gt;</p><p>&lt;/body&gt;</p><p>&lt;/html&gt;</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:2">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed August 14, 2012 08:44PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:2">comment:2</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>component:</th>
+                  <td>
+                    
+                      <span class="change-field-old">ui.core</span> → <span class="change-field-new">ui.datepicker</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>resolution:</th>
+                  <td>
+                    
+                      <span class="change-field-new">→ invalid</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>status:</th>
+                  <td>
+                    
+                      <span class="change-field-old">new</span> → <span class="change-field-new">closed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>That's not valid HTML.</p>
+            </div>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:3">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed August 15, 2012 08:12AM UTC by <span class="author">dvinayaksutar@gmail.com</span></span>
+        <a class="ticket-change-link" href="#comment:3">comment:3</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Replying to [comment:2 scott.gonzalez]:</p><blockquote> That's not valid HTML.</blockquote><p>Can you please tell me why & where?</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:4">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed August 15, 2012 12:01PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:4">comment:4</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>IDs must be unique. Please use a support forum for help.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</details>
+</div>
+        </div>
+      </main>
+      <footer>
+        Copyright &copy; 2023
+        <a href="https://openjsf.org">The OpenJS Foundation</a>
+      </footer>
+    </div>
+    <script src="/bugs.jqueryui.com/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({
+          element: "#search",
+          showImages: false,
+          translations: {
+            placeholder: 'Search tickets',
+            zero_results: 'No matches found.'
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.js"></script>
+</head>
+<body>
+<div id="ac">
+<h3>One</h3>
+<div>
+Lorem Ipsum Blah Blah Blah
+</div>
+<h3>Two</h3>
+<div>
+Lorem Ipsum Blah Blah Blah
+</div>
+<h3>Three</h3>
+<div>
+Lorem Ipsum Blah Blah Blah
+</div>
+</div>
+<script>
+	$("#ac").accordion();
+	$("#ac").hide();
+	$("#ac").accordion('activate',2);
+	$("#ac").show();
+</script>
+</body>
+</html>

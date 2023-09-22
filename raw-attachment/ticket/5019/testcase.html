@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Test Case</title>
+</head>
+
+<body>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function() {
+
+		// utility method to create and select elements
+		$.fn.attach = function(html) {
+			return this.append(html).children(":last");
+		};
+
+		$('<ol class="selection" />').
+			attach("<li />").text("foo").end().
+			attach("<li />").text("bar").end().
+			attach("<li />").text("baz").end().
+			sortable(). // XXX: applied before element is part of the DOM
+			appendTo(document.body);
+
+		var options = {
+			connectToSortable: ".selection",
+			helper: "clone"
+		};
+		$('<ol />').
+			attach("<li />").text("alpha").draggable(options).end().
+			attach("<li />").text("bravo").draggable(options).end().
+			attach("<li />").text("charlie").draggable(options).end().
+			attach("<li />").text("delta").draggable(options).end().
+			appendTo(document.body);
+
+		});
+	</script>
+</body>
+
+</html>

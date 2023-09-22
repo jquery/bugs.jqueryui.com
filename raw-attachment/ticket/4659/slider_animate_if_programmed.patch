@@ -1,0 +1,19 @@
+--- ui.slider.js.orig	2009-07-08 15:50:57.000000000 +1000
++++ ui.slider.js	2009-07-08 16:12:44.000000000 +1000
+@@ -400,7 +400,7 @@
+ 	value: function(newValue) {
+ 
+ 		if (arguments.length) {
+-			this._setData("value", newValue);
++			this._setData("value", newValue, this.options.animate_if_programmed);
+ 			this._change(null, 0);
+ 		}
+ 
+@@ -543,6 +543,7 @@
+ 	eventPrefix: "slide",
+ 	defaults: {
+ 		animate: false,
++    	        animate_if_programmed: false,
+ 		delay: 0,
+ 		distance: 0,
+ 		max: 100,

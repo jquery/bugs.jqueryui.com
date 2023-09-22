@@ -1,0 +1,34 @@
+Index: ui.core.js
+===================================================================
+--- ui.core.js	(Revision 668)
++++ ui.core.js	(Arbeitskopie)
+@@ -283,6 +283,9 @@
+ 			.unbind('selectstart.ui');
+ 	},
+ 	hasScroll: function(e, a) {
++		// We can assume, that the element has no scrollbars if it's overflow is set to hidden
++		if ($(e).css('overflow') == 'hidden') { return false; }
++
+ 		var scroll = (a && a == 'left') ? 'scrollLeft' : 'scrollTop',
+ 			has = false;
+ 		
+Index: ui.draggable.js
+===================================================================
+--- ui.draggable.js	(Revision 668)
++++ ui.draggable.js	(Arbeitskopie)
+@@ -118,12 +118,13 @@
+ 			if(!(/^(document|window|parent)$/).test(o.containment)) {
+ 				var ce = $(o.containment)[0];
+ 				var co = $(o.containment).offset();
++				var over = ($(ce).css("overflow") != 'hidden');
+ 				
+ 				this.containment = [
+ 					co.left + (parseInt($(ce).css("borderLeftWidth"),10) || 0) - this.offset.relative.left - this.offset.parent.left,
+ 					co.top + (parseInt($(ce).css("borderTopWidth"),10) || 0) - this.offset.relative.top - this.offset.parent.top,
+-					co.left+Math.max(ce.scrollWidth,ce.offsetWidth) - (parseInt($(ce).css("borderLeftWidth"),10) || 0) - this.offset.relative.left - this.offset.parent.left - this.helperProportions.width - this.margins.left - (parseInt(this.element.css("marginRight"),10) || 0),
+-					co.top+Math.max(ce.scrollHeight,ce.offsetHeight) - (parseInt($(ce).css("borderTopWidth"),10) || 0) - this.offset.relative.top - this.offset.parent.top - this.helperProportions.height - this.margins.top - (parseInt(this.element.css("marginBottom"),10) || 0)
++					co.left+( over ? Math.max(ce.scrollWidth,ce.offsetWidth) : ce.offsetWidth) - (parseInt($(ce).css("borderLeftWidth"),10) || 0) - this.offset.relative.left - this.offset.parent.left - this.helperProportions.width - this.margins.left - (parseInt(this.element.css("marginRight"),10) || 0),
++					co.top+( over ? Math.max(ce.scrollHeight,ce.offsetHeight) : ce.offsetHeight) - (parseInt($(ce).css("borderTopWidth"),10) || 0) - this.offset.relative.top - this.offset.parent.top - this.helperProportions.height - this.margins.top - (parseInt(this.element.css("marginBottom"),10) || 0)
+ 				];
+ 			}
+ 		}

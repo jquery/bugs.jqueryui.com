@@ -1,0 +1,43 @@
+--- ui.selectable.js	2009-04-10 17:18:09.000000000 -0500
++++ ui.selectable.js.multiselect	2009-04-10 17:31:52.000000000 -0500
+@@ -48,9 +48,9 @@ $.widget("ui.selectable", $.extend({}, $
+ 
+ 		this._mouseInit();
+ 
+-		this.helper = $(document.createElement('div'))
+-			.css({border:'1px dotted black'})
+-			.addClass("ui-selectable-helper");
++		this.helper = $(document.createElement('div')).addClass("ui-selectable-helper");
++		if (this.options.multiselect)
++			this.helper.css({border:'1px dotted black'});
+ 	},
+ 
+ 	destroy: function() {
+@@ -93,7 +93,7 @@ $.widget("ui.selectable", $.extend({}, $
+ 		this.selectees.filter('.ui-selected').each(function() {
+ 			var selectee = $.data(this, "selectable-item");
+ 			selectee.startselected = true;
+-			if (!event.metaKey) {
++			if (!event.metaKey || !options.multiselect) {
+ 				selectee.$element.removeClass('ui-selected');
+ 				selectee.selected = false;
+ 				selectee.$element.addClass('ui-unselecting');
+@@ -126,7 +126,7 @@ $.widget("ui.selectable", $.extend({}, $
+ 		var self = this;
+ 		this.dragged = true;
+ 
+-		if (this.options.disabled)
++		if (this.options.disabled || !this.options.multiselect)
+ 			return;
+ 
+ 		var options = this.options;
+@@ -250,7 +250,8 @@ $.extend($.ui.selectable, {
+ 		delay: 0,
+ 		distance: 0,
+ 		filter: '*',
+-		tolerance: 'touch'
++		tolerance: 'touch',
++		multiselect: true
+ 	}
+ });
+ 

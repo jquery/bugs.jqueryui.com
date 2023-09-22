@@ -1,0 +1,10 @@
+--- a/jquery.ui.autocomplete.js
++++ b/jquery.ui.autocomplete.js
+@@ -291,7 +291,7 @@ $.widget( "ui.autocomplete", {
+        _renderItem: function( ul, item) {
+                return $( "<li></li>" )
+                        .data( "item.autocomplete", item )
+-                       .append( "<a>" + item.label + "</a>" )
++                       .append( $("<a/>").text(item.label) )
+                        .appendTo( ul );
+        },

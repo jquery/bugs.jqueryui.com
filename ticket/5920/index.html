@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-pagefind-meta="title">#5920 (oversize draggable) - jQuery UI - Bug Tracker</title>
+    <meta name="description" content="Static archive of the old bugs.jqueryui.com Trac site.">
+    
+<link rel="icon" href="/bugs.jqueryui.com/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/bugs.jqueryui.com/favicon.svg">
+<link rel="apple-touch-icon" href="/bugs.jqueryui.com/apple-touch-icon.png">
+    
+    
+    
+    
+    
+    
+    
+    <style>
+      :root{--ticket-info-background-color:#ffd;--ticket-info-border-color:#dd9;--ticket-table-border-color:#eed;--ticket-date-text-color:#996;--ticket-description-title-color:#663;--ticket-changes-text-color:#663;--ticket-changes-box-shadow:#f2f2f2;--ticket-number-color:#844}.ticket-info{position:relative;background-color:var(--ticket-info-background-color);border:1px solid var(--ticket-info-border-color);border-radius:var(--border-radius);padding:.5em .75em;margin:0 auto .5em;width:100%;max-width:580px}.ticket-number{font-size:1.45rem;font-weight:700;margin-right:.5em;text-decoration:none}.ticket-number[href],.ticket-number[href]:visited{color:var(--ticket-number-color)}.ticket-info span{font-weight:700}.missing{color:var(--text-color-link-disabled)}.ticket-title{border-bottom:1px solid #bbb;margin-top:1em;padding-bottom:.25em;font-weight:700;font-size:1.1875rem}.ticket-dates{color:var(--ticket-date-text-color);font-size:.8125rem}.ticket-dates p{margin:0 0 .5em}.ticket-properties{width:100%;text-align:left;font-size:.65rem;border-top:1px solid var(--ticket-table-border-color);margin:0}.ticket-properties th{font-weight:400;width:20%}.ticket-properties td,.ticket-properties th{padding:.25em .5em;border-bottom:1px dashed var(--ticket-table-border-color)}.ticket-info-bottom{padding:.5em}.ticket-description{font-size:.8125rem;margin-top:.5em}.ticket-description h2,.ticket-description h3,.ticket-description h4,.ticket-description h5,.ticket-description h6{text-transform:uppercase;font-weight:400}.ticket-description h1{font-size:1.1rem}.ticket-description h2{font-size:1rem}.ticket-description h3{font-size:.9rem}.ticket-description h4{font-size:.8rem}.ticket-description h5{font-size:.75rem}.ticket-description h6{font-size:.7rem}.ticket-description-title{color:var(--ticket-description-title-color);font-size:.75rem}details{padding:.5em 0;font-size:.8125rem;width:100%;max-width:580px;margin:0 auto}summary{color:var(--text-color-link);font-weight:700;font-size:.875rem;text-decoration:underline;cursor:pointer;text-shadow:.04em .04em var(--text-shadow-color)}.ticket-attachments{font-size:.75em}.ticket-comment-body{width:100%;padding-top:.5em}.ticket-change{margin:1em 0;clear:both}.ticket-change-header{font-size:.875rem;font-weight:700;box-shadow:1.4px 2.8px 5.6px 0 var(--ticket-changes-box-shadow)}.ticket-change-link{font-size:.85em}.ticket-change-content{width:100%}.ticket-changes{background-color:var(--ticket-info-background-color);border:1px solid var(--ticket-info-border-color);border-radius:var(--border-radius);color:var(--ticket-changes-text-color);font-size:.7rem;float:right;clear:right;margin:2em 0 1em 1.5em}.ticket-changes th{text-align:right;font-weight:400;text-transform:capitalize}.ticket-changes td,.ticket-changes th{padding:.25em;vertical-align:baseline}.ticket-changes .change-field-new{font-weight:700}:root{--font-family:'Arial','Helvetica','Verdana','sans-serif';--font-family-header:var(--font-family);--font-family-alternate:Verdana,Arial,'Bitstream Vera Sans',Helvetica,sans-serif;--font-family-monospace:Monaco,Andale Mono WT,Andale Mono,Lucida Console,Lucida Sans Typewriter,DejaVu Sans Mono,Bitstream Vera Sans Mono,Liberation Mono,Nimbus Mono L,Courier New,Courier,monospace}:root{--primary-color:#000000;--secondary-color:#ff9c08;--text-color:#222;--text-color-dark-bg:#fff;--text-color-link:#bb0000;--text-color-link-hover:#f00000;--text-color-link-active:#ff2424;--text-color-link-visited:#cc0000;--text-color-link-disabled:#998;--main-link-hover-bg-color:#eee;--text-shadow-color:#fcfcfc;--button-color:var(--secondary-color);--button-hover-color:#a36200;--button-text-color:#fff;--background-color:#5f5f5f;--main-background-start-color:#1a1a1a;--main-background-end-color:var(--background-color);--top-nav-hover-start-color:#414240;--top-nav-hover-mid-color:#323530;--top-nav-hover-end-color:#292b28;--nav-background-color:var(--primary-color);--secondary-nav-start-color:#2d2d2d;--secondary-nav-end-color:#060606;--secondary-nav-box-shadow:#313131;--content-background-color:#fafafa;--banner-background-color:var(--primary-color);--footer-background-start-color:#000000;--footer-background-end-color:#141400;--footer-text-color-link:#bbb;--nav-text-link-color:white;--nav-hover-link-color:rgba(255, 255, 255, 0.2);--border-color:#e4e4e4;--border-radius:6px;--input-border-color:white;--blockquote-border-color:#b44;--pre-color:#333;--pre-background-color:#fff;--code-color:#600;--code-background-color:var(--content-background-color);--syntax-tab-size:2}*{box-sizing:border-box}body,html{padding:0;margin:0 auto;font-family:var(--font-family);font-size:100%;color:var(--text-color);line-height:1.4}html{overflow-y:auto;background-color:var(--background-color)}html:before{content:'';position:absolute;top:80px;left:0;right:0;height:900px;background:linear-gradient(to bottom,var(--main-background-start-color),var(--main-background-start-color) 25%,var(--main-background-end-color));z-index:-1}.banner{width:100%;height:80px;background-color:var(--banner-background-color);color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.2);text-align:center;font-size:.875rem;padding:0 .25em}.banner a[href],.banner a[href]:visited{color:#5cb5f0}.banner a[href]:hover{color:var(--text-color-link-hover)}.banner a[href]:active{color:var(--text-color-link-active)}th,tr{font-family:var(--font-family-alternate)}.container{width:100%;max-width:956px;margin:0 auto;overflow:hidden}h1,h2,h3,h4,h5,h6{font-family:var(--font-family-header);font-weight:400;margin:0;padding:0;letter-spacing:0}h1,h2,h3,h4{letter-spacing:-.018em}h1{font-size:1.25rem;font-weight:700}h2{font-size:1rem;font-weight:700}.visually-hidden{clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}p{line-height:1.5;margin:.5em 0 1em}p:last-child{margin-bottom:0}ul{margin:0}li{line-height:1.5}hr{width:100%}blockquote{margin:-.3em 0 0 0;border-style:solid;border-width:0 0 0 2px;padding-left:.4em;border-color:var(--blockquote-border-color)}a[href]{color:var(--text-color-link)}a[href]:visited{color:var(--text-color-link-visited)}a[href]:hover{color:var(--text-color-link-hover)}a[href]:active{color:var(--text-color-link-active)}a[aria-disabled=true]{color:var(--text-color-link-disabled)}main{padding:1rem}table{margin:1em 0}table td,table th{padding-right:1em}code,pre{font-family:var(--font-family-monospace)}pre:not([class*=language-]){margin:.5em 0;-moz-tab-size:var(--syntax-tab-size);-o-tab-size:var(--syntax-tab-size);tab-size:var(--syntax-tab-size);-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;width:100%;padding:.25em;font-size:.6875rem;border-radius:var(--border-radius);overflow-x:auto;background:var(--pre-background-color);color:var(--pre-color);border:1px solid #000;text-align:left}code{color:var(--code-color);border:1px solid var(--border-color);border-radius:.25em;padding:0 .3em;background:var(--code-background-color);word-break:break-all}pre[class*=language-] code{color:unset;border:none;border-radius:0;padding:0;background:0 0;word-break:normal}.strikethrough{text-decoration:line-through}header{position:relative;height:95px;display:flex;flex-wrap:wrap;padding:0 1em}.nav{display:flex;flex-direction:column;padding:0;list-style:none}.nav a{display:flex;align-items:center;height:35px;font-size:.75rem;padding:0 1em;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;width:100%}.nav li:not(.active) a:active,.nav li:not(.active) a:hover{background-color:var(--nav-hover-link-color);border-bottom-color:var(--secondary-color)}.nav a,.nav a:active,.nav a:hover,.nav a:visited{color:var(--nav-text-link-color)}.nav a:active{background:linear-gradient(to bottom,var(--secondary-nav-end-color),var(--secondary-nav-start-color))}.nav .active a{border-bottom-color:var(--secondary-color)}#jq-siteLogo{margin-top:1em}#jq-primaryNavigation{padding:0 .5em;background-color:var(--nav-background-color)}#jq-secondaryNavigation{padding:0 .5em;background:linear-gradient(to bottom,var(--secondary-nav-start-color),var(--secondary-nav-end-color));box-shadow:0 -2px 1px var(--secondary-nav-box-shadow),0 2px 1px #000}#jq-secondaryNavigation a{font-size:.8125rem}#jq-content{position:relative;width:100%}.content-nav{font-size:.8125rem;margin:1.2em 0;align-self:flex-end}.content-nav ul{list-style:none}.content-nav li{padding:0 .75em}.content-nav li:not(:last-of-type){border-right:1px solid var(--border-color)}.hamburger-lines{position:relative;width:18px;height:14px;align-self:center}.hamburger-line{width:100%;height:2px;background-color:#fff;transition:opacity .2s ease-in-out,transform .2s ease-in-out}.hamburger-toggle:checked+.hamburger-lines span:first-of-type{transform:rotateZ(45deg) translate(4px,4.5px) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:nth-of-type(2){transform:rotateZ(135deg) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:last-of-type{transform:translateY(-8px) scale(0);opacity:0}.hamburger-toggle:checked~#jq-menus{transform:none;opacity:1}form{gap:.5em}label{font-style:italic;font-size:.8125rem;font-weight:700}input{border:1px solid var(--input-border-color);border-radius:var(--border-radius);height:25px;padding:0 .5em;color:var(--text-color)}button{display:block;border:0;padding:5px 10px;border-radius:var(--border-radius);background:var(--button-color);color:var(--button-text-color);font-size:.875rem;cursor:pointer}button:active,button:hover{background-color:var(--button-hover-color)}button:active{box-shadow:inset 0 0 5px #000}main{padding:1em;gap:1em}main a[href]:active,main a[href]:hover{background-color:var(--main-link-hover-bg-color)}#jq-topnav{gap:.25em}#jq-topnav a{width:100%;display:block;font-family:var(--font-family-alternate);font-size:.625rem;padding:.1em 1.5em;text-decoration:none;border:2px solid var(--border-color);color:#000;box-shadow:0 1px 2px rgba(0,0,0,.5);text-align:center;border-radius:var(--border-radius)}#jq-topnav a:active,#jq-topnav a:hover{color:#fff;border-color:var(--top-nav-hover-end-color)}#jq-topnav a:hover{background:linear-gradient(to bottom,var(--top-nav-hover-start-color),var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-end-color))}#jq-topnav a:active{background:linear-gradient(to bottom,var(--top-nav-hover-end-color),var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-start-color))}footer{background-color:var(--nav-background-color);background:var(--nav-background-color) linear-gradient(to bottom,var(--footer-background-start-color),var(--footer-background-end-color));padding:2em;margin-bottom:2em;color:var(--text-color-dark-bg);border:2px solid transparent;border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius)}footer a[href],footer a[href]:visited{color:var(--footer-text-color-link)}footer a[href]:active,footer a[href]:hover{background-color:var(--main-link-hover-bg-color);color:#000}.flex-row{display:flex;flex-direction:row}.flex-column{display:flex;flex-direction:column}.flex-between-start{justify-content:space-between;align-items:flex-start}.flex-between-center{justify-content:space-between;align-items:center}.flex-start-center{justify-content:flex-start;align-items:center}.flex-end-center{justify-content:flex-end;align-items:center}.flex-center{display:flex;justify-content:center;align-items:center}.items-start{align-items:start}.white-box{background-color:var(--content-background-color);border:1px solid var(--border-color)}a.ext-link .icon{padding-left:15px}@media (max-width:919px){#jq-menus{position:absolute;top:95px;height:calc(100vh - 95px);left:0;right:0;background-color:var(--nav-background-color);z-index:1;transition:transform .2s ease-in-out,opacity .2s ease-in-out;transform:translateX(100%);opacity:0;display:flex;flex-direction:column-reverse;justify-content:flex-end}}@media (min-width:920px){html:before{top:60px}body{background-position-y:60px}.banner{height:60px;font-size:1rem}header{height:125px;padding:0 0 0 2em}#jq-topnav{flex-direction:row;align-self:flex-end;gap:0}#jq-topnav a{width:auto;border-radius:0}#jq-topnav a:first-of-type{border-radius:var(--border-radius) 0 0 var(--border-radius)}#jq-topnav a:last-of-type{border-radius:0 var(--border-radius) var(--border-radius) 0}.nav{flex-direction:row}.nav a{width:auto}#jq-primaryNavigation a{height:27px;align-self:flex-end}#jq-secondaryNavigation{border-radius:var(--border-radius);margin-top:2em}#jq-siteLogo{align-self:flex-end}main{flex-grow:1;min-height:520px;font-size:.75rem}.hamburger-lines{display:none}.content-nav{margin-top:.4em}}:root{--pagefind-ui-background-color:#fff}#search{width:100%;position:relative;min-height:25px}.pagefind-ui__search-input{width:100%;border:1px solid var(--border-color)}.pagefind-ui__search-clear{display:inline-block;position:absolute;width:25px;height:25px;right:15px;top:0;padding:0 0 0 25px;overflow:hidden;background-color:transparent;z-index:1}.pagefind-ui__search-clear:active,.pagefind-ui__search-clear:hover{background-color:rgba(0,0,0,.2)}.pagefind-ui__search-clear:after{content:'×';position:absolute;top:0;left:0;right:0;bottom:0;font-weight:700;font-size:1.5rem;line-height:26px;text-align:center;color:var(--text-color);opacity:1}.pagefind-ui__hidden{display:none}.pagefind-ui__suppressed{display:none}.pagefind-ui__drawer{position:absolute;top:100%;left:0;right:0;height:350px;background-color:var(--pagefind-ui-background-color);border:1px solid var(--border-color);border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius);box-shadow:0 2px 4px rgba(0,0,0,.2);padding:10px;color:var(--text-color);font-size:.875rem;overflow-y:auto;word-break:break-word;z-index:1}.pagefind-ui__results-area{width:100%}.pagefind-ui__results{padding-left:20px}.pagefind-ui__result{margin-bottom:10px;vertical-align:top}.pagefind-ui__result-thumb{display:flex;flex-direction:column}.pagefind-ui__result-thumb .pagefind-ui__result-image{max-width:150px}.pagefind-ui__message{font-weight:700;text-transform:uppercase;font-size:1rem}.pagefind-ui__button{width:100%;padding:10px;margin-top:2em}@media(min-width:920px){#search{width:auto}.pagefind-ui__search-input{width:300px}.pagefind-ui__search-clear{right:auto;left:270px}.pagefind-ui__drawer{left:-200px;height:500px;padding:15px}}body{background:url(/bugs.jqueryui.com/img/body_bg.jpg) no-repeat center 80px}a.ext-link .icon{background:url(/bugs.jqueryui.com/img/extlink.png) 0 50% no-repeat}
+    </style>
+    
+  </head>
+  <body>
+    <div class="banner flex-center">
+      <span>jQuery UI issues have moved to <a href="https://github.com/jquery/jquery-ui/issues">GitHub</a>. This site is now a static archive of the old <a href="https://trac.edgewall.org/">Trac</a> bugs site. <br>Some functions and pages are no longer available.</span>
+    </div>
+    <div class="container">
+      <a href="#skip" class="visually-hidden">Skip to main content</a>
+      <header class="flex-column">
+        <div class="flex-row flex-between-start">
+          <a id="jq-siteLogo" href="/bugs.jqueryui.com/" title="jQuery UI Bugs Home">
+            <img src="/bugs.jqueryui.com/img/logo.svg" width="253" alt="jQuery UI">
+          </a>
+          <input class="hamburger-toggle visually-hidden" id="jq-menutoggle" type="checkbox">
+          <label aria-label="Toggle Menu" for="jq-menutoggle" class="hamburger-lines flex-column flex-between-center">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </label>
+          <div id="jq-menus" class="flex-column">
+            <nav id="jq-primaryNavigation">
+              <h2 class="visually-hidden">jQuery UI sites navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-jquery">
+                  <a href="https://jquery.com/" title="jQuery Home">jQuery</a>
+                </li>
+                <li class="jq-plugins">
+                  <a href="https://plugins.jquery.com/" title="jQuery Plugins">Plugins</a>
+                </li>
+                <li class="jq-ui active">
+                  <a href="https://jqueryui.com/" title="jQuery UI">UI</a>
+                </li>
+                <li class="jq-meetup">
+                  <a href="https://meetups.jquery.com/" title="jQuery Meetups">Meetups</a>
+                </li>
+                <li class="jq-forum">
+                  <a href="https://forum.jquery.com/" title="jQuery Forum">Forum</a>
+                </li>
+                <li class="jq-blog">
+                  <a href="https://blog.jquery.com/" title="jQuery Blog">Blog</a>
+                </li>
+                <li class="jq-about">
+                  <a href="https://openjsf.org" title="About jQuery and OpenJS">About</a>
+                </li>
+                <li class="jq-donate">
+                  <a href="https://openjsf.org/about/project-funding-opportunities/" title="Donate to OpenJS">Donate</a>
+                </li>
+              </ul>
+            </nav>
+            <nav id="jq-secondaryNavigation">
+              <h2 class="visually-hidden">jQuery UI navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-download">
+                  <a href="https://jqueryui.com/download/">
+                    Download
+                  </a>
+                </li>
+                <li class="jq-documentation">
+                  <a href="https://jqueryui.com/demos/">
+                    Demos &amp; Documentation
+                  </a>
+                </li>
+                <li class="jq-themes">
+                  <a href="https://jqueryui.com/themeroller/">
+                    Themes
+                  </a>
+                </li>
+                <li class="jq-development">
+                  <a href="https://jqueryui.com/development/">
+                    Development
+                  </a>
+                </li>
+                <li class="jq-support">
+                  <a href="https://jqueryui.com/support/">
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main id="skip" class="flex-column white-box">
+        <h2 class="visually-hidden">Search and Top Navigation</h2>
+        <div class="flex-row flex-end-center">
+          <div id="search"></div>
+        </div>
+        <nav id="jq-topnav" class="flex-column flex-start-center">
+          <a href="/bugs.jqueryui.com/newticket">New Ticket</a>
+          <a href="/bugs.jqueryui.com/report">View Tickets</a>
+          <a href="/bugs.jqueryui.com/ticketgraph">Ticket Graph</a>
+          <a href="/bugs.jqueryui.com/roadmap">Roadmap</a>
+          <a href="/bugs.jqueryui.com/timeline">Recent Changes</a>
+        </nav>
+        <div id="jq-content" class="flex-column">
+          
+
+<div class="flex-column" data-pagefind-body="">
+  
+
+  <nav class="content-nav">
+    <ul class="flex-row">
+      
+        <li>
+          <a href="/bugs.jqueryui.com/ticket/5919/">← Previous Ticket</a>
+        
+      
+      
+        </li><li>
+          <a href="/bugs.jqueryui.com/ticket/5921/">Next Ticket →</a>
+        </li>
+      
+    </ul>
+  </nav>
+
+
+<div class="ticket-info">
+  <div class="flex-row flex-between-start">
+    <h2>
+      <a href="." class="ticket-number">#5920</a>
+      <span class="ticket-status">closed</span>
+      <span class="ticket-type">bug</span>
+      <span class="ticket-resolution">(notabug)</span>
+    </h2>
+
+    <div class="ticket-dates">
+      <p>Opened August 10, 2010 06:39PM UTC</p>
+      
+        <p>Closed August 10, 2010 06:48PM UTC</p>
+      
+      
+        <p>Last modified October 03, 2012 05:03PM UTC</p>
+      
+    </div>
+  </div>
+
+  <h1 class="ticket-title">oversize draggable</h1>
+
+  <table class="ticket-properties">
+    <tr>
+      <th>Reported by:</th>
+      <td>
+        rotkiw
+      </td>
+      <th>Owned by:</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>
+        Priority:
+      </th>
+      <td>
+        minor
+      </td>
+      
+        <th class="missing">Milestone:</th>
+      
+      <td>
+        <a href="/bugs.jqueryui.com/milestone/1.9.0">1.9.0</a>
+      </td>
+    </tr>
+    <tr>
+      <th>Component:</th>
+      <td>ui.draggable</td>
+      
+        <th>Version:</th>
+      
+      <td>1.8.4</td>
+    </tr>
+    <tr>
+      
+        <th class="missing">Keywords:</th>
+      
+      <td></td>
+      
+        <th class="missing">Cc:</th>
+      
+      <td></td>
+    </tr>
+    <tr>
+      <th class="missing">
+        Blocked by:
+      </th>
+      <td></td>
+      <th class="missing">
+        Blocking:
+      </th>
+      <td></td>
+    </tr>
+  </table>
+  <div class="ticket-info-bottom">
+    <h5 class="ticket-description-title">Description</h5>
+    <div class="ticket-description"><p>If the draggable is bigger than the holder, the draggable is just snap to the edges of the holder.</p><pre class="wiki">
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+&lt;title&gt;draggable test&lt;/title&gt;
+&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+	$(document).ready(function() {
+		$('#drag').draggable({
+			containment: 'parent',
+			//grid: [20, 20]
+		});
+	});
+&lt;/script&gt;
+&lt;style type="text/css"&gt;
+#holder {
+	width:200px;
+	height: 200px;
+	overflow:hidden;
+	background-color:#CF0;
+}
+#drag {
+	width:400px;
+	height: 400px;
+	overflow:hidden;
+	background-color: #C00;
+}
+#content {
+	width:390px;
+	height:390px;
+	margin: 5px;
+	background-color:#09F;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="holder"&gt;
+  &lt;div id="drag"&gt;
+    &lt;div id="content"&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur enim. Nullam id ligula in nisl tincidunt feugiat. Curabitur eu magna porttitor ligula bibendum rhoncus. Etiam dignissim. Duis lobortis porta risus. Quisque velit metus, dignissim in, rhoncus at, congue quis, mi. Praesent vel lorem. Suspendisse ut dolor at justo tristique dapibus. Morbi erat mi, rutrum a, aliquam nec, mattis semper, leo. Maecenas blandit risus vitae quam. Vivamus ut odio. Pellentesque mollis arcu nec metus. Nullam bibendum scelerisque turpis. Aliquam erat volutpat.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p><strong>solution:</strong></p><pre class="wiki">
+	_generatePosition: function(event) {
+
+		var o = this.options, scroll = this.cssPosition == 'absolute' && !(this.scrollParent[0] != document && $.ui.contains(this.scrollParent[0], this.offsetParent[0])) ? this.offsetParent : this.scrollParent, scrollIsRootNode = (/(html|body)/i).test(scroll[0].tagName);
+		var pageX = event.pageX;
+		var pageY = event.pageY;
+		var flagX = false;
+		var flagY = false;
+
+		/*
+		 * - Position constraining -
+		 * Constrain the position to a mix of grid, containment.
+		 */
+		
+		if(this.originalPosition) { //If we are not dragging yet, we won't check for options
+			
+			if(this.containment) {
+				if (((this.containment[2] &lt; 0) && (this.offset.click.left - event.pageX &lt; this.containment[0])) || ((this.containment[2] &gt;= 0) && (event.pageX - this.offset.click.left &lt; this.containment[0]))) {
+					pageX = this.containment[0] + this.offset.click.left;
+					flagX = true; // Prevent jump at oversized draggable element (cursor offset &gt; dragabble width - holder width)
+				}
+				if (((this.containment[3] &lt; 0) && (this.offset.click.top - event.pageY &lt; this.containment[1])) || ((this.containment[3] &gt;= 0) && (event.pageY - this.offset.click.top &lt; this.containment[1]))) {
+					pageY = this.containment[1] + this.offset.click.top;
+					flagY = true;
+				}
+				if ((!flagX && (Math.abs(event.pageX - this.offset.click.left) &gt; Math.abs(this.containment[2]))) || ((this.containment[2] &gt;= 0) && (event.pageX - this.offset.click.left &gt; this.containment[2]))) pageX = this.containment[2] + this.offset.click.left;
+				if ((!flagY && (Math.abs(event.pageY - this.offset.click.top) &gt; Math.abs(this.containment[3]))) || ((this.containment[3] &gt;= 0) && (event.pageY - this.offset.click.top &gt; this.containment[3]))) pageY = this.containment[3] + this.offset.click.top;
+			}
+			
+			if(o.grid) {
+				var top = this.originalPageY + Math.round((pageY - this.originalPageY) / o.grid[1]) * o.grid[1];
+				pageY = this.containment ? (!(Math.abs(top - this.offset.click.top) &lt; this.containment[1] || top - this.offset.click.top &gt; Math.abs(this.containment[3])) ? top : (!(Math.abs(top - this.offset.click.top) &lt; this.containment[1]) ? top - o.grid[1] : top + o.grid[1])) : top;
+				var left = this.originalPageX + Math.round((pageX - this.originalPageX) / o.grid[0]) * o.grid[0];
+				pageX = this.containment ? (!(Math.abs(left - this.offset.click.left) &lt; this.containment[0] || left - this.offset.click.left &gt; Math.abs(this.containment[2])) ? left : (!(Math.abs(left - this.offset.click.left) &lt; this.containment[0]) ? left - o.grid[0] : left + o.grid[0])) : left;
+			}
+
+		}
+		
+		return {
+			top: (
+				pageY																// The absolute mouse position
+				- this.offset.click.top													// Click offset (relative to the element)
+				- this.offset.relative.top												// Only for relative positioned nodes: Relative offset from element to offset parent
+				- this.offset.parent.top												// The offsetParent's offset without borders (offset + border)
+				+ ($.browser.safari && $.browser.version &lt; 526 && this.cssPosition == 'fixed' ? 0 : ( this.cssPosition == 'fixed' ? -this.scrollParent.scrollTop() : ( scrollIsRootNode ? 0 : scroll.scrollTop() ) ))
+			),
+			left: (
+				pageX																// The absolute mouse position
+				- this.offset.click.left												// Click offset (relative to the element)
+				- this.offset.relative.left												// Only for relative positioned nodes: Relative offset from element to offset parent
+				- this.offset.parent.left												// The offsetParent's offset without borders (offset + border)
+				+ ($.browser.safari && $.browser.version &lt; 526 && this.cssPosition == 'fixed' ? 0 : ( this.cssPosition == 'fixed' ? -this.scrollParent.scrollLeft() : scrollIsRootNode ? 0 : scroll.scrollLeft() ))
+			)
+		};
+
+	},
+</pre></div>
+  </div>
+</div>
+
+<details>
+  <summary class="ticket-details-summary">Attachments (1)</summary>
+
+  <ul class="ticket-attachments">
+    
+      <li>
+        <a href="/bugs.jqueryui.com/attachment/ticket/5920/jquery.ui.draggable.js/index.html">jquery.ui.draggable.js</a> (29.5 KB) - added by rotkiw
+        <strong>August 10, 2010 06:41PM UTC</strong>.<br>
+        <p>improved draggable</p>
+      </li>
+    
+  </ul>
+</details>
+
+<details open="">
+  <summary class="ticket-details-summary">Change History (7)</summary>
+  
+    <div class="ticket-change flex-column" id="comment:1">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed August 10, 2010 06:48PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:1">comment:1</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>resolution:</th>
+                  <td>
+                    
+                      <span class="change-field-new">→ invalid</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>status:</th>
+                  <td>
+                    
+                      <span class="change-field-old">new</span> → <span class="change-field-new">closed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Containing a draggable inside something that's smaller than the draggable itself doesn't make sense.</p>
+            </div>
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:2">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed November 08, 2010 04:11PM UTC by <span class="author">krazedout</span></span>
+        <a class="ticket-change-link" href="#comment:2">comment:2</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Hi there,</p><p>I don't agree with scott's comment - I'm currently encountering this problem as well where my draggable contents is larger than the container element. This happens because I'm creating something with a google maps effect where the user can drag a large div inside a smaller viewport.</p><p>I do hope that the jquery devs will consider opening this issue again because there are situations where the draggable element is larger than its parent container (E.g. with overflow:hidden). In the meantime, I'm currently using the Mapbox plugin to circumvent this issue.</p><p>Thanks!</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:3">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed January 05, 2011 02:23AM UTC by <span class="author">Seuldieu</span></span>
+        <a class="ticket-change-link" href="#comment:3">comment:3</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">I also disagree with Scott&#39;s shortsighted comment--one of the first practical uses that came to mind for draggable elements, was creating a click-and-drag window similar to google maps. Thanks Krazedout for the Mapbox reference, seeing as I will probably use that as well for now.&#92;
+&#92;
++1 for addressing this ticket</span> → <span class="change-field-new">1294194260580111</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>I also disagree with Scott's shortsighted comment--one of the first practical uses that came to mind for draggable elements, was creating a click-and-drag window similar to google maps. Thanks Krazedout for the Mapbox reference, seeing as I will probably use that as well for now.</p><p>+1 for Jquery UI devs addressing this ticket in a future release...</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:4">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 11, 2011 10:51PM UTC by <span class="author">bart</span></span>
+        <a class="ticket-change-link" href="#comment:4">comment:4</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">I also disagree with Scott&#39;s comment. This seems like a big oversight for &#39;draggable&#39;. If I have a place where I&#39;m letting someone view a large image in a small area and I want them to be able to drag it around to see the whole image, then I need draggable to be able to support the dragging of a large element inside a small container.&#92;
+&#92;
+I think this would be solvable if instead of defining a container box, I would be defining min/max values for the top and left properties. Then I could say that the max left position is &quot;0&quot; (so that I would never be able to move the image towards the right past its left edge).</span> → <span class="change-field-new">1310424921779643</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>I also disagree with Scott's comment. This seems like a big oversight for 'draggable'. If I have a place where I'm letting someone view a large image in a small area and I want them to be able to drag it around to see the whole image, then I need draggable to be able to support the dragging of a large element inside a small container. </p><p>It's the same situation if you open an image in Photoshop, make its window smaller than the image, then use the hand tool to drag the image inside that window. The image is contained within that window.</p><p>I think this would be solvable if instead of defining a container box, I would be defining min/max values for the top and left properties. Then I could say that the max left position is "0" (so that I would never be able to move the image towards the right past its left edge).</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:5">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed November 12, 2011 10:53PM UTC by <span class="author">janrenn</span></span>
+        <a class="ticket-change-link" href="#comment:5">comment:5</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">Containment smaller than draggable really doesn&#39;t make sense. You are talking about &quot;viewport&quot; smaller than draggable. Create helper &quot;containment&quot; block, give this block width = (2 * draggable_width – viewport_width), the same with height and center this block relative to viewport. Then attach this helper block as &quot;containment&quot;. It works OK for me. &#92;
+&#92;
+However, simplifying setting &quot;min&quot; and &quot;max&quot; coordinates directly via Draggable API properties, not using containment as proxy should be nice.</span> → <span class="change-field-new">1321138424898092</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment1:</th>
+                  <td>
+                    
+                      <span class="change-field-new">→ 1321139263038417</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment2:</th>
+                  <td>
+                    
+                      <span class="change-field-old">Containment smaller than draggable really doesn&#39;t make sense. You are talking about &quot;viewport&quot; smaller than draggable. Create helper &quot;containment&quot; block, give this block width = (2 * draggable_width – viewport_width), the same with height and center this block relative to viewport. Then attach this helper block as &quot;containment&quot;. It works OK for me. &#92;
+&#92;
+However, simplifying setting &quot;min&quot; and &quot;max&quot; coordinates directly via Draggable API properties, not using containment as proxy, should be nice.</span> → <span class="change-field-new">1321139291597124</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment3:</th>
+                  <td>
+                    
+                      <span class="change-field-old">However, simplifying setting &quot;min&quot; and &quot;max&quot; coordinates directly via Draggable API properties, not using containment as proxy, should be nice.</span> → <span class="change-field-new">1321139327524677</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment4:</th>
+                  <td>
+                    
+                      <span class="change-field-old">Containment smaller than draggable really doesn&#39;t make sense. You are talking about &quot;viewport&quot; smaller than draggable. Create helper &quot;containment&quot; block, give this block width = (2 * draggable_width – viewport_width), the same with height and center this block relative to viewport. Then attach this helper block as &quot;containment&quot;. It works OK for me.</span> → <span class="change-field-new">1321139337443825</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment5:</th>
+                  <td>
+                    
+                      <span class="change-field-old">However, simplifying setting &quot;min&quot; and &quot;max&quot; coordinates directly via Draggable API properties, not using containment as proxy should be nice.</span> → <span class="change-field-new">1321139375693223</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment6:</th>
+                  <td>
+                    
+                      <span class="change-field-old">Containment smaller than draggable really doesn&#39;t make sense. You are talking about &quot;viewport&quot; smaller than draggable. Create helper &quot;containment&quot; block, give this block width = (2 * draggable_width – viewport_width), the same with height and center this block relative to viewport. Then attach this helper block as &quot;containment&quot;. It works OK for me. &#92;
+&#92;
+However, simplifying setting &quot;min&quot; and &quot;max&quot; coordinates directly via Draggable API properties, not using containment as proxy should be nice.</span> → <span class="change-field-new">1321139424519665</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment7:</th>
+                  <td>
+                    
+                      <span class="change-field-old">However, simplifying setting &quot;min&quot; and &quot;max&quot; coordinates directly via Draggable API properties, not using containment as proxy should be nice.</span> → <span class="change-field-new">1321139501269818</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>Containment smaller than draggable really doesn't make sense. You are talking about "viewport" smaller than draggable. Create helper "containment" block, give this block width = (2 * draggable_width – viewport_width), the same with height, and center this block relative to viewport. Then attach this helper block as "containment". It works OK for me. </p><p>However, simplifying setting "min" and "max" coordinates directly via Draggable API properties, not using containment as proxy should be nice.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:6">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed November 12, 2011 10:53PM UTC by <span class="author">janrenn</span></span>
+        <a class="ticket-change-link" href="#comment:6">comment:6</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Containment smaller than draggable really doesn't make sense. You are talking about "viewport" smaller than draggable. Create helper "containment" block, give this block width = (2 * draggable_width – viewport_width), the same with height and center this block relative to viewport. Then attach this helper block as "containment". It works OK for me. </p><p>However, simplifying setting "min" and "max" coordinates directly via Draggable API properties, not using containment as proxy should be nice.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:7">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed October 03, 2012 05:03PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:7">comment:7</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>milestone:</th>
+                  <td>
+                    
+                      <span class="change-field-old">1.next</span> → <span class="change-field-new">1.9.0</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              
+            </div>
+          
+        
+          
+        
+      </div>
+    </div>
+  
+</details>
+</div>
+        </div>
+      </main>
+      <footer>
+        Copyright &copy; 2023
+        <a href="https://openjsf.org">The OpenJS Foundation</a>
+      </footer>
+    </div>
+    <script src="/bugs.jqueryui.com/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({
+          element: "#search",
+          showImages: false,
+          translations: {
+            placeholder: 'Search tickets',
+            zero_results: 'No matches found.'
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

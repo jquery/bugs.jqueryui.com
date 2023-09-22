@@ -1,0 +1,21 @@
+Index: /Users/kronuz/Documents/Websites/dubalu/dubalu/templates/js/jquery.ui.draggable.js
+--- a/dubalu/templates/js/jquery.ui.draggable.js	Tue Feb 02 11:40:55 2010 -0600
++++ b/dubalu/templates/js/jquery.ui.draggable.js	Tue Feb 16 17:55:12 2010 -0600
+@@ -567,6 +567,8 @@
+ 					this.instance.isOver = 0;
+ 					this.instance.cancelHelperRemoval = true;
+ 					
++					var old_revert = this.instance.options.revert;
++					
+ 					//Prevent reverting on this forced stop
+ 					this.instance.options.revert = false;
+ 					
+@@ -582,6 +584,8 @@
+ 
+ 					inst._trigger("fromSortable", event);
+ 					inst.dropped = false; //draggable revert needs that
++					
++					this.instance.options.revert = old_revert;
+ 				}
+ 
+ 			};

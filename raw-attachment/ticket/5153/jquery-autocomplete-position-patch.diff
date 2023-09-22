@@ -1,0 +1,29 @@
+Index: ui/jquery.ui.autocomplete.js
+===================================================================
+--- ui/jquery.ui.autocomplete.js	(revision 3792)
++++ ui/jquery.ui.autocomplete.js	(working copy)
+@@ -17,7 +17,8 @@
+ $.widget( "ui.autocomplete", {
+ 	options: {
+ 		minLength: 1,
+-		delay: 300
++		delay: 300,
++		position: {}
+ 	},
+ 	_create: function() {
+ 		var self = this;
+@@ -119,12 +120,12 @@
+ 			.zIndex( this.element.zIndex() + 1 )
+ 			// workaround for jQuery bug #5781 http://dev.jquery.com/ticket/5781
+ 			.css({ top: 0, left: 0 })
+-			.position({
++			.position($.extend({
+ 				my: "left top",
+ 				at: "left bottom",
+ 				of: this.element,
+ 				collision: "none"
+-			})
++			}, self.options.position))
+ 			.hide()
+ 			.data( "menu" );
+ 		if ( $.fn.bgiframe ) {

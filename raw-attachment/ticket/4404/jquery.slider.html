@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7/jquery-ui.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jquery-ui.googlecode.com/svn/tags/latest/themes/base/ui.all.css"/>
+</head>
+<body>
+
+<div style="width: 190px;">
+  <div id="s_filter_price" style="margin: 10px 10px;"></div>
+  <div style="float: right; margin-right: 5px;">
+    <input type="text" name="s[filter][price][max]" id="s_filter_price_max" value="3654" style="width: 35px; text-align: center;" />    лв.    <br><font style="color: #A0A0A1">максимална</font>
+  </div>
+  <div style="float: left; margin-left: 5px;">
+    <input type="text" name="s[filter][price][min]" id="s_filter_price_min" value="50" style="width: 35px; text-align: center;" />    лв.    <br><font style="color: #A0A0A1">минимална</font>
+  </div>
+  <br><br>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+  var price_min = 50;     // variable
+  var price_max = 3589;   // variable
+  var default_min = 50;   // depends on price_min
+  var default_max = 3589; // depends on price_max
+  var step = (price_max > 1000) ? 50 : (price_max > 100) ? 5 : 1;
+
+  $('#s_filter_price').slider(
+  {
+    'max': price_max, 'min': price_min, 'values': [default_min, default_max],
+    'restricted': true, 'step': step, animate: true, 'range': (default_min != price_min || default_max != price_max),
+    start: function(e, ui)
+    {
+      $('#s_filter_price').slider('option', 'range', true);
+    },
+    stop: function(e, ui)
+    {
+      $('#s_filter_price_min').val(ui.values[0]);
+      $('#s_filter_price_max').val(ui.values[1]);
+
+      var enabled = (ui.values[0] != price_min || ui.values[1] != price_max);
+      $('#s_filter_price').slider('option', 'range', enabled);
+    }
+  });
+
+  $("#s_filter_price_min, #s_filter_price_max").change(function()
+  {
+    var values =[parseFloat($('#s_filter_price_min').val()), parseFloat($('#s_filter_price_max').val())];
+
+    values[1] = (values[1] > price_max)  ? price_max : values[1];
+    values[0] = (values[0] >= values[1]) ? values[1] - step : values[0];
+    values[0] = (values[0] < price_min)  ? price_min : values[0];
+
+    $('#s_filter_price_min').val(values[0]);
+    $('#s_filter_price_max').val(values[1]);
+    $('#s_filter_price').slider('option', 'values', values);
+  });
+
+  $('#s_filter_price_min, #s_filter_price_max').keypress(function(e)
+  {
+    // set the value when the 'return' key is detected
+    if (e.which === 13)
+    {
+      var values =[$('#s_filter_price_min').val(), $('#s_filter_price_max').val()];
+
+      values[1] = (values[1] > price_max)  ? price_max : values[1];
+      values[0] = (values[0] >= values[1]) ? values[1] - step : values[0];
+      values[0] = (values[0] < price_min)  ? price_min : values[0];
+
+      $('#s_filter_price_min').val(values[0]);
+      $('#s_filter_price_max').val(values[1]);
+      $('#s_filter_price').slider('option', 'values', values);
+    }
+  });
+});
+</script>
+</body>
+</html>

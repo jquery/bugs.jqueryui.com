@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link id="idJQueryStylesheet"  href="/vcp/jquery/css/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" />	
+    <script type="text/javascript" src="/vcp/jquery/js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="/vcp/jquery/js/jquery-ui-1.7.2.custom.min.js"></script>
+    <title></title>
+    
+    <style type="text/css">
+    body 
+    {
+	    font-family: Tahoma, Sans-Serif;
+	    font-size: 12px;
+	    width: 200px;
+	    margin-left: auto;
+	    margin-right: auto;
+	    margin-top: 6px;
+	    border: solid 1px #a0a0a0;
+	    background-color: #f3eae4;
+    }
+    .Content
+    {
+    	background-color: #ffffff;
+    }
+
+    </style>
+    
+    <script language="javascript">
+
+        $(document).ready(function()
+        {
+
+            $("#tabs").tabs();
+            $("#tabs").show();
+        });
+        
+    </script>
+</head>
+<body>
+
+    <div class="Content">
+        <div id="tabs" class="ui-tabs" style="display:none;">
+            <ul>
+                <li><a href="#tabs-1">Tab #1</a></li>
+                <li><a href="#tabs-2">Tab #2</a></li>
+            </ul>
+
+            <div id="tabs-1" class="ui-tabs-hide">
+            </div>
+            
+            <div id="tabs-2" class="ui-tabs-hide">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

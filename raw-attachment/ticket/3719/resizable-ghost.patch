@@ -1,0 +1,13 @@
+Index: ui/ui.resizable.js
+===================================================================
+--- ui/ui.resizable.js	(revision 1449)
++++ ui/ui.resizable.js	(working copy)
+@@ -760,7 +760,7 @@
+ 	resize: function(event, ui){
+ 		var o = ui.options, self = $(this).data("resizable"), pr = o.proportionallyResize;
+ 
+-		if (self.ghost) self.ghost.css({ position: 'relative', height: self.size.height, width: self.size.width });
++		if (self.ghost) self.ghost.css({ position: 'relative', height: self.size.height-self.sizeDiff.height, width: self.size.width-self.sizeDiff.width });
+ 
+ 	},
+ 

@@ -1,0 +1,118 @@
+Index: tests/accordion.js
+===================================================================
+--- tests/accordion.js	(revision 908)
++++ tests/accordion.js	(working copy)
+@@ -129,4 +129,22 @@
+ 	.accordion("activate", 0);
+ });
+ 
++test("accessibility", function () {
++	expect(9);
++	var ac = $('#list1').accordion().accordion("activate", 1);
++	var headers = $(".ui-accordion-header");
++		
++	equals( headers.eq(1).attr("tabindex"), "0", "active header should have tabindex=0");
++	equals( headers.eq(0).attr("tabindex"), "-1", "inactive header should have tabindex=-1");
++	equals( ac.attr("role"), "tablist", "main role");
++	equals( headers.attr("role"), "tab", "tab roles");
++	equals( headers.next().attr("role"), "tabpanel", "tabpanel roles");
++	equals( headers.eq(1).attr("aria-expanded"), "true", "active tab has aria-expanded");
++	equals( headers.eq(0).attr("aria-expanded"), "false", "inactive tab has aria-expanded");
++	ac.accordion("activate", 0);
++	equals( headers.eq(0).attr("aria-expanded"), "true", "newly active tab has aria-expanded");
++	equals( headers.eq(1).attr("aria-expanded"), "false", "newly inactive tab has aria-expanded");
++});
++
++
+ })(jQuery);
+Index: ui/ui.accordion.js
+===================================================================
+--- ui/ui.accordion.js	(revision 908)
++++ ui/ui.accordion.js	(working copy)
+@@ -41,7 +41,7 @@
+ 			this.element.addClass("ui-accordion");
+ 			$('<span class="ui-accordion-left"/>').insertBefore(options.headers);
+ 			$('<span class="ui-accordion-right"/>').appendTo(options.headers);
+-			options.headers.addClass("ui-accordion-header").attr("tabindex", "0");
++			options.headers.addClass("ui-accordion-header");
+ 		}
+ 		
+ 		var maxHeight;
+@@ -60,23 +60,67 @@
+ 				maxHeight = Math.max(maxHeight, $(this).outerHeight());
+ 			}).height(maxHeight);
+ 		}
++				
++		this.element.attr('role','tablist');
++
++		var self=this;
++		options.headers
++			.attr('role','tab')
++			.bind('keydown', function(e) { return self._keydown(e); })
++			.next()
++			.attr('role','tabpanel');
+ 		
+ 		options.headers
+ 			.not(options.active || "")
++			.attr('aria-expanded','false')
++			.attr("tabindex", "-1")
+ 			.next()
+ 			.hide();
+-		options.active.parent().andSelf().addClass(options.selectedClass);
++			
++		options.active
++			.attr('aria-expanded','true')
++			.attr("tabIndex", "0")
++			.parent().andSelf().addClass(options.selectedClass);
+ 		
++		// remove links from tab order - NEEDS REVIEW! (moots options.navigation)
++		options.headers.find('a').attr('tabIndex','-1');
++		
+ 		if (options.event) {
+ 			this.element.bind((options.event) + ".accordion", clickHandler);
+ 		}
+ 	},
++	
++	_keydown: function(e) {
++		if (this.options.disabled || e.altKey || e.ctrlKey)
++			return;
++
++		var keyCode = $.keyCode;
++		
++		var length = this.options.headers.length;
++		var active = this.options.headers.index(this.options.active) || 0;
++		switch (e.keyCode) {
++			case keyCode.RIGHT:
++			case keyCode.DOWN:
++				this.activate((active + 1) % length);
++				break;
++			case keyCode.LEFT:
++			case keyCode.UP:
++				this.activate((active - 1 + length) % length); 
++				break;
++			case keyCode.SPACE:
++				return clickHandler.call(this.element[0], {
++						target: e.target
++					});
++		}
++	},
++	
+ 	activate: function(index) {
+ 		// call clickHandler with custom event
+ 		clickHandler.call(this.element[0], {
+ 			target: findActive( this.options.headers, index )[0]
+ 		});
+ 	},
++	
+ 	destroy: function() {
+ 		this.options.headers.parent().andSelf().removeClass(this.options.selectedClass);
+ 		this.options.headers.prev(".ui-accordion-left").remove();
+@@ -189,6 +233,8 @@
+ 		}
+ 		complete(true);
+ 	}
++	toHide.prev().attr('aria-expanded','false').attr("tabIndex", "-1");
++	toShow.prev().attr('aria-expanded','true').attr("tabIndex", "0").focus();;
+ }
+ 
+ function clickHandler(event) {

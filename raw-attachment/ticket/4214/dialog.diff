@@ -1,0 +1,13 @@
+Index: ui/ui.dialog.js
+===================================================================
+--- ui/ui.dialog.js	(revision 2125)
++++ ui/ui.dialog.js	(working copy)
+@@ -64,7 +64,7 @@
+ 					'aria-labelledby': titleId
+ 				})
+ 				.mousedown(function(event) {
+-					self.moveToTop(event);
++					self.moveToTop(false, event);
+ 				}),
+ 
+ 			uiDialogContent = this.element

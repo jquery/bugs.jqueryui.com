@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Datepicker KeyUp Bug</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" ></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js" ></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/base/jquery-ui.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        body { background-color: #e0e0ff; margin: 5px; }
+        body, input, button { font: 8pt sans-serif; }
+        p { margin: 15px 10px; }
+        p.date { background-color: #ffffe0; padding: 3px; }
+    </style>
+</head>
+<body>
+    <p class="date">
+        Date: <input type="text" name="date" id="dateField" value="09/20/2010" />
+    </p>
+    <p>Other</p>
+    <p>content</p>
+    <p>goes</p>
+    <p>here.</p>
+    <script type="text/javascript">
+        $(function() {
+            $('#dateField').datepicker({showOn: 'button'});
+        });
+    </script>
+</body>
+</html>

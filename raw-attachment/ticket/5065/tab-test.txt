@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Test</title>
+	<link href="/content/css/bsu/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/scripts/jquery-1.4.min.js"></script>
+	<script type="text/javascript" src="/scripts/jquery-ui-1.7.2.custom.min.js"></script>
+	<script type="text/javascript">
+		$(function() { $('#tabs').tabs(); });
+	</script>
+</head>
+<body>
+	<div id="tabs">
+		<ul>
+			
+			<li><a href="/home/employee-directory?start=A&end=C">
+				<span>A - C</span></a>
+			</li>
+			
+			<li><a href="/home/employee-directory?start=D&end=G">
+				<span>D - G</span></a>
+			</li>
+			
+			<li><a href="/home/employee-directory?start=H&end=J">
+				<span>H - J</span></a>
+			</li>
+			
+			<li><a href="/home/employee-directory?start=K&end=N">
+				<span>K - N</span></a>
+			</li>
+			
+			<li><a href="/home/employee-directory?start=O&end=R">
+				<span>O - R</span></a>
+			</li>
+			
+			<li><a href="/home/employee-directory?start=S&end=Z">
+				<span>S - Z</span></a>
+			</li>
+ 
+			<li><a href="/home/facebook">
+				<span>Picture Directory</span></a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

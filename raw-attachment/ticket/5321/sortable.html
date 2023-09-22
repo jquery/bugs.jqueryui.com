@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<style>
+li {
+	border: 1px solid #000;
+	background: #ccc;
+	list-style: none;
+	padding: 1em;
+}
+</style>
+<script type="text/javascript" src="jquery-1.4.2.js"></script>
+<script type="text/javascript" src="ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="ui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="ui/jquery.ui.sortable.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('ul').sortable();
+});
+</script>
+</head>
+<body>
+<div id="container" style="position:relative; height:400px; background:#eee; width:200px;">
+	<div style="position:absolute; bottom:0; width:175px;">
+		<ul>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+			<li>Item 4</li>
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

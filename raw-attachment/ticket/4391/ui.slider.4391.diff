@@ -1,0 +1,15 @@
+Index: ui.slider.js
+===================================================================
+--- ui.slider.js	(revision 2363)
++++ ui.slider.js	(working copy)
+@@ -78,8 +78,8 @@
+ 
+ 		this.handles.add(this.range).filter("a")
+ 			.click(function(event) { event.preventDefault(); })
+-			.hover(function() { $(this).addClass('ui-state-hover'); }, function() { $(this).removeClass('ui-state-hover'); })
+-			.focus(function() { $(".ui-slider .ui-state-focus").removeClass('ui-state-focus'); $(this).addClass('ui-state-focus'); })
++			.hover(function() { if (!o.disabled) $(this).addClass('ui-state-hover'); }, function() { $(this).removeClass('ui-state-hover'); })
++			.focus(function() { if (!o.disabled) {$(".ui-slider .ui-state-focus").removeClass('ui-state-focus'); $(this).addClass('ui-state-focus');} })
+ 			.blur(function() { $(this).removeClass('ui-state-focus'); });
+ 
+ 		this.handles.each(function(i) {

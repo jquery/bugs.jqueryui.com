@@ -1,0 +1,10 @@
+--- d:/Subversion/jQuery UI/Trunk/ui/ui.progressbar.js	Sun Apr 12 18:21:20 2009
++++ C:/Documents and Settings/Andrew/Local Settings/Temp/ui.progressbar-HEAD.8.js	Sun Apr 12 18:22:03 2009
+@@ -66,7 +66,6 @@
+ 				this.options.value = value;
+ 				this._refreshValue();
+ 				this._trigger('change', null, {});
+-				(this._value() == this._valueMax()) && this._trigger('end', null, {});
+ 				break;
+ 		}
+ 

@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><script>if (window.top.location != window.location) { window.console = window.top.console; }</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js"></script>
+<title>Sandbox</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<style type="text/css" media="screen">
+body { background-color: #FFF; font: 16px Helvetica, Arial; color: #fff; }
+
+div#schedule {
+    width: 150px;
+    height: 1440px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #CCCCCC;
+    background-color: #FDFDFD;
+    background-image: url(http://webapps-dev.ncsu.edu/garrison/test/bg.png);
+    background-repeat: repeat-x; 
+}
+
+.ui-state-disabled, ui-selectable-disabled { 
+    opacity: 1;
+    filter: Alpha(Opacity=100);
+}
+
+.drophover {
+    background-color: #FF0000; 
+}
+
+.selectable .ui-selecting {
+    background: #FECA40;
+    width: 70%;
+}
+
+.selectable .ui-selected {
+    background: #F39814;
+    color: white;
+}
+
+.selectable {
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    width: 100%;
+}
+
+.selectable div.scheduleRow {
+    margin: 0;
+    padding: 0;
+    height: 15px;
+}
+
+div.scheduleEvent {
+    width: 90%;
+    border: 1px solid #F37816;
+    float: left;
+    position: absolute;
+    margin: 0 0;
+    padding: 0;
+}
+
+div.scheduleEvent div.eventTime {
+    color: #FFFFFF;   
+    font-size: 11px;
+    padding: 0 2px;
+}
+
+.unselectedEvent {
+    background-color: #FF00FF;
+}
+
+.selectedEvent {
+    background-color: #FF0000;
+}
+
+.bt-content {
+  font-size: small;
+  color: #000;
+  line-height: normal;
+  padding: 10px 5px;    
+}
+
+</style>
+</head>
+<body>
+
+    <div id="schedule" class="selectable">
+            <div class="scheduleRow" id="row_0">&nbsp;</div>     
+            <div class="scheduleRow" id="row_1">&nbsp;</div>     
+            <div class="scheduleRow" id="row_2">&nbsp;</div>     
+            <div class="scheduleRow" id="row_3">&nbsp;</div>     
+            <div class="scheduleRow" id="row_4">&nbsp;</div>     
+            <div class="scheduleRow" id="row_5">&nbsp;</div>     
+            <div class="scheduleRow" id="row_6">&nbsp;</div>     
+            <div class="scheduleRow" id="row_7">&nbsp;</div>     
+            <div class="scheduleRow" id="row_8">&nbsp;</div>     
+            <div class="scheduleRow" id="row_9">&nbsp;</div>     
+            <div class="scheduleRow" id="row_10">&nbsp;</div>     
+            <div class="scheduleRow" id="row_11">&nbsp;</div>     
+            <div class="scheduleRow" id="row_12">&nbsp;</div>     
+            <div class="scheduleRow" id="row_13">&nbsp;</div>     
+            <div class="scheduleRow" id="row_14">&nbsp;</div>     
+            <div class="scheduleRow" id="row_15">&nbsp;</div>     
+            <div class="scheduleRow" id="row_16">&nbsp;</div>     
+            <div class="scheduleRow" id="row_17">&nbsp;</div>     
+            <div class="scheduleRow" id="row_18">&nbsp;</div>     
+            <div class="scheduleRow" id="row_19">&nbsp;</div>     
+            <div class="scheduleRow" id="row_20">&nbsp;</div>     
+            <div class="scheduleRow" id="row_21">&nbsp;</div>     
+            <div class="scheduleRow" id="row_22">&nbsp;</div>     
+            <div class="scheduleRow" id="row_23">&nbsp;</div>     
+            <div class="scheduleRow" id="row_24">&nbsp;</div>     
+            <div class="scheduleRow" id="row_25">&nbsp;</div>     
+            <div class="scheduleRow" id="row_26">&nbsp;</div>     
+            <div class="scheduleRow" id="row_27">&nbsp;</div>     
+            <div class="scheduleRow" id="row_28">&nbsp;</div>     
+            <div class="scheduleRow" id="row_29">&nbsp;</div>     
+            <div class="scheduleRow" id="row_30">&nbsp;</div>     
+            <div class="scheduleRow" id="row_31">&nbsp;</div>     
+            <div class="scheduleRow" id="row_32">&nbsp;</div>     
+            <div class="scheduleRow" id="row_33">&nbsp;</div>     
+            <div class="scheduleRow" id="row_34">&nbsp;</div>     
+            <div class="scheduleRow" id="row_35">&nbsp;</div>     
+            <div class="scheduleRow" id="row_36">&nbsp;</div>     
+            <div class="scheduleRow" id="row_37">&nbsp;</div>     
+            <div class="scheduleRow" id="row_38">&nbsp;</div>     
+            <div class="scheduleRow" id="row_39">&nbsp;</div>     
+            <div class="scheduleRow" id="row_40">&nbsp;</div>     
+            <div class="scheduleRow" id="row_41">&nbsp;</div>     
+            <div class="scheduleRow" id="row_42">&nbsp;</div>     
+            <div class="scheduleRow" id="row_43">&nbsp;</div>     
+            <div class="scheduleRow" id="row_44">&nbsp;</div>     
+            <div class="scheduleRow" id="row_45">&nbsp;</div>     
+            <div class="scheduleRow" id="row_46">&nbsp;</div>     
+            <div class="scheduleRow" id="row_47">&nbsp;</div>     
+            <div class="scheduleRow" id="row_48">&nbsp;</div>     
+            <div class="scheduleRow" id="row_49">&nbsp;</div>     
+            <div class="scheduleRow" id="row_50">&nbsp;</div>     
+            <div class="scheduleRow" id="row_51">&nbsp;</div>     
+            <div class="scheduleRow" id="row_52">&nbsp;</div>     
+            <div class="scheduleRow" id="row_53">&nbsp;</div>     
+            <div class="scheduleRow" id="row_54">&nbsp;</div>     
+            <div class="scheduleRow" id="row_55">&nbsp;</div>     
+            <div class="scheduleRow" id="row_56">&nbsp;</div>     
+            <div class="scheduleRow" id="row_57">&nbsp;</div>     
+            <div class="scheduleRow" id="row_58">&nbsp;</div>     
+            <div class="scheduleRow" id="row_59">&nbsp;</div>     
+            <div class="scheduleRow" id="row_60">&nbsp;</div>     
+            <div class="scheduleRow" id="row_61">&nbsp;</div>     
+            <div class="scheduleRow" id="row_62">&nbsp;</div>     
+            <div class="scheduleRow" id="row_63">&nbsp;</div>     
+            <div class="scheduleRow" id="row_64">&nbsp;</div>     
+            <div class="scheduleRow" id="row_65">&nbsp;</div>     
+            <div class="scheduleRow" id="row_66">&nbsp;</div>     
+            <div class="scheduleRow" id="row_67">&nbsp;</div>     
+            <div class="scheduleRow" id="row_68">&nbsp;</div>     
+            <div class="scheduleRow" id="row_69">&nbsp;</div>     
+            <div class="scheduleRow" id="row_70">&nbsp;</div>     
+            <div class="scheduleRow" id="row_71">&nbsp;</div>     
+            <div class="scheduleRow" id="row_72">&nbsp;</div>     
+            <div class="scheduleRow" id="row_73">&nbsp;</div>     
+            <div class="scheduleRow" id="row_74">&nbsp;</div>     
+            <div class="scheduleRow" id="row_75">&nbsp;</div>     
+            <div class="scheduleRow" id="row_76">&nbsp;</div>     
+            <div class="scheduleRow" id="row_77">&nbsp;</div>     
+            <div class="scheduleRow" id="row_78">&nbsp;</div>     
+            <div class="scheduleRow" id="row_79">&nbsp;</div>     
+            <div class="scheduleRow" id="row_80">&nbsp;</div>     
+            <div class="scheduleRow" id="row_81">&nbsp;</div>     
+            <div class="scheduleRow" id="row_82">&nbsp;</div>     
+            <div class="scheduleRow" id="row_83">&nbsp;</div>     
+            <div class="scheduleRow" id="row_84">&nbsp;</div>     
+            <div class="scheduleRow" id="row_85">&nbsp;</div>     
+            <div class="scheduleRow" id="row_86">&nbsp;</div>     
+            <div class="scheduleRow" id="row_87">&nbsp;</div>     
+            <div class="scheduleRow" id="row_88">&nbsp;</div>     
+            <div class="scheduleRow" id="row_89">&nbsp;</div>     
+            <div class="scheduleRow" id="row_90">&nbsp;</div>     
+            <div class="scheduleRow" id="row_91">&nbsp;</div>     
+            <div class="scheduleRow" id="row_92">&nbsp;</div>     
+            <div class="scheduleRow" id="row_93">&nbsp;</div>     
+            <div class="scheduleRow" id="row_94">&nbsp;</div>     
+            <div class="scheduleRow" id="row_95">&nbsp;</div>                   
+    </div>
+
+<script>var zIndex = 0;
+var eventId = 0;
+var baseUrl = '';
+var rowHeight = 15; 
+
+$('document').ready(function() {
+	
+	$("div#schedule").selectable({
+		filter: 'div.scheduleRow',		
+		stop: function(event, ui) {
+			
+			var firstRowId = 0;
+			var numSelected = 0;
+			
+			numSelected = $('.ui-selected').length;
+			
+			var newDiv = $('<div></div>');
+			newDiv.attr('id', 'eventBox_' + eventId++);
+			
+			var timeDiv = $('<div></div>').addClass('eventTime');
+			newDiv.append(timeDiv);
+			
+			newDiv.append('<input class="eventId" type="hidden" value="" />');
+			
+			$('div#schedule').prepend(newDiv);
+			
+			firstRowId = $('.ui-selected:first').attr('id');
+			firstRowId = firstRowId.split('_');
+			firstRowId = firstRowId[1];
+			
+			newDiv.addClass('scheduleEvent ui-corner-all');
+			var parentPos = $('div#schedule').position();
+			var parentWidth = parseInt($('div#schedule').css('width'), 10);
+			var parentHeight = parseInt($('div#schedule').css('height'), 10);
+						
+			newDiv.css('height', parseInt(numSelected * rowHeight, 10) + 'px');
+			newDiv.css('top', parseInt(parentPos.top + (firstRowId * rowHeight), 10) + 'px');
+			newDiv.css('width', parseInt((parentWidth * 0.7), 10) + 'px');
+			newDiv.css('zIndex', zIndex++);
+			
+			$(".ui-selected").removeClass("ui-selected");
+			deselectAllEvents();
+			
+			newDiv.addClass('selectedEvent');
+						
+			newDiv.click(function() {
+				deselectAllEvents();			
+				$(this).addClass('selectedEvent');
+				$(this).css('zIndex', zIndex++);
+			});		
+			
+			
+			newDiv.draggable({
+				axis: 'y',
+				containment: 'parent',
+				grid: [100, 15],
+				cursor: 'pointer',
+				start: function(event, ui) {
+					$("div#schedule").selectable('disable');
+					newDiv.trigger('click');
+				},
+				stop: function(event, ui) {
+					$("div#schedule").selectable('enable');
+				}
+			});
+			
+		}
+	});
+});
+
+	
+function deselectAllEvents()
+{
+	$('.selectedEvent').addClass('unselectedEvent').removeClass('selectedEvent');
+}</script></body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/reset/reset-min.css">
+
+  <link rel="stylesheet" href="http://jquery-ui.googlecode.com/svn/trunk/themes/base/ui.all.css" type="text/css" media="screen">
+  <script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/tags/1.6rc4/ui/ui.core.js"></script>
+  <script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/tags/1.6rc4/ui/ui.accordion.js"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $("#example").accordion({
+        alwaysOpen:false,
+        header:'dt'
+    });
+
+    $('button').click(function() {
+
+        var activate = undefined;
+
+        switch($(this).attr('id')) {
+            case 'activate-false':
+                activate = false;
+                break;
+            case 'activate-neg':
+                activate = -1
+                break;
+            case 'activate-0':
+                activate = 0;
+                break;
+            case 'activate-1':
+                activate = 1;
+                break
+        }
+
+        $('#example').accordion('activate',activate);
+
+    });
+
+  });
+  </script>
+
+</head>
+<body>
+    <div id="example">
+        <dl>
+            <dt><a href="#">Foo</a></dt>
+            <dd>Blah Blah Blah</dd>
+        </dl>
+        <dl>
+            <dt><a href="#">Bar</a></dt>
+            <dd>Blah Blah Blah</dd>
+        </dl>
+    </div>
+    <button id="activate-false">Activate with false</button>
+    <button id="activate-neg">Activate with -1</button>
+    <button id="activate-0">Activate first element</button>
+    <button id="activate-1">Activate second element</button>
+</body>
+</html>

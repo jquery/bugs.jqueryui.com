@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<script type="text/javascript" src="jquery-1.2.6.min.js"></script>
+		<!-- <script type="text/javascript" src="jquery-ui-1.5.3.min.js"></script> -->
+		<script type="text/javascript" src="jquery-ui-1.6rc2.min.js"></script>
+
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				//$("#tabtest > ul").append("<li><a href=\"#fragment0\"><span>tab0</span></a></li>");
+				$("#tabtest > ul").tabs();
+				$("#tabtest > ul").tabs("add", "#fragment1", "tab1");
+
+				alert("done!");
+			});
+		</script>
+	</head>
+
+
+	<body>
+		<div id="tabtest">
+			<ul>
+			</ul>
+		</div>
+
+		<div id="fragment0">f0</div>
+		<div id="fragment1">f1</div>
+	</body>
+</html>

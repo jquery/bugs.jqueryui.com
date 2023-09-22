@@ -1,0 +1,15 @@
+Index: ui.sortable.js
+===================================================================
+--- ui.sortable.js	(revision 901)
++++ ui.sortable.js	(working copy)
+@@ -303,7 +303,9 @@
+ 					if(!className) {
+ 						el.style.visibility = "hidden";
+ 						document.body.appendChild(el);
+-						el.innerHTML = self.currentItem[0].innerHTML;
++						if ($.browser.msie) {
++							el.innerHTML = self.currentItem[0].innerHTML;							
++						}
+ 						document.body.removeChild(el);
+ 					};
+ 

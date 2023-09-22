@@ -1,0 +1,54 @@
+Index: ui/jquery.ui.progressbar.js
+===================================================================
+--- ui/jquery.ui.progressbar.js	(revision 3374)
++++ ui/jquery.ui.progressbar.js	(working copy)
+@@ -103,7 +103,7 @@
+ 	_refreshValue: function() {
+ 		var value = this.value();
+ 		this.valueDiv[value == this._valueMax() ? 'addClass' : 'removeClass']("ui-corner-right");
+-		this.valueDiv.width(value + '%');
++		this.options.animate ? this.valueDiv.animate({'width': value + '%'}, 'slow') : this.valueDiv.width(value + '%');
+ 		this.element.attr("aria-valuenow", value);
+ 	}
+ 
+@@ -112,7 +112,8 @@
+ $.extend($.ui.progressbar, {
+ 	version: "@VERSION",
+ 	defaults: {
+-		value: 0
++		value: 0,
++		animate: false
+ 	}
+ });
+ 
+Index: tests/visual/progressbar/default.html
+===================================================================
+--- tests/visual/progressbar/default.html	(revision 3374)
++++ tests/visual/progressbar/default.html	(working copy)
+@@ -14,6 +14,17 @@
+ 		$("#progress").keyup(function() {
+ 			bars.progressbar("value", +this.value);
+ 		}).keyup();
++		$("#animated").click(function() {
++			bars.progressbar("option", "animate", this.checked);
++		}).triggerHandler("click");
++		
++		$("#simulate").click(function() {
++			for (var i = 1; i <= 128; i*=2) {
++				setTimeout(function() {
++					bars.progressbar("value", bars.progressbar("value") + 5);
++				}, 1000 - i * 10);
++			}
++		});
+ 	});
+ 	</script>
+ </head>
+@@ -24,6 +35,8 @@
+ <div id="progressbar3" style="width:100px"></div>
+ 
+ <input id="progress" value="10" />
++<input id="animated" type="checkbox" />
++<button id="simulate">Simulate progress</button> 
+ 
+ </body>
+ </html>

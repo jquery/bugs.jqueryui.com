@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Test case</title>
+    <style type="text/css">
+      #list { background-color: #EEE; width: 300px; padding: 10px; }
+      #list div { border: solid 1px #000; background-color: #FFF; }
+    </style>
+    <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="jquery-ui-1.8.1.custom.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() { $("#list").sortable({axis: 'y', containment: 'parent'}); });
+    </script>
+  </head>
+  <body>
+    <div id="list">
+      <div>Element 1</div>
+      <div>Element 2</div>
+      <div>Element 3</div>
+      <div>Element 4</div>
+      <div>Very long text Very long text Very long text Very long text Very long text Very long text Very long text Very long text Very long text Very long text  Very long text Very long text Very long text Very long text Very long textVery long text</div>
+      <div>Element 5</div>
+    </div>
+  </body>
+</html>

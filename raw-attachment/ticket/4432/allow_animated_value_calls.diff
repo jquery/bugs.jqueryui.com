@@ -1,0 +1,17 @@
+Index: ui/ui.slider.js
+===================================================================
+--- ui/ui.slider.js	(revision 2435)
++++ ui/ui.slider.js	(working copy)
+@@ -395,10 +395,10 @@
+ 		this._trigger("change", event, uiHash);
+ 	},
+ 
+-	value: function(newValue) {
++	value: function(newValue, animated) {
+ 
+ 		if (arguments.length) {
+-			this._setData("value", newValue);
++			this._setData("value", newValue, animated);
+ 			this._change(null, 0);
+ 		}
+ 

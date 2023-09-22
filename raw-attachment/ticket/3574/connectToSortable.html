@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script language="JavaScript" type="text/javascript" src="jquery.js"></script>
+		<script language="JavaScript" type="text/javascript" src="jquery.ui.js"></script>
+		<style> body {margin: 0px;}</style>
+		<script>
+			$(document).ready(function(){
+				$("#trash").droppable({
+					accept: ".sortable",
+					drop: function(e, ui) {
+						ui.draggable.appendTo("#trashed");
+					}
+				})
+			    $("#sortable_list").sortable({});			
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="sortable_list">
+			<li class="sortable">test 1</li>
+			<li class="sortable">test 2</li>
+			<li class="sortable">test 3</li>
+			<li class="sortable">test 4</li>
+		</ul>
+		<div id="trash">trash</div>
+		<ul id="trashed">
+		</ul>						
+	</body>
+</html>

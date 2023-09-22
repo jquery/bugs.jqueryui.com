@@ -1,0 +1,109 @@
+function fetchOlderNews(latest, num) {
+	$j.get('index.php', 
+			{
+				action: 'older', 
+				num: num, 
+				id: latest
+			}, 
+			function(data) {
+				$j('#news_contents').append(data);
+				$j('#added_news').slideDown(num*150, function() {
+					$j('#news_links').fadeOut();
+				});
+			});	
+}
+
+function sendParams(paneID, pane) {
+	var date = new Date();
+	date.setTime(date.getTime()+(1000*24*60*60*1000));
+	var expires = date.toUTCString();
+	
+	var serial = $j(paneID).sortable('serialize', { key: 'widget' });
+	
+	document.cookie = "widget"+pane+"=&"+serial+"; expires="+expires+"; path=/"; 
+}
+
+function testEmptyDragPane(pane,paneID) {
+	var paneArray = pane.sortable('toArray');
+	if(paneArray == '') {
+		pane.append('<li id="dragHolder'+paneID+'"><div class="box pad">This is a filler widget.  It will disappear when you drag something into this pane.</div></li>');
+	} else if((paneArray[0] == 'dragHolder'+paneID && paneArray[1]) || paneArray[0] != 'dragHolder'+paneID) {
+		$j("#dragHolder"+paneID).remove();
+	}
+
+}
+
+function removeWidget(widgetID) {
+	if(widgetID != 'widgets_news') {
+		$j('#'+widgetID).remove();
+		testEmptyDragPane($j('#left_drag_area'), 'left');
+		sendParams('#left_drag_area', 'left');
+		testEmptyDragPane($j('#right_drag_area'), 'right');
+		sendParams('#right_drag_area', 'right');
+	}
+}
+
+$j(document).ready(function() {
+	var leftWidth = $j('#left_drag_area > li:not(.dummydrag)').css('width');
+	var rightWidth = $j('#right_drag_area > li:not(.dummydrag)').css('width');
+	
+	$j('#left_drag_area').sortable({
+		revert: true,
+		cursor: 'move',
+		cancel: '#dragHolderleft,.body',
+		tolerance: 'pointer',
+		connectWith: ['#right_drag_area'],
+		start: function(event, ui) {
+			ui.item.addClass('dummydrag');
+		},
+		over: function(event, ui) {
+			if(ui.helper.css('width') != leftWidth) {
+				ui.helper.animate({ width: leftWidth }, 500, function() {
+					var newHeight = ui.helper.height(); 
+					ui.placeholder.height(newHeight);
+					ui.helper.height(ui.item.height());
+				});
+			}
+			
+			$j('.debug').html('placeholder: '+ui.placeholder.height()+'<br />');
+			$j('.debug').append('helper: '+ui.helper.height()+'<br />');
+			$j('.debug').append('item: '+ui.item.height()+'<br />');
+		},
+		update: function(event, ui) {
+			testEmptyDragPane($j(this), 'left');
+			sendParams('#left_drag_area', 'left');
+		},
+		beforeStop: function(event, ui) {
+			$j('.dummydrag').removeClass('dummydrag');
+		}
+	});
+	
+	$j('#right_drag_area').sortable({
+		revert: true,
+		cursor: 'move',
+		tolerance: 'pointer',
+		cancel: '#dragHolderright,.body',
+		connectWith: ['#left_drag_area'],
+		start: function(event, ui) {
+			ui.item.addClass('dummydrag');
+		},
+		over: function(event, ui) {
+			if(ui.item.css('width') != rightWidth ) {
+				ui.item.animate({ width: rightWidth }, 500);
+				ui.placeholder.height(ui.item.height());
+			}
+		},
+		update: function(event, ui) {
+			testEmptyDragPane($j(this), 'right');
+			sendParams('#right_drag_area', 'right');
+		},
+		stop: function() {
+			$j('.dummydrag').removeClass('dummydrag');
+		}
+	});
+	
+	testEmptyDragPane($j("#left_drag_area"), "left");
+	testEmptyDragPane($j("#right_drag_area"), "right");
+	
+});
+

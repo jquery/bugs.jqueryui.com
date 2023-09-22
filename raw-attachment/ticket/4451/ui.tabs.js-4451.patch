@@ -1,0 +1,22 @@
+Index: ui/ui.tabs.js
+===================================================================
+--- ui/ui.tabs.js	(revision 2516)
++++ ui/ui.tabs.js	(working copy)
+@@ -589,6 +589,17 @@
+ 
+ 				// last, so that load event is fired before show...
+ 				self.element.dequeue("tabs");
++			},
++			error: function() {
++				//self.abort();
++				$(self._sanitizeSelector(a.hash)).html("Error loading tab content");
++				self._cleanup();
++				self._trigger('load', null, self._ui(self.anchors[index], self.panels[index]));
++				try {
++					o.ajaxOptions.error(r, s);
++				}
++				catch (e) {}
++				self.element.dequeue("tabs");
+ 			}
+ 		}));
+ 

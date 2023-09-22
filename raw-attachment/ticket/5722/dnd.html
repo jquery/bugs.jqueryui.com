@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+
+<head>
+<title>Bug or Documentation Issue</title>
+
+<style type="text/css">
+.box {
+  width: 100px;
+  height: 100px;
+  margin-left: 30px;
+  background: orange;
+  float: left;
+}
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+function initDnd() {
+  $(".left").droppable({
+    //scope: "left"
+  });
+  
+  $(".right").draggable({
+    //scope: "left"
+  });
+}
+
+function killDnd() {
+  $(".left").droppable("destroy");
+}
+
+function buildBoxes() {
+  var html = '<div class="left box"></div><div class="right box"></div>';
+  $("#boxesDyn").html(html);
+}
+
+$(function() {
+  buildBoxes();
+  initDnd();
+});
+</script>
+
+
+<body>
+
+<div id="boxesDyn"></div>
+
+ <p style="clear: left"></p>
+ 
+<p style="margin-top: 2em">
+	<button type="button" onclick="buildBoxes()">buildBoxes</button>
+	<button type="button" onclick="killDnd()">killDnd</button>
+	<button type="button" onclick="initDnd()">initDnd</button>
+</p>
+
+</body>

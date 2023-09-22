@@ -1,0 +1,1989 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-pagefind-meta="title">#3623 (Opening a Modal Dialog shows a horizontal scroll bar) - jQuery UI - Bug Tracker</title>
+    <meta name="description" content="Static archive of the old bugs.jqueryui.com Trac site.">
+    
+<link rel="icon" href="/bugs.jqueryui.com/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/bugs.jqueryui.com/favicon.svg">
+<link rel="apple-touch-icon" href="/bugs.jqueryui.com/apple-touch-icon.png">
+    
+    
+    
+    
+    
+    
+    
+    <style>
+      :root{--ticket-info-background-color:#ffd;--ticket-info-border-color:#dd9;--ticket-table-border-color:#eed;--ticket-date-text-color:#996;--ticket-description-title-color:#663;--ticket-changes-text-color:#663;--ticket-changes-box-shadow:#f2f2f2;--ticket-number-color:#844}.ticket-info{position:relative;background-color:var(--ticket-info-background-color);border:1px solid var(--ticket-info-border-color);border-radius:var(--border-radius);padding:.5em .75em;margin:0 auto .5em;width:100%;max-width:580px}.ticket-number{font-size:1.45rem;font-weight:700;margin-right:.5em;text-decoration:none}.ticket-number[href],.ticket-number[href]:visited{color:var(--ticket-number-color)}.ticket-info span{font-weight:700}.missing{color:var(--text-color-link-disabled)}.ticket-title{border-bottom:1px solid #bbb;margin-top:1em;padding-bottom:.25em;font-weight:700;font-size:1.1875rem}.ticket-dates{color:var(--ticket-date-text-color);font-size:.8125rem}.ticket-dates p{margin:0 0 .5em}.ticket-properties{width:100%;text-align:left;font-size:.65rem;border-top:1px solid var(--ticket-table-border-color);margin:0}.ticket-properties th{font-weight:400;width:20%}.ticket-properties td,.ticket-properties th{padding:.25em .5em;border-bottom:1px dashed var(--ticket-table-border-color)}.ticket-info-bottom{padding:.5em}.ticket-description{font-size:.8125rem;margin-top:.5em}.ticket-description h2,.ticket-description h3,.ticket-description h4,.ticket-description h5,.ticket-description h6{text-transform:uppercase;font-weight:400}.ticket-description h1{font-size:1.1rem}.ticket-description h2{font-size:1rem}.ticket-description h3{font-size:.9rem}.ticket-description h4{font-size:.8rem}.ticket-description h5{font-size:.75rem}.ticket-description h6{font-size:.7rem}.ticket-description-title{color:var(--ticket-description-title-color);font-size:.75rem}details{padding:.5em 0;font-size:.8125rem;width:100%;max-width:580px;margin:0 auto}summary{color:var(--text-color-link);font-weight:700;font-size:.875rem;text-decoration:underline;cursor:pointer;text-shadow:.04em .04em var(--text-shadow-color)}.ticket-attachments{font-size:.75em}.ticket-comment-body{width:100%;padding-top:.5em}.ticket-change{margin:1em 0;clear:both}.ticket-change-header{font-size:.875rem;font-weight:700;box-shadow:1.4px 2.8px 5.6px 0 var(--ticket-changes-box-shadow)}.ticket-change-link{font-size:.85em}.ticket-change-content{width:100%}.ticket-changes{background-color:var(--ticket-info-background-color);border:1px solid var(--ticket-info-border-color);border-radius:var(--border-radius);color:var(--ticket-changes-text-color);font-size:.7rem;float:right;clear:right;margin:2em 0 1em 1.5em}.ticket-changes th{text-align:right;font-weight:400;text-transform:capitalize}.ticket-changes td,.ticket-changes th{padding:.25em;vertical-align:baseline}.ticket-changes .change-field-new{font-weight:700}:root{--font-family:'Arial','Helvetica','Verdana','sans-serif';--font-family-header:var(--font-family);--font-family-alternate:Verdana,Arial,'Bitstream Vera Sans',Helvetica,sans-serif;--font-family-monospace:Monaco,Andale Mono WT,Andale Mono,Lucida Console,Lucida Sans Typewriter,DejaVu Sans Mono,Bitstream Vera Sans Mono,Liberation Mono,Nimbus Mono L,Courier New,Courier,monospace}:root{--primary-color:#000000;--secondary-color:#ff9c08;--text-color:#222;--text-color-dark-bg:#fff;--text-color-link:#bb0000;--text-color-link-hover:#f00000;--text-color-link-active:#ff2424;--text-color-link-visited:#cc0000;--text-color-link-disabled:#998;--main-link-hover-bg-color:#eee;--text-shadow-color:#fcfcfc;--button-color:var(--secondary-color);--button-hover-color:#a36200;--button-text-color:#fff;--background-color:#5f5f5f;--main-background-start-color:#1a1a1a;--main-background-end-color:var(--background-color);--top-nav-hover-start-color:#414240;--top-nav-hover-mid-color:#323530;--top-nav-hover-end-color:#292b28;--nav-background-color:var(--primary-color);--secondary-nav-start-color:#2d2d2d;--secondary-nav-end-color:#060606;--secondary-nav-box-shadow:#313131;--content-background-color:#fafafa;--banner-background-color:var(--primary-color);--footer-background-start-color:#000000;--footer-background-end-color:#141400;--footer-text-color-link:#bbb;--nav-text-link-color:white;--nav-hover-link-color:rgba(255, 255, 255, 0.2);--border-color:#e4e4e4;--border-radius:6px;--input-border-color:white;--blockquote-border-color:#b44;--pre-color:#333;--pre-background-color:#fff;--code-color:#600;--code-background-color:var(--content-background-color);--syntax-tab-size:2}*{box-sizing:border-box}body,html{padding:0;margin:0 auto;font-family:var(--font-family);font-size:100%;color:var(--text-color);line-height:1.4}html{overflow-y:auto;background-color:var(--background-color)}html:before{content:'';position:absolute;top:80px;left:0;right:0;height:900px;background:linear-gradient(to bottom,var(--main-background-start-color),var(--main-background-start-color) 25%,var(--main-background-end-color));z-index:-1}.banner{width:100%;height:80px;background-color:var(--banner-background-color);color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.2);text-align:center;font-size:.875rem;padding:0 .25em}.banner a[href],.banner a[href]:visited{color:#5cb5f0}.banner a[href]:hover{color:var(--text-color-link-hover)}.banner a[href]:active{color:var(--text-color-link-active)}th,tr{font-family:var(--font-family-alternate)}.container{width:100%;max-width:956px;margin:0 auto;overflow:hidden}h1,h2,h3,h4,h5,h6{font-family:var(--font-family-header);font-weight:400;margin:0;padding:0;letter-spacing:0}h1,h2,h3,h4{letter-spacing:-.018em}h1{font-size:1.25rem;font-weight:700}h2{font-size:1rem;font-weight:700}.visually-hidden{clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}p{line-height:1.5;margin:.5em 0 1em}p:last-child{margin-bottom:0}ul{margin:0}li{line-height:1.5}hr{width:100%}blockquote{margin:-.3em 0 0 0;border-style:solid;border-width:0 0 0 2px;padding-left:.4em;border-color:var(--blockquote-border-color)}a[href]{color:var(--text-color-link)}a[href]:visited{color:var(--text-color-link-visited)}a[href]:hover{color:var(--text-color-link-hover)}a[href]:active{color:var(--text-color-link-active)}a[aria-disabled=true]{color:var(--text-color-link-disabled)}main{padding:1rem}table{margin:1em 0}table td,table th{padding-right:1em}code,pre{font-family:var(--font-family-monospace)}pre:not([class*=language-]){margin:.5em 0;-moz-tab-size:var(--syntax-tab-size);-o-tab-size:var(--syntax-tab-size);tab-size:var(--syntax-tab-size);-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;width:100%;padding:.25em;font-size:.6875rem;border-radius:var(--border-radius);overflow-x:auto;background:var(--pre-background-color);color:var(--pre-color);border:1px solid #000;text-align:left}code{color:var(--code-color);border:1px solid var(--border-color);border-radius:.25em;padding:0 .3em;background:var(--code-background-color);word-break:break-all}pre[class*=language-] code{color:unset;border:none;border-radius:0;padding:0;background:0 0;word-break:normal}.strikethrough{text-decoration:line-through}header{position:relative;height:95px;display:flex;flex-wrap:wrap;padding:0 1em}.nav{display:flex;flex-direction:column;padding:0;list-style:none}.nav a{display:flex;align-items:center;height:35px;font-size:.75rem;padding:0 1em;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;width:100%}.nav li:not(.active) a:active,.nav li:not(.active) a:hover{background-color:var(--nav-hover-link-color);border-bottom-color:var(--secondary-color)}.nav a,.nav a:active,.nav a:hover,.nav a:visited{color:var(--nav-text-link-color)}.nav a:active{background:linear-gradient(to bottom,var(--secondary-nav-end-color),var(--secondary-nav-start-color))}.nav .active a{border-bottom-color:var(--secondary-color)}#jq-siteLogo{margin-top:1em}#jq-primaryNavigation{padding:0 .5em;background-color:var(--nav-background-color)}#jq-secondaryNavigation{padding:0 .5em;background:linear-gradient(to bottom,var(--secondary-nav-start-color),var(--secondary-nav-end-color));box-shadow:0 -2px 1px var(--secondary-nav-box-shadow),0 2px 1px #000}#jq-secondaryNavigation a{font-size:.8125rem}#jq-content{position:relative;width:100%}.content-nav{font-size:.8125rem;margin:1.2em 0;align-self:flex-end}.content-nav ul{list-style:none}.content-nav li{padding:0 .75em}.content-nav li:not(:last-of-type){border-right:1px solid var(--border-color)}.hamburger-lines{position:relative;width:18px;height:14px;align-self:center}.hamburger-line{width:100%;height:2px;background-color:#fff;transition:opacity .2s ease-in-out,transform .2s ease-in-out}.hamburger-toggle:checked+.hamburger-lines span:first-of-type{transform:rotateZ(45deg) translate(4px,4.5px) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:nth-of-type(2){transform:rotateZ(135deg) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:last-of-type{transform:translateY(-8px) scale(0);opacity:0}.hamburger-toggle:checked~#jq-menus{transform:none;opacity:1}form{gap:.5em}label{font-style:italic;font-size:.8125rem;font-weight:700}input{border:1px solid var(--input-border-color);border-radius:var(--border-radius);height:25px;padding:0 .5em;color:var(--text-color)}button{display:block;border:0;padding:5px 10px;border-radius:var(--border-radius);background:var(--button-color);color:var(--button-text-color);font-size:.875rem;cursor:pointer}button:active,button:hover{background-color:var(--button-hover-color)}button:active{box-shadow:inset 0 0 5px #000}main{padding:1em;gap:1em}main a[href]:active,main a[href]:hover{background-color:var(--main-link-hover-bg-color)}#jq-topnav{gap:.25em}#jq-topnav a{width:100%;display:block;font-family:var(--font-family-alternate);font-size:.625rem;padding:.1em 1.5em;text-decoration:none;border:2px solid var(--border-color);color:#000;box-shadow:0 1px 2px rgba(0,0,0,.5);text-align:center;border-radius:var(--border-radius)}#jq-topnav a:active,#jq-topnav a:hover{color:#fff;border-color:var(--top-nav-hover-end-color)}#jq-topnav a:hover{background:linear-gradient(to bottom,var(--top-nav-hover-start-color),var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-end-color))}#jq-topnav a:active{background:linear-gradient(to bottom,var(--top-nav-hover-end-color),var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-start-color))}footer{background-color:var(--nav-background-color);background:var(--nav-background-color) linear-gradient(to bottom,var(--footer-background-start-color),var(--footer-background-end-color));padding:2em;margin-bottom:2em;color:var(--text-color-dark-bg);border:2px solid transparent;border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius)}footer a[href],footer a[href]:visited{color:var(--footer-text-color-link)}footer a[href]:active,footer a[href]:hover{background-color:var(--main-link-hover-bg-color);color:#000}.flex-row{display:flex;flex-direction:row}.flex-column{display:flex;flex-direction:column}.flex-between-start{justify-content:space-between;align-items:flex-start}.flex-between-center{justify-content:space-between;align-items:center}.flex-start-center{justify-content:flex-start;align-items:center}.flex-end-center{justify-content:flex-end;align-items:center}.flex-center{display:flex;justify-content:center;align-items:center}.items-start{align-items:start}.white-box{background-color:var(--content-background-color);border:1px solid var(--border-color)}a.ext-link .icon{padding-left:15px}@media (max-width:919px){#jq-menus{position:absolute;top:95px;height:calc(100vh - 95px);left:0;right:0;background-color:var(--nav-background-color);z-index:1;transition:transform .2s ease-in-out,opacity .2s ease-in-out;transform:translateX(100%);opacity:0;display:flex;flex-direction:column-reverse;justify-content:flex-end}}@media (min-width:920px){html:before{top:60px}body{background-position-y:60px}.banner{height:60px;font-size:1rem}header{height:125px;padding:0 0 0 2em}#jq-topnav{flex-direction:row;align-self:flex-end;gap:0}#jq-topnav a{width:auto;border-radius:0}#jq-topnav a:first-of-type{border-radius:var(--border-radius) 0 0 var(--border-radius)}#jq-topnav a:last-of-type{border-radius:0 var(--border-radius) var(--border-radius) 0}.nav{flex-direction:row}.nav a{width:auto}#jq-primaryNavigation a{height:27px;align-self:flex-end}#jq-secondaryNavigation{border-radius:var(--border-radius);margin-top:2em}#jq-siteLogo{align-self:flex-end}main{flex-grow:1;min-height:520px;font-size:.75rem}.hamburger-lines{display:none}.content-nav{margin-top:.4em}}:root{--pagefind-ui-background-color:#fff}#search{width:100%;position:relative;min-height:25px}.pagefind-ui__search-input{width:100%;border:1px solid var(--border-color)}.pagefind-ui__search-clear{display:inline-block;position:absolute;width:25px;height:25px;right:15px;top:0;padding:0 0 0 25px;overflow:hidden;background-color:transparent;z-index:1}.pagefind-ui__search-clear:active,.pagefind-ui__search-clear:hover{background-color:rgba(0,0,0,.2)}.pagefind-ui__search-clear:after{content:'×';position:absolute;top:0;left:0;right:0;bottom:0;font-weight:700;font-size:1.5rem;line-height:26px;text-align:center;color:var(--text-color);opacity:1}.pagefind-ui__hidden{display:none}.pagefind-ui__suppressed{display:none}.pagefind-ui__drawer{position:absolute;top:100%;left:0;right:0;height:350px;background-color:var(--pagefind-ui-background-color);border:1px solid var(--border-color);border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius);box-shadow:0 2px 4px rgba(0,0,0,.2);padding:10px;color:var(--text-color);font-size:.875rem;overflow-y:auto;word-break:break-word;z-index:1}.pagefind-ui__results-area{width:100%}.pagefind-ui__results{padding-left:20px}.pagefind-ui__result{margin-bottom:10px;vertical-align:top}.pagefind-ui__result-thumb{display:flex;flex-direction:column}.pagefind-ui__result-thumb .pagefind-ui__result-image{max-width:150px}.pagefind-ui__message{font-weight:700;text-transform:uppercase;font-size:1rem}.pagefind-ui__button{width:100%;padding:10px;margin-top:2em}@media(min-width:920px){#search{width:auto}.pagefind-ui__search-input{width:300px}.pagefind-ui__search-clear{right:auto;left:270px}.pagefind-ui__drawer{left:-200px;height:500px;padding:15px}}body{background:url(/bugs.jqueryui.com/img/body_bg.jpg) no-repeat center 80px}a.ext-link .icon{background:url(/bugs.jqueryui.com/img/extlink.png) 0 50% no-repeat}
+    </style>
+    
+  </head>
+  <body>
+    <div class="banner flex-center">
+      <span>jQuery UI issues have moved to <a href="https://github.com/jquery/jquery-ui/issues">GitHub</a>. This site is now a static archive of the old <a href="https://trac.edgewall.org/">Trac</a> bugs site. <br>Some functions and pages are no longer available.</span>
+    </div>
+    <div class="container">
+      <a href="#skip" class="visually-hidden">Skip to main content</a>
+      <header class="flex-column">
+        <div class="flex-row flex-between-start">
+          <a id="jq-siteLogo" href="/bugs.jqueryui.com/" title="jQuery UI Bugs Home">
+            <img src="/bugs.jqueryui.com/img/logo.svg" width="253" alt="jQuery UI">
+          </a>
+          <input class="hamburger-toggle visually-hidden" id="jq-menutoggle" type="checkbox">
+          <label aria-label="Toggle Menu" for="jq-menutoggle" class="hamburger-lines flex-column flex-between-center">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </label>
+          <div id="jq-menus" class="flex-column">
+            <nav id="jq-primaryNavigation">
+              <h2 class="visually-hidden">jQuery UI sites navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-jquery">
+                  <a href="https://jquery.com/" title="jQuery Home">jQuery</a>
+                </li>
+                <li class="jq-plugins">
+                  <a href="https://plugins.jquery.com/" title="jQuery Plugins">Plugins</a>
+                </li>
+                <li class="jq-ui active">
+                  <a href="https://jqueryui.com/" title="jQuery UI">UI</a>
+                </li>
+                <li class="jq-meetup">
+                  <a href="https://meetups.jquery.com/" title="jQuery Meetups">Meetups</a>
+                </li>
+                <li class="jq-forum">
+                  <a href="https://forum.jquery.com/" title="jQuery Forum">Forum</a>
+                </li>
+                <li class="jq-blog">
+                  <a href="https://blog.jquery.com/" title="jQuery Blog">Blog</a>
+                </li>
+                <li class="jq-about">
+                  <a href="https://openjsf.org" title="About jQuery and OpenJS">About</a>
+                </li>
+                <li class="jq-donate">
+                  <a href="https://openjsf.org/about/project-funding-opportunities/" title="Donate to OpenJS">Donate</a>
+                </li>
+              </ul>
+            </nav>
+            <nav id="jq-secondaryNavigation">
+              <h2 class="visually-hidden">jQuery UI navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-download">
+                  <a href="https://jqueryui.com/download/">
+                    Download
+                  </a>
+                </li>
+                <li class="jq-documentation">
+                  <a href="https://jqueryui.com/demos/">
+                    Demos &amp; Documentation
+                  </a>
+                </li>
+                <li class="jq-themes">
+                  <a href="https://jqueryui.com/themeroller/">
+                    Themes
+                  </a>
+                </li>
+                <li class="jq-development">
+                  <a href="https://jqueryui.com/development/">
+                    Development
+                  </a>
+                </li>
+                <li class="jq-support">
+                  <a href="https://jqueryui.com/support/">
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main id="skip" class="flex-column white-box">
+        <h2 class="visually-hidden">Search and Top Navigation</h2>
+        <div class="flex-row flex-end-center">
+          <div id="search"></div>
+        </div>
+        <nav id="jq-topnav" class="flex-column flex-start-center">
+          <a href="/bugs.jqueryui.com/newticket">New Ticket</a>
+          <a href="/bugs.jqueryui.com/report">View Tickets</a>
+          <a href="/bugs.jqueryui.com/ticketgraph">Ticket Graph</a>
+          <a href="/bugs.jqueryui.com/roadmap">Roadmap</a>
+          <a href="/bugs.jqueryui.com/timeline">Recent Changes</a>
+        </nav>
+        <div id="jq-content" class="flex-column">
+          
+
+<div class="flex-column" data-pagefind-body="">
+  
+
+  <nav class="content-nav">
+    <ul class="flex-row">
+      
+        <li>
+          <a href="/bugs.jqueryui.com/ticket/3622/">← Previous Ticket</a>
+        
+      
+      
+        </li><li>
+          <a href="/bugs.jqueryui.com/ticket/3624/">Next Ticket →</a>
+        </li>
+      
+    </ul>
+  </nav>
+
+
+<div class="ticket-info">
+  <div class="flex-row flex-between-start">
+    <h2>
+      <a href="." class="ticket-number">#3623</a>
+      <span class="ticket-status">closed</span>
+      <span class="ticket-type">bug</span>
+      <span class="ticket-resolution">(fixed)</span>
+    </h2>
+
+    <div class="ticket-dates">
+      <p>Opened November 25, 2008 12:25PM UTC</p>
+      
+        <p>Closed July 19, 2011 04:21PM UTC</p>
+      
+      
+        <p>Last modified September 14, 2011 06:56PM UTC</p>
+      
+    </div>
+  </div>
+
+  <h1 class="ticket-title">Opening a Modal Dialog shows a horizontal scroll bar</h1>
+
+  <table class="ticket-properties">
+    <tr>
+      <th>Reported by:</th>
+      <td>
+        teaspoon000
+      </td>
+      <th>Owned by:</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>
+        Priority:
+      </th>
+      <td>
+        major
+      </td>
+      
+        <th class="missing">Milestone:</th>
+      
+      <td>
+        <a href="/bugs.jqueryui.com/milestone/1.9.0">1.9.0</a>
+      </td>
+    </tr>
+    <tr>
+      <th>Component:</th>
+      <td>ui.dialog</td>
+      
+        <th>Version:</th>
+      
+      <td>1.7.2</td>
+    </tr>
+    <tr>
+      
+        <th>Keywords:</th>
+      
+      <td>scroll bar in dialog box</td>
+      
+        <th class="missing">Cc:</th>
+      
+      <td></td>
+    </tr>
+    <tr>
+      <th class="missing">
+        Blocked by:
+      </th>
+      <td></td>
+      <th class="missing">
+        Blocking:
+      </th>
+      <td></td>
+    </tr>
+  </table>
+  <div class="ticket-info-bottom">
+    <h5 class="ticket-description-title">Description</h5>
+    <div class="ticket-description"><p>Whenever I open a dialog box, there appears a horizontal scroll bar when it should not because the current page doesn't provide one.</p><p>See Forum: <a href="http://forum.jquery.com/topic/opening-a-modal-dialog-shows-a-horizontal-scroll-bar" class="ext-link"><span class="icon"></span>http://forum.jquery.com/topic/opening-a-modal-dialog-shows-a-horizontal-scroll-bar</a></p></div>
+  </div>
+</div>
+
+<details>
+  <summary class="ticket-details-summary">Attachments (1)</summary>
+
+  <ul class="ticket-attachments">
+    
+      <li>
+        <a href="/bugs.jqueryui.com/attachment/ticket/3623/overlayscrollbar_demo.html/index.html">overlayscrollbar_demo.html</a> (0.9 KB) - added by Tukler
+        <strong>October 13, 2010 12:22AM UTC</strong>.<br>
+        
+      </li>
+    
+  </ul>
+</details>
+
+<details open="">
+  <summary class="ticket-details-summary">Change History (47)</summary>
+  
+    <div class="ticket-change flex-column" id="comment:1">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed November 30, 2008 01:42PM UTC by <span class="author">jzaefferer</span></span>
+        <a class="ticket-change-link" href="#comment:1">comment:1</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>component:</th>
+                  <td>
+                    
+                      <span class="change-field-old">ui.core</span> → <span class="change-field-new">ui.dialog</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              
+            </div>
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:2">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed December 19, 2008 06:21PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:2">comment:2</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Can you please provide some more information.  Perhaps a test page?</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:3">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed January 02, 2009 04:34AM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:3">comment:3</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>milestone:</th>
+                  <td>
+                    
+                      <span class="change-field-old">TBD</span> → <span class="change-field-new">1.6</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>priority:</th>
+                  <td>
+                    
+                      <span class="change-field-old">minor</span> → <span class="change-field-new">major</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              
+            </div>
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:4">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed February 19, 2009 02:44PM UTC by <span class="author">skorpan</span></span>
+        <a class="ticket-change-link" href="#comment:4">comment:4</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>I have this problem as well, but it seems that it is caused by the new way the dialog overlays work.  This is what I use to "fix" this:</p><pre class="wiki">
+.ui-widget-overlay {
+    background: black;
+    filter: alpha(opacity=70);
+    opacity: .7;
+    position: fixed; /* &lt;---------- */
+    top: 0;          /* &lt;---------- */
+    left: 0;         /* &lt;---------- */
+}
+</pre>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:5">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed March 03, 2009 03:59AM UTC by <span class="author">BobbyStealz</span></span>
+        <a class="ticket-change-link" href="#comment:5">comment:5</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>I had this problem aswell, I just binded the open Event of the dialog to the following code:</p><pre class="wiki">
+open: function(event, ui){
+   /*
+    * Scrollbar fix 
+    */
+   $('body').css('overflow','hidden');
+}
+</pre>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:6">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed March 08, 2009 02:40PM UTC by <span class="author">rdworth</span></span>
+        <a class="ticket-change-link" href="#comment:6">comment:6</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>milestone:</th>
+                  <td>
+                    
+                      <span class="change-field-old">1.7</span> → <span class="change-field-new">1.8</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              
+            </div>
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:7">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed April 30, 2009 11:40AM UTC by <span class="author">2Toad</span></span>
+        <a class="ticket-change-link" href="#comment:7">comment:7</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>My solution:</p><pre class="wiki">
+.ui-widget-overlay {
+   position: fixed;  /* &lt;---------- */
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+}
+</pre><p>Version: 1.7.1</p><p>Browsers: FF3, IE7, IE8</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:8">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed November 10, 2009 10:44AM UTC by <span class="author">cozydozy</span></span>
+        <a class="ticket-change-link" href="#comment:8">comment:8</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>My fix is:</p><p>1. Edit jquery-ui-1.7.2.custom.min.js</p><p>2. Find: addClass("ui-widget-overlay").css({width:this.width(),height:this.height()});</p><p>3. Delete: .css({width:this.width(),height:this.height()})</p><p>4. It should become like this: addClass("ui-widget-overlay");</p><p>5. Save your file.</p><p>6. Edit jquery-ui-1.7.2.custom.css</p><p>7. Find: .ui-width-overlay</p><p>8. Make sure you have both width and height set to 100%.</p><p>9. You're done.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:9">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed November 10, 2009 10:51AM UTC by <span class="author">cozydozy</span></span>
+        <a class="ticket-change-link" href="#comment:9">comment:9</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Something went wrong in my previous post.</p><p>My fix is:</p><p>1. Edit jquery-ui-1.7.2.custom.min.js </p><p>2. Find: addClass("ui-widget-overlay").css({width:this.width(),height:this.height()});</p><p>3. Delete: .css({width:this.width(),height:this.height()})</p><p>4. It should become like this: addClass("ui-widget-overlay");</p><p>5. Save your file.</p><p>6. Edit jquery-ui-1.7.2.custom.css</p><p>7. Find: .ui-width-overlay</p><p>8. Make sure you have both width and height set to 100%.</p><p>9. You're done. </p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:10">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed November 10, 2009 10:53AM UTC by <span class="author">cozydozy</span></span>
+        <a class="ticket-change-link" href="#comment:10">comment:10</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Bah, this text form is crap.</p><p>Something went wrong in my previous post.</p><p>My fix is: </p><p>1. Edit jquery-ui-1.7.2.custom.min.js </p><p>2. Find: addClass("ui-widget-overlay").css({width:this.width(),height:this.height()}); </p><p>3. Delete: .css({width:this.width(),height:this.height()}) </p><p>4. It should become like this: addClass("ui-widget-overlay"); </p><p>5. Save your file. </p><p>6. Edit jquery-ui-1.7.2.custom.css </p><p>7. Find: .ui-width-overlay </p><p>8. Make sure you have both width and height set to 100%. </p><p>9. You're done. </p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:11">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed December 31, 2009 02:41PM UTC by <span class="author">dennydaugherty</span></span>
+        <a class="ticket-change-link" href="#comment:11">comment:11</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>The aforementioned fix by cozydozy seems to work fine in IE7, IE8, FF3.5, Chrome, Safari and Opera. However, I wanted to maintain compatibility with IE6, and the old way does work in IE6. For myself I implemented a hack to detect IE6, and I now get the same behavior across all browsers without scrollbars occurring in IE8</p><pre class="wiki">
+--- ui.dialog.js
++++ ui.dialog.js
+@@ -563,11 +563,22 @@
+                        $(window).bind('resize.dialog-overlay', $.ui.dialog.overlay.resize);
+                }
+
+-               var $el = $('&lt;div&gt;&lt;/div&gt;').appendTo(document.body)
++    /* This is a hack to maintain backward compatibility with IE while fixing
++     * the scrollbar issue in IE8. See http://dev.jqueryui.com/ticket/3623
++     */
++    var $el;
++    if (navigator.userAgent.match(/MSIE 6.0/)) {
++      $el = $('&lt;div&gt;&lt;/div&gt;').appendTo(document.body)
+                        .addClass('ui-widget-overlay').css({
+                                width: this.width(),
+                                height: this.height()
+                        });
++    }
++    else {
++      $el = $('&lt;div&gt;&lt;/div&gt;').appendTo(document.body)
++        .addClass('ui-widget-overlay');
++    }
++
+
+                (dialog.options.bgiframe && $.fn.bgiframe && $el.bgiframe());
+</pre>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:12">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed January 26, 2010 09:33AM UTC by <span class="author">suner</span></span>
+        <a class="ticket-change-link" href="#comment:12">comment:12</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>For whatever it is worth, the issue seems to come from the fact that in IE8, the width of the overlay is calculated as the visible part of the screen + the vertical scrollbar, whereas other browsers only count it as the visible part.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:13">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed February 05, 2010 12:43AM UTC by <span class="author">Rwhitbeck</span></span>
+        <a class="ticket-change-link" href="#comment:13">comment:13</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>version:</th>
+                  <td>
+                    
+                      <span class="change-field-old">1.5.2</span> → <span class="change-field-new">1.7.2</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>As Suner mentions I can only recreate this bug in IE with this test page <a href="http://jsbin.com/anuso" class="ext-link"><span class="icon"></span>http://jsbin.com/anuso</a></p>
+            </div>
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:14">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed February 05, 2010 12:51AM UTC by <span class="author">Rwhitbeck</span></span>
+        <a class="ticket-change-link" href="#comment:14">comment:14</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>description:</th>
+                  <td>
+                    
+                      <span class="change-field-old">Whenever I open a dialog box, there appears a horizontal scroll bar when it should not because the current page doesn&#39;t provide one.</span> → <span class="change-field-new">Whenever I open a dialog box, there appears a horizontal scroll bar when it should not because the current page doesn&#39;t provide one.&#92;
+&#92;
+See Forum: http://forum.jquery.com/topic/opening-a-modal-dialog-shows-a-horizontal-scroll-bar</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              
+            </div>
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:15">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed February 16, 2010 02:22PM UTC by <span class="author">stevee@gmail.com</span></span>
+        <a class="ticket-change-link" href="#comment:15">comment:15</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Replying to [comment:2 scott.gonzalez]:</p><blockquote> Can you please provide some more information.  Perhaps a test page?</blockquote><p>This page exhibits the described bug in IE8</p><p><a href="http://jqueryui.com/demos/dialog/#modal-confirmation" class="ext-link"><span class="icon"></span>http://jqueryui.com/demos/dialog/#modal-confirmation</a></p><p>:) There, simples.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:16">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed March 01, 2010 05:36PM UTC by <span class="author">rdworth</span></span>
+        <a class="ticket-change-link" href="#comment:16">comment:16</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>priority:</th>
+                  <td>
+                    
+                      <span class="change-field-old">major</span> → <span class="change-field-new">critical</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              
+            </div>
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:17">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed April 20, 2010 12:28PM UTC by <span class="author">moxen</span></span>
+        <a class="ticket-change-link" href="#comment:17">comment:17</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>The changing of the position CSS property for class .ui-widget-overlay from absolute to fixed corrected the scroll bar issue for us but caused a memory bleed and hanging in IE 6. I found a work around for this by doing the following in a CSS file:</p><p>.ui-widget-overlay { position: fixed; }</p><p>.ui-widget-overlay { _position: absolute; }</p><p>The first entry is used to correct the scroll bar issue in IE 8 and works fab, the second entry with the "_" is picked up in IE 6 only and sets the position back to absolute as we never had a scroll bar issue in IE 6.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:18">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 21, 2010 02:12AM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:18">comment:18</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>resolution:</th>
+                  <td>
+                    
+                      <span class="change-field-new">→ fixed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>status:</th>
+                  <td>
+                    
+                      <span class="change-field-old">new</span> → <span class="change-field-new">closed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Fixed in <a href="http://github.com/jquery/jquery-ui/commit/b548d34e14421176be49d218f40feb18c5bc8f49" class="ext-link"><span class="icon"></span>b548d34</a>.</p>
+            </div>
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:19">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 21, 2010 12:02PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:19">comment:19</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>resolution:</th>
+                  <td>
+                    
+                      <span class="change-field-old strikethrough">fixed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>status:</th>
+                  <td>
+                    
+                      <span class="change-field-old">closed</span> → <span class="change-field-new">reopened</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Reverted the commit.</p>
+            </div>
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:20">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed October 19, 2010 03:44PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:20">comment:20</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>priority:</th>
+                  <td>
+                    
+                      <span class="change-field-old">critical</span> → <span class="change-field-new">major</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              
+            </div>
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:21">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed November 19, 2010 06:26PM UTC by <span class="author">Scott González</span></span>
+        <a class="ticket-change-link" href="#comment:21">comment:21</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>resolution:</th>
+                  <td>
+                    
+                      <span class="change-field-new">→ fixed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>status:</th>
+                  <td>
+                    
+                      <span class="change-field-old">reopened</span> → <span class="change-field-new">closed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Dialog: Don't set specific dimensions on the overlay - let it expand based on 100% dimensions. Fixes <a href="/bugs.jqueryui.com/ticket/3623">#3623</a> - Opening a Modal Dialog shows a horizontal scroll bar. </p><p> Changeset: b548d34e14421176be49d218f40feb18c5bc8f49</p>
+            </div>
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:22">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed November 19, 2010 06:26PM UTC by <span class="author">Scott González</span></span>
+        <a class="ticket-change-link" href="#comment:22">comment:22</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Revert "Dialog: Don't set specific dimensions on the overlay - let it expand based on 100% dimensions. Fixes <a href="/bugs.jqueryui.com/ticket/3623">#3623</a> - Opening a Modal Dialog shows a horizontal scroll bar."</p><p>This reverts commit b548d34e14421176be49d218f40feb18c5bc8f49. </p><p> Changeset: 70c4857cc5dbbdbdcd095ca62b39be25020e3066</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:23">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed November 19, 2010 06:49PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:23">comment:23</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>resolution:</th>
+                  <td>
+                    
+                      <span class="change-field-old strikethrough">fixed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>status:</th>
+                  <td>
+                    
+                      <span class="change-field-old">closed</span> → <span class="change-field-new">reopened</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              
+            </div>
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:24">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed February 01, 2011 12:14PM UTC by <span class="author">RR1000</span></span>
+        <a class="ticket-change-link" href="#comment:24">comment:24</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>My fix is: </p><p>1.Edit jquery-ui-1.8.9.custom.min.js </p><p>2.Find: addClass("ui-widget-overlay").css({width:this.width(),height:this.height()}); </p><p>3.Delete: .css({width:this.width(),height:this.height()}) </p><p>4.It should become like this: addClass("ui-widget-overlay"); </p><p>5.Save your file. </p><p>6.Edit jquery-ui-1.8.9.custom.css </p><p>7.Find: .ui-width-overlay </p><p>8.Make sure you have both width and width set to 100%. </p><p>9.You're done. </p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:25">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed March 08, 2011 03:28AM UTC by <span class="author">myr</span></span>
+        <a class="ticket-change-link" href="#comment:25">comment:25</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>I experience this problem using opera 11.01 and jqueryui 1.8.10</p><pre class="wiki">
+.ui-widget-overlay {
+   position: fixed;
+</pre><p>This method does not work because the overlay does not completely disappear when the dialog is closed.</p><pre class="wiki">
+open: function(event, ui){
+   /*
+    * Scrollbar fix 
+    */
+   $('body').css('overflow','hidden');
+}
+</pre><p>This method is a completely ridiculous way of solving the problem and I did not even try it to see if it works.</p><pre class="wiki">
+Delete: .css({width:this.width(),height:this.height()})
+</pre><p>This method causes some naughty behavior when opening a dialog with the page scrolled down and/or scrolling the page.</p><p>Creating browser-specific fixes is also something I would like to avoid.</p><p>My solution? Remove only width:this.width(), and all problems are solved!</p><p>Tested on Opera, Firefox, and Chrome. Demo is <a href="http://linuxdeal.com/add-printer.php" class="ext-link"><span class="icon"></span>available here</a>. Let me know if you notice any problems.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:26">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed April 04, 2011 01:00PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:26">comment:26</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p><a href="/bugs.jqueryui.com/ticket/7217">#7217</a> is a duplicate of this ticket.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:27">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed May 18, 2011 03:12PM UTC by <span class="author">Jörn Zaefferer</span></span>
+        <a class="ticket-change-link" href="#comment:27">comment:27</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>resolution:</th>
+                  <td>
+                    
+                      <span class="change-field-new">→ fixed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>status:</th>
+                  <td>
+                    
+                      <span class="change-field-old">reopened</span> → <span class="change-field-new">closed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Dialog: Changed IE6 overlay width adjustment to apply to all IE versions. Fixed <a href="/bugs.jqueryui.com/ticket/3623">#3623</a> - Opening a Modal Dialog shows a horizontal scroll bar</p><p>(cherry picked from commit 29b36bb4090632aaf306cc44591386c0263c9d27) </p><p> Changeset: fab17293e455f31435bf731007ee2badfed1fc31</p>
+            </div>
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:28">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed June 30, 2011 11:03PM UTC by <span class="author">steptom</span></span>
+        <a class="ticket-change-link" href="#comment:28">comment:28</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">I have already a problem with the scrollbar.&#92;
+Since I upgrade my website to the 1.8.14 version, there is no problem with the horizontal scroll bar but now with the vertical scroll bar.&#92;
+&#92;
+I have this problem with IE8 when I display a Modal Dialog on a page &#39;&#39;&#39;where there is no vertical scroll bar&#39;&#39;&#39;.&#92;
+When the Modal Dialog is displayed, the vertical scroll bar appears.&#92;
+&#92;
+I try with the demo page of myr ([http://linuxdeal.com/add-printer.php]), and the problem appears.&#92;
+&#92;
+Should we not reopen this bug to correct it ?</span> → <span class="change-field-new">1309475435026011</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>Since I upgrade my website to the 1.8.14 version, I have already a problem with the scroll bars.</p><p>I have this problem with IE8 when I display a Modal Dialog on a page <strong>where there is no vertical scroll bar</strong>.</p><p>When the Modal Dialog is displayed, the vertical scroll bar appears (and in some cases, depending on the size of the window, the horizontal scroll bar too).</p><p>I try with the demo page of myr (<a href="http://linuxdeal.com/add-printer.php" class="ext-link"><span class="icon"></span>http://linuxdeal.com/add-printer.php</a>), and the problem appears.</p><p>(I you reduce the width of the window to the "minimum", you will see the horizontal scroll bar appears)</p><p>Should we not reopen this bug to correct it ?</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:29">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 01, 2011 01:38AM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:29">comment:29</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Replying to [comment:28 steptom]:</p><blockquote> Should we not reopen this bug to correct it ?</blockquote><p>No. You're using 1.8.14 and linuxdeal is using 1.8.10. This bug is only fixed in git, as noted by the milestone of 1.9.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:30">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 01, 2011 09:44PM UTC by <span class="author">steptom</span></span>
+        <a class="ticket-change-link" href="#comment:30">comment:30</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Sorry I have not noticed the version of linuxdeal, but at home I've tried with the version 1.8.14 and the result is the same only when there is no scroll bar before displaying a modal dialog.</p><p>Am I the only one with this behavior ?</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:31">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 02, 2011 12:22AM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:31">comment:31</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>I'll repeat this again. This is not fixed in any released version. This is only fixed in git and will not be released until 1.9.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:32">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 02, 2011 01:00AM UTC by <span class="author">steptom</span></span>
+        <a class="ticket-change-link" href="#comment:32">comment:32</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Sorry for my lack of understanding.</p><p>The changelog of the version 1.8.14 misled me.</p><p>It is noted indeed that this bug is corrected in this version</p><p><a href="http://jqueryui.com/docs/Changelog/1.8.14" class="ext-link"><span class="icon"></span>http://jqueryui.com/docs/Changelog/1.8.14</a></p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:33">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 02, 2011 12:56PM UTC by <span class="author">rdworth</span></span>
+        <a class="ticket-change-link" href="#comment:33">comment:33</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Sorry for the confusion. I corrected the changelog.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:34">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 02, 2011 02:25PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:34">comment:34</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>milestone:</th>
+                  <td>
+                    
+                      <span class="change-field-old">1.9</span> → <span class="change-field-new">1.8.14</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>I checked the commit log to see how this got into the changelog. This was in fact merged into 1-8-stable ( <a href="https://github.com/jquery/jquery-ui/commit/fab17293e455f31435bf731007ee2badfed1fc31" class="ext-link"><span class="icon"></span>commit</a>, <a href="http://bugs.jqueryui.com/ticket/3623#comment:27" class="ext-link"><span class="icon"></span>ticket comment</a> ). I'm updating the milestone to reflect this. @steptom, can you please provide a reduced test case showing the problem so that we can verify and re-open this ticket? Sorry for all the confusion.</p>
+            </div>
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:35">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 03, 2011 09:07PM UTC by <span class="author">steptom</span></span>
+        <a class="ticket-change-link" href="#comment:35">comment:35</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">My test case is very simple.&#92;
+You have juste to create a simple page with a button which allows you to open a modal dialog.&#92;
+&#92;
+The code of the page is the following (Sorry but jsFiddle ou jsbin display the result in iFrame and, so you cannot see the real result. So, you much create a &quot;test.html&quot; file on your disk, paste the following code and execute it on IE8 - The window must have big dimensions in order to display no scroll bars. After displaying the modal dialog, the scroll bars are displayed) :&#92;
+&#92;
+&#92;
+{{{&#92;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;&#92;
+&lt;html&gt;&#92;
+&lt;head&gt;&#92;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=ISO-8859-1&quot; /&gt;&#92;
+	&lt;title&gt;Test bug #3623&lt;/title&gt;&#92;
+	&lt;meta name=&quot;description&quot; content=&quot;Test bug #3623&quot; /&gt;&#92;
+	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/redmond/jquery-ui.css&quot;&gt;&#92;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js&quot;&gt;&lt;/script&gt;&#92;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js&quot;&gt;&lt;/script&gt;&#92;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/i18n/jquery-ui-i18n.min.js&quot;&gt;&lt;/script&gt;&#92;
+	&lt;script type=&quot;text/javascript&quot;&gt;&#92;
+		$(document).ready(function() {&#92;
+			$(&quot;button#OpenModalDialog&quot;).click(function(event)&#92;
+			{&#92;
+				event.preventDefault();&#92;
+				&#92;
+				var dialog = $(&#39;&lt;div&gt;&lt;p&gt;Hello !!!&lt;/p&gt;&lt;/div&gt;&#39;)&#92;
+				.dialog({&#92;
+					title: &quot;Modal Dialog&quot;,&#92;
+					modal: true,&#92;
+					autoOpen: false,&#92;
+					width: 400,&#92;
+					resizable: false,&#92;
+					buttons: {&#92;
+						&quot;Close&quot; : function() {&#92;
+							$(this).dialog(&quot;close&quot;);&#92;
+						}&#92;
+					}&#92;
+				})&#92;
+				.dialog(&#39;open&#39;);&#92;
+			});&#92;
+		});&#92;
+	&lt;/script&gt;&#92;
+&lt;/head&gt;&#92;
+&lt;body&gt;&#92;
+	Test bug #3623&#92;
+	&lt;br /&gt;&#92;
+	&lt;button id=&quot;OpenModalDialog&quot; type=&quot;button&quot;&gt;Click here&lt;/button&gt;&#92;
+&lt;/body&gt;&#92;
+&lt;/html&gt;&#92;
+}}}&#92;
+</span> → <span class="change-field-new">1309792629484707</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>My test case is very simple.</p><p>You have juste to create a simple page with a button which allows you to open a modal dialog.</p><p>The code of the page is the following (Sorry but jsFiddle ou jsbin display the result in iFrame and, so you cannot see the real result. So, you much create a "test.html" file on your disk, paste the following code and execute it on IE8 - The window must have big dimensions in order to display no scroll bars. After displaying the modal dialog, the scroll bars are displayed) :</p><pre class="wiki">
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" /&gt;
+	&lt;title&gt;Test bug #3623&lt;/title&gt;
+	&lt;meta name="description" content="Test bug #3623" /&gt;
+	&lt;link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/redmond/jquery-ui.css"&gt;
+	&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"&gt;&lt;/script&gt;
+	&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"&gt;&lt;/script&gt;
+	&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/i18n/jquery-ui-i18n.min.js"&gt;&lt;/script&gt;
+	&lt;script type="text/javascript"&gt;
+		$(document).ready(function() {
+			$("button#OpenModalDialog").click(function(event)
+			{
+				event.preventDefault();
+				
+				var dialog = $('&lt;div&gt;&lt;p&gt;Hello !!!&lt;/p&gt;&lt;/div&gt;')
+				.dialog({
+					title: "Modal Dialog",
+					modal: true,
+					autoOpen: false,
+					width: 400,
+					resizable: false,
+					buttons: {
+						"Close" : function() {
+							$(this).dialog("close");
+						}
+					}
+				})
+				.dialog('open');
+			});
+		});
+	&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	Test bug #3623
+	&lt;br /&gt;
+	&lt;button id="OpenModalDialog" type="button"&gt;Click here&lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><p>Additionnal information :</p><p>I have tested this source code on 2 different computers which have IE8 and the problem is the same on both.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:36">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 06, 2011 09:20PM UTC by <span class="author">steptom</span></span>
+        <a class="ticket-change-link" href="#comment:36">comment:36</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Can anyone confirm that my test case is correct in order to re-open the bug ?</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:37">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 17, 2011 09:07PM UTC by <span class="author">steptom</span></span>
+        <a class="ticket-change-link" href="#comment:37">comment:37</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>I'm very surprised that nobody answers me ?</p><p>Must I create an other ticket ?</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:38">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 18, 2011 01:36PM UTC by <span class="author">rdworth</span></span>
+        <a class="ticket-change-link" href="#comment:38">comment:38</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">I was not able to reproduce this issue using your latest provided test case and IE8. I did however in the course of reducing your test case and attempting to reproduce it, find a different issue (that is not limited to IE): http://bugs.jqueryui.com/ticket/7562</span> → <span class="change-field-new">1310996234746743</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment1:</th>
+                  <td>
+                    
+                      <span class="change-field-old">Replying to [comment:36 steptom]:&#92;
+&gt; Can anyone confirm that my test case is correct in order to re-open the bug ?&#92;
+&#92;
+I was not able to reproduce this issue using your latest provided test case and IE8. I did however in the course of reducing your test case and attempting to reproduce it, find a different issue (that is not limited to IE): http://bugs.jqueryui.com/ticket/7562</span> → <span class="change-field-new">1310996315526775</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>Replying to [comment:36 steptom]:</p><blockquote> Can anyone confirm that my test case is correct in order to re-open the bug ?</blockquote><p>I was not able to reproduce this issue using your latest provided test case in a test.html file (not jsfiddle or jsbin) and IE8. I did however in the course of reducing your test case and attempting to reproduce it, find a different issue (not limited to IE8, does show in jsbin): <a href="http://bugs.jqueryui.com/ticket/7562" class="ext-link"><span class="icon"></span>http://bugs.jqueryui.com/ticket/7562</a></p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:39">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 18, 2011 02:20PM UTC by <span class="author">steptom</span></span>
+        <a class="ticket-change-link" href="#comment:39">comment:39</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">I am very surprised to be the only one to get to reproduce the bug (on 2 different computers).&#92;
+For proof, I have made print screens :&#92;
+&#92;
+1 - Before open the modal dialog : [http://imageshack.us/photo/my-images/836/beforeopenmodaldialog.png/]&#92;
+&#92;
+2 - After open the modal dialog : [http://imageshack.us/photo/my-images/839/openedmodaldialog.png/]&#92;
+&#92;
+3 - After open the modal dialog a second time : [http://imageshack.us/photo/my-images/801/openedmodaldialog2.png/]&#92;
+&#92;
+We can notice that the scroll bars have not the same positions after opening the modal dialog a second time. Maybe, this detail may help in resolving the bug.&#92;
+&#92;
+@rdworth : As you can see, I reproduce the bug without resizing the browser window.</span> → <span class="change-field-new">1310998884103911</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>I am very surprised to be the only one to get to reproduce the bug (on 2 different computers).</p><p>For proof, I have made print screens :</p><p>1 - Before opening the modal dialog : <a href="http://imageshack.us/photo/my-images/836/beforeopenmodaldialog.png/" class="ext-link"><span class="icon"></span>http://imageshack.us/photo/my-images/836/beforeopenmodaldialog.png/</a></p><p>2 - After opening the modal dialog : <a href="http://imageshack.us/photo/my-images/839/openedmodaldialog.png/" class="ext-link"><span class="icon"></span>http://imageshack.us/photo/my-images/839/openedmodaldialog.png/</a></p><p>3 - After opening the modal dialog a second time : <a href="http://imageshack.us/photo/my-images/801/openedmodaldialog2.png/" class="ext-link"><span class="icon"></span>http://imageshack.us/photo/my-images/801/openedmodaldialog2.png/</a></p><p>We can notice that the scroll bars have not the same positions after opening the modal dialog a second time. Maybe, this detail may help in resolving the bug.</p><p>@rdworth : As you can see, I reproduce the bug without resizing the browser window.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:40">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 19, 2011 04:21PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:40">comment:40</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">@stepmom: I can confirm the bug still exists in 1.8.14 with your test page. Pointing your page at http://code.jquery.com/ui/jquery-ui-git.js and http://code.jquery.com/ui/jquery-ui-git.css shows that the problem is fixed in master. I&#39;m not sure how the bug didn&#39;t get fixed in 1.8.14 with the merge, but I&#39;m going to close as fixed for 1.9. Can you please confirm that your test page does not show a problem using master?</span> → <span class="change-field-new">1311092596670489</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+                <tr>
+                  <th>milestone:</th>
+                  <td>
+                    
+                      <span class="change-field-old strikethrough">1.8.14</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>resolution:</th>
+                  <td>
+                    
+                      <span class="change-field-old strikethrough">fixed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>status:</th>
+                  <td>
+                    
+                      <span class="change-field-old">closed</span> → <span class="change-field-new">reopened</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>@steptom: I can confirm the bug still exists in 1.8.14 with your test page. Pointing your page at <a href="http://code.jquery.com/ui/jquery-ui-git.js" class="ext-link"><span class="icon"></span>http://code.jquery.com/ui/jquery-ui-git.js</a> and <a href="http://code.jquery.com/ui/jquery-ui-git.css" class="ext-link"><span class="icon"></span>http://code.jquery.com/ui/jquery-ui-git.css</a> shows that the problem is fixed in master. I'm not sure how the bug didn't get fixed in 1.8.14 with the merge, but I'm going to close as fixed for 1.9. Can you please confirm that your test page does not show a problem using master?</p>
+            </div>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:41">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 19, 2011 04:21PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:41">comment:41</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>milestone:</th>
+                  <td>
+                    
+                      <span class="change-field-new">→ 1.9</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>resolution:</th>
+                  <td>
+                    
+                      <span class="change-field-new">→ fixed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>status:</th>
+                  <td>
+                    
+                      <span class="change-field-old">reopened</span> → <span class="change-field-new">closed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              
+            </div>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:42">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 19, 2011 04:28PM UTC by <span class="author">rdworth</span></span>
+        <a class="ticket-change-link" href="#comment:42">comment:42</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>@scott.gonzalez : Perhaps because <a href="/bugs.jqueryui.com/ticket/5637">#5637</a> was not merged?</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:43">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 19, 2011 04:37PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:43">comment:43</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>nope, this is a problem on the first use and that was specifically for reuse.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:44">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 19, 2011 09:22PM UTC by <span class="author">steptom</span></span>
+        <a class="ticket-change-link" href="#comment:44">comment:44</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Thanks for your answer scott.gonzalez.</p><p>I confirm that there is no bug in my test case using the "http://code.jquery.com/ui/jquery-ui-git.js" script.</p><p>(The CSS file seems to be not necessary)</p><p>Now I have to wait for the release of version 1.9 (stable) :-(</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:45">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 19, 2011 09:27PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:45">comment:45</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>If you track down what's missing in 1-8-stable, we'll gladly land the fix in a 1.8.x release.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:46">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 20, 2011 08:20AM UTC by <span class="author">thedoc</span></span>
+        <a class="ticket-change-link" href="#comment:46">comment:46</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Have the same problem here, scroll bar/bars with ie8 like rdworth. using v. 1.8.14.</p><p>Would be really thankfull if you can fix this in the stable version.</p><p>Thank you for the great job.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:47">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed September 14, 2011 06:56PM UTC by <span class="author">MSwaff</span></span>
+        <a class="ticket-change-link" href="#comment:47">comment:47</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">To fix this bug for v. 1.8.11+, open the Dialog js file (jquery.ui.dialog.js) and scroll down to the height property of the overlay. Look for this line:&#92;
+&#92;
+if ($.browser.msie &amp;&amp; $.browser.version &lt; 7) {&#92;
+&#92;
+and change it to&#92;
+&#92;
+if ($.browser.msie) {&#92;
+&#92;
+Do the same for the width property and you will fix the scroll bar bug for all versions of IE.</span> → <span class="change-field-new">1316026651201583</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>To fix this bug for v. 1.8.11+, open the Dialog js file (jquery.ui.dialog.js) and scroll down to the height property of the overlay. Look for this line:</p><pre class="wiki">
+if ($.browser.msie && $.browser.version &lt; 7) {
+</pre><p>and change it to</p><pre class="wiki">
+if ($.browser.msie) {
+</pre><p>Do the same for the width property and you will fix the scroll bar bug for all versions of IE.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</details>
+</div>
+        </div>
+      </main>
+      <footer>
+        Copyright &copy; 2023
+        <a href="https://openjsf.org">The OpenJS Foundation</a>
+      </footer>
+    </div>
+    <script src="/bugs.jqueryui.com/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({
+          element: "#search",
+          showImages: false,
+          translations: {
+            placeholder: 'Search tickets',
+            zero_results: 'No matches found.'
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

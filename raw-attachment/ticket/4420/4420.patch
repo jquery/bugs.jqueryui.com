@@ -1,0 +1,13 @@
+Index: jquery.ui.datepicker.js
+===================================================================
+--- jquery.ui.datepicker.js	(revision 3486)
++++ jquery.ui.datepicker.js	(working copy)
+@@ -1541,7 +1541,7 @@
+ 		}
+ 		html += this._get(inst, 'yearSuffix');
+ 		if (showMonthAfterYear)
+-			html += (secondary || changeMonth || changeYear ? '&#xa0;' : '') + monthHtml;
++			html += ((secondary || changeMonth || changeYear) && (!(changeMonth && changeYear)) ? '&#xa0;' : '') + monthHtml;
+ 		html += '</div>'; // Close datepicker_header
+ 		return html;
+ 	},

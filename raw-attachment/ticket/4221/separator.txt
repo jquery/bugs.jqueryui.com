@@ -1,0 +1,85 @@
+<style>
+#drag_area {
+	min-height: 500px;
+	overflow: hidden;
+}
+
+.drag_column {
+	float: left;
+	width: 420px;
+	padding: 10px;
+	min-height: 500px;
+	border: 1px solid #fff;
+}
+#right_half_column {
+	margin-left: 10px;
+}
+.drag_widget {
+	background:#FFFFFF none repeat scroll 0 0;
+	border:1px dotted #003366;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	margin-bottom:20px;
+	padding-bottom:10px;
+	width:100%;
+}
+
+#drag_area li {
+	list-style-type: none;
+}
+</style>
+
+<script>
+	$j(document).ready(function() {
+		
+		$j('#left_drag_area').sortable({
+			connectWith: ['#right_drag_area']
+		});
+		
+		$j('#right_drag_area').sortable({
+			connectWith: ['#left_drag_area']
+		});
+	});
+	
+	function alertstuff() {
+		var result = $j('#left_drag_area').sortable().('toArray');
+	}
+
+</script>
+<div class="thin" id="drag_area">
+	<div id="left_half_column" class="drag_column">
+		
+		<ul id="left_drag_area">
+			<li id="one">
+				<div class="drag_widget">
+					Test<br />
+					Drop<br />
+					Object<br />
+					One<br />
+				</div>
+			</li>
+		
+			<li id="two">
+				<div class="drag_widget">
+					Test<br />
+					Drop<br />
+					Object<br />
+					Two<br />
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div id="right_half_column" class="drag_column">
+		<ul id="right_drag_area">
+			<li id="three">
+				<div class="drag_widget">
+					Test<br />
+					Drop<br />
+					Object<br />
+					Three<br />
+				</div>
+			</li>
+			<li></li>
+		</ul>
+	</div>
+</div>

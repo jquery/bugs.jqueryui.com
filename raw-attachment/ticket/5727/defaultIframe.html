@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery UI Draggable - Default functionality</title>
+	<link type="text/css" href="../../themes/base/jquery.ui.all.css" rel="stylesheet" />
+	<script type="text/javascript" src="../../jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.core.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.mouse.js"></script>
+	<script type="text/javascript" src="../../ui/jquery.ui.draggable.js"></script>
+	<link type="text/css" href="../demos.css" rel="stylesheet" />
+	<script type="text/javascript">
+	function initDraggable() {
+		$("#test").contents().find("#draggable").draggable();
+	}
+	</script>
+</head>
+<body>
+<div class="demo">
+<iframe id="test" src='iframe.html' onload='initDraggable();' width='400' height='400'></iframe>
+</body>
+</html>

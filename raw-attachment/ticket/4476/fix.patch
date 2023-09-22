@@ -1,0 +1,13 @@
+Index: ui/effects.core.js
+===================================================================
+--- ui/effects.core.js	(revision 3202)
++++ ui/effects.core.js	(working copy)
+@@ -257,7 +257,7 @@
+ 	'borderRightColor', 'borderTopColor', 'color', 'outlineColor'],
+ function(i, attr) {
+ 	$.fx.step[attr] = function(fx) {
+-		if (fx.state === 0) {
++		if (fx.start.constructor != Array) {
+ 			fx.start = getColor(fx.elem, attr);
+ 			fx.end = getRGB(fx.end);
+ 		}

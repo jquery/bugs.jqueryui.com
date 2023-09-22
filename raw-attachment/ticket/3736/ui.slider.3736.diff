@@ -1,0 +1,26 @@
+Index: ui.slider.js
+===================================================================
+--- ui.slider.js	(revision 2349)
++++ ui.slider.js	(working copy)
+@@ -198,18 +198,15 @@
+ 		var self = this, index;
+ 		this.handles.each(function(i) {
+ 			var thisDistance = Math.abs(normValue - self.values(i));
+-			if (distance > thisDistance) {
++			if (distance >= thisDistance) {
+ 				distance = thisDistance;
+ 				closestHandle = $(this);
+ 				index = i;
+ 			}
+ 		});
+ 
+-		// workaround for bug #3736 (if both handles of a range are at 0,
+-		// the first is always used as the one with least distance,
+-		// and moving it is obviously prevented by preventing negative ranges)
+-		if(o.range == true && this.values(1) == o.min) {
+-			closestHandle = $(this.handles[++index]);
++		while (this.values(index) == o.max && index > 0 && this.values(index-1) == o.max) {
++			closestHandle = $(this.handles[--index]);
+ 		}
+ 
+ 		this._start(event, index);

@@ -1,0 +1,11 @@
+--- ui.dialog.orig.js	2009-06-12 03:20:44.000000000 +0200
++++ ui.dialog.js	2009-10-07 04:52:05.000000000 +0200
+@@ -547,7 +547,7 @@
+ 				// handle $(el).dialog().dialog('close') (see #4065)
+ 				if ($.ui.dialog.overlay.instances.length) {
+ 					$(document).bind($.ui.dialog.overlay.events, function(event) {
+-						var dialogZ = $(event.target).parents('.ui-dialog').css('zIndex') || 0;
++						var dialogZ = $(event.target).parents('.ui-dialog').andSelf().css('zIndex') || 0;
+ 						return (dialogZ > $.ui.dialog.overlay.maxZ);
+ 					});
+ 				}

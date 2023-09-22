@@ -1,0 +1,1462 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-pagefind-meta="title">#3999 (Datepicker: Add clear button) - jQuery UI - Bug Tracker</title>
+    <meta name="description" content="Static archive of the old bugs.jqueryui.com Trac site.">
+    
+<link rel="icon" href="/bugs.jqueryui.com/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/bugs.jqueryui.com/favicon.svg">
+<link rel="apple-touch-icon" href="/bugs.jqueryui.com/apple-touch-icon.png">
+    
+    
+    
+    
+    
+    
+    
+    <style>
+      :root{--ticket-info-background-color:#ffd;--ticket-info-border-color:#dd9;--ticket-table-border-color:#eed;--ticket-date-text-color:#996;--ticket-description-title-color:#663;--ticket-changes-text-color:#663;--ticket-changes-box-shadow:#f2f2f2;--ticket-number-color:#844}.ticket-info{position:relative;background-color:var(--ticket-info-background-color);border:1px solid var(--ticket-info-border-color);border-radius:var(--border-radius);padding:.5em .75em;margin:0 auto .5em;width:100%;max-width:580px}.ticket-number{font-size:1.45rem;font-weight:700;margin-right:.5em;text-decoration:none}.ticket-number[href],.ticket-number[href]:visited{color:var(--ticket-number-color)}.ticket-info span{font-weight:700}.missing{color:var(--text-color-link-disabled)}.ticket-title{border-bottom:1px solid #bbb;margin-top:1em;padding-bottom:.25em;font-weight:700;font-size:1.1875rem}.ticket-dates{color:var(--ticket-date-text-color);font-size:.8125rem}.ticket-dates p{margin:0 0 .5em}.ticket-properties{width:100%;text-align:left;font-size:.65rem;border-top:1px solid var(--ticket-table-border-color);margin:0}.ticket-properties th{font-weight:400;width:20%}.ticket-properties td,.ticket-properties th{padding:.25em .5em;border-bottom:1px dashed var(--ticket-table-border-color)}.ticket-info-bottom{padding:.5em}.ticket-description{font-size:.8125rem;margin-top:.5em}.ticket-description h2,.ticket-description h3,.ticket-description h4,.ticket-description h5,.ticket-description h6{text-transform:uppercase;font-weight:400}.ticket-description h1{font-size:1.1rem}.ticket-description h2{font-size:1rem}.ticket-description h3{font-size:.9rem}.ticket-description h4{font-size:.8rem}.ticket-description h5{font-size:.75rem}.ticket-description h6{font-size:.7rem}.ticket-description-title{color:var(--ticket-description-title-color);font-size:.75rem}details{padding:.5em 0;font-size:.8125rem;width:100%;max-width:580px;margin:0 auto}summary{color:var(--text-color-link);font-weight:700;font-size:.875rem;text-decoration:underline;cursor:pointer;text-shadow:.04em .04em var(--text-shadow-color)}.ticket-attachments{font-size:.75em}.ticket-comment-body{width:100%;padding-top:.5em}.ticket-change{margin:1em 0;clear:both}.ticket-change-header{font-size:.875rem;font-weight:700;box-shadow:1.4px 2.8px 5.6px 0 var(--ticket-changes-box-shadow)}.ticket-change-link{font-size:.85em}.ticket-change-content{width:100%}.ticket-changes{background-color:var(--ticket-info-background-color);border:1px solid var(--ticket-info-border-color);border-radius:var(--border-radius);color:var(--ticket-changes-text-color);font-size:.7rem;float:right;clear:right;margin:2em 0 1em 1.5em}.ticket-changes th{text-align:right;font-weight:400;text-transform:capitalize}.ticket-changes td,.ticket-changes th{padding:.25em;vertical-align:baseline}.ticket-changes .change-field-new{font-weight:700}:root{--font-family:'Arial','Helvetica','Verdana','sans-serif';--font-family-header:var(--font-family);--font-family-alternate:Verdana,Arial,'Bitstream Vera Sans',Helvetica,sans-serif;--font-family-monospace:Monaco,Andale Mono WT,Andale Mono,Lucida Console,Lucida Sans Typewriter,DejaVu Sans Mono,Bitstream Vera Sans Mono,Liberation Mono,Nimbus Mono L,Courier New,Courier,monospace}:root{--primary-color:#000000;--secondary-color:#ff9c08;--text-color:#222;--text-color-dark-bg:#fff;--text-color-link:#bb0000;--text-color-link-hover:#f00000;--text-color-link-active:#ff2424;--text-color-link-visited:#cc0000;--text-color-link-disabled:#998;--main-link-hover-bg-color:#eee;--text-shadow-color:#fcfcfc;--button-color:var(--secondary-color);--button-hover-color:#a36200;--button-text-color:#fff;--background-color:#5f5f5f;--main-background-start-color:#1a1a1a;--main-background-end-color:var(--background-color);--top-nav-hover-start-color:#414240;--top-nav-hover-mid-color:#323530;--top-nav-hover-end-color:#292b28;--nav-background-color:var(--primary-color);--secondary-nav-start-color:#2d2d2d;--secondary-nav-end-color:#060606;--secondary-nav-box-shadow:#313131;--content-background-color:#fafafa;--banner-background-color:var(--primary-color);--footer-background-start-color:#000000;--footer-background-end-color:#141400;--footer-text-color-link:#bbb;--nav-text-link-color:white;--nav-hover-link-color:rgba(255, 255, 255, 0.2);--border-color:#e4e4e4;--border-radius:6px;--input-border-color:white;--blockquote-border-color:#b44;--pre-color:#333;--pre-background-color:#fff;--code-color:#600;--code-background-color:var(--content-background-color);--syntax-tab-size:2}*{box-sizing:border-box}body,html{padding:0;margin:0 auto;font-family:var(--font-family);font-size:100%;color:var(--text-color);line-height:1.4}html{overflow-y:auto;background-color:var(--background-color)}html:before{content:'';position:absolute;top:80px;left:0;right:0;height:900px;background:linear-gradient(to bottom,var(--main-background-start-color),var(--main-background-start-color) 25%,var(--main-background-end-color));z-index:-1}.banner{width:100%;height:80px;background-color:var(--banner-background-color);color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.2);text-align:center;font-size:.875rem;padding:0 .25em}.banner a[href],.banner a[href]:visited{color:#5cb5f0}.banner a[href]:hover{color:var(--text-color-link-hover)}.banner a[href]:active{color:var(--text-color-link-active)}th,tr{font-family:var(--font-family-alternate)}.container{width:100%;max-width:956px;margin:0 auto;overflow:hidden}h1,h2,h3,h4,h5,h6{font-family:var(--font-family-header);font-weight:400;margin:0;padding:0;letter-spacing:0}h1,h2,h3,h4{letter-spacing:-.018em}h1{font-size:1.25rem;font-weight:700}h2{font-size:1rem;font-weight:700}.visually-hidden{clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}p{line-height:1.5;margin:.5em 0 1em}p:last-child{margin-bottom:0}ul{margin:0}li{line-height:1.5}hr{width:100%}blockquote{margin:-.3em 0 0 0;border-style:solid;border-width:0 0 0 2px;padding-left:.4em;border-color:var(--blockquote-border-color)}a[href]{color:var(--text-color-link)}a[href]:visited{color:var(--text-color-link-visited)}a[href]:hover{color:var(--text-color-link-hover)}a[href]:active{color:var(--text-color-link-active)}a[aria-disabled=true]{color:var(--text-color-link-disabled)}main{padding:1rem}table{margin:1em 0}table td,table th{padding-right:1em}code,pre{font-family:var(--font-family-monospace)}pre:not([class*=language-]){margin:.5em 0;-moz-tab-size:var(--syntax-tab-size);-o-tab-size:var(--syntax-tab-size);tab-size:var(--syntax-tab-size);-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;width:100%;padding:.25em;font-size:.6875rem;border-radius:var(--border-radius);overflow-x:auto;background:var(--pre-background-color);color:var(--pre-color);border:1px solid #000;text-align:left}code{color:var(--code-color);border:1px solid var(--border-color);border-radius:.25em;padding:0 .3em;background:var(--code-background-color);word-break:break-all}pre[class*=language-] code{color:unset;border:none;border-radius:0;padding:0;background:0 0;word-break:normal}.strikethrough{text-decoration:line-through}header{position:relative;height:95px;display:flex;flex-wrap:wrap;padding:0 1em}.nav{display:flex;flex-direction:column;padding:0;list-style:none}.nav a{display:flex;align-items:center;height:35px;font-size:.75rem;padding:0 1em;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;width:100%}.nav li:not(.active) a:active,.nav li:not(.active) a:hover{background-color:var(--nav-hover-link-color);border-bottom-color:var(--secondary-color)}.nav a,.nav a:active,.nav a:hover,.nav a:visited{color:var(--nav-text-link-color)}.nav a:active{background:linear-gradient(to bottom,var(--secondary-nav-end-color),var(--secondary-nav-start-color))}.nav .active a{border-bottom-color:var(--secondary-color)}#jq-siteLogo{margin-top:1em}#jq-primaryNavigation{padding:0 .5em;background-color:var(--nav-background-color)}#jq-secondaryNavigation{padding:0 .5em;background:linear-gradient(to bottom,var(--secondary-nav-start-color),var(--secondary-nav-end-color));box-shadow:0 -2px 1px var(--secondary-nav-box-shadow),0 2px 1px #000}#jq-secondaryNavigation a{font-size:.8125rem}#jq-content{position:relative;width:100%}.content-nav{font-size:.8125rem;margin:1.2em 0;align-self:flex-end}.content-nav ul{list-style:none}.content-nav li{padding:0 .75em}.content-nav li:not(:last-of-type){border-right:1px solid var(--border-color)}.hamburger-lines{position:relative;width:18px;height:14px;align-self:center}.hamburger-line{width:100%;height:2px;background-color:#fff;transition:opacity .2s ease-in-out,transform .2s ease-in-out}.hamburger-toggle:checked+.hamburger-lines span:first-of-type{transform:rotateZ(45deg) translate(4px,4.5px) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:nth-of-type(2){transform:rotateZ(135deg) scaleX(1.2)}.hamburger-toggle:checked+.hamburger-lines span:last-of-type{transform:translateY(-8px) scale(0);opacity:0}.hamburger-toggle:checked~#jq-menus{transform:none;opacity:1}form{gap:.5em}label{font-style:italic;font-size:.8125rem;font-weight:700}input{border:1px solid var(--input-border-color);border-radius:var(--border-radius);height:25px;padding:0 .5em;color:var(--text-color)}button{display:block;border:0;padding:5px 10px;border-radius:var(--border-radius);background:var(--button-color);color:var(--button-text-color);font-size:.875rem;cursor:pointer}button:active,button:hover{background-color:var(--button-hover-color)}button:active{box-shadow:inset 0 0 5px #000}main{padding:1em;gap:1em}main a[href]:active,main a[href]:hover{background-color:var(--main-link-hover-bg-color)}#jq-topnav{gap:.25em}#jq-topnav a{width:100%;display:block;font-family:var(--font-family-alternate);font-size:.625rem;padding:.1em 1.5em;text-decoration:none;border:2px solid var(--border-color);color:#000;box-shadow:0 1px 2px rgba(0,0,0,.5);text-align:center;border-radius:var(--border-radius)}#jq-topnav a:active,#jq-topnav a:hover{color:#fff;border-color:var(--top-nav-hover-end-color)}#jq-topnav a:hover{background:linear-gradient(to bottom,var(--top-nav-hover-start-color),var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-end-color))}#jq-topnav a:active{background:linear-gradient(to bottom,var(--top-nav-hover-end-color),var(--top-nav-hover-end-color) 50%,var(--top-nav-hover-mid-color) 50%,var(--top-nav-hover-start-color))}footer{background-color:var(--nav-background-color);background:var(--nav-background-color) linear-gradient(to bottom,var(--footer-background-start-color),var(--footer-background-end-color));padding:2em;margin-bottom:2em;color:var(--text-color-dark-bg);border:2px solid transparent;border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius)}footer a[href],footer a[href]:visited{color:var(--footer-text-color-link)}footer a[href]:active,footer a[href]:hover{background-color:var(--main-link-hover-bg-color);color:#000}.flex-row{display:flex;flex-direction:row}.flex-column{display:flex;flex-direction:column}.flex-between-start{justify-content:space-between;align-items:flex-start}.flex-between-center{justify-content:space-between;align-items:center}.flex-start-center{justify-content:flex-start;align-items:center}.flex-end-center{justify-content:flex-end;align-items:center}.flex-center{display:flex;justify-content:center;align-items:center}.items-start{align-items:start}.white-box{background-color:var(--content-background-color);border:1px solid var(--border-color)}a.ext-link .icon{padding-left:15px}@media (max-width:919px){#jq-menus{position:absolute;top:95px;height:calc(100vh - 95px);left:0;right:0;background-color:var(--nav-background-color);z-index:1;transition:transform .2s ease-in-out,opacity .2s ease-in-out;transform:translateX(100%);opacity:0;display:flex;flex-direction:column-reverse;justify-content:flex-end}}@media (min-width:920px){html:before{top:60px}body{background-position-y:60px}.banner{height:60px;font-size:1rem}header{height:125px;padding:0 0 0 2em}#jq-topnav{flex-direction:row;align-self:flex-end;gap:0}#jq-topnav a{width:auto;border-radius:0}#jq-topnav a:first-of-type{border-radius:var(--border-radius) 0 0 var(--border-radius)}#jq-topnav a:last-of-type{border-radius:0 var(--border-radius) var(--border-radius) 0}.nav{flex-direction:row}.nav a{width:auto}#jq-primaryNavigation a{height:27px;align-self:flex-end}#jq-secondaryNavigation{border-radius:var(--border-radius);margin-top:2em}#jq-siteLogo{align-self:flex-end}main{flex-grow:1;min-height:520px;font-size:.75rem}.hamburger-lines{display:none}.content-nav{margin-top:.4em}}:root{--pagefind-ui-background-color:#fff}#search{width:100%;position:relative;min-height:25px}.pagefind-ui__search-input{width:100%;border:1px solid var(--border-color)}.pagefind-ui__search-clear{display:inline-block;position:absolute;width:25px;height:25px;right:15px;top:0;padding:0 0 0 25px;overflow:hidden;background-color:transparent;z-index:1}.pagefind-ui__search-clear:active,.pagefind-ui__search-clear:hover{background-color:rgba(0,0,0,.2)}.pagefind-ui__search-clear:after{content:'×';position:absolute;top:0;left:0;right:0;bottom:0;font-weight:700;font-size:1.5rem;line-height:26px;text-align:center;color:var(--text-color);opacity:1}.pagefind-ui__hidden{display:none}.pagefind-ui__suppressed{display:none}.pagefind-ui__drawer{position:absolute;top:100%;left:0;right:0;height:350px;background-color:var(--pagefind-ui-background-color);border:1px solid var(--border-color);border-top:0;border-radius:0 0 var(--border-radius) var(--border-radius);box-shadow:0 2px 4px rgba(0,0,0,.2);padding:10px;color:var(--text-color);font-size:.875rem;overflow-y:auto;word-break:break-word;z-index:1}.pagefind-ui__results-area{width:100%}.pagefind-ui__results{padding-left:20px}.pagefind-ui__result{margin-bottom:10px;vertical-align:top}.pagefind-ui__result-thumb{display:flex;flex-direction:column}.pagefind-ui__result-thumb .pagefind-ui__result-image{max-width:150px}.pagefind-ui__message{font-weight:700;text-transform:uppercase;font-size:1rem}.pagefind-ui__button{width:100%;padding:10px;margin-top:2em}@media(min-width:920px){#search{width:auto}.pagefind-ui__search-input{width:300px}.pagefind-ui__search-clear{right:auto;left:270px}.pagefind-ui__drawer{left:-200px;height:500px;padding:15px}}body{background:url(/bugs.jqueryui.com/img/body_bg.jpg) no-repeat center 80px}a.ext-link .icon{background:url(/bugs.jqueryui.com/img/extlink.png) 0 50% no-repeat}
+    </style>
+    
+  </head>
+  <body>
+    <div class="banner flex-center">
+      <span>jQuery UI issues have moved to <a href="https://github.com/jquery/jquery-ui/issues">GitHub</a>. This site is now a static archive of the old <a href="https://trac.edgewall.org/">Trac</a> bugs site. <br>Some functions and pages are no longer available.</span>
+    </div>
+    <div class="container">
+      <a href="#skip" class="visually-hidden">Skip to main content</a>
+      <header class="flex-column">
+        <div class="flex-row flex-between-start">
+          <a id="jq-siteLogo" href="/bugs.jqueryui.com/" title="jQuery UI Bugs Home">
+            <img src="/bugs.jqueryui.com/img/logo.svg" width="253" alt="jQuery UI">
+          </a>
+          <input class="hamburger-toggle visually-hidden" id="jq-menutoggle" type="checkbox">
+          <label aria-label="Toggle Menu" for="jq-menutoggle" class="hamburger-lines flex-column flex-between-center">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </label>
+          <div id="jq-menus" class="flex-column">
+            <nav id="jq-primaryNavigation">
+              <h2 class="visually-hidden">jQuery UI sites navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-jquery">
+                  <a href="https://jquery.com/" title="jQuery Home">jQuery</a>
+                </li>
+                <li class="jq-plugins">
+                  <a href="https://plugins.jquery.com/" title="jQuery Plugins">Plugins</a>
+                </li>
+                <li class="jq-ui active">
+                  <a href="https://jqueryui.com/" title="jQuery UI">UI</a>
+                </li>
+                <li class="jq-meetup">
+                  <a href="https://meetups.jquery.com/" title="jQuery Meetups">Meetups</a>
+                </li>
+                <li class="jq-forum">
+                  <a href="https://forum.jquery.com/" title="jQuery Forum">Forum</a>
+                </li>
+                <li class="jq-blog">
+                  <a href="https://blog.jquery.com/" title="jQuery Blog">Blog</a>
+                </li>
+                <li class="jq-about">
+                  <a href="https://openjsf.org" title="About jQuery and OpenJS">About</a>
+                </li>
+                <li class="jq-donate">
+                  <a href="https://openjsf.org/about/project-funding-opportunities/" title="Donate to OpenJS">Donate</a>
+                </li>
+              </ul>
+            </nav>
+            <nav id="jq-secondaryNavigation">
+              <h2 class="visually-hidden">jQuery UI navigation menu</h2>
+              <ul class="nav">
+                <li class="jq-download">
+                  <a href="https://jqueryui.com/download/">
+                    Download
+                  </a>
+                </li>
+                <li class="jq-documentation">
+                  <a href="https://jqueryui.com/demos/">
+                    Demos &amp; Documentation
+                  </a>
+                </li>
+                <li class="jq-themes">
+                  <a href="https://jqueryui.com/themeroller/">
+                    Themes
+                  </a>
+                </li>
+                <li class="jq-development">
+                  <a href="https://jqueryui.com/development/">
+                    Development
+                  </a>
+                </li>
+                <li class="jq-support">
+                  <a href="https://jqueryui.com/support/">
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main id="skip" class="flex-column white-box">
+        <h2 class="visually-hidden">Search and Top Navigation</h2>
+        <div class="flex-row flex-end-center">
+          <div id="search"></div>
+        </div>
+        <nav id="jq-topnav" class="flex-column flex-start-center">
+          <a href="/bugs.jqueryui.com/newticket">New Ticket</a>
+          <a href="/bugs.jqueryui.com/report">View Tickets</a>
+          <a href="/bugs.jqueryui.com/ticketgraph">Ticket Graph</a>
+          <a href="/bugs.jqueryui.com/roadmap">Roadmap</a>
+          <a href="/bugs.jqueryui.com/timeline">Recent Changes</a>
+        </nav>
+        <div id="jq-content" class="flex-column">
+          
+
+<div class="flex-column" data-pagefind-body="">
+  
+
+  <nav class="content-nav">
+    <ul class="flex-row">
+      
+        <li>
+          <a href="/bugs.jqueryui.com/ticket/3998/">← Previous Ticket</a>
+        
+      
+      
+        </li><li>
+          <a href="/bugs.jqueryui.com/ticket/4000/">Next Ticket →</a>
+        </li>
+      
+    </ul>
+  </nav>
+
+
+<div class="ticket-info">
+  <div class="flex-row flex-between-start">
+    <h2>
+      <a href="." class="ticket-number">#3999</a>
+      <span class="ticket-status">closed</span>
+      <span class="ticket-type">enhancement</span>
+      <span class="ticket-resolution">(wontfix)</span>
+    </h2>
+
+    <div class="ticket-dates">
+      <p>Opened January 30, 2009 09:37AM UTC</p>
+      
+        <p>Closed September 30, 2010 05:10PM UTC</p>
+      
+      
+        <p>Last modified September 18, 2013 06:17PM UTC</p>
+      
+    </div>
+  </div>
+
+  <h1 class="ticket-title">Datepicker: Add clear button</h1>
+
+  <table class="ticket-properties">
+    <tr>
+      <th>Reported by:</th>
+      <td>
+        jain.ashish21
+      </td>
+      <th>Owned by:</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>
+        Priority:
+      </th>
+      <td>
+        minor
+      </td>
+      
+        <th class="missing">Milestone:</th>
+      
+      <td>
+        <a href="/bugs.jqueryui.com/milestone/1.6">1.6</a>
+      </td>
+    </tr>
+    <tr>
+      <th>Component:</th>
+      <td>ui.datepicker</td>
+      
+        <th>Version:</th>
+      
+      <td>1.6rc5</td>
+    </tr>
+    <tr>
+      
+        <th>Keywords:</th>
+      
+      <td>clear button</td>
+      
+        <th>Cc:</th>
+      
+      <td>jain.ashish21@gmail.com</td>
+    </tr>
+    <tr>
+      <th class="missing">
+        Blocked by:
+      </th>
+      <td></td>
+      <th class="missing">
+        Blocking:
+      </th>
+      <td></td>
+    </tr>
+  </table>
+  <div class="ticket-info-bottom">
+    <h5 class="ticket-description-title">Description</h5>
+    <div class="ticket-description"><p>The clear button and functionality were removed from UI 1.6 rc1+ onwards. But this makes it impossible to clear the existing date, if any, when the control is readonly.</p></div>
+  </div>
+</div>
+
+<details>
+  <summary class="ticket-details-summary">Attachments (0)</summary>
+
+  <ul class="ticket-attachments">
+    
+  </ul>
+</details>
+
+<details open="">
+  <summary class="ticket-details-summary">Change History (27)</summary>
+  
+    <div class="ticket-change flex-column" id="comment:1">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed February 12, 2009 11:43PM UTC by <span class="author">jzaefferer</span></span>
+        <a class="ticket-change-link" href="#comment:1">comment:1</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>milestone:</th>
+                  <td>
+                    
+                      <span class="change-field-old">TBD</span> → <span class="change-field-new">1.next</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Could you explain the usecase for this?</p>
+            </div>
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:2">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed February 21, 2009 12:12AM UTC by <span class="author">NVRAM</span></span>
+        <a class="ticket-change-link" href="#comment:2">comment:2</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>IIUC, when using: '''showOn:'both'''' there is no way for a user to erase the value and specify ''no date'' with a blank entry.</p><p>But there might be a method I missed, in my case (1.6rc6) I switched to '''showOn:'button''''</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:3">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed May 26, 2009 03:15PM UTC by <span class="author">m2x</span></span>
+        <a class="ticket-change-link" href="#comment:3">comment:3</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Replying to [comment:1 joern.zaefferer]:</p><blockquote> Could you explain the usecase for this?</blockquote><p>example usecase is clearing a date when input field is readonly (the reason for doing it readonly as here: <a href="http://dev.jqueryui.com/ticket/4079#comment:3)" class="ext-link"><span class="icon"></span>http://dev.jqueryui.com/ticket/4079#comment:3)</a></p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:4">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed November 09, 2009 08:19PM UTC by <span class="author">boteeka</span></span>
+        <a class="ticket-change-link" href="#comment:4">comment:4</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Clear functionality is definitely needed. I spent half a day Googling and trying to find some workaround to clear the selected dates. Without this functionality there is no way I can reset the form, and I think this is a serious shortcoming.</p><p>Please add this functionality, as it seems a lot of people need it.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:5">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed February 23, 2010 08:54PM UTC by <span class="author">zirconx</span></span>
+        <a class="ticket-change-link" href="#comment:5">comment:5</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>I would really like to see this feature added, too.  I might have to switch to a different calendar that supports this.</p><p>I've seen some discussion that this feature isn't needed because the user can just clear the field - NOT TRUE.  On most of the sites I've worked on that use a date picker the field is READ ONLY.  Often times the server expects the date in a certain format so the user isn't allowed to just type in whatever they want - instead they are forced to use the date picker.   So we need a clear option please. :-)</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:6">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed April 26, 2010 01:25PM UTC by <span class="author">maderic_m</span></span>
+        <a class="ticket-change-link" href="#comment:6">comment:6</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>I think it is necessary to implement this option, given that the field is read only once you enter a date can not be erased, thanks</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:7">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed May 06, 2010 11:53AM UTC by <span class="author">boomyjee</span></span>
+        <a class="ticket-change-link" href="#comment:7">comment:7</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>here is my solution, you can use done button as clear with the following hack</p><p>$(".datepicker").datepicker({</p><p>    showButtonPanel: true,</p><p>    closeText: 'Clear',</p><p>});</p><p>$.datepicker._generateHTML_Old = $.datepicker._generateHTML;</p><p>$.datepicker._generateHTML = function(inst) {</p><p>    res = this._generateHTML_Old(inst);</p><p>    res = res.replace("_hideDatepicker()","_clearDate('#"+inst.id+"')");</p><p>    return res;</p><p>}</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:8">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed July 31, 2010 09:49AM UTC by <span class="author">keir</span></span>
+        <a class="ticket-change-link" href="#comment:8">comment:8</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>I created a fork of jquery which supports the clear option. You have to enable the button bar and also add { showClearButton : true } to the options.</p><p><a href="http://github.com/keir/jquery-ui/commit/25e55ff73df768360a2260534a4afa6e03f04fb" class="ext-link"><span class="icon"></span>http://github.com/keir/jquery-ui/commit/25e55ff73df768360a2260534a4afa6e03f04fb</a></p><p>I sent a pull request to the jquery-ui maintainers; hopefully they will reconsider the removal of this feature and merge my pull request.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:9">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed September 01, 2010 08:31PM UTC by <span class="author">jbcoder2</span></span>
+        <a class="ticket-change-link" href="#comment:9">comment:9</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Replying to [comment:1 joern.zaefferer]:</p><blockquote> Could you explain the usecase for this?</blockquote><p>Using 2 <a href="/bugs.jqueryui.com/wiki/DatePicker">DatePicker</a> that are tied together to define a date range.</p><p>Clearing the text from either text input does not clear the date in the underlying <a href="/bugs.jqueryui.com/wiki/DatePicker">DatePicker</a> object or the restrictions that are imposed by the previously selected date.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:10">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed September 22, 2010 01:34PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:10">comment:10</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>summary:</th>
+                  <td>
+                    
+                      <span class="change-field-old">Clear button and functionality removed</span> → <span class="change-field-new">Datepicker: Add clear button</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>type:</th>
+                  <td>
+                    
+                      <span class="change-field-old">bug</span> → <span class="change-field-new">enhancement</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Proof of concept for adding a clear button without modifying the existing datepicker: <a href="http://jsbin.com/ofare/edit" class="ext-link"><span class="icon"></span>http://jsbin.com/ofare/edit</a></p>
+            </div>
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:11">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed September 30, 2010 04:21PM UTC by <span class="author">pfurbacher</span></span>
+        <a class="ticket-change-link" href="#comment:11">comment:11</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Use case: the input field is read-only.  We had to do this because validating users' typed date input became a headache in legacy code.  Using the calendar, triggered by clicking on either the input or an icon button, solved the issue in a matter of minutes.  However, users want the ability to clear the date field via the pop-up.  The alternative is to add a "clear" button next to the calendar's icon button.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:12">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed September 30, 2010 05:10PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:12">comment:12</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>resolution:</th>
+                  <td>
+                    
+                      <span class="change-field-new">→ wontfix</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>status:</th>
+                  <td>
+                    
+                      <span class="change-field-old">new</span> → <span class="change-field-new">closed</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>See my comment above about making an extension.</p>
+            </div>
+          
+        
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:13">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed January 27, 2011 03:19PM UTC by <span class="author">Ildefonse</span></span>
+        <a class="ticket-change-link" href="#comment:13">comment:13</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>@ scott.gonzalez</p><p>Your proof of concept at <a href="http://jsbin.com/ofare/edit" class="ext-link"><span class="icon"></span>http://jsbin.com/ofare/edit</a> has a major shortcoming. The clear button disappears when you navigate to different months.</p><p>Why is it not possible to add the clear button back to the datepicker, so that we can enable it with a setting like showClear?</p><p>A quick google search shows that there are many people out there that want this. And there are plenty of cases where this could be useful.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:14">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed June 11, 2011 05:41PM UTC by <span class="author">SOCAR</span></span>
+        <a class="ticket-change-link" href="#comment:14">comment:14</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Hi!</p><p>I have modified scott.gonzalez version a little bit. Sacrificing the "done"  button, I might say that this works for me: <a href="http://jsbin.com/unude4/5/edit" class="ext-link"><span class="icon"></span>http://jsbin.com/unude4/5/edit</a> and does not loose the clean filter functionality after changing month etc.</p><p>best regards</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:15">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed August 02, 2011 03:17PM UTC by <span class="author">IMSoP</span></span>
+        <a class="ticket-change-link" href="#comment:15">comment:15</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Hi, sorry to add a "me too" comment here, but I'm not clear on the rationale for closing this wontfix; lack of use cases was mentioned, but plenty have been provided here and elsewhere (e.g comments on <a href="http://blog.unthunk.com/2009/02/09/put-the-clear-button-back-in-datepicker/)" class="ext-link"><span class="icon"></span>http://blog.unthunk.com/2009/02/09/put-the-clear-button-back-in-datepicker/)</a></p><p>The suggestion of adding as an extension using the "beforeShow" event is not a valid workaround, as Ildefonse points out, because this event is not called when the calendar is redrawn. There would appear to be no way of adding this feature without patching the code unless an extra event or option is added.</p><p>This seems to be a widely requested feature, for which two patches have been submitted (<a href="https://github.com/softlab/jquery-ui/commit/4b1f53484df317ec889bf16013a667b6a09248ac" class="ext-link"><span class="icon"></span>https://github.com/softlab/jquery-ui/commit/4b1f53484df317ec889bf16013a667b6a09248ac</a> and <a href="https://github.com/keir/jquery-ui/commit/25e55ff73df768360a2260534a4afa6e03f04fb)." class="ext-link"><span class="icon"></span>https://github.com/keir/jquery-ui/commit/25e55ff73df768360a2260534a4afa6e03f04fb).</a> Are these patches not acceptable, or just stale?</p><p>Sorry to be a whinging user, but a clearer explanation of the situation would be very welcome.</p><p>Thanks for all your hard work,</p><p>Rowan</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:16">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed August 02, 2011 03:59PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:16">comment:16</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Replying to [comment:15 IMSoP]:</p><blockquote> Hi, sorry to add a "me too" comment here, but I'm not clear on the rationale for closing this wontfix; lack of use cases was mentioned, but plenty have been provided here and elsewhere (e.g comments on <a href="http://blog.unthunk.com/2009/02/09/put-the-clear-button-back-in-datepicker/)" class="ext-link"><span class="icon"></span>http://blog.unthunk.com/2009/02/09/put-the-clear-button-back-in-datepicker/)</a></blockquote><p>Actually, in that post Lucas even questions the validity of his own use case. Then later in the comments there's a clear explanation from Scott Jehl about how the use case is essentially an abuse of HTML. Not to mention the use case was pretty much "my boss uses the web wrong" (and you can turn off autocomplete).</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:17">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed August 03, 2011 05:44PM UTC by <span class="author">IMSoP</span></span>
+        <a class="ticket-change-link" href="#comment:17">comment:17</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Replying to [comment:16 scott.gonzalez]:</p><blockquote> Actually, in that post Lucas even questions the validity of his own use case. Then later in the comments there's a clear  explanation from Scott Jehl about how the use case is essentially an abuse of HTML. Not to mention the use case was pretty  much "my boss uses the web wrong" (and you can turn off autocomplete).</blockquote><p>I specifically referred to the <strong>comments</strong> on that blog post, in which several people put forward different use cases. Most compelling to me is that if you use the altField option, the argument that you can clear the text-field with the keyboard does not apply; if altField is supported, there should be a method of clearing that field. Other related scenarios are when the calendar widget is compulsory - i.e. the input field is a read-only display, so that the user cannot enter invalid values.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:18">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed August 29, 2011 08:00PM UTC by <span class="author">timothy.morgan3@googlemail.com</span></span>
+        <a class="ticket-change-link" href="#comment:18">comment:18</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">Replying to [comment:7 boomyjee]:&#92;
+&gt; here is my solution, you can use done button as clear with the following hack&#92;
+&gt; &#92;
+&gt; $(&quot;.datepicker&quot;).datepicker({&#92;
+&gt;     showButtonPanel: true,&#92;
+&gt;     closeText: &#39;Clear&#39;,&#92;
+&gt; });&#92;
+&gt; &#92;
+&gt; $.datepicker._generateHTML_Old = $.datepicker._generateHTML;&#92;
+&gt; $.datepicker._generateHTML = function(inst) {&#92;
+&gt;     res = this._generateHTML_Old(inst);&#92;
+&gt;     res = res.replace(&quot;_hideDatepicker()&quot;,&quot;_clearDate(&#39;#&quot;+inst.id+&quot;&#39;)&quot;);&#92;
+&gt;     return res;&#92;
+&gt; }&#92;
+&#92;
+Here&#39;s a slightly less intrusive version of this hack, which actually adds a seperate clear button. Although it&#39;s not configurable in the options; you could of course extend a new datepicker and add the override to that instead, if needs be. Note that I too am suffering from the read-only use case.&#92;
+&#92;
+$(function(){&#92;
+	//wrap up the redraw function with our new shiz&#92;
+	var dpFunc = $.datepicker._generateHTML; //record the original&#92;
+	$.datepicker._generateHTML = function(inst){&#92;
+		var thishtml = $( dpFunc.call($.datepicker, inst) ); //call the original&#92;
+		&#92;
+		thishtml = $(&#39;&lt;div /&gt;&#39;).append(thishtml); //add a wrapper div for jQuery context&#92;
+		&#92;
+		//locate the button panel and add our button - with a custom css class.&#92;
+		$(&#39;.ui-datepicker-buttonpane&#39;, thishtml).append(&#92;
+			$(&#39;&lt;button class=&quot;&#92;&#92;&#92;
+				ui-datepicker-clear ui-state-default ui-priority-primary ui-corner-all&#92;&#92;&#92;
+				&quot;&#92;&#92;&gt;Clear&lt;/button&gt;&#39;&#92;
+			).click(function(){&#92;
+				inst.input.attr(&#39;value&#39;, &#39;&#39;);&#92;
+				inst.input.datepicker(&#39;hide&#39;);&#92;
+			})&#92;
+		);&#92;
+		&#92;
+		thishtml = thishtml.children(); //remove the wrapper div&#92;
+		&#92;
+		return thishtml; //assume okay to return a jQuery&#92;
+	};&#92;
+});</span> → <span class="change-field-new">1314648103812795</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment1:</th>
+                  <td>
+                    
+                      <span class="change-field-old">Replying to [comment:7 boomyjee]:&#92;
+&gt; here is my solution, you can use done button as clear with the following hack&#92;
+&gt; &#92;
+&gt; $(&quot;.datepicker&quot;).datepicker({&#92;
+&gt;     showButtonPanel: true,&#92;
+&gt;     closeText: &#39;Clear&#39;,&#92;
+&gt; });&#92;
+&gt; &#92;
+&gt; $.datepicker._generateHTML_Old = $.datepicker._generateHTML;&#92;
+&gt; $.datepicker._generateHTML = function(inst) {&#92;
+&gt;     res = this._generateHTML_Old(inst);&#92;
+&gt;     res = res.replace(&quot;_hideDatepicker()&quot;,&quot;_clearDate(&#39;#&quot;+inst.id+&quot;&#39;)&quot;);&#92;
+&gt;     return res;&#92;
+&gt; }&#92;
+&#92;
+Here&#39;s a slightly less intrusive version of this hack, which actually adds a seperate clear button. Although it&#39;s not configurable in the options; you could of course extend a new datepicker and add the override to that instead, if needs be. Note that I too am suffering from the read-only use case.&#92;
+&#92;
+&#92;
+{{{&#92;
+$(function(){&#92;
+	//wrap up the redraw function with our new shiz&#92;
+	var dpFunc = $.datepicker._generateHTML; //record the original&#92;
+	$.datepicker._generateHTML = function(inst){&#92;
+		var thishtml = $( dpFunc.call($.datepicker, inst) ); //call the original&#92;
+		&#92;
+		thishtml = $(&#39;&lt;div /&gt;&#39;).append(thishtml); //add a wrapper div for jQuery context&#92;
+		&#92;
+		//locate the button panel and add our button - with a custom css class.&#92;
+		$(&#39;.ui-datepicker-buttonpane&#39;, thishtml).append(&#92;
+			$(&#39;&lt;button class=&quot;&#92;&#92;&#92;
+				ui-datepicker-clear ui-state-default ui-priority-primary ui-corner-all&#92;&#92;&#92;
+				&quot;&#92;&#92;&gt;Clear&lt;/button&gt;&#39;&#92;
+			).click(function(){&#92;
+				inst.input.attr(&#39;value&#39;, &#39;&#39;);&#92;
+				inst.input.datepicker(&#39;hide&#39;);&#92;
+			})&#92;
+		);&#92;
+		&#92;
+		thishtml = thishtml.children(); //remove the wrapper div&#92;
+		&#92;
+		return thishtml; //assume okay to return a jQuery&#92;
+	};&#92;
+});&#92;
+}}}</span> → <span class="change-field-new">1314648218521821</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment2:</th>
+                  <td>
+                    
+                      <span class="change-field-old">Replying to [comment:7 boomyjee]:&#92;
+&gt; here is my solution, you can use done button as clear with the following hack&#92;
+&gt; &#92;
+&gt; $(&quot;.datepicker&quot;).datepicker({&#92;
+&gt;     showButtonPanel: true,&#92;
+&gt;     closeText: &#39;Clear&#39;,&#92;
+&gt; });&#92;
+&gt; &#92;
+&gt; $.datepicker._generateHTML_Old = $.datepicker._generateHTML;&#92;
+&gt; $.datepicker._generateHTML = function(inst) {&#92;
+&gt;     res = this._generateHTML_Old(inst);&#92;
+&gt;     res = res.replace(&quot;_hideDatepicker()&quot;,&quot;_clearDate(&#39;#&quot;+inst.id+&quot;&#39;)&quot;);&#92;
+&gt;     return res;&#92;
+&gt; }&#92;
+&#92;
+&#92;
+Here&#39;s a slightly less intrusive version of this hack, which actually adds a seperate clear button. Although it&#39;s not configurable in the options, you could of course extend a new datepicker and add the override to that instead, if needs be. Note that I too am suffering from the read-only use case.&#92;
+&#92;
+&#92;
+{{{&#92;
+$(function(){&#92;
+	//wrap up the redraw function with our new shiz&#92;
+	var dpFunc = $.datepicker._generateHTML; //record the original&#92;
+	$.datepicker._generateHTML = function(inst){&#92;
+		var thishtml = $( dpFunc.call($.datepicker, inst) ); //call the original&#92;
+		&#92;
+		thishtml = $(&#39;&lt;div /&gt;&#39;).append(thishtml); //add a wrapper div for jQuery context&#92;
+		&#92;
+		//locate the button panel and add our button - with a custom css class.&#92;
+		$(&#39;.ui-datepicker-buttonpane&#39;, thishtml).append(&#92;
+			$(&#39;&lt;button class=&quot;&#92;&#92;&#92;
+				ui-datepicker-clear ui-state-default ui-priority-primary ui-corner-all&#92;&#92;&#92;
+				&quot;&#92;&#92;&gt;Clear&lt;/button&gt;&#39;&#92;
+			).click(function(){&#92;
+				inst.input.attr(&#39;value&#39;, &#39;&#39;);&#92;
+				inst.input.datepicker(&#39;hide&#39;);&#92;
+			})&#92;
+		);&#92;
+		&#92;
+		thishtml = thishtml.children(); //remove the wrapper div&#92;
+		&#92;
+		return thishtml; //assume okay to return a jQuery&#92;
+	};&#92;
+});&#92;
+}}}</span> → <span class="change-field-new">1314648865464504</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>Replying to [comment:7 boomyjee]:</p><blockquote> here is my solution, you can use done button as clear with the following hack  $(".datepicker").datepicker({     showButtonPanel: true,     closeText: 'Clear', });  $.datepicker._generateHTML_Old = $.datepicker._generateHTML; $.datepicker._generateHTML = function(inst) {     res = this._generateHTML_Old(inst);     res = res.replace("_hideDatepicker()","_clearDate('#"+inst.id+"')");     return res; }</blockquote><p>Here's a slightly less intrusive version of this hack, which actually adds a seperate clear button. Although it's not configurable in the options, you could of course extend a new datepicker and add the override to that instead, if needs be. Note that I too am suffering from the read-only use case.</p><p>(works with jquery-ui-1.8.15)</p><pre class="wiki">
+$(function(){
+	//wrap up the redraw function with our new shiz
+	var dpFunc = $.datepicker._generateHTML; //record the original
+	$.datepicker._generateHTML = function(inst){
+		var thishtml = $( dpFunc.call($.datepicker, inst) ); //call the original
+		
+		thishtml = $('&lt;div /&gt;').append(thishtml); //add a wrapper div for jQuery context
+		
+		//locate the button panel and add our button - with a custom css class.
+		$('.ui-datepicker-buttonpane', thishtml).append(
+			$('&lt;button class="\\
+				ui-datepicker-clear ui-state-default ui-priority-primary ui-corner-all\\
+				"\\&gt;Clear&lt;/button&gt;'
+			).click(function(){
+				inst.input.attr('value', '');
+				inst.input.datepicker('hide');
+			})
+		);
+		
+		thishtml = thishtml.children(); //remove the wrapper div
+		
+		return thishtml; //assume okay to return a jQuery
+	};
+});
+</pre>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:19">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed August 30, 2011 02:11PM UTC by <span class="author">IMSoP</span></span>
+        <a class="ticket-change-link" href="#comment:19">comment:19</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Replying to [comment:18 timothy.morgan3@…]:</p><blockquote> Here's a slightly less intrusive version of this hack, which actually adds a seperate clear button...</blockquote><p>I haven't had a chance to test it yet, but that looks like a reasonable approach for a workaround if the maintainers won't accept a patch. I think it would be better to use </p><pre class="wiki"> _clearDate('#"+inst.id+"') </pre> rather than <pre class="wiki"> inst.input.attr('value', ''); </pre> if possible, as this will fire additional triggers, such as clearing the altField.<p></p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:20">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed September 05, 2011 05:09AM UTC by <span class="author">kounterfeit</span></span>
+        <a class="ticket-change-link" href="#comment:20">comment:20</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">So....How about this use case, where would you backspace?? Oh ... no-where??  Really?!??!&#92;
+&#92;
+I really dont understand why this was removed and hasn&#39;t been brought back even when there have been several requests over the last few years to bring it back with many acceptable use cases.&#92;
+&#92;
+Is the jQuery UI team suggesting I change my whole UI?&#92;
+&#92;
+[[Image(http://www.integratedweb.com.au/where-to-put-button.png)]]&#92;
+&#92;
+How&#39;s the above screen shot for a practical use case?&#92;
+&#92;
+I can&#39;t see why if it was an option, people who didn&#39;t want it could just disable it?  Instead of removing ALL functionality in one hit and saying &quot;Oh, you had a practical use case?  We don&#39;t care.&quot;</span> → <span class="change-field-new">1315199432742930</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>So....How about this use case, where would you backspace?? Oh ... no-where??  Really?!??!</p><p>I really dont understand why this was removed and hasn't been brought back even when there have been several requests over the last few years to bring it back with many acceptable use cases.</p><p>Is the jQuery UI team suggesting I change my whole UI?</p><p>(( SCREENSHOT REMOVED, TOP SECRET ))</p><p>How's the above screen shot for a practical use case?</p><p>I can't see why if it was an option, people who didn't want it could just disable it?  Instead of removing ALL functionality in one hit and saying "Oh, you had a practical use case?  We don't care."</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:21">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed June 14, 2012 04:59PM UTC by <span class="author">Tiggrstaar</span></span>
+        <a class="ticket-change-link" href="#comment:21">comment:21</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">One quick way you can add the clear feature even on read only fields is to add the following code to your existing datepicker control:&#92;
+&#92;
+	}).keyup(function(e) {&#92;
+		if(e.keyCode == 8 || e.keyCode == 46) {&#92;
+			$.datepicker._clearDate(this);&#92;
+		}&#92;
+	});&#92;
+&#92;
+This will enable people to highlight(which they can even on RO fields) and then use the backspace or delete to remove the date using the internal _clearDate function.</span> → <span class="change-field-new">1339693242345047</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>One quick way you can add the clear feature even on read only fields is to add the following code to your existing datepicker control:</p><pre class="wiki">
+
+	}).keyup(function(e) {
+		if(e.keyCode == 8 || e.keyCode == 46) {
+			$.datepicker._clearDate(this);
+		}
+	});
+
+</pre><p>This will enable people to highlight(which they can even on RO fields) and then use the backspace or delete to remove the date using the internal _clearDate function.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:22">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed October 03, 2012 04:53PM UTC by <span class="author">scottgonzalez</span></span>
+        <a class="ticket-change-link" href="#comment:22">comment:22</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+              
+                <tr>
+                  <th>milestone:</th>
+                  <td>
+                    
+                      <span class="change-field-old">1.next</span> → <span class="change-field-new">1.6</span>
+                    
+                  </td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              
+            </div>
+          
+        
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:23">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed January 10, 2013 02:35PM UTC by <span class="author">kwutzke</span></span>
+        <a class="ticket-change-link" href="#comment:23">comment:23</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>OMG, why isn't this functionality available? It IS necessary for calendars with associated inputs that cannot be typed to. Don't ask me, but sometimes such requirements exist, so jQuery should (MUST!) support this.</p><p>You make everybody using jQuery (and <a href="/bugs.jqueryui.com/wiki/PrimeFaces">PrimeFaces</a> etc.) fiddle with workarounds. Very undesirable. Please reopen.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:24">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed January 22, 2013 10:39AM UTC by <span class="author">martin.meridius</span></span>
+        <a class="ticket-change-link" href="#comment:24">comment:24</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>Seriously, this is a hugely missed feature! </p><p>Please reconsider opening this enahancement as this way the only chance for us is to use hack by Tiggrstaar from comment 21 (thank you), and the user has to remember to press backspace/delete instead of just clicking the button.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:25">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed February 09, 2013 10:30PM UTC by <span class="author">hybris</span></span>
+        <a class="ticket-change-link" href="#comment:25">comment:25</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">&quot;seems like overkill since a user can simply clear out the field value manually. Plus, clearing the input would make the input invalid if the field is required. It’s best to encourage users to pick a date, not clear the field.&quot; &#92;
+ It is the reasonable thought behind the removing of the clear button.&#92;
+&#92;
+Not all  fields are required. Asuming an empty field might be invalid is wrong!&#92;
+&#92;
+&quot;a user can simply clear out the field value manually&quot; &#92;
+ It is not a good usable choice, while a user clears out the input, the calendar can be an obstruction,  the input sometimes might be covered by the calendar.&#92;
+&#92;
+Most of us use the calendar to avoid wrong format type and it is very important don&#39;t let the user think and write to the right date format we want.&#92;
+&#92;
+&quot;It’s best to encourage users to pick a date, not clear the field.&quot;  (?!)&#92;
+&#39;&#39;&#39; The best is to encourage users to not use the date input field at all. So, since they can choose a date by touch or by click,  they shoud be able to clear the date by touch and by click too.&#39;&#39;&#39;&#92;
+&#92;
+It is better to let the developers choose what is invalid field or not :)&#92;
+&#92;
+The clear option should be part of the datepicker.</span> → <span class="change-field-new">1360449097299673</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment1:</th>
+                  <td>
+                    
+                      <span class="change-field-old">&quot;seems like overkill since a user can simply clear out the field value manually. Plus, clearing the input would make the input invalid if the field is required. It’s best to encourage users to pick a date, not clear the field.&quot; &#92;
+ It is the reasonable thought behind the removing of the clear button.&#92;
+&#92;
+Not all  fields are required. Asuming an empty field might be invalid is wrong!&#92;
+&#92;
+&quot;a user can simply clear out the field value manually&quot; &#92;
+ It is not a good usable choice, while a user clears out the input, the calendar can be an obstruction,  the input sometimes might be covered by the calendar.&#92;
+&#92;
+Most of us use the calendar to avoid wrong format type and it is very important don&#39;t let the user think about the right date format we want (anc to write it)&#92;
+&#92;
+&quot;It’s best to encourage users to pick a date, not clear the field.&quot;  (?!)&#92;
+&#39;&#39;&#39; The best is to encourage users to not use the date input field at all. So, since they can choose a date by touch or by click,  they shoud be able to clear the date by touch and by click too.&#39;&#39;&#39;&#92;
+&#92;
+It is better to let the developers choose what is invalid field or not :)&#92;
+&#92;
+The clear option should be part of the datepicker.</span> → <span class="change-field-new">1360449111973051</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment2:</th>
+                  <td>
+                    
+                      <span class="change-field-old">&quot;seems like overkill since a user can simply clear out the field value manually. Plus, clearing the input would make the input invalid if the field is required. It’s best to encourage users to pick a date, not clear the field.&quot; &#92;
+ It is the reasonable thought behind the removing of the clear button.&#92;
+&#92;
+Not all  fields are required. Asuming an empty field might be invalid is wrong!&#92;
+&#92;
+&quot;a user can simply clear out the field value manually&quot; &#92;
+ It is not a good usable choice, while a user clears out the input, the calendar can be an obstruction,  the input sometimes might be covered by the calendar.&#92;
+&#92;
+Most of us use the calendar to avoid wrong format type and it is very important don&#39;t let the user think about the right date format we want (and to write it)&#92;
+&#92;
+&quot;It’s best to encourage users to pick a date, not clear the field.&quot;  (?!)&#92;
+&#39;&#39;&#39; The best is to encourage users to not use the date input field at all. So, since they can choose a date by touch or by click,  they shoud be able to clear the date by touch and by click too.&#39;&#39;&#39;&#92;
+&#92;
+It is better to let the developers choose what is invalid field or not :)&#92;
+&#92;
+The clear option should be part of the datepicker.</span> → <span class="change-field-new">1360449379833353</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+               <ul><li>double post, sorry</li></ul>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:26">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed February 09, 2013 10:32PM UTC by <span class="author">hybris</span></span>
+        <a class="ticket-change-link" href="#comment:26">comment:26</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+                <tr>
+                  <th>_comment0:</th>
+                  <td>
+                    
+                      <span class="change-field-old">Replying to [comment:25 hybris]:&#92;
+&gt; &quot;seems like overkill since a user can simply clear out the field value manually. Plus, clearing the input would make the input invalid if the field is required. It’s best to encourage users to pick a date, not clear the field.&quot; &#92;
+&gt;  It is the reasonable thought behind the removing of the clear button.&#92;
+&gt; &#92;
+&gt; Not all  fields are required. Asuming an empty field might be invalid is wrong!&#92;
+&gt; &#92;
+&gt; &quot;a user can simply clear out the field value manually&quot; &#92;
+&gt;  It is not a good usable choice, while a user clears out the input, the calendar can be an obstruction,  the input sometimes might be covered by the calendar.&#92;
+&gt; &#92;
+&gt; Most of us use the calendar to avoid wrong format type and it is very important don&#39;t let the user think about the right date format we want (and to write it)&#92;
+&gt; &#92;
+&gt; &quot;It’s best to encourage users to pick a date, not clear the field.&quot;  (?!)&#92;
+&gt; &#39;&#39;&#39; The best is to encourage users to not use the date input field manually at all. So, since they can choose a date by touch or by click,  they shoud be able to clear the date by touch and by click too.&#39;&#39;&#39;&#92;
+&gt; &#92;
+&gt; It is better to let the developers choose what is invalid field or not :)&#92;
+&gt; &#92;
+&gt; The clear option should be part of the datepicker.&#92;
+</span> → <span class="change-field-new">1360449295164817</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment1:</th>
+                  <td>
+                    
+                      <span class="change-field-old">&quot;clear” button – seems like overkill since a user can simply clear out the field value manually. Plus, clearing the input would make the input invalid if the field is required. It’s best to encourage users to pick a date, not clear the field.&quot; that is the reasonable thought behind the removing.&#92;
+&#92;
+Not all  fields are required. Asuming an empty field might be invalid is wrong!&#92;
+&#92;
+&quot;a user can simply clear out the field value manually&quot; &#92;
+ It is not a good usable choice, while a user clears out the input, the calendar can be an obstruction,  the input sometimes might be covered by the calendar.&#92;
+&#92;
+Most of us use the calendar to avoid wrong format type and it is very important don&#39;t let the user think about the right date format we want (and let the user free to write it).&#92;
+&quot;It’s best to encourage users to pick a date, not clear the field.&quot;  (?!)&#92;
+The best is to encourage users to not use manually the date input field at all. So, since they can choose a date by touch or by click,  they shoud be able to clear the date too.&#92;
+&#92;
+It is better to let the developers choose what is invalid field or not :)&#92;
+&#92;
+The clear option should be part of the datepicker.</span> → <span class="change-field-new">1360449345815255</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment2:</th>
+                  <td>
+                    
+                      <span class="change-field-old">seems like overkill since a user can simply clear out the field value manually. Plus, clearing the input would make the input invalid if the field is required. It’s best to encourage users to pick a date, not clear the field.&quot; that is the reasonable thought behind the removing.&#92;
+&#92;
+Not all  fields are required. Asuming an empty field might be invalid is wrong!&#92;
+&#92;
+&quot;a user can simply clear out the field value manually&quot; &#92;
+ It is not a good usable choice, while a user clears out the input, the calendar can be an obstruction,  the input sometimes might be covered by the calendar.&#92;
+&#92;
+Most of us use the calendar to avoid wrong format type and it is very important don&#39;t let the user think about the right date format we want (and let the user free to write it).&#92;
+&quot;It’s best to encourage users to pick a date, not clear the field.&quot;  (?!)&#92;
+The best is to encourage users to not use manually the date input field at all. So, since they can choose a date by touch or by click,  they shoud be able to clear the date too.&#92;
+&#92;
+It is better to let the developers choose what is invalid field or not :)&#92;
+&#92;
+The clear option should be part of the datepicker.</span> → <span class="change-field-new">1360449445785554</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment3:</th>
+                  <td>
+                    
+                      <span class="change-field-old">&quot;seems like overkill since a user can simply clear out the field value manually. Plus, clearing the input would make the input invalid if the field is required. It’s best to encourage users to pick a date, not clear the field.&quot; &#92;
+ that is the reasonable thought behind the removing. Not all  fields are required. Asuming an empty field might be invalid is wrong!&#92;
+&#92;
+&quot;a user can simply clear out the field value manually&quot; &#92;
+ It is not a good usable choice, while a user clears out the input, the calendar can be an obstruction,  the input sometimes might be covered by the calendar.&#92;
+&#92;
+Most of us use the calendar to avoid wrong format type and it is very important don&#39;t let the user think about the right date format we want (and let the user free to write it).&#92;
+&quot;It’s best to encourage users to pick a date, not clear the field.&quot;  (?!)&#92;
+&#39;&#39;&#39;The best is to encourage users to not use manually the date input field at all. So, since they can choose a date by touch or by click,  they shoud be able to clear the date too.&#39;&#39;&#39;&#92;
+&#92;
+It is better to let the developers choose what is invalid field or not :)&#92;
+&#92;
+The clear option should be part of the datepicker.</span> → <span class="change-field-new">1360449495430427</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment4:</th>
+                  <td>
+                    
+                      <span class="change-field-old">&quot;seems like overkill since a user can simply clear out the field value manually. Plus, clearing the input would make the input invalid if the field is required. It’s best to encourage users to pick a date, not clear the field.&quot; &#92;
+ that is the reasonable thought behind the removing. Not all  fields are required. Asuming an empty field might be invalid is wrong!&#92;
+&#92;
+&quot;a user can simply clear out the field value manually&quot; &#92;
+ It is not a good usable choice, while a user clears out the input, the calendar can be an obstruction,  the input sometimes might be covered by the calendar.&#92;
+&#92;
+Most of us use the calendar to avoid wrong format type and it is very important don&#39;t let the user think about the right date format we want (and let the user free to write it).&#92;
+&quot;It’s best to encourage users to pick a date, not clear the field.&quot;  (?!)&#92;
+&#39;&#39;&#39;The best is to encourage users to not use manually the date input field at all. So, since they can choose a date by touch or by click,  they shoud be able to clear the date by touch or by click&#39;&#39;&#39;&#92;
+&#92;
+It is better to let the developers choose what is invalid field or not :)&#92;
+&#92;
+The clear option should be part of the datepicker.</span> → <span class="change-field-new">1360449552208415</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <th>_comment5:</th>
+                  <td>
+                    
+                      <span class="change-field-old">&quot;seems like overkill since a user can simply clear out the field value manually. Plus, clearing the input would make the input invalid if the field is required. It’s best to encourage users to pick a date, not clear the field.&quot; &#92;
+ that is the reasonable thought behind the removing. Not all  fields are required. Asuming an empty field might be invalid is wrong!&#92;
+&#92;
+&quot;a user can simply clear out the field value manually&quot; &#92;
+ It is not a good usable choice, while a user clears out the input, the calendar can be an obstruction,  the input sometimes might be covered by the calendar.&#92;
+&#92;
+Most of us use the calendar to avoid wrong format type and it is very important don&#39;t let the user think about the right date format we want (and let the user free to write it).&#92;
+&quot;It’s best to encourage users to pick a date, not clear the field.&quot;  (?!)&#92;
+&#39;&#39;&#39;The best is to encourage users to not use manually the date input field at all. So, since they can choose a date by touch or by click,  they shoud be able to clear the date by touch or by click&#39;&#39;&#39;&#92;
+&#92;
+It is better to let us choose what is invalid field or not :)&#92;
+&#92;
+The clear option should be part of the datepicker.</span> → <span class="change-field-new">1360449575542682</span>
+                    
+                  </td>
+                </tr>
+              
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <div class="ticket-comment-body">
+              <p>"seems like overkill since a user can simply clear out the field value manually. Plus, clearing the input would make the input invalid if the field is required. It’s best to encourage users to pick a date, not clear the field." </p><p> that is the reasonable thought behind the removing. Not all  fields are required. Asuming an empty field might be invalid is wrong!</p><p>"a user can simply clear out the field value manually" </p><p> It is not a good usable choice, while a user clears out the input, the calendar can be an obstruction,  the input sometimes might be covered by the calendar.</p><p>Most of us use the calendar to avoid wrong format type and it is very important don't let the user think about the right date format we want (and let the user free to write it).</p><p>"It’s best to encourage users to pick a date, not clear the field."  (?!)</p><p><strong>The best is to encourage users to not use manually the date input field at all. So, since they can choose a date by touch or by click,  they shoud be able to clear the date by touch or by click</strong></p><p>It is better to let us choose what is an invalid field or not :)</p><p>The clear option should be part of the datepicker.</p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+    <div class="ticket-change flex-column" id="comment:27">
+      <h3 class="flex-row flex-between-start ticket-change-header">
+        <span>Changed September 18, 2013 06:17PM UTC by <span class="author">jayknight</span></span>
+        <a class="ticket-change-link" href="#comment:27">comment:27</a>
+      </h3>
+
+      <div class="ticket-change-content">
+        <table class="ticket-changes">
+          <tbody>
+            
+              
+            
+          </tbody>
+        </table>
+        
+          
+            <div class="ticket-comment-body">
+              <p>This simple plugin can add a clear button to any field (not just dates): <a href="https://github.com/jk3us/jquery-clearable." class="ext-link"><span class="icon"></span>https://github.com/jk3us/jquery-clearable.</a></p>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</details>
+</div>
+        </div>
+      </main>
+      <footer>
+        Copyright &copy; 2023
+        <a href="https://openjsf.org">The OpenJS Foundation</a>
+      </footer>
+    </div>
+    <script src="/bugs.jqueryui.com/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({
+          element: "#search",
+          showImages: false,
+          translations: {
+            placeholder: 'Search tickets',
+            zero_results: 'No matches found.'
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js" ></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.js" ></script>
+
+	<style>
+		#sortable {
+			float: left;
+		}
+		#draggable {
+			float: right;
+		}
+		.overlay {
+			position: absolute;
+			width: 425px;
+			height: 350px;
+			background: red;
+			opacity: 0.6;
+		}
+	</style>
+
+<head>
+<body>
+
+<div id="sortable">
+	Using sortable
+	<div id="test" class="container">
+		<div class="overlay"></div>
+		<embed width="425" height="350" src="http://www.youtube.com/v/SDMvw6fNDR4" allowfullscreen="true" allowscriptaccess="always" quality="best" wmode="transparent" bgcolor="#fff" flashvars="" menu="false" type="application/x-shockwave-flash"/>
+	</div>
+</div>
+
+
+<div id="draggable">
+	Using draggable
+	<div id="test" class="container">
+		<div class="overlay"></div>
+		<embed width="425" height="350" src="http://www.youtube.com/v/SDMvw6fNDR4" allowfullscreen="true" allowscriptaccess="always" quality="best" wmode="transparent" bgcolor="#fff" flashvars="" menu="false" type="application/x-shockwave-flash"/>
+	</div>
+</div>
+
+
+
+<script>
+	var $s = $('#sortable').sortable();
+	var $d = $('#draggable').draggable();
+
+</script>
+
+</body>
+</html>

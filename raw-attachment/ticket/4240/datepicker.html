@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="theme/ui.all.css" />
+    <script type="text/javascript" src="jquery-1.3.1.js"></script>
+    <script type="text/javascript" src="jquery-ui-personalized-1.6rc6.js"></script>
+    <title>Datepicker Error Test</title>
+  </head>
+  <body>
+    <input type="text" id="startdate" />
+    <input type="text" id="enddate" />
+    <br /> <br />
+    <input type="button" value="Init Startdate" onclick="$('#startdate').datepicker({showOn: 'both', buttonImage:'cal.gif', buttonImageOnly:'true'});" />
+    <input type="button" value="Init Enddate" onclick="$('#enddate').datepicker({showOn: 'both', buttonImage:'cal.gif', buttonImageOnly:'true'});" />
+    <br /> <br />
+    <input type="button" value="Destroy Startdate" onclick="$('#startdate').datepicker('destroy');" />
+    <input type="button" value="Destroy Enddate" onclick="$('#enddate').datepicker('destroy');" />
+  </body>
+</html>

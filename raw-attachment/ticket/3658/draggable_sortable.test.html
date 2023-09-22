@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Drag into Sortable Testcase</title>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.core.js"></script>
+    <script src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.draggable.js"></script>
+    <script src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.sortable.js"></script>
+
+    <style type="text/css" media="screen">
+        body { background-color: #000; font: 16px Helvetica, Arial; color: #fff; }
+        #sort { width:100px; height:100px; border:1px solid #ccc; background:#444; overflow:auto }
+    </style>
+
+</head>
+<body>
+    Example taken from <a href="http://the-stickman.com/files/jquery/draggable-sortable.html">http://the-stickman.com/files/jquery/draggable-sortable.html</a> and modified as a testcase
+    <h1>Drag into Sortable Testcase</h1>
+
+
+    Drag from here...
+    <ul class="drag">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    </ul>
+
+    ...and drop here...
+    <ul id="sort">
+    </ul>
+
+    <div id="out"></div>
+
+    <script type="text/javascript">
+    <!-- we run in the footer so no need to use onload -->
+    jQuery('.drag > li').draggable({
+        helper:'clone',
+        connectToSortable:'#sort'
+    });
+
+    jQuery('#sort').sortable({
+        receive: function()
+        {
+            jQuery("#out").append('<div>receive</div>');
+        },
+        update: function()
+        {
+            jQuery("#out").append('<div>update</div>');
+        }
+    });
+    </script>
+</body>
+</html>

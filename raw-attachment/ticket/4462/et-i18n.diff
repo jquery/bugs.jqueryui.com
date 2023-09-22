@@ -1,0 +1,26 @@
+Index: ui/i18n/ui.datepicker-et.js
+===================================================================
+--- ui/i18n/ui.datepicker-et.js	(revision 0)
++++ ui/i18n/ui.datepicker-et.js	(revision 0)
+@@ -0,0 +1,21 @@
++/* Estonian initialisation for the jQuery UI date picker plugin. */
++/* Written by Mart Sõmermaa (mrts.pydev at gmail com). */
++jQuery(function($){
++    $.datepicker.regional['et'] = {
++    closetext: 'sulge',
++    prevtext: 'eelnev',
++    nexttext: 'järgnev',
++    currenttext: 'täna',
++    monthnames: ['jaanuar','veebruar','märts','aprill','mai','juuni',
++      'juuli','august','september','oktoober','november','detsember'],
++    monthnamesshort: ['jaan', 'veebr', 'märts', 'apr', 'mai', 'juuni', 'juuli', 'aug', 'sept', 'okt', 'nov', 'dets'],
++    daynames: ['pühapäev', 'esmaspäev', 'teisipäev', 'kolmapäev', 'neljapäev', 'reede', 'laupäev'],
++    daynamesshort: ['pühap', 'esmasp', 'teisip', 'kolmap', 'neljap', 'reede', 'laup'],
++    daynamesmin: ['p','e','t','k','n','r','l'],
++    dateFormat: 'dd.mm.yy',
++    firstDay: 1,
++    isRTL: false,
++    showMonthAfterYear: false,
++    yearSuffix: ''};
++    $.datepicker.setDefaults($.datepicker.regional['et']);
++});

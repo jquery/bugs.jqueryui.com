@@ -1,0 +1,40 @@
+<html>
+<head>
+    <script type='text/javascript' src='include/jquery-1.3.1.min.js'></script>
+    <script type='text/javascript' src='include/jquery-ui-personalized-1.5.3.min.js'></script>
+    <script type='text/javascript'>
+        function insertRow()
+        {
+            $('#the_body tr:last').
+                before('<tr><td><table><tr><td>Should be between body text and button</td></tr></table></td></tr>');
+        }
+        
+        $(document).ready(function(){
+            $('#the_table').accordion(
+                {
+                    active: -1,
+                    alwaysOpen: false,
+                    event: 'click',
+                    header: 'thead'
+                });
+        });
+    </script>
+</head>
+<body>
+    <table id='the_table'>
+        <thead id='the_head'>
+            <tr><th>I am the head</th></tr>
+        </thead>
+        <tbody id='the_body'>
+            <tr>
+                <td>A row of data</td>
+            </tr>
+            <tr><td>
+                <input type='button' value='Add Row'
+                       onclick="insertRow();"
+                />
+            </td></tr>
+        </tbody>
+    </table>
+</body>
+</html>

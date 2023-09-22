@@ -1,0 +1,54 @@
+Index: ui.slider.js
+===================================================================
+--- ui.slider.js	(revision 2349)
++++ ui.slider.js	(working copy)
+@@ -302,7 +302,8 @@
+ 	_start: function(event, index) {
+ 		var uiHash = {
+ 			handle: this.handles[index],
+-			value: this.value()
++			value: this.value(),
++			handleIndex: index
+ 		};
+ 		if (this.options.values && this.options.values.length) {
+ 			uiHash.value = this.values(index)
+@@ -329,7 +330,8 @@
+ 				var allowed = this._trigger("slide", event, {
+ 					handle: this.handles[index],
+ 					value: newVal,
+-					values: newValues
++					values: newValues,
++					handleIndex: index
+ 				});
+ 				var otherVal = this.values(index ? 0 : 1);
+ 				if (allowed !== false) {
+@@ -343,7 +345,8 @@
+ 				// A slide can be canceled by returning false from the slide callback
+ 				var allowed = this._trigger("slide", event, {
+ 					handle: this.handles[index],
+-					value: newVal
++					value: newVal,
++					handleIndex: index
+ 				});
+ 				if (allowed !== false) {
+ 					this._setData('value', newVal, ( event.type == 'mousedown' && this.options.animate ));
+@@ -358,7 +361,8 @@
+ 	_stop: function(event, index) {
+ 		var uiHash = {
+ 			handle: this.handles[index],
+-			value: this.value()
++			value: this.value(),
++			handleIndex: index
+ 		};
+ 		if (this.options.values && this.options.values.length) {
+ 			uiHash.value = this.values(index)
+@@ -370,7 +374,8 @@
+ 	_change: function(event, index) {
+ 		var uiHash = {
+ 			handle: this.handles[index],
+-			value: this.value()
++			value: this.value(),
++			handleIndex: index
+ 		};
+ 		if (this.options.values && this.options.values.length) {
+ 			uiHash.value = this.values(index)

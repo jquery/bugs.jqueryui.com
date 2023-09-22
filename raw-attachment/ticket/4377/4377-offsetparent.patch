@@ -1,0 +1,60 @@
+Index: /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.selectable.js
+===================================================================
+--- /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.selectable.js	(revision 2470)
++++ /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.selectable.js	(working copy)
+@@ -71,7 +71,11 @@
+ 		if (this.options.disabled)
+ 			return;
+ 
+-		var options = this.options;
++		var options = this.options,
++			appendTo = $(options.appendTo),
++			parentOffset = appendTo.css('position') == 'static'
++				? appendTo.offsetParent().offset()
++				: appendTo.offset();
+ 
+ 		this.selectees = $(options.filter, this.element[0]);
+ 
+@@ -77,7 +81,7 @@
+ 
+ 		this._trigger("start", event);
+ 
+-		$(options.appendTo).append(this.helper);
++		appendTo.append(this.helper);
+ 		// position helper (lasso)
+ 		this.helper.css({
+ 			"z-index": 100,
+@@ -82,8 +86,8 @@
+ 		this.helper.css({
+ 			"z-index": 100,
+ 			"position": "absolute",
+-			"left": event.clientX,
+-			"top": event.clientY,
++			"left": event.clientX-parentOffset.left,
++			"top": event.clientY-parentOffset.top,
+ 			"width": 0,
+ 			"height": 0
+ 		});
+@@ -133,10 +137,20 @@
+ 
+ 		var options = this.options;
+ 
+-		var x1 = this.opos[0], y1 = this.opos[1], x2 = event.pageX, y2 = event.pageY;
++		var x1 = this.opos[0], y1 = this.opos[1], x2 = event.pageX, y2 = event.pageY,
++			appendTo = $(options.appendTo),
++			parentOffset = appendTo.css('position') == 'static'
++				? appendTo.offsetParent().offset()
++				: appendTo.offset();
++
+ 		if (x1 > x2) { var tmp = x2; x2 = x1; x1 = tmp; }
+ 		if (y1 > y2) { var tmp = y2; y2 = y1; y1 = tmp; }
+-		this.helper.css({left: x1, top: y1, width: x2-x1, height: y2-y1});
++		this.helper.css({
++			left: x1-parentOffset.left,
++			top: y1-parentOffset.top,
++			width: x2-x1,
++			height: y2-y1
++		});
+ 
+ 		this.selectees.each(function() {
+ 			var selectee = $.data(this, "selectable-item");

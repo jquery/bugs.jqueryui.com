@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Example</title>
+    <link href="style/style.css" rel="stylesheet" type="text/css" />
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <style type="text/css">
+        .promoteDp {z-index:1005}
+    </style>
+</head>
+<body>
+        <div align="center" style="margin-top:1em"><a id="lnkOpen" href="#">Open dialog</a></div>
+        
+        <div id="divOpenDialog" style="display:none" title="Example">
+            <table>
+                <tr>
+                    <th align="right">Start Date</th>
+                    <td>
+                        <input type="text" name="startDate" id="startDate" class="datepicker" />
+                    </td>
+                </tr>
+                <tr>
+                    <th align="right">End date</th>
+                    <td>
+                        <input type="text" name="endDate" id="endDate" class="datepicker" />
+                    </td>
+                </tr>
+            </table>
+            
+            <div align="center" style="margin-top:1em">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var dlg = $('#divOpenDialog');
+            dlg.dialog({ autoOpen: false, modal: true, width: 400, draggable: false, resizable: false });
+            $('.datepicker').datepicker({ duration: '' });
+            $("#ui-datepicker-div").addClass("promoteDp"); 
+            $('#lnkOpen').click(function() { dlg.dialog('open'); return false; });
+            dlg.parent().appendTo(jQuery("form:first"));
+        });
+    </script>
+</body>
+</html>

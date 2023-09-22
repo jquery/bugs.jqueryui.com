@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery UI Tabs - ticket 5485</title>
+	<link type="text/css" href="http://jqueryui.com/themes/base/jquery.ui.all.css" rel="stylesheet" />
+	<script type="text/javascript" src="http://jqueryui.com/jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="http://jqueryui.com/ui/jquery.ui.core.js"></script>
+	<script type="text/javascript" src="http://jqueryui.com/ui/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="http://jqueryui.com/ui/jquery.ui.tabs.js"></script>
+	<script type="text/javascript">
+	function log(message) {
+		document.getElementById("log").innerHTML += message + "<br/>";
+	}
+
+	$(function() {
+		$("#tabs")
+		.bind("tabsshow", function (event, ui) {
+			log("tabsshow " + ui.index);
+		})
+		.bind("tabsload", function (event, ui) {
+			log("tabsload " + ui.index);
+		})
+		.tabs({
+			load : function (event, ui) {
+				log("load " + ui.index);
+			},
+			show : function (event, ui) {
+				log("show " + ui.index);
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+
+<div class="demo">
+
+<div id="tabs">
+	<ul>
+		<li><a href="1.html">tab one</a></li>
+		<li><a href="2.html">tab two</a></li>
+	</ul>
+</div>
+
+</div><!-- End demo -->
+
+<p id="log"><strong>Log : </strong><br/></p>
+
+</body>
+</html>

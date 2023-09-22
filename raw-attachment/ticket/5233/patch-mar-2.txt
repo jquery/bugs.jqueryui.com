@@ -1,0 +1,181 @@
+Index: themes/base/jquery.ui.core.css
+===================================================================
+--- themes/base/jquery.ui.core.css	(revision 3849)
++++ themes/base/jquery.ui.core.css	(working copy)
+@@ -32,6 +32,34 @@
+ 
+ /* Misc visuals
+ ----------------------------------*/
+ 
+ /* Overlays */
+ .ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
++
++/* High contrast compatibility
+++----------------------------------*/
++.high-contrast .ui-icon,
++.high-contrast .ui-dialog .ui-dialog-titlebar-close,
++.high-contrast .ui-datepicker .ui-datepicker-next,
++.high-contrast .ui-datepicker .ui-datepicker-prev
++{ width: auto; text-indent: 0; }
++
++/* Focus highlight for tabs */
++.high-contrast .ui-tabs.ui-widget-content .ui-state-focus { border-width: 3px; }
++
++/* Focus highlight for accordion (also out of high contrast, maybe that needs to go somewhere else? */
++.ui-accordion-header.ui-state-focus { border-width: 2px; }
++.high-contrast .ui-accordion-header.ui-state-focus { border-width: 4px; }
++
++/* Fancy positioning for datepicker buttons: */
++.high-contrast .ui-datepicker .ui-datepicker-next span { position: static; margin: 3px; }
++.high-contrast .ui-datepicker .ui-datepicker-prev span { position: static; margin: 3px; }
++
++/* Value for progress bar */
++
++.ui-progressbar-valuetext { display: none; }
++.high-contrast .ui-progressbar-valuetext { display: block; position: absolute; margin: 0; margin-top: 3px; top: 0; width: 100%; text-align: center; }
++
++/* Resize icon for dialog */
++.ui-dialog-resize-grippy.ui-resizable-handle { display: none; }
++.high-contrast .ui-dialog-resize-grippy { display: block; right: 0; bottom: 0; }
+Index: themes/base/jquery.ui.progressbar.css
+===================================================================
+--- themes/base/jquery.ui.progressbar.css	(revision 3849)
++++ themes/base/jquery.ui.progressbar.css	(working copy)
+@@ -1,4 +1,4 @@
+ /* Progressbar
+ ----------------------------------*/
+-.ui-progressbar { height:2em; text-align: left; }
++.ui-progressbar { height:2em; text-align: left; position: relative; }
+ .ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }
+\ No newline at end of file
+Index: ui/jquery.ui.core.js
+===================================================================
+--- ui/jquery.ui.core.js	(revision 3849)
++++ ui/jquery.ui.core.js	(working copy)
+@@ -199,7 +199,37 @@ $.extend($.expr[':'], {
+ 	tabbable: function(element) {
+ 		var tabIndex = $.attr(element, 'tabindex');
+ 		return (isNaN(tabIndex) || tabIndex >= 0) && $(element).is(':focusable');
+ 	}
+ });
+ 
++// Initialize high-contrast mode check when we have document.body
++$(function() {
++	// create div for testing if high contrast mode is on or images are turned off
++	var div = document.createElement("div");
++	// The ui-icon class will give it a background image.
++	// Proper caching should mean no additional requests will be made.
++	div.className = "ui-icon";
++	div.style.borderWidth = "1px";
++	div.style.borderStyle = "solid";
++	div.style.borderTopColor = "red";
++	div.style.borderRightColor = "green";
++	div.style.position = "absolute";
++	div.style.top = "-999px";
++	document.body.appendChild(div);
++
++	// test it
++	var bkImg = $.curCSS(div, "backgroundImage");
++	$.support.highContrast = ($.curCSS(div, "borderTopColor") == $.curCSS(div, "borderRightColor")) ||
++		(bkImg != null && (bkImg == "none" || bkImg == "url(invalid-url:)"));
++	if ($.browser.msie) {
++		div.outerHTML = "";		// prevent mixed-content warning, see http://support.microsoft.com/kb/925014
++	} else {
++		document.body.removeChild(div);
++	}
++	if ($.support.highContrast) {
++		$("body").addClass("high-contrast");
++	}
++});
++
++
+ })(jQuery);
+Index: ui/jquery.ui.progressbar.js
+===================================================================
+--- ui/jquery.ui.progressbar.js	(revision 3849)
++++ ui/jquery.ui.progressbar.js	(working copy)
+@@ -26,12 +26,15 @@ $.widget( "ui.progressbar", {
+ 				"aria-valuemax": this._valueMax(),
+ 				"aria-valuenow": this._value()
+ 			});
+ 
+ 		this.valueDiv = $( "<div class='ui-progressbar-value ui-widget-header ui-corner-left'></div>" )
+ 			.appendTo( this.element );
++	
++ 		this.valueTextDiv = $( "<div class='ui-progressbar-valuetext'>" + this._value() + "</div>")
++ 			.appendTo( this.element );
+ 
+ 		this._refreshValue();
+ 	},
+ 
+ 	destroy: function() {
+ 		this.element
+@@ -93,12 +96,13 @@ $.widget( "ui.progressbar", {
+ 
+ 	_refreshValue: function() {
+ 		var value = this.value();
+ 		this.valueDiv
+ 			[ value === this._valueMax() ? "addClass" : "removeClass"]( "ui-corner-right" )
+ 			.width( value + "%" );
++ 		this.valueTextDiv.text(value + "%");
+ 		this.element.attr( "aria-valuenow", value );
+ 	}
+ });
+ 
+ $.extend( $.ui.progressbar, {
+ 	version: "@VERSION"
+Index: ui/jquery.ui.button.js
+===================================================================
+--- ui/jquery.ui.button.js	(revision 3849)
++++ ui/jquery.ui.button.js	(working copy)
+@@ -207,13 +207,13 @@ $.widget( "ui.button", {
+ 				.html( this.options.label )
+ 				.appendTo( buttonElement.empty() )
+ 				.text();
+ 
+ 		var icons = this.options.icons,
+ 			multipleIcons = icons.primary && icons.secondary;
+-		if ( icons.primary || icons.secondary ) {
++		if ( !$.support.highContrast && ( icons.primary || icons.secondary ) ) {
+ 			buttonElement.addClass( "ui-button-text-icon" +
+ 				( multipleIcons ? "s" : "" ) );
+ 			if ( icons.primary ) {
+ 				buttonElement.prepend( "<span class='ui-button-icon-primary ui-icon " + icons.primary + "'></span>" );
+ 			}
+ 			if ( icons.secondary ) {
+Index: ui/jquery.ui.resizable.js
+===================================================================
+--- ui/jquery.ui.resizable.js	(revision 3849)
++++ ui/jquery.ui.resizable.js	(working copy)
+@@ -33,13 +33,13 @@ $.widget("ui.resizable", $.ui.mouse, {
+ 		minHeight: 10,
+ 		minWidth: 10,
+ 		zIndex: 1000
+ 	},
+ 	_create: function() {
+ 
+-		var self = this, o = this.options;
++		var self = this, o = this.options, resizerDataURI = resizerDataURI = 'data:image/gif;base64,R0lGODdhEAAQAOcAAAAAAAEBAQICAgMDAwQEBAUFBQYGBgcHBwgICAkJCQoKCgsLCwwMDA0NDQ4ODg8PDxAQEBERERISEhMTExQUFBUVFRYWFhcXFxgYGBkZGRoaGhsbGxwcHB0dHR4eHh8fHyAgICEhISIiIiMjIyQkJCUlJSYmJicnJygoKCkpKSoqKisrKywsLC0tLS4uLi8vLzAwMDExMTIyMjMzMzQ0NDU1NTY2Njc3Nzg4ODk5OTo6Ojs7Ozw8PD09PT4+Pj8/P0BAQEFBQUJCQkNDQ0REREVFRUZGRkdHR0hISElJSUpKSktLS0xMTE1NTU5OTk9PT1BQUFFRUVJSUlNTU1RUVFVVVVZWVldXV1hYWFlZWVpaWltbW1xcXF1dXV5eXl9fX2BgYGFhYWJiYmNjY2RkZGVlZWZmZmdnZ2hoaGlpaWpqamtra2xsbG1tbW5ubm9vb3BwcHFxcXJycnNzc3R0dHV1dXZ2dnd3d3h4eHl5eXp6ent7e3x8fH19fX5+fn9/f4CAgIGBgYKCgoODg4SEhIWFhYaGhoeHh4iIiImJiYqKiouLi4yMjI2NjY6Ojo+Pj5CQkJGRkZKSkpOTk5SUlJWVlZaWlpeXl5iYmJmZmZqampubm5ycnJ2dnZ6enp+fn6CgoKGhoaKioqOjo6SkpKWlpaampqenp6ioqKmpqaqqqqurq6ysrK2tra6urq+vr7CwsLGxsbKysrOzs7S0tLW1tba2tre3t7i4uLm5ubq6uru7u7y8vL29vb6+vr+/v8DAwMHBwcLCwsPDw8TExMXFxcbGxsfHx8jIyMnJycrKysvLy8zMzM3Nzc7Ozs/Pz9DQ0NHR0dLS0tPT09TU1NXV1dbW1tfX19jY2NnZ2dra2tvb29zc3N3d3d7e3t/f3+Dg4OHh4eLi4uPj4+Tk5OXl5ebm5ufn5+jo6Onp6erq6uvr6+zs7O3t7e7u7u/v7/Dw8PHx8fLy8vPz8/T09PX19fb29vf39/j4+Pn5+fr6+vv7+/z8/P39/f7+/v///ywAAAAAEAAQAAAIOwABCBxIsKDBgwgTKiRYodtCgQ0rPIw4sZvEhRQbJsxoESHHiwY/euzIsaBIigQ7AlCp8mFBAy4FlggIADs=';
+ 		this.element.addClass("ui-resizable");
+ 
+ 		$.extend(this, {
+ 			_aspectRatio: !!(o.aspectRatio),
+ 			aspectRatio: o.aspectRatio,
+ 			originalElement: this.element,
+@@ -106,12 +106,16 @@ $.widget("ui.resizable", $.ui.mouse, {
+ 				//TODO : this modifies original option
+ 				if(/sw|se|ne|nw/.test(handle)) axis.css({ zIndex: ++o.zIndex });
+ 
+ 				//TODO : What's going on here?
+ 				if ('se' == handle) {
+ 					axis.addClass('ui-icon ui-icon-gripsmall-diagonal-se');
++					var hcmImg = $("<img class='ui-resizable-handle ui-dialog-resize-grippy' alt='' src='" + resizerDataURI + ">");
++					axis.append(hcmImg);
++					// Need this to make sure we can actually drag using the image.
++					this.handles['se-img'] = hcmImg;
+ 				};
+ 
+ 				//Insert into internal handles object and append to element
+ 				this.handles[handle] = '.ui-resizable-'+handle;
+ 				this.element.append(axis);
+ 			}

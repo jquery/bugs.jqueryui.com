@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<script src="http://jquery-ui.googlecode.com/svn/tags/latest/jquery-1.4.2.js"></script>
+		<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery-ui.js"></script>
+		<link href="http://jquery-ui.googlecode.com/svn/tags/latest/themes/base/jquery-ui.css" type="text/css" rel="stylesheet"/>
+	</head>
+
+	<body>
+		<input name="1" id="id1" type="checkbox"/>
+		<label for="id1">Checkbox</label>
+
+		<script type="text/javascript">
+			$(function() {
+				$('#id1').button().change(function(e) {
+					console.log('change', e);
+				});
+				$('#id1').bind('change', function(e) {
+					console.log('bound change', e);
+				});
+				$("body").live('change', function(e) {
+					console.log('live change on body', e);
+				});
+				$(document).delegate('input', 'change', function(e) {
+					console.log('delegated input change', e);
+				});
+				$(document).change(function(e) {
+					console.log('delegated change on document', e);
+				});
+			});
+		</script>
+	</body>
+</html>

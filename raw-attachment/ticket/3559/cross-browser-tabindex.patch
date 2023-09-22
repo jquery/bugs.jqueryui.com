@@ -1,0 +1,73 @@
+Index: ui.core.js
+===================================================================
+--- ui.core.js	(revision 908)
++++ ui.core.js	(working copy)
+@@ -1,12 +1,20 @@
+ (function($) {
+ 
++function normalizeTabindexName() {
++	return $.browser.msie < 8 ? "tabIndex" : "tabindex";
++}
++	
++function hasTabindexAttr(element) {
++	var attributeNode = element.getAttributeNode(normalizeTabindexName());
++	return attributeNode ? attributeNode.specified : false;
++}
++
+ function getTabIndex(element) {
+-	var index = parseInt(element.getAttribute('tabIndex'), 10);
+-	if (isNaN(index)) {
+-		index = element.tabIndex;
++	if (!hasTabindexAttr(element)) {
++		return undefined;
+ 	}
+-	
+-	return index;
++	var value = parseInt(element.getAttribute(normalizeTabindexName()), 10);
++	return !isNaN(value) ? value : undefined;
+ }
+ 
+ $.extend($.expr[':'], {
+@@ -27,8 +35,7 @@
+ 	
+ 	tabbable: function(element) {
+ 		var tabIndex = getTabIndex(element);
+-		
+-		return !isNaN(tabIndex) && tabIndex >= 0 && $(element).is(':focusable'); 
++		return isNaN(tabIndex) ? $(element).is(':focusable') : tabIndex >= 0; 
+ 	}
+ });
+ 
+Index: tests/core.js
+===================================================================
+--- tests/core.js	(revision 908)
++++ tests/core.js	(working copy)
+@@ -45,12 +45,14 @@
+ });
+ 
+ test("tabbable - tabindex", function() {
+-	expect(4);
++	expect(6);
+ 	
+ 	ok( $('#input4-1').is(':tabbable'), 'input, tabindex 0');
+ 	ok( $('#input4-2').is(':tabbable'), 'input, tabindex 10');
+ 	ok(!$('#input4-3').is(':tabbable'), 'input, tabindex -1');
+ 	ok(!$('#input4-4').is(':tabbable'), 'input, tabindex -50');
++	ok($('#input4-5').is(':tabbable'), 'input, invalid tabindex value ("foo")');
++	ok(!$('#span4-5').is(':tabbable'), 'span, invalid tabindex value ("foo")');
+ });
+ 
+ })(jQuery);
+Index: tests/core.html
+===================================================================
+--- tests/core.html	(revision 908)
++++ tests/core.html	(working copy)
+@@ -65,6 +65,8 @@
+ 		<input id="input4-2" tabindex="10" />
+ 		<input id="input4-3" tabindex="-1" />
+ 		<input id="input4-4" tabindex="-50" />
++		<input id="input4-5" tabindex="foo" />
++		<span id="span4-1" tabindex="foo"></span>
+ 	</div>
+ </div>
+ 

@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Opera Bug</title>
+		<script type="text/javascript" src="../js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="../js/jquery/ui/ui.core.js"></script>
+		<script type="text/javascript" src="../js/jquery/ui/ui.draggable.js"></script>
+		<script type="text/javascript" src="../js/jquery/ui/ui.resizable.js"></script>
+		<script type="text/javascript" src="../js/jquery/ui/ui.dialog.js"></script>
+		<script type="text/javascript" src="../js/jquery/ui/ui.dialog.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#dialogtest").dialog({title:"Opera Bug"});
+			});
+		</script>
+		<style>
+			/*dialog*/
+			.ui-dialog {
+				/*resets*/margin: 0; padding: 0; border: 0; outline: 0; line-height: .8em; text-decoration: none; font-size: 100%; list-style: none;
+				font-family: Verdana, Arial, sans-serif;
+				background: #ffffff;
+				color: #222222;
+				border: 4px solid #d3d3d3;
+				position: relative;
+			}
+			.ui-dialog-content {
+				border: 1px solid #d3d3d3;
+				background: #ffffff;
+				color: #222222;
+			}
+			.ui-resizable-handle {
+				position: absolute;
+				font-size: 0.1px;
+				z-index: 99999;
+			}
+			.ui-resizable .ui-resizable-handle {
+				display: block; 
+			}
+			body .ui-resizable-disabled .ui-resizable-handle { display: none; } /* use 'body' to make it more specific (css order) */
+			body .ui-resizable-autohide .ui-resizable-handle { display: none; } /* use 'body' to make it more specific (css order) */
+			.ui-resizable-n { 
+				cursor: n-resize; 
+				height: 7px; 
+				width: 100%; 
+				top: -5px; 
+				left: 0px;  
+			}
+			.ui-resizable-s { 
+				cursor: s-resize; 
+				height: 7px; 
+				width: 100%; 
+				bottom: -5px; 
+				left: 0px; 
+			}
+			.ui-resizable-e { 
+				cursor: e-resize; 
+				width: 7px; 
+				right: -5px; 
+				top: 0px; 
+				height: 100%; 
+			}
+			.ui-resizable-w { 
+				cursor: w-resize; 
+				width: 7px; 
+				left: -5px; 
+				top: 0px; 
+				height: 100%;
+			}
+			.ui-resizable-se { 
+				cursor: se-resize; 
+				width: 13px; 
+				height: 13px; 
+				right: 0px; 
+				bottom: 0px; 
+				background: url(images/ui/222222_11x11_icon_resize_se.gif) no-repeat 0 0;
+			}
+			.ui-resizable-sw { 
+				cursor: sw-resize; 
+				width: 9px; 
+				height: 9px; 
+				left: 0px; 
+				bottom: 0px;  
+			}
+			.ui-resizable-nw { 
+				cursor: nw-resize; 
+				width: 9px; 
+				height: 9px; 
+				left: 0px; 
+				top: 0px; 
+			}
+			.ui-resizable-ne { 
+				cursor: ne-resize; 
+				width: 9px; 
+				height: 9px; 
+				right: 0px; 
+				top: 0px; 
+			}
+			.ui-dialog-titlebar {
+				/*resets*/margin: 0; padding: 0; border: 0; outline: 0; line-height: 1em; text-decoration: none; font-size: 100%; list-style: none;
+				padding: .1em .1em .1em .2em;
+				color: #555555;
+				background: #e6e6e6 url(images/ui/e6e6e6_40x100_textures_02_glass_75.png) 0 50% repeat-x;
+				border-bottom: 1px solid #d3d3d3;
+				font-size: .8em;
+				font-weight: normal;
+				position: relative;
+			}
+			.ui-dialog-title {
+			
+			}
+			.ui-dialog-titlebar-close {
+				/*resets*/margin: 0; padding: 0; border: 0; outline: 0; line-height: 1em; text-decoration: none; font-size: 100%; list-style: none;
+				background: url(images/ui/888888_11x11_icon_close.gif) 0 0 no-repeat;
+				position: absolute;
+				right: 5px;
+				top: 3px;
+				width: 11px;
+				height: 11px;
+				z-index: 100;
+			}
+			.ui-dialog-titlebar-close-hover, .ui-dialog-titlebar-close:hover {
+				background: url(images/ui/454545_11x11_icon_close.gif) 0 0 no-repeat;
+			}
+			.ui-dialog-titlebar-close:active {
+				background: url(images/ui/222222_11x11_icon_close.gif) 0 0 no-repeat;
+			}
+			.ui-dialog-titlebar-close span {
+				display: none;
+			}
+			.ui-dialog-content {
+				/*resets*/margin: 0; padding: 0; border: 0; outline: 0; line-height: .9em; text-decoration: none; font-size: 100%; list-style: none;
+				background: #ffffff;
+				color: #222222;
+				/* padding: 1.5em 1.7em;	*/
+			}
+			.ui-dialog-buttonpane {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				text-align: left;
+				border-top: 1px solid #d3d3d3;
+				background: ;
+			}
+			.ui-dialog-buttonpane button {
+				margin: .1em 0 .1em 8px;
+				color: #555555;
+				background: #e6e6e6 url(images/ui/e6e6e6_40x100_textures_02_glass_75.png) 0 50% repeat-x;
+				font-size: .8em;
+				border: 1px solid #d3d3d3;
+				cursor: pointer;
+				padding: .1em .0em .1em .0em;
+				line-height: 1em;
+			}
+			.ui-dialog-buttonpane button:hover {
+				color: #212121;
+				background: #dadada url(images/ui/dadada_40x100_textures_02_glass_75.png) 0 50% repeat-x;
+				border: 1px solid #999999;
+			}
+			.ui-dialog-buttonpane button:active {
+				color: #222222;
+				background: #ffffff url(images/ui/ffffff_40x100_textures_02_glass_65.png) 0 50% repeat-x;
+				border: 1px solid #dddddd;
+			}
+			/* This file skins dialog */
+			.ui-dialog.ui-draggable .ui-dialog-titlebar,
+			.ui-dialog.ui-draggable .ui-dialog-titlebar {
+				cursor: move;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="dialogtest" style="overflow:auto;width:400px;height:250px;">
+			<textarea style="width:100px;height:500px;">try the scrollbar</textarea>
+		</div>
+	</body>
+</html>

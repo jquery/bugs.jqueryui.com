@@ -1,0 +1,74 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0079)mhtml:file://C:\Workspace\LAMP\videodom\www\jQuery UI Effects - Toggle Demo.mht -->
+<HTML lang=en><HEAD><TITLE>jQuery UI Effects - Toggle Demo</TITLE>
+<STYLE type=text/css>.toggler {
+	WIDTH: 500px; HEIGHT: 200px
+}
+#button {
+	PADDING-BOTTOM: 0.5em; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; TEXT-DECORATION: none; PADDING-TOP: 0.5em
+}
+#effect {
+	POSITION: relative; PADDING-BOTTOM: 0.4em; PADDING-LEFT: 0.4em; WIDTH: 240px; PADDING-RIGHT: 0.4em; HEIGHT: 135px; PADDING-TOP: 0.4em
+}
+#effect H3 {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0.4em; MARGIN: 0px; PADDING-LEFT: 0.4em; PADDING-RIGHT: 0.4em; PADDING-TOP: 0.4em
+}
+.ui-effects-transfer {
+	BORDER-BOTTOM: gray 2px dotted; BORDER-LEFT: gray 2px dotted; BORDER-TOP: gray 2px dotted; BORDER-RIGHT: gray 2px dotted
+}
+</STYLE>
+
+    <script type="text/javascript" src="scripts/jquery/jquery-1.4.2.js"></script>
+    <script type="text/javascript" src="scripts/jquery/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery/jquery.corner.js"></script>
+    <script type="text/javascript" src="scripts/jquery/jquery.history.js"></script>
+    <script type="text/javascript" src="scripts/jquery/jquery.json.js"></script>
+
+<SCRIPT type="text/javascript">
+
+	$(function() {
+		//run the currently selected effect
+		function runEffect(){
+			//get effect type from 
+			var selectedEffect = $('#effectTypes').val();
+			
+			//most effect types need no options passed by default
+			var options = {};
+			//check if it's scale, transfer, or size - they need options explicitly set
+			if(selectedEffect == 'scale'){  options = {percent: 0}; }
+			else if(selectedEffect == 'size'){ options = { to: {width: 200,height: 60} }; }
+			
+			//run the effect
+			$("#effect").toggle(selectedEffect,options,500);
+		};
+		
+		//set effect from select menu value
+		$("#button").click(function() {
+			runEffect();
+			return false;
+		});
+
+	});
+
+	</SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.6001.18904"></HEAD>
+<BODY>
+<DIV class=demo>
+<DIV class=toggler>
+<DIV id=effect class="ui-widget-content ui-corner-all" style="position: absolute; left: 110px">
+<H3 class="ui-widget-header ui-corner-all">Toggle</H3>
+<P>Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. Nulla 
+lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi. 
+</P></DIV></DIV><SELECT id=effectTypes name=effects> <OPTION selected 
+  value=blind>Blind</OPTION> <OPTION value=bounce>Bounce</OPTION> <OPTION 
+  value=clip>Clip</OPTION> <OPTION value=drop>Drop</OPTION> <OPTION 
+  value=explode>Explode</OPTION> <OPTION value=fold>Fold</OPTION> <OPTION 
+  value=highlight>Highlight</OPTION> <OPTION value=puff>Puff</OPTION> <OPTION 
+  value=pulsate>Pulsate</OPTION> <OPTION value=scale>Scale</OPTION> <OPTION 
+  value=shake>Shake</OPTION> <OPTION value=size>Size</OPTION> <OPTION 
+  value=slide>Slide</OPTION> <OPTION value=transfer>Transfer</OPTION></SELECT> <A 
+id=button class="ui-state-default ui-corner-all" 
+href="http://jqueryui.com/demos/toggle/default.html#">Run Effect</A> </DIV><!-- End demo -->
+<DIV class=demo-description>
+<P>Click the button above to preview the effect.</P></DIV><!-- End demo-description --></BODY></HTML>

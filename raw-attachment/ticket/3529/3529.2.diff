@@ -1,0 +1,153 @@
+Index: tests/progressbar.js
+===================================================================
+--- tests/progressbar.js	(revision 859)
++++ tests/progressbar.js	(working copy)
+@@ -56,16 +56,16 @@
+ 	expect(7);
+ 	el = $("#progressbar").progressbar();
+ 
+-	equals(el.ariaRole(), "progressbar", "aria role");
+-	equals(el.ariaState("valuemin"), 0, "aria-valuemin");
+-	equals(el.ariaState("valuemax"), 100, "aria-valuemax");
+-	equals(el.ariaState("valuenow"), 0, "aria-valuenow initially");
++	equals(el.attr("role"), "progressbar", "aria role");
++	equals(el.attr("aria-valuemin"), 0, "aria-valuemin");
++	equals(el.attr("aria-valuemax"), 100, "aria-valuemax");
++	equals(el.attr("aria-valuenow"), 0, "aria-valuenow initially");
+ 	el.progressbar("progress", 77);
+-	equals(el.ariaState("valuenow"), 77, "aria-valuenow");
++	equals(el.attr("aria-valuenow"), 77, "aria-valuenow");
+ 	el.progressbar("disable");
+-	equals(el.ariaState("disabled"), "true", "aria-disabled");
++	equals(el.attr("aria-disabled"), "true", "aria-disabled");
+ 	el.progressbar("enable");
+-	equals(el.ariaState("disabled"), "false", "enabled");
++	equals(el.attr("aria-disabled"), "false", "enabled");
+ });
+ 
+ })(jQuery);
+Index: ui/ui.core.js
+===================================================================
+--- ui/ui.core.js	(revision 859)
++++ ui/ui.core.js	(working copy)
+@@ -108,7 +108,28 @@
+ 	}
+ };
+ 
++// WAI-ARIA normalization
++// tweak $.attr for FF2 implementation
++if (isFF2){
+ 
++var attr = $.attr;
++$.attr = function(elem, name, value) {
++	var set = value !== undefined,
++		state = /^aria-/;
++	
++	return (name == 'role'
++		? (set
++			? attr.call(this, elem, name, "wairole:" + value)
++			: (attr.apply(this, arguments) || "").replace(/^wairole:/, ""))
++		: (state.test(name)
++			? (set
++				? elem.setAttributeNS("http://www.w3.org/2005/07/aaa", name.replace(state, "aaa:"), value)
++				: attr.call(this, elem, name.replace(state, "aaa:")))
++			: attr.apply(this,arguments)));
++};
++
++}
++
+ //jQuery plugins
+ $.fn.extend({
+ 	
+@@ -133,32 +154,6 @@
+ 			.attr('unselectable', 'on')
+ 			.css('MozUserSelect', 'none')
+ 			.bind('selectstart.ui', function() { return false; });
+-	},
+-	
+-	// WAI-ARIA Semantics
+-	ariaRole: function(role) {
+-		return (role !== undefined
+-			
+-			// setter
+-			? this.attr("role", isFF2 ? "wairole:" + role : role)
+-			
+-			// getter
+-			: (this.attr("role") || "").replace(/^wairole:/, ""));
+-	},
+-	
+-	ariaState: function(state, value) {
+-		return (value !== undefined
+-			
+-			// setter
+-			? this.each(function(i, el) {
+-				(isFF2
+-					? el.setAttributeNS("http://www.w3.org/2005/07/aaa",
+-						"aaa:" + state, value)
+-					: $(el).attr("aria-" + state, value));
+-			})
+-			
+-			// getter
+-			: this.attr(isFF2 ? "aaa:" + state : "aria-" + state));
+ 	}
+ 	
+ });
+Index: ui/ui.progressbar.js
+===================================================================
+--- ui/ui.progressbar.js	(revision 859)
++++ ui/ui.progressbar.js	(working copy)
+@@ -25,10 +25,10 @@
+ 		this.element
+ 			.addClass("ui-progressbar")
+ 			.width(options.width)
+-			.ariaRole("progressbar")
+-			.ariaState("valuemin","0")
+-			.ariaState("valuemax","100")
+-			.ariaState("valuenow","0");
++			.attr("role","progressbar")
++			.attr("aria-valuemin","0")
++			.attr("aria-valuemax","100")
++			.attr("aria-valuenow","0");
+ 			
+ 		$.extend(this, {
+ 			active: false,
+@@ -103,13 +103,13 @@
+ 	disable: function() {
+ 		this.element.addClass("ui-progressbar-disabled");
+ 		this.disabled = true;
+-		this.element.ariaState("disabled", true);
++		this.element.attr("aria-disabled", true);
+ 	},
+ 	
+ 	enable: function() {
+ 		this.element.removeClass("ui-progressbar-disabled");
+ 		this.disabled = false;
+-		this.element.ariaState("disabled", false);
++		this.element.attr("aria-disabled", false);
+ 	},
+ 	
+ 	pause: function() {
+@@ -132,7 +132,7 @@
+ 		if (this.options.range && !this.options.text) {
+ 			this.textElement.html(percent + '%');
+ 		}
+-		this.element.ariaState("valuenow", percent);
++		this.element.attr("aria-valuenow", percent);
+ 		this._propagate('progress', this.ui());
+ 	},
+ 	
+Index: ui/ui.dialog.js
+===================================================================
+--- ui/ui.dialog.js	(revision 859)
++++ ui/ui.dialog.js	(working copy)
+@@ -83,8 +83,8 @@
+ 					(options.closeOnEscape && ev.keyCode
+ 						&& ev.keyCode == $.keyCode.ESCAPE && self.close());
+ 				})
+-				.ariaRole("dialog")
+-				.ariaState("labelledby", titleId)
++				.attr("role","dialog")
++				.attr("aria-labelledby", titleId)
+ 				.mouseup(function() {
+ 					self.moveToTop();
+ 				}),

@@ -1,0 +1,30 @@
+Index: ui.dialog.js
+===================================================================
+--- ui.dialog.js	(revision 384)
++++ ui.dialog.js	(working copy)
+@@ -247,7 +247,11 @@
+ 		this.overlay = this.options.modal ? new $.ui.dialog.overlay(this) : null;
+ 		(this.uiDialog.next().length > 0) && this.uiDialog.appendTo('body');
+ 		this.position(this.options.position);
+-		this.uiDialog.show(this.options.show);
++		if ( !!this.options.show && !!this.options.show.effect ) {
++			this.uiDialog.show(this.options.show.effect,this.options.show.options,this.options.show.speed);
++		} else {
++			this.uiDialog.show(this.options.show);
++		}
+ 		this.options.autoResize && this.size();
+ 		this.moveToTop(true);
+ 		
+@@ -278,7 +282,11 @@
+ 	
+ 	close: function() {
+ 		(this.overlay && this.overlay.destroy());
+-		this.uiDialog.hide(this.options.hide);
++		if ( !!this.options.hide && !!this.options.hide.effect ) {
++			this.uiDialog.hide(this.options.hide.effect,this.options.hide.options,this.options.hide.speed);
++		} else {
++			this.uiDialog.hide(this.options.hide);
++		}
+ 
+ 		// CALLBACK: close
+ 		var closeEV = null;

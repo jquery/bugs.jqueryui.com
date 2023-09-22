@@ -1,0 +1,93 @@
+--- C:/wamp/www/jquery/ui/ui.dialog.js	Fri Jun 12 03:20:44 2009
++++ C:/wamp/www/jquery/ui/development-bundle/ui/ui.dialog.js	Wed Jul 08 17:08:41 2009
+@@ -37,6 +37,7 @@
+ 
+ 	_init: function() {
+ 		this.originalTitle = this.element.attr('title');
++		this._load();
+ 
+ 		var self = this,
+ 			options = this.options,
+@@ -301,6 +302,51 @@
+ 			uiDialogButtonPane.appendTo(this.uiDialog);
+ 		}
+ 	},
++	
++	_save:function(){
++		if(!this.options.history || !$.cookie){
++			return;
++		}
++		
++		var p;
++		if(typeof(this.options.position)=='string'){
++			p=this.options.position;
++		}else{
++			p=this.options.position[0]+','+this.options.position[1];
++		}
++		$.cookie('dialog'+this.element.attr('id'), p+';'+this.options.width+','+this.options.height, this.options.history)
++	},
++	
++	_load:function(){
++		if(!this.options.history || !$.cookie){
++			return;
++		}
++		
++		var settings;
++		if(settings=$.cookie('dialog'+this.element.attr('id'))){
++			settings=settings.split(';');
++			var p=settings[1].split(',');
++			
++			if(p[0]!='auto'){
++				p[0]=1*p[0];
++			}
++			this.options.width=p[0];
++			
++			if(p[1]!='auto'){
++				p[1]=1*p[1];
++			}
++			this.options.height=p[1];
++			
++			p=settings[0].split(',');
++			if(!p.length>1){
++				this.options.position=settings[0];
++			}else{
++				this.options.position=new Array();
++				this.options.position[0]=1*p[0];
++				this.options.position[1]=1*p[1];
++			}
++		}
++	},
+ 
+ 	_makeDraggable: function() {
+ 		var self = this,
+@@ -321,8 +367,12 @@
+ 			},
+ 			stop: function() {
+ 				$(this).removeClass("ui-dialog-dragging").height(heightBeforeDrag);
++				options.position = new Array();
++				options.position[0]=arguments[1].position.left;
++				options.position[1]=arguments[1].position.top;
+ 				(options.dragStop && options.dragStop.apply(self.element[0], arguments));
+ 				$.ui.dialog.overlay.resize();
++				self._save();
+ 			}
+ 		});
+ 	},
+@@ -356,6 +406,7 @@
+ 				options.width = $(this).width();
+ 				(options.resizeStop && options.resizeStop.apply(self.element[0], arguments));
+ 				$.ui.dialog.overlay.resize();
++				self._save();
+ 			}
+ 		})
+ 		.find('.ui-resizable-se').addClass('ui-icon ui-icon-grip-diagonal-se');
+@@ -516,7 +567,8 @@
+ 		stack: true,
+ 		title: '',
+ 		width: 300,
+-		zIndex: 1000
++		zIndex: 1000,
++		history:false
+ 	},
+ 
+ 	getter: 'isOpen',

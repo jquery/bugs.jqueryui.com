@@ -1,0 +1,36 @@
+Index: /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js
+===================================================================
+--- /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js	(revision 883)
++++ /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js	(working copy)
+@@ -111,6 +111,8 @@
+ // tweak $.attr for FF2 implementation
+ if (isFF2) {
+ 	var attr = $.attr,
++		removeAttr = $.fn.removeAttr,
++		ariaNS = "http://www.w3.org/2005/07/aaa",
+ 		ariaState = /^aria-/,
+ 		ariaRole = /^wairole:/;
+ 	
+@@ -123,7 +125,7 @@
+ 				: (attr.apply(this, arguments) || "").replace(ariaRole, ""))
+ 			: (ariaState.test(name)
+ 				? (set
+-					? elem.setAttributeNS("http://www.w3.org/2005/07/aaa",
++					? elem.setAttributeNS(ariaNS,
+ 						name.replace(ariaState, "aaa:"), value)
+ 					: attr.call(this, elem, name.replace(ariaState, "aaa:")))
+ 				: attr.apply(this, arguments)));
+@@ -128,6 +130,13 @@
+ 					: attr.call(this, elem, name.replace(ariaState, "aaa:")))
+ 				: attr.apply(this, arguments)));
+ 	};
++	
++	$.fn.removeAttr = function(name) {
++		return (ariaState.test(name)
++			? this.each(function() {
++				this.removeAttributeNS(ariaNS, name.replace(ariaState, "aaa:"));
++			}) : removeAttr.call(this, name));
++	};
+ }
+ 
+ //jQuery plugins

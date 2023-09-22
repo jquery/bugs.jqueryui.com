@@ -1,0 +1,20 @@
+Index: ui/ui.dialog.js
+===================================================================
+--- ui/ui.dialog.js	(revision 2935)
++++ ui/ui.dialog.js	(working copy)
+@@ -126,6 +126,7 @@
+ 		(options.resizable && $.fn.resizable && self._makeResizable());
+ 
+ 		self._createButtons(options.buttons);
++		self._position(options.position);
+ 		self._isOpen = false;
+ 
+ 		(options.stackfix && $.fn.stackfix && uiDialog.stackfix());
+@@ -223,7 +224,6 @@
+ 		self.overlay = options.modal ? new $.ui.dialog.overlay(self) : null;
+ 		(uiDialog.next().length && uiDialog.appendTo('body'));
+ 		self._size();
+-		self._position(options.position);
+ 		uiDialog.show(options.show);
+ 		self.moveToTop(true);
+ 

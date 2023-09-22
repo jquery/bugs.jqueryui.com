@@ -1,0 +1,121 @@
+Index: themes/base/jquery.ui.core.css
+===================================================================
+--- themes/base/jquery.ui.core.css	(revision 3841)
++++ themes/base/jquery.ui.core.css	(working copy)
+@@ -32,6 +32,31 @@
+ 
+ /* Misc visuals
+ ----------------------------------*/
++#jqueryui-a11yTestNode { border: 1px solid; border-color: red green; position: absolute; height: 5px; top: -999px; background-image: url("images/ui-bg_glass_65_ffffff_1x400.png"); }
+ 
+ /* Overlays */
+ .ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
++
++/* High contrast compatibility
++----------------------------------*/
++.high-contrast .ui-icon,
++.high-contrast .ui-dialog .ui-dialog-titlebar-close,
++.high-contrast .ui-datepicker .ui-datepicker-next,
++.high-contrast .ui-datepicker .ui-datepicker-prev
++{ width: auto; text-indent: 0; }
++
++/* Focus highlight for tabs */
++.high-contrast .ui-tabs.ui-widget-content .ui-state-focus { border-width: 3px; }
++
++/* Focus highlight for accordion (also out of high contrast, maybe that needs to go somewhere else? */
++.ui-accordion-header.ui-state-focus { border-width: 2px; }
++.high-contrast .ui-accordion-header.ui-state-focus { border-width: 4px; }
++
++/* Fancy positioning for datepicker buttons: */
++.high-contrast .ui-datepicker .ui-datepicker-next span { position: static; margin: 3px; }
++.high-contrast .ui-datepicker .ui-datepicker-prev span { position: static; margin: 3px; }
++
++/* Value for progress bar */
++
++.ui-progressbar-valuetext { display: none; }
++.high-contrast .ui-progressbar-valuetext { display: block; position: relative; margin: 0; margin-top: 3px; top: -100%; width: 100%; text-align: center; }
+\ No newline at end of file
+Index: ui/jquery.ui.core.js
+===================================================================
+--- ui/jquery.ui.core.js	(revision 3841)
++++ ui/jquery.ui.core.js	(working copy)
+@@ -14,7 +14,36 @@
+ //Helper functions and ui object
+ $.ui = {
+ 	version: "@VERSION",
++	
++	highContrastMode: function() {
++		// Cache:
++		if ("_highContrastMode" in this) { return this._highContrastMode; }
+ 
++		// Detect high contrast mode:
++		// create div for testing if high contrast mode is on or images are turned off
++		var div = document.createElement("div");
++		div.id = "jqueryui-a11yTestNode";
++		document.body.appendChild(div);
++
++		// test it
++		var cs = document.defaultView
++			? document.defaultView.getComputedStyle(div, null)
++			: (div.currentStyle ? div.currentStyle : null);
++		if (cs) {
++			var bkImg = cs.backgroundImage;
++			this._highContrastMode = (cs.borderTopColor == cs.borderRightColor) || (bkImg != null && (bkImg == "none" || bkImg == "url(invalid-url:)"));
++			if (jQuery.browser.msie) {
++				div.outerHTML = "";		// prevent mixed-content warning, see http://support.microsoft.com/kb/925014
++			} else {
++				document.body.removeChild(div);
++			}
++			if (this._highContrastMode) {
++				$("body").addClass("high-contrast");
++			}
++		}
++		return this._highContrastMode;
++	},
++
+ 	// $.ui.plugin is deprecated.  Use the proxy pattern instead.
+ 	plugin: {
+ 		add: function(module, option, set) {
+@@ -202,4 +231,7 @@
+ 	}
+ });
+ 
++// Initialize high-contrast mode check:
++$(document).ready($.ui.highContrastMode);
++
+ })(jQuery);
+Index: ui/jquery.ui.progressbar.js
+===================================================================
+--- ui/jquery.ui.progressbar.js	(revision 3841)
++++ ui/jquery.ui.progressbar.js	(working copy)
+@@ -29,6 +29,9 @@
+ 
+ 		this.valueDiv = $( "<div class='ui-progressbar-value ui-widget-header ui-corner-left'></div>" )
+ 			.appendTo( this.element );
++		
++		this.valueTextDiv = $( "<div class='ui-progressbar-valuetext'>" + this._value() + "</div>")
++			.appendTo( this.element );
+ 
+ 		this._refreshValue();
+ 	},
+@@ -97,6 +100,7 @@
+ 			[ value === this._valueMax() ? "addClass" : "removeClass"]( "ui-corner-right" )
+ 			.width( value + "%" );
+ 		this.element.attr( "aria-valuenow", value );
++		this.valueTextDiv.text(value + "%");
+ 	}
+ });
+ 
+Index: ui/jquery.ui.button.js
+===================================================================
+--- ui/jquery.ui.button.js	(revision 3841)
++++ ui/jquery.ui.button.js	(working copy)
+@@ -210,7 +210,7 @@
+ 
+ 		var icons = this.options.icons,
+ 			multipleIcons = icons.primary && icons.secondary;
+-		if ( icons.primary || icons.secondary ) {
++		if ( !jQuery.ui.highContrastMode() && ( icons.primary || icons.secondary ) ) {
+ 			buttonElement.addClass( "ui-button-text-icon" +
+ 				( multipleIcons ? "s" : "" ) );
+ 			if ( icons.primary ) {

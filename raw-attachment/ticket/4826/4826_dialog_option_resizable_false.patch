@@ -1,0 +1,15 @@
+### Eclipse Workspace Patch 1.0
+#P jquery-ui
+Index: trunk/ui/ui.dialog.js
+===================================================================
+--- trunk/ui/ui.dialog.js	(revision 3225)
++++ trunk/ui/ui.dialog.js	(working copy)
+@@ -465,7 +465,7 @@
+ 					uiDialog.resizable('option', 'handles', value));
+ 
+ 				// currently non-resizable, becoming resizable
+-				(isResizable || self._makeResizable(value));
++				(isResizable || (value !== false && self._makeResizable(value)));
+ 				break;
+ 			case "title":
+ 				$(".ui-dialog-title", self.uiDialogTitlebar).html(value || '&nbsp;');

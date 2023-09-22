@@ -1,0 +1,13 @@
+Index: ui.tabs.js
+===================================================================
+--- ui.tabs.js	(revision 2500)
++++ ui.tabs.js	(working copy)
+@@ -71,7 +71,7 @@
+ 
+ 	_tabify: function(init) {
+ 
+-		this.list = this.element.children('ul:first');
++		this.list = this.element.children('ol:first,ul:first').eq(0);
+ 		this.lis = $('li:has(a[href])', this.list);
+ 		this.anchors = this.lis.map(function() { return $('a', this)[0]; });
+ 		this.panels = $([]);

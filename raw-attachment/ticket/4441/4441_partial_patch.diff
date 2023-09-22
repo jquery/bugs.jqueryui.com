@@ -1,0 +1,37 @@
+Index: ui.selectable.js
+===================================================================
+--- ui.selectable.js	(revision 2593)
++++ ui.selectable.js	(working copy)
+@@ -66,6 +66,11 @@
+ 	_mouseStart: function(event) {
+ 		var self = this;
+ 
++		if (this._trigger("start", event) === false) {
++                        this.opos = null;
++                        return;
++                }
++
+ 		this.opos = [event.pageX, event.pageY];
+ 
+ 		if (this.options.disabled)
+@@ -75,8 +80,6 @@
+ 
+ 		this.selectees = $(options.filter, this.element[0]);
+ 
+-		this._trigger("start", event);
+-
+ 		$(options.appendTo).append(this.helper);
+ 		// position helper (lasso)
+ 		this.helper.css({
+@@ -126,8 +129,10 @@
+ 
+ 	_mouseDrag: function(event) {
+ 		var self = this;
++                if (!this.opos) //if we never really started a selection
++                        return;
+ 		this.dragged = true;
+-
++                
+ 		if (this.options.disabled)
+ 			return;
+ 

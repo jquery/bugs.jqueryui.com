@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title>Columns+Tabs test</title>
+
+		<link rel='stylesheet' type='text/css' href='page/static/css/base/eggplant/jquery-ui-1.8.custom.css'>
+
+		<script type='text/javascript' src='page/static/js/base/jquery-1.4.2.min.js'></script>
+		<script type='text/javascript' src='page/static/js/base/jquery-ui-1.8.custom.min.js'></script>
+
+		<style type='text/css'>
+			#sidebar {
+				height: 400px;
+				float: left;
+				background-color: #0000ff;
+				width: 230px;
+			}
+
+			#content {
+				background-color: #00ff00;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id='container'>
+			<div id='sidebar'>
+			</div>
+
+			<!-- <div id='content'> -->
+				<div id='tabs'>
+					<ul>
+						<li><a href='#one'>One</a></li>
+						<li><a href='#two'>Two</a></li>
+					</ul>
+
+					<div id='one'>
+						This is one.
+					</div>
+
+					<div id='two'>
+						This is two.
+					</div>
+				</div>
+				<!-- </div> -->
+		</div>
+	</body>
+</html>
+
+<script type='text/javascript'>
+$(function() {
+	$('#tabs').tabs();
+});
+</script>

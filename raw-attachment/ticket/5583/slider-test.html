@@ -1,0 +1,21 @@
+<html>
+<head>
+    <link href="script/jquery-ui/development-bundle/themes/base/jquery.ui.all.css" rel="stylesheet" />
+
+	<script src="script/jquery-ui/development-bundle/jquery-1.4.2.js"></script>
+	<script src="script/jquery-ui/development-bundle/ui/jquery-ui-1.8.1.custom.js"></script>
+	
+	<script>
+		$(function() {
+			$('#mySlider').slider({
+				min: -0.7,
+				max: -0.5,
+				step: 0.1,
+				value: -0.5
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="mySlider" style="width: 300px;"></div>
+</body>

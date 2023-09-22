@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>resize test</title>
+		<script type="text/javascript" src="jquery.ui-1.6rc2/jquery-nightly.js"></script>
+		<script type="text/javascript" src="jquery.ui-1.6rc2/ui/ui.core.js"></script>
+		<script type="text/javascript" src="jquery.ui-1.6rc2/ui/ui.resizable.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('th').resizable({
+					containment: 'thead',
+					handles: "e",
+					helper: "proxy"
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>
+						One
+					</th>
+					<th>
+						Two
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						1234
+					</td>
+					<td>
+						ABCD
+					</td>
+				</tr>
+				<tr>
+					<td>
+						4567
+					</td>
+					<td>
+						EFGH
+					</td>
+				</tr>
+				<tr>
+					<td>
+						8901
+					</td>
+					<td>
+						IJKL
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="proxy"></div>
+	</body>
+</html>

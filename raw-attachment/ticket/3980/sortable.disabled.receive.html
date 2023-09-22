@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Disabled sortable still receives elements</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.3.1.js"></script>
+    <script type="text/javascript" src="http://view.jquery.com/trunk/ui/ui/ui.core.js"></script>
+    <script type="text/javascript" src="http://view.jquery.com/trunk/ui/ui/ui.sortable.js"></script>
+    <script type="text/javascript" src="http://view.jquery.com/trunk/ui/ui/ui.draggable.js"></script>
+
+    <style type="text/css">
+        div { border:1px solid black; margin: 5px 5px 20px 5px; }
+    </style>
+</head>
+
+<body>
+    #sortable1
+    <div id="sortable1">
+        <div>sortable item 1</div>
+        <div>sortable item 2</div>
+    </div>
+
+    <input type="button" value='$("#sortable1").sortable("disable")' onclick="disableIt()" />
+    <br />
+    <br />
+
+    #draggables
+    <div id="draggables">
+        <div>draggable 1</div>
+        <div>draggable 2</div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#sortable1").sortable({
+                receive: function(event, ui) {
+                    alert("[callback]\n\nreceive()");
+                }
+            });
+
+            $("#draggables div").draggable({
+                helper: "clone",
+                connectToSortable: ["#sortable1"]
+            });
+
+        });
+
+        function disableIt() {
+            $("#sortable1").sortable("disable")
+            .css("opacity", 0.5);
+        }
+
+    </script>
+
+
+</body>
+</html>

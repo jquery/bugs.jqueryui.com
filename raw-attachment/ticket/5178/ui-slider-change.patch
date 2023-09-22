@@ -1,0 +1,46 @@
+Index: ui/jquery.ui.slider.js
+===================================================================
+--- ui/jquery.ui.slider.js	(revision 3797)
++++ ui/jquery.ui.slider.js	(working copy)
+@@ -399,7 +399,7 @@
+ 					value: newVal
+ 				});
+ 				if (allowed !== false) {
+-					this.value(newVal);
++					this.value(newVal, true);
+ 				}
+ 					
+ 			}
+@@ -432,24 +432,27 @@
+ 		this._trigger("change", event, uiHash);
+ 	},
+ 
+-	value: function(newValue) {
+-
++	value: function(newValue, dontTriggerChange) {
+ 		if (arguments.length) {
+ 			this.options.value = this._trimValue(newValue);
+ 			this._refreshValue();
+-			this._change(null, 0);
++			if (!dontTriggerChange) {
++				this._change(null, 0);
++			}
+ 		}
+ 
+ 		return this._value();
+ 
+ 	},
+ 
+-	values: function(index, newValue) {
++	values: function(index, newValue, dontTriggerChange) {
+ 
+ 		if (arguments.length > 1) {
+ 			this.options.values[index] = this._trimValue(newValue);
+ 			this._refreshValue();
+-			this._change(null, index);
++			if (!dontTriggerChange) {
++				this._change(null, index);
++			}
+ 		}
+ 
+ 		if (arguments.length) {

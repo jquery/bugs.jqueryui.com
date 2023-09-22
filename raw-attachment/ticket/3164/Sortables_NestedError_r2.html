@@ -1,0 +1,103 @@
+<html>
+	<head>
+		<style>
+body{
+    background-color:#EEEEEE;
+    margin:0px; padding:0px;
+}
+div{
+    margin:0px; padding:0px;
+}
+.contentArea {
+	position: relative;
+	float:left;
+	margin:0px; padding:0px;
+	border: 1px dashed #336699;
+	background-color: #99CCFF;
+	overflow:visible;
+}
+.content {
+	position:absolute;
+	border: 1px dashed #336699;
+	overflow:auto;
+	float:left;
+}
+.contentGroup{
+	position: absolute;
+	float:left;
+	margin:0px; padding:0px;
+	border: 1px solid #336699;
+	background-color: transparent;
+	overflow:visible;
+}
+.contentGroup_hover{
+	background-color: red;
+}
+.moveButton
+{
+	cursor:move;
+	background-color: #3399CC;
+	position:absolute;
+	width:16; height:16;
+	margin:0px; padding:0px;
+}
+		</style>
+  <script type="text/javascript" src="jquery-1.2.6.js"></script>
+  <script type="text/javascript" src="jquery.ui.all.js"></script>
+  <script type="text/javascript" >
+  	function draggableResize(e, ui){
+	  	var parent = ui.element.parent().get(0);
+	  	ui.element.width((ui.element.width() / $(parent).width() * 100) + "%");
+	  	
+	  	var $kids = ui.element.children('.contentGroup, .content')
+	  	for (var k=0; k < $kids.length; k++){
+	  		var $kid = $($kids[k]);
+	  		$kid.width("99%");
+	  		$kid.height((ui.size.height-20) + "px");
+	  	}
+  	}
+  	$(document).ready(function(){
+  		//resize and sorting are not currently compatible - http://ui.jquery.com/bugs/ticket/3164
+			//$('.contentArea').resizable({resize:draggableResize});
+			
+			//sorting between nested groups does not work - http://ui.jquery.com/bugs/ticket/3163
+			$('.contentGroup').sortable({items:'.contentArea', handle:'.moveButton', connectWith:'.contentGroup', opacity:'.5'});	
+  	});
+  </script>
+	</head>
+	<body>
+		<div class="contentGroup" id="GRP_0" style="width:100%">			
+			
+			<div id="CA_4" class="contentArea" style="width:99%;height:200;">
+				<div id="CA_4_M" class="moveButton" style="width:16;"></div>
+				<div id="GRP_4" class="contentGroup" style="left:0;top:16;width:99%;height:180">
+					<div id="CA_5" class="contentArea" style="width:80%;height:100;">
+						<div id="CA_5_M" class="moveButton" style="width:16;"></div>
+						<div id="CA_5_C" class="content" style="left:0;top:16;width:99%;height:80">
+							Header Content Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah...
+						</div>
+					</div>
+				</div>
+			</div> 
+			
+			<div id="CA_2" class="contentArea" style="width:20%;height:400;">
+				<div id="CA_2_M" class="moveButton" style="width:16;"></div>
+				<div id="GRP_2" class="contentGroup" style="left:0;top:16;width:99%;height:380">
+					<div id="CA_1" class="contentArea" style="width:98%;height:100;">
+						<div id="CA_1_M" class="moveButton" style="width:16;"></div>
+						<div id="CA_1_C" class="content" style="left:0;top:16;width:99%;height:80">
+				    This is the side bar content. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah...
+						</div>
+					</div>
+				</div>
+			</div> 
+			
+			<div id="CA_3" class="contentArea" style="width:79%;height:400;">
+				<div id="CA_3_M" class="moveButton" style="width:16;"></div>
+				<div id="CA_3_C" class="content" style="left:0;top:16;width:99%;height:380">
+					This is the main body content. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah...
+				</div>
+			</div>
+		</div>
+</body>
+</html> 

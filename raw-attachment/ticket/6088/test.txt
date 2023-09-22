@@ -1,0 +1,199 @@
+<style type="text/css">
+	.arvore_pastas{
+		padding-left: 20px;
+		list-style-type: none;
+		cursor: pointer;
+	}
+	/*
+	.sub_pasta{
+		display: none;
+	}
+	*/
+	.pasta div{
+		display: table;
+	}
+	
+	li.pasta div span{
+		float: left;
+	}
+	.pasta_conteudo, .arquivo_conteudo{
+		cursor: pointer;
+	}
+		
+	.icone_pasta{
+		width: 20px;
+		height: 20px;
+		background-image: url("images/pastas.png");
+		display: inline; 
+		text-indent: -99999px; 
+		overflow: hidden; 
+		background-repeat: no-repeat;
+	}
+	
+	.icone_pasta_aberta{
+		background-position: -20px 0px;
+	}
+	
+	.icone_pasta_fechada{
+		background-position: 0px 0px;
+	}
+	
+	.icone_pasta_ctrl_aberta{
+		background-position: 0px -20px;
+	}
+	
+	.icone_pasta_ctrl_fechada{
+		background-position: -20px -20px;
+	}
+	
+	.hover{background-color: red}
+	
+	.pasta_selecionada{
+		background-color: yellow;
+	}
+	
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		var pasta_ativa = 0;
+
+		$("#div_arvore ul").addClass("arvore_pastas");
+		
+		$(".pasta").draggable({
+			handle: ".helper",
+			revert: "invalid",
+			zIndex: 9999
+		});
+
+		$(".pasta_conteudo").draggable({
+			revert: "invalid" 
+		});
+
+		$(".arquivo_conteudo").draggable({
+			revert: "invalid" 
+		});
+		
+		$(".pasta .helper").droppable({
+			hoverClass: "hover",
+			tolerance: "pointer",
+			drop: function(event, ui){
+				alert("Mover "+ui.draggable.attr("id")+" para "+$(this).attr("id"));
+				$("#"+ui.draggable.attr("id")).remove();
+			}
+		});
+		
+		$(".pasta_conteudo").droppable({
+			tolerance: "pointer",
+			drop: function(event, ui){
+				alert("Mover "+ui.draggable.attr("id")+" para "+$(this).attr("id"));
+				$("#"+ui.draggable.attr("id")).remove();
+			}
+		});
+
+		$(".ctrl").each(function(){
+			$(this).click(function(){
+				
+				if ($(this).attr("status") == 2){
+					
+					$(this).css("background-position","0px -20px");
+					$(this).next().children().css("background-position","-20px 0px");
+					$(this).attr("status","1");
+					$("#sub_"+$(this).next().attr("id")).show("fast");
+				}else{
+					
+					$(this).css("background-position","-20px -20px");
+					$(this).next().children().css("background-position","0px 0px");
+					$(this).attr("status","2");
+					$("#sub_"+$(this).next().attr("id")).hide("fast");
+				}
+
+			});
+		});
+
+		$(".pasta .helper").each(function(){
+			$(this).click(function(){
+				pasta_ativa = $(this).attr("id");
+				$("#pasta_ativa").html(pasta_ativa);
+				
+				$(".pasta .helper").removeClass("pasta_selecionada");
+				$(this).addClass("pasta_selecionada");
+			});
+		});
+	});
+</script>
+
+
+<div id="div_arvore" style="border: 3px ridge gray; width: 200px; height: 400px; float: left">
+	<ul>
+		<li class="pasta" id="p1"> 
+			<div> <span status="2" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p1" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 1 </span> </span> </div> 
+		</li>
+		<li class="pasta" id="p2">
+			<div> <span status="2" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p2" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 2 </span> </span> </div>
+		</li>
+		
+		<li class="pasta" id="p3">
+			<div> <span status="1" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p3" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 3 </span> </span> </div>
+			<ul id="sub_p3" class="sub_pasta">
+				<li class="pasta" id="p31">
+					<div> <span status="1" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p31" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 3-1 </span> </span> </div>
+				</li>
+				<li class="pasta" id="p32">
+					<div> <span status="1" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p32" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 3-2 </span> </span> </div>
+				</li>
+				<li class="pasta" id="p33">
+					<div> <span status="1" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p33" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 3-3 </span> </span> </div>
+				</li>
+			</ul>
+		</li>
+		
+		<li class="pasta" id="p4">
+			<div> <span status="1" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p4" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 4 </span> </span> </div>
+			<ul id="sub_p4" class="sub_pasta">
+				<li class="pasta" id="p41">
+					<div> <span status="1" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p41" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 4-1 </span> </span> </div> 
+				</li>
+				<li class="pasta" id="p42">
+					<div> <span status="1" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p42" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 4-2 </span> </span> </div>
+				</li>
+				<li class="pasta" id="p43">
+					<div> <span status="1" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p43" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 4-3 </span> </span> </div>
+				</li>
+			</ul>
+		</li>
+		
+		<li class="pasta" id="p5">
+			<div> <span status="1" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p5" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 5 </span> </span> </div>
+		</li>
+		<li class="pasta" id="p6">
+			<div> <span status="1" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p6" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 6 </span> </span> </div>
+		</li>
+		<li class="pasta" id="p7">
+			<div> <span status="7" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p7" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 7 </span> </span> </div>
+		</li>
+		<li class="pasta" id="p8">
+			<div> <span status="1" class="ctrl icone_pasta icone_pasta_ctrl_fechada"></span> <span id="p8" class="helper"> <span class="icone_pasta icone_pasta_fechada"></span> <span> Pasta 8 </span> </span> </div>
+		</li>
+	</ul>
+</div>
+
+<div id="div_arquivos" style="border: 3px ridge gray; width: 600px; height: 400px; float: left">
+	Pasta: <span id="pasta_ativa"> </span>
+	<table id="tb_lista_conteudo">
+		<tr>
+			<th width="200"> Nome </th> <th width="200"> Tipo </th> <th width="50"> Tamanho </th> <th width="100"> Data Cria&ccedil;&atilde;o </th> <th width="100"> Data Upload </th>
+		</tr>
+		<tr id="pc1"> <td> <div class="pasta_conteudo" id="pc1"> <span class="icone_pasta icone_pasta_ctrl_fechada"></span> <img src="image/folder.jpg">  Pasta 1 </div> </td> <td> Pasta de Arquivos </td> <td> &nbsp; </td> <td> 20/10/2010 </td> <td> &nbsp; </td> </tr>
+		<tr id="pc2"> <td> <div class="pasta_conteudo" id="pc2"> <img src="image/folder.jpg">  Pasta 2 </div> </td> <td> Pasta de Arquivos </td> <td> &nbsp; </td> <td> 20/10/2010 </td> <td> &nbsp; </td> </tr>
+		<tr id="pc3"> <td> <div class="pasta_conteudo" id="pc3"> <img src="image/folder.jpg">  Pasta 3 </div> </td> <td> Pasta de Arquivos </td> <td> &nbsp; </td> <td> 20/10/2010 </td> <td> &nbsp; </td> </tr>
+		<tr id="ac1"> <td> <div class="arquivo_conteudo" id="ac1"> <img src="image/icon-mini-file-pdf.gif">  Arquivo 1 </div> </td> <td> Documento do Word </td> <td> &nbsp; </td> <td> 20/10/2010 </td> <td> &nbsp; </td> </tr>
+		<tr id="ac2"> <td> <div class="arquivo_conteudo" id="ac2"> <img src="image/icon-mini-file-pdf.gif">  Arquivo 2 </div> </td> <td> Pasta de Arquivos </td> <td> &nbsp; </td> <td> 20/10/2010 </td> <td> &nbsp; </td> </tr>
+		<tr id="ac3"> <td> <div class="arquivo_conteudo" id="ac3"> <img src="image/icon-mini-file-pdf.gif">  Arquivo 3 </div> </td> <td> Pasta de Arquivos </td> <td> &nbsp; </td> <td> 20/10/2010 </td> <td> &nbsp; </td> </tr>
+		<tr id="ac4"> <td> <div class="arquivo_conteudo" id="ac4"> <img src="image/icon-mini-file-pdf.gif">  Arquivo 4 </div> </td> <td> Pasta de Arquivos </td> <td> &nbsp; </td> <td> 20/10/2010 </td> <td> &nbsp; </td> </tr>
+		<tr id="ac5"> <td> <div class="arquivo_conteudo" id="ac5"> <img src="image/icon-mini-file-pdf.gif">  Arquivo 5 </div> </td> <td> Pasta de Arquivos </td> <td> &nbsp; </td> <td> 20/10/2010 </td> <td> &nbsp; </td> </tr>
+		<tr id="ac6"> <td> <div class="arquivo_conteudo" id="ac6"> <img src="image/icon-mini-file-pdf.gif">  Arquivo 6 </div> </td> <td> Pasta de Arquivos </td> <td> &nbsp; </td> <td> 20/10/2010 </td> <td> &nbsp; </td> </tr>
+		<tr id="ac7"> <td> <div class="arquivo_conteudo" id="ac7"> <img src="image/icon-mini-file-pdf.gif">  Arquivo 7 </div> </td> <td> Pasta de Arquivos </td> <td> &nbsp; </td> <td> 20/10/2010 </td> <td> &nbsp; </td> </tr>
+	</table>
+</div>

@@ -1,0 +1,730 @@
+Index: tests/unit/slider/slider.html
+===================================================================
+--- tests/unit/slider/slider.html	(revision 3503)
++++ tests/unit/slider/slider.html	(working copy)
+@@ -6,6 +6,7 @@
+ 	<script type="text/javascript" src="../../../jquery-1.3.2.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.core.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.widget.js"></script>
++	<script type="text/javascript" src="../../../ui/jquery.ui.mouse.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.slider.js"></script>
+ 
+ 	<link   type="text/css"       href="../testsuite.css" rel="stylesheet" />
+Index: tests/unit/testsuite.js
+===================================================================
+--- tests/unit/testsuite.js	(revision 3503)
++++ tests/unit/testsuite.js	(working copy)
+@@ -3,7 +3,7 @@
+ 
+ function testWidgetDefaults(widget, defaults) {
+ 	var pluginDefaults = $.extend({},
+-		$.widget.defaults,
++		$.Widget.prototype.options,
+ 		$.ui[widget].defaults
+ 	);
+ 	
+@@ -75,7 +75,7 @@
+ function testWidgetOverrides(widget) {
+ 	test('$.widget overrides', function() {
+ 		$.each(['option', '_getData', '_trigger'], function(i, method) {
+-			ok($.widget.prototype[method] == $.ui[widget].prototype[method],
++			ok($.Widget.prototype[method] == $.ui[widget].prototype[method],
+ 				'should not override ' + method);
+ 		});
+ 	});
+Index: tests/unit/resizable/resizable.html
+===================================================================
+--- tests/unit/resizable/resizable.html	(revision 3503)
++++ tests/unit/resizable/resizable.html	(working copy)
+@@ -6,6 +6,7 @@
+ 	<script type="text/javascript" src="../../../jquery-1.3.2.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.core.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.widget.js"></script>
++	<script type="text/javascript" src="../../../ui/jquery.ui.mouse.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.resizable.js"></script>
+ 
+ 	<link   type="text/css"       href="../testsuite.css" rel="stylesheet" />
+Index: tests/unit/draggable/draggable.html
+===================================================================
+--- tests/unit/draggable/draggable.html	(revision 3503)
++++ tests/unit/draggable/draggable.html	(working copy)
+@@ -6,6 +6,7 @@
+ 	<script type="text/javascript" src="../../../jquery-1.3.2.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.core.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.widget.js"></script>
++	<script type="text/javascript" src="../../../ui/jquery.ui.mouse.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.draggable.js"></script>
+ 
+ 	<link   type="text/css"       href="../testsuite.css" rel="stylesheet" />
+Index: tests/unit/dialog/dialog.html
+===================================================================
+--- tests/unit/dialog/dialog.html	(revision 3503)
++++ tests/unit/dialog/dialog.html	(working copy)
+@@ -6,6 +6,7 @@
+ 	<script type="text/javascript" src="../../../jquery-1.3.2.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.core.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.widget.js"></script>
++	<script type="text/javascript" src="../../../ui/jquery.ui.mouse.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.draggable.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.position.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.resizable.js"></script>
+Index: tests/unit/selectable/selectable.html
+===================================================================
+--- tests/unit/selectable/selectable.html	(revision 3503)
++++ tests/unit/selectable/selectable.html	(working copy)
+@@ -6,6 +6,7 @@
+ 	<script type="text/javascript" src="../../../jquery-1.3.2.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.core.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.widget.js"></script>
++	<script type="text/javascript" src="../../../ui/jquery.ui.mouse.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.selectable.js"></script>
+ 
+ 	<link   type="text/css"       href="../testsuite.css" rel="stylesheet" />
+Index: tests/unit/sortable/sortable.html
+===================================================================
+--- tests/unit/sortable/sortable.html	(revision 3503)
++++ tests/unit/sortable/sortable.html	(working copy)
+@@ -6,6 +6,7 @@
+ 	<script type="text/javascript" src="../../../jquery-1.3.2.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.core.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.widget.js"></script>
++	<script type="text/javascript" src="../../../ui/jquery.ui.mouse.js"></script>
+ 	<script type="text/javascript" src="../../../ui/jquery.ui.sortable.js"></script>
+ 
+ 	<link   type="text/css"       href="../testsuite.css" rel="stylesheet" />
+Index: ui/jquery.ui.mouse.js
+===================================================================
+--- ui/jquery.ui.mouse.js	(revision 0)
++++ ui/jquery.ui.mouse.js	(revision 0)
+@@ -0,0 +1,158 @@
++/*!
++ * jQuery UI @VERSION
++ *
++ * Copyright (c) 2009 AUTHORS.txt (http://jqueryui.com/about)
++ * Dual licensed under the MIT (MIT-LICENSE.txt)
++ * and GPL (GPL-LICENSE.txt) licenses.
++ *
++ * http://docs.jquery.com/UI
++ */
++
++/** Mouse Interaction Plugin **/
++
++$.widget("ui.mouse", {
++	_mouseInit: function() {
++		var self = this;
++
++		this.element
++			.bind('mousedown.'+this.widgetName, function(event) {
++				return self._mouseDown(event);
++			})
++			.bind('click.'+this.widgetName, function(event) {
++				if(self._preventClickEvent) {
++					self._preventClickEvent = false;
++					event.stopImmediatePropagation();
++					return false;
++				}
++			});
++
++		// Prevent text selection in IE
++		if ($.browser.msie) {
++			this._mouseUnselectable = this.element.attr('unselectable');
++			this.element.attr('unselectable', 'on');
++		}
++
++		this.started = false;
++	},
++
++	// TODO: make sure destroying one instance of mouse doesn't mess with
++	// other instances of mouse
++	_mouseDestroy: function() {
++		this.element.unbind('.'+this.widgetName);
++
++		// Restore text selection in IE
++		($.browser.msie
++			&& this.element.attr('unselectable', this._mouseUnselectable));
++	},
++
++	_mouseDown: function(event) {
++		// don't let more than one widget handle mouseStart
++		// TODO: figure out why we have to use originalEvent
++		event.originalEvent = event.originalEvent || {};
++		if (event.originalEvent.mouseHandled) { return; }
++
++		// we may have missed mouseup (out of window)
++		(this._mouseStarted && this._mouseUp(event));
++
++		this._mouseDownEvent = event;
++
++		var self = this,
++			btnIsLeft = (event.which == 1),
++			elIsCancel = (typeof this.options.cancel == "string" ? $(event.target).parents().add(event.target).filter(this.options.cancel).length : false);
++		if (!btnIsLeft || elIsCancel || !this._mouseCapture(event)) {
++			return true;
++		}
++
++		this.mouseDelayMet = !this.options.delay;
++		if (!this.mouseDelayMet) {
++			this._mouseDelayTimer = setTimeout(function() {
++				self.mouseDelayMet = true;
++			}, this.options.delay);
++		}
++
++		if (this._mouseDistanceMet(event) && this._mouseDelayMet(event)) {
++			this._mouseStarted = (this._mouseStart(event) !== false);
++			if (!this._mouseStarted) {
++				event.preventDefault();
++				return true;
++			}
++		}
++
++		// these delegates are required to keep context
++		this._mouseMoveDelegate = function(event) {
++			return self._mouseMove(event);
++		};
++		this._mouseUpDelegate = function(event) {
++			return self._mouseUp(event);
++		};
++		$(document)
++			.bind('mousemove.'+this.widgetName, this._mouseMoveDelegate)
++			.bind('mouseup.'+this.widgetName, this._mouseUpDelegate);
++
++		// preventDefault() is used to prevent the selection of text here -
++		// however, in Safari, this causes select boxes not to be selectable
++		// anymore, so this fix is needed
++		($.browser.safari || event.preventDefault());
++
++		event.originalEvent.mouseHandled = true;
++		return true;
++	},
++
++	_mouseMove: function(event) {
++		// IE mouseup check - mouseup happened when mouse was out of window
++		if ($.browser.msie && !event.button) {
++			return this._mouseUp(event);
++		}
++
++		if (this._mouseStarted) {
++			this._mouseDrag(event);
++			return event.preventDefault();
++		}
++
++		if (this._mouseDistanceMet(event) && this._mouseDelayMet(event)) {
++			this._mouseStarted =
++				(this._mouseStart(this._mouseDownEvent, event) !== false);
++			(this._mouseStarted ? this._mouseDrag(event) : this._mouseUp(event));
++		}
++
++		return !this._mouseStarted;
++	},
++
++	_mouseUp: function(event) {
++		$(document)
++			.unbind('mousemove.'+this.widgetName, this._mouseMoveDelegate)
++			.unbind('mouseup.'+this.widgetName, this._mouseUpDelegate);
++
++		if (this._mouseStarted) {
++			this._mouseStarted = false;
++			this._preventClickEvent = (event.target == this._mouseDownEvent.target);
++			this._mouseStop(event);
++		}
++
++		return false;
++	},
++
++	_mouseDistanceMet: function(event) {
++		return (Math.max(
++				Math.abs(this._mouseDownEvent.pageX - event.pageX),
++				Math.abs(this._mouseDownEvent.pageY - event.pageY)
++			) >= this.options.distance
++		);
++	},
++
++	_mouseDelayMet: function(event) {
++		return this.mouseDelayMet;
++	},
++
++	// These are placeholder methods, to be overriden by extending plugin
++	_mouseStart: function(event) {},
++	_mouseDrag: function(event) {},
++	_mouseStop: function(event) {},
++	_mouseCapture: function(event) { return true; }
++});
++
++$.ui.mouse.defaults = {
++	cancel: ':input,option',
++	distance: 1,
++	delay: 0
++};
+\ No newline at end of file
+Index: ui/jquery.ui.draggable.js
+===================================================================
+--- ui/jquery.ui.draggable.js	(revision 3503)
++++ ui/jquery.ui.draggable.js	(working copy)
+@@ -13,7 +13,7 @@
+  */
+ (function($) {
+ 
+-$.widget("ui.draggable", $.extend({}, $.ui.mouse, {
++$.widget("ui.draggable", $.ui.mouse, {
+ 
+ 	_init: function() {
+ 
+@@ -418,7 +418,7 @@
+ 		};
+ 	}
+ 
+-}));
++});
+ 
+ $.extend($.ui.draggable, {
+ 	version: "@VERSION",
+Index: ui/jquery.ui.resizable.js
+===================================================================
+--- ui/jquery.ui.resizable.js	(revision 3503)
++++ ui/jquery.ui.resizable.js	(working copy)
+@@ -13,7 +13,7 @@
+  */
+ (function($) {
+ 
+-$.widget("ui.resizable", $.extend({}, $.ui.mouse, {
++$.widget("ui.resizable", $.ui.mouse, {
+ 
+ 	_init: function() {
+ 
+@@ -497,7 +497,7 @@
+ 		};
+ 	}
+ 
+-}));
++});
+ 
+ $.extend($.ui.resizable, {
+ 	version: "@VERSION",
+Index: ui/jquery.ui.selectable.js
+===================================================================
+--- ui/jquery.ui.selectable.js	(revision 3503)
++++ ui/jquery.ui.selectable.js	(working copy)
+@@ -13,7 +13,7 @@
+  */
+ (function($) {
+ 
+-$.widget("ui.selectable", $.extend({}, $.ui.mouse, {
++$.widget("ui.selectable", $.ui.mouse, {
+ 
+ 	_init: function() {
+ 		var self = this;
+@@ -242,7 +242,7 @@
+ 		return false;
+ 	}
+ 
+-}));
++});
+ 
+ $.extend($.ui.selectable, {
+ 	version: "@VERSION",
+Index: ui/jquery.ui.widget.js
+===================================================================
+--- ui/jquery.ui.widget.js	(revision 3503)
++++ ui/jquery.ui.widget.js	(working copy)
+@@ -20,20 +20,47 @@
+ 	return _remove.apply(this, arguments );
+ };
+ 	
+-	// $.widget is a factory to create jQuery plugins
+-// taking some boilerplate code out of the plugin code
+-$.widget = function(name, prototype) {
++$.widget = function(name, base, prototype) {
+ 	var namespace = name.split(".")[0],
+ 		fullName;
+ 	name = name.split(".")[1];
+ 	fullName = namespace + '-' + name;
+ 
++	if (!prototype) {
++		prototype = base;
++		base = $.Widget;
++	}
++
+ 	// create selector for plugin
+ 	$.expr[':'][fullName] = function(elem) {
+ 		return !!$.data(elem, name);
+ 	};
+-	
+-	// create plugin method
++
++	$[namespace] = $[namespace] || {};
++	$[namespace][name] = function(options, element) {
++		// allow instantiation without initializing for simple inheritance
++		(arguments.length && this._widgetInit(options, element));
++	};
++	$[namespace][name].prototype = $.extend(true, new base(), {
++		namespace: namespace,
++		widgetName: name,
++		widgetEventPrefix: $[namespace][name].prototype.widgetEventPrefix || name,
++		widgetBaseClass: fullName
++	}, prototype);
++
++	$.widget.bridge(name, $[namespace][name]);
++};
++
++$.widget.prototype = {
++	// DEPRECATED use and override _setOption instead, will be removed in 2.0
++	_setData: function() {},
++	// DEPRECATED call $.Widget.prototype.destroy directly, will be removed in 2.
++	destroy: function() {
++		$.Widget.prototype.destroy.apply(this, arguments);
++	}
++};
++
++$.widget.bridge = function(name, object) {
+ 	$.fn[name] = function(options) {
+ 		var isMethodCall = (typeof options == 'string'),
+ 			args = Array.prototype.slice.call(arguments, 1),
+@@ -61,57 +88,44 @@
+ 				}
+ 			})
+ 			: this.each(function() {
+-				($.data(this, name) ||
+-					$.data(this, name, new $[namespace][name](this, options))._init());
++				($.data(this, name) || $.data(this, name, new object(options, this)));
+ 			}));
+ 
+ 		return returnValue;
+ 	};
+-
+-	// create widget constructor
+-	$[namespace] = $[namespace] || {};
+-	$[namespace][name] = function(element, options) {
+-		var self = this;
++};
+ 
+-		this.namespace = namespace;
+-		this.widgetName = name;
+-		this.widgetEventPrefix = $[namespace][name].eventPrefix || name;
+-		this.widgetBaseClass = fullName;
++$.Widget = function(options, element) {
++	// allow instantiation without initializing for simple inheritance
++	(arguments.length && this._widgetInit(options, element));
++};
+ 
++$.Widget.prototype = {
++	widgetName: 'widget',
++	widgetEventPrefix: '',
++	options: {
++		disabled: false
++	},
++	_widgetInit: function(options, element) {
++		// $.widget.bridge stores the plugin instance, but we do it anyway
++		// so that it's stored even before the _init function runs
++		this.element = $(element).data(this.widgetName, this);
+ 		this.options = $.extend(true, {},
+-			$.widget.defaults,
+-			$[namespace][name].defaults,
+-			$.metadata && $.metadata.get(element)[name],
++			this.options,
++			// DEPRECATED to be removed in 2.0; move defaults to prototype.options
++			$[this.namespace][this.widgetName].defaults,
++			$.metadata && $.metadata.get(element)[this.widgetName],
+ 			options);
+-
+-		this.element = $(element)
+-			.bind('setData.' + name, function(event, key, value) {
+-				if (event.target == element) {
+-					return self._setData(key, value);
+-				}
+-			})
+-			.bind('getData.' + name, function(event, key) {
+-				if (event.target == element) {
+-					return self._getData(key);
+-				}
+-			})
+-			.bind('remove.' + name, function() {
+-				return self.destroy();
+-			});
+-	};
+-
+-	// add widget prototype
+-	$[namespace][name].prototype = $.extend({}, $.widget.prototype, prototype);
+-};
+-
+-$.widget.prototype = {
+-	_init: function() {},
++		(this._init && this._init(this.options, this.element));
++	},
++	
+ 	destroy: function() {
+-		this.element.removeData(this.widgetName)
+-			.removeClass(this.widgetBaseClass + '-disabled' + ' ' + this.namespace + '-state-disabled')
+-			.removeAttr('aria-disabled');
+-
+-		return this;
++		this.element
++			.removeData(this.widgetName)
++			.removeAttr('aria-disabled')
++			.removeClass(
++				this.widgetBaseClass + '-disabled ' +
++				this.namespace + '-state-disabled');
+ 	},
+ 
+ 	option: function(key, value) {
+@@ -120,22 +134,19 @@
+ 
+ 		if (typeof key == "string") {
+ 			if (value === undefined) {
+-				return this._getData(key);
++				return this.options[key];
+ 			}
+ 			options = {};
+ 			options[key] = value;
+ 		}
+ 
+ 		$.each(options, function(key, value) {
+-			self._setData(key, value);
++			self._setOption(key, value);
+ 		});
+ 
+ 		return self;
+ 	},
+-	_getData: function(key) {
+-		return this.options[key];
+-	},
+-	_setData: function(key, value) {
++	_setOption: function(key, value) {
+ 		this.options[key] = value;
+ 
+ 		if (key == 'disabled') {
+@@ -145,15 +156,18 @@
+ 					this.namespace + '-state-disabled')
+ 				.attr("aria-disabled", value);
+ 		}
+-	},
++		
++		// DEPRECATED use and override _setOption instead, will be removed in 2.0
++		(this._setData && this._setData.apply(this, arguments));
+ 
+-	enable: function() {
+-		this._setData('disabled', false);
+ 		return this;
+ 	},
++	
++	enable: function() {
++		return this._setOption('disabled', false);
++	},
+ 	disable: function() {
+-		this._setData('disabled', true);
+-		return this;
++		return this._setOption('disabled', true);
+ 	},
+ 
+ 	_trigger: function(type, event, data) {
+@@ -181,9 +195,5 @@
+ 	}
+ };
+ 
+-$.widget.defaults = {
+-	disabled: false
+-};
+-
+ 	
+ })(jQuery);
+Index: ui/jquery.ui.slider.js
+===================================================================
+--- ui/jquery.ui.slider.js	(revision 3503)
++++ ui/jquery.ui.slider.js	(working copy)
+@@ -18,7 +18,7 @@
+ // (how many times can you page up/down to go through the whole range)
+ var numPages = 5;
+ 
+-$.widget("ui.slider", $.extend({}, $.ui.mouse, {
++$.widget("ui.slider", $.ui.mouse, {
+ 
+ 	_init: function() {
+ 
+@@ -593,7 +593,7 @@
+ 
+ 	}
+ 	
+-}));
++});
+ 
+ $.extend($.ui.slider, {
+ 	version: "@VERSION",
+Index: ui/jquery.ui.sortable.js
+===================================================================
+--- ui/jquery.ui.sortable.js	(revision 3503)
++++ ui/jquery.ui.sortable.js	(working copy)
+@@ -13,7 +13,7 @@
+  */
+ (function($) {
+ 
+-$.widget("ui.sortable", $.extend({}, $.ui.mouse, {
++$.widget("ui.sortable", $.ui.mouse, {
+ 	_init: function() {
+ 
+ 		var o = this.options;
+@@ -1017,7 +1017,7 @@
+ 		};
+ 	}
+ 
+-}));
++});
+ 
+ $.extend($.ui.sortable, {
+ 	version: "@VERSION",
+Index: ui/jquery.ui.core.js
+===================================================================
+--- ui/jquery.ui.core.js	(revision 3503)
++++ ui/jquery.ui.core.js	(working copy)
+@@ -223,153 +223,4 @@
+ 	}
+ });
+ 
+-/** Mouse Interaction Plugin **/
+-
+-$.ui.mouse = {
+-	_mouseInit: function() {
+-		var self = this;
+-
+-		this.element
+-			.bind('mousedown.'+this.widgetName, function(event) {
+-				return self._mouseDown(event);
+-			})
+-			.bind('click.'+this.widgetName, function(event) {
+-				if(self._preventClickEvent) {
+-					self._preventClickEvent = false;
+-					event.stopImmediatePropagation();
+-					return false;
+-				}
+-			});
+-
+-		// Prevent text selection in IE
+-		if ($.browser.msie) {
+-			this._mouseUnselectable = this.element.attr('unselectable');
+-			this.element.attr('unselectable', 'on');
+-		}
+-
+-		this.started = false;
+-	},
+-
+-	// TODO: make sure destroying one instance of mouse doesn't mess with
+-	// other instances of mouse
+-	_mouseDestroy: function() {
+-		this.element.unbind('.'+this.widgetName);
+-
+-		// Restore text selection in IE
+-		($.browser.msie
+-			&& this.element.attr('unselectable', this._mouseUnselectable));
+-	},
+-
+-	_mouseDown: function(event) {
+-		// don't let more than one widget handle mouseStart
+-		// TODO: figure out why we have to use originalEvent
+-		event.originalEvent = event.originalEvent || {};
+-		if (event.originalEvent.mouseHandled) { return; }
+-
+-		// we may have missed mouseup (out of window)
+-		(this._mouseStarted && this._mouseUp(event));
+-
+-		this._mouseDownEvent = event;
+-
+-		var self = this,
+-			btnIsLeft = (event.which == 1),
+-			elIsCancel = (typeof this.options.cancel == "string" ? $(event.target).parents().add(event.target).filter(this.options.cancel).length : false);
+-		if (!btnIsLeft || elIsCancel || !this._mouseCapture(event)) {
+-			return true;
+-		}
+-
+-		this.mouseDelayMet = !this.options.delay;
+-		if (!this.mouseDelayMet) {
+-			this._mouseDelayTimer = setTimeout(function() {
+-				self.mouseDelayMet = true;
+-			}, this.options.delay);
+-		}
+-
+-		if (this._mouseDistanceMet(event) && this._mouseDelayMet(event)) {
+-			this._mouseStarted = (this._mouseStart(event) !== false);
+-			if (!this._mouseStarted) {
+-				event.preventDefault();
+-				return true;
+-			}
+-		}
+-
+-		// these delegates are required to keep context
+-		this._mouseMoveDelegate = function(event) {
+-			return self._mouseMove(event);
+-		};
+-		this._mouseUpDelegate = function(event) {
+-			return self._mouseUp(event);
+-		};
+-		$(document)
+-			.bind('mousemove.'+this.widgetName, this._mouseMoveDelegate)
+-			.bind('mouseup.'+this.widgetName, this._mouseUpDelegate);
+-
+-		// preventDefault() is used to prevent the selection of text here -
+-		// however, in Safari, this causes select boxes not to be selectable
+-		// anymore, so this fix is needed
+-		($.browser.safari || event.preventDefault());
+-
+-		event.originalEvent.mouseHandled = true;
+-		return true;
+-	},
+-
+-	_mouseMove: function(event) {
+-		// IE mouseup check - mouseup happened when mouse was out of window
+-		if ($.browser.msie && !event.button) {
+-			return this._mouseUp(event);
+-		}
+-
+-		if (this._mouseStarted) {
+-			this._mouseDrag(event);
+-			return event.preventDefault();
+-		}
+-
+-		if (this._mouseDistanceMet(event) && this._mouseDelayMet(event)) {
+-			this._mouseStarted =
+-				(this._mouseStart(this._mouseDownEvent, event) !== false);
+-			(this._mouseStarted ? this._mouseDrag(event) : this._mouseUp(event));
+-		}
+-
+-		return !this._mouseStarted;
+-	},
+-
+-	_mouseUp: function(event) {
+-		$(document)
+-			.unbind('mousemove.'+this.widgetName, this._mouseMoveDelegate)
+-			.unbind('mouseup.'+this.widgetName, this._mouseUpDelegate);
+-
+-		if (this._mouseStarted) {
+-			this._mouseStarted = false;
+-			this._preventClickEvent = (event.target == this._mouseDownEvent.target);
+-			this._mouseStop(event);
+-		}
+-
+-		return false;
+-	},
+-
+-	_mouseDistanceMet: function(event) {
+-		return (Math.max(
+-				Math.abs(this._mouseDownEvent.pageX - event.pageX),
+-				Math.abs(this._mouseDownEvent.pageY - event.pageY)
+-			) >= this.options.distance
+-		);
+-	},
+-
+-	_mouseDelayMet: function(event) {
+-		return this.mouseDelayMet;
+-	},
+-
+-	// These are placeholder methods, to be overriden by extending plugin
+-	_mouseStart: function(event) {},
+-	_mouseDrag: function(event) {},
+-	_mouseStop: function(event) {},
+-	_mouseCapture: function(event) { return true; }
+-};
+-
+-$.ui.mouse.defaults = {
+-	cancel: ':input,option',
+-	distance: 1,
+-	delay: 0
+-};
+-
+ })(jQuery);

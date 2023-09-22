@@ -1,0 +1,45 @@
+Index: tests/unit/position/position.html
+===================================================================
+--- tests/unit/position/position.html	(revision 3906)
++++ tests/unit/position/position.html	(arbetskopia)
+@@ -43,5 +43,9 @@
+ 
+ <div style="position: absolute; height: 5000px; width: 5000px;"></div>
+ 
++
++  <div id="span-in-div" style="position: absolute; height: 30px; width: 201px;">
++  <span>Hello World</span>
++  </div>
+ </body>
+ </html>
+Index: tests/unit/position/position_core.js
+===================================================================
+--- tests/unit/position/position_core.js	(revision 3906)
++++ tests/unit/position/position_core.js	(arbetskopia)
+@@ -330,4 +330,26 @@
+ 	}, { top: -13, left: -12 }, "left top, negative offset");
+ });
+ 
++test('bug #5280: span in a div and reposition', function() {
++		var box = $('#span-in-div')
++		var span = $('span', box);
++		span.position({
++				my: 'center',
++				at: 'center',
++				of: box,
++				collision: 'none'
++			});
++		var first_offset = span.offset();
++		span.position({
++				my: 'center',
++				at: 'center',
++				of: box,
++				collision: 'none'
++			});
++		var second_offset = span.offset();
++
++		same(first_offset.left, second_offset.left, 'generate same left offset twice in a row');
++		same(first_offset.top, second_offset.top, 'generate same top offset twice in a row');
++	});
++
+ })(jQuery);

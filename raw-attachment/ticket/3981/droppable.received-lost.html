@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Droppable loses received elements</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.3.1.js"></script>
+    <script type="text/javascript" src="http://view.jquery.com/tags/ui/testing/ui/ui.core.js"></script>
+    <script type="text/javascript" src="http://view.jquery.com/tags/ui/testing/ui/ui.droppable.js"></script>
+    <script type="text/javascript" src="http://view.jquery.com/tags/ui/testing/ui/ui.draggable.js"></script>
+    <style type="text/css">
+        div { border:1px solid black; margin-bottom: 20px; }
+        #droppable { width:100px; height:100px; }
+    </style>
+
+</head>
+
+<body>
+    #droppable
+    <div id="droppable"></div>
+
+
+    #draggables
+    <div id="draggables">
+        <div>draggable 1</div>
+        <div>draggable 2</div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#droppable").droppable({
+                drop: function(event, ui) {
+                    alert("[callback]\n\ndrop( return true )");
+                    return true;
+                }
+            });
+
+            $("#draggables div").draggable({
+                helper: "clone"
+            });
+
+        });
+
+    </script>
+
+
+</body>
+</html>

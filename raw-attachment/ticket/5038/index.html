@@ -1,0 +1,102 @@
+<!DOCTYPE html "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>Google Maps JavaScript API Example</title>
+    <link type="text/css" href="jquery-ui/css/ui-lightness/jquery-ui-1.7.2.custom.css" rel="Stylesheet" />	
+    <script type="text/javascript" src="jquery-ui/js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.7.2.custom.min.js"></script>
+<!--
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("jquery", "1.3.2");
+    </script>
+-->
+    <script type="text/javascript" src="jquery.json-2.2.js"></script>
+    <script type="text/javascript" src="http://www.thomasfrank.se/downloadableJS/xml2json.js"></script>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAU30dLdwngRfuIx_fqzIlbRRMzm9EFgCeUTIY4VMDguMmHKsUbBSTuwMsSH3ybDfxRpsZp6ZAHF52GA&sensor=false"
+            type="text/javascript"></script>
+    <script type="text/javascript">
+
+    var geocoder, map;
+
+    $(document).ready(function() {
+      $.ui.dialog.defaults.bgiframe = true;
+      $('#no-match').dialog({autoOpen: false});
+      $('#several-matches').dialog({
+        autoOpen: false,
+
+        // This doesn't work on Google Chrome or FF.
+        // Haven't tested IE.
+        close: function(ev, ui) {
+          $('#textarea-user-address')[0].focus();
+        },
+      });
+
+      // I had to do this instead.
+      $('#no-match').bind('dialogclose', function(event, ui) {
+        $('#textarea-user-address')[0].focus();
+      });
+
+      if (GBrowserIsCompatible()) {
+        geocoder = new GClientGeocoder();
+        var canvas = document.getElementById("map_canvas");
+        map = new GMap2(canvas);
+        map.setCenter(new GLatLng(37.4419, -122.1419), 13);
+        map.setUIToDefault();
+      }
+    });
+
+    function showAddress(address) {
+      geocoder.getLatLng(address, function(point) {
+        if (!point) {
+          alert(address + " not found");
+        } else {
+          map.setCenter(point, 13);
+          var marker = new GMarker(point);
+          map.addOverlay(marker);
+          marker.openInfoWindowHtml(address.replace(/, /g, '<br/>'));
+        }
+      });
+    }
+
+    function verifyAddress() {
+      if (!map || !geocoder) return;
+
+      geocoder.getLocations($('#textarea-user-address').val(), function(response) {
+        var a_pm = $.grep(response.Placemark, function(pm, i) {
+          return pm.AddressDetails.Accuracy >= 8;
+        });
+        var a_addr = $.map(a_pm, function(pm, i) {
+          return pm.address;
+        });
+        //document.getElementById('placemark').value = $.toJSON(a_addr);
+
+        if (a_addr.length == 0) {
+          $('#no-match').dialog('open');
+        }
+        else {
+          showAddress(a_addr[0]);
+        }
+      });
+    }
+
+    </script>
+  </head>
+  <body onunload="GUnload()">
+<!--
+-->
+    <textarea id="textarea-user-address" cols="30" rows="3" id="address" onchange="verifyAddress(this);"></textarea>
+    <div id="map_canvas" style="width: 500px; height: 300px"></div>
+    <div id="no-match">
+      <p>The address you entered needs to be more specific.</p>
+      <p>Please correct.</p>
+    </div>
+    <div id="several-matches">
+      <p>There is more than one match for the address you entered.</p>
+      <p>Please choose one or select "I want to retype the address".</p>
+    </div>
+  </body>
+</html>

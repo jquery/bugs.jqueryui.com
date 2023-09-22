@@ -1,0 +1,35 @@
+--- ui.datepicker.js.org	2009-03-20 23:44:27.000000000 +0000
++++ ui.datepicker.js	2009-03-21 00:11:28.000000000 +0000
+@@ -77,6 +77,7 @@
+ 		showOtherMonths: false, // True to show dates in other months, false to leave blank
+ 		calculateWeek: this.iso8601Week, // How to calculate the week of the year,
+ 			// takes a Date and returns the number of the week for it
++		showWeekNumbers: false, // True to show week numbers
+ 		shortYearCutoff: '+10', // Short year values < this are in the current century,
+ 			// > this are in the previous century,
+ 			// string value starting with '+' for current year + value
+@@ -1321,6 +1322,7 @@
+ 		var beforeShowDay = this._get(inst, 'beforeShowDay');
+ 		var showOtherMonths = this._get(inst, 'showOtherMonths');
+ 		var calculateWeek = this._get(inst, 'calculateWeek') || this.iso8601Week;
++		var showWeek = this._get(inst, 'showWeekNumbers');
+ 		var endDate = inst.endDay ? this._daylightSavingAdjust(
+ 			new Date(inst.endYear, inst.endMonth, inst.endDay)) : currentDate;
+ 		var defaultDate = this._getDefaultDate(inst);
+@@ -1347,7 +1349,7 @@
+ 					selectedDate, row > 0 || col > 0, monthNames, monthNamesShort) + // draw month headers
+ 					'</div><table class="ui-datepicker-calendar"><thead>' +
+ 					'<tr>';
+-				var thead = '';
++				var thead = showWeek ? '<th><span title="Week number">w</span></th>' : '';
+ 				for (var dow = 0; dow < 7; dow++) { // days of the week
+ 					var day = (dow + firstDay) % 7;
+ 					thead += '<th' + ((dow + firstDay + 6) % 7 >= 5 ? ' class="ui-datepicker-week-end"' : '') + '>' +
+@@ -1362,6 +1364,7 @@
+ 				var printDate = this._daylightSavingAdjust(new Date(drawYear, drawMonth, 1 - leadDays));
+ 				for (var dRow = 0; dRow < numRows; dRow++) { // create date picker rows
+ 					calender += '<tr>';
++					if (showWeek) calender += '<td><span>' + calculateWeek(printDate) + '</span></td>';
+ 					var tbody = '';
+ 					for (var dow = 0; dow < 7; dow++) { // create date picker days
+ 						var daySettings = (beforeShowDay ?

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.3.2.js"></script>
+    <script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/trunk/ui/ui.core.js"></script>
+    <script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/trunk/ui/ui.sortable.js"></script>
+    <script type="text/javascript" src="http://jquery-ui.googlecode.com/svn/trunk/ui/ui.draggable.js"></script>
+    <style type="text/css">
+        #sortable, #draggables { border:1px solid black; }
+    </style>
+
+    <script type="text/javascript">
+
+        jQuery(function ($) {
+
+            $("#sortable").sortable({
+                receive: function(event, ui)
+                {
+                    $("#out-1").text(
+                        "#" + $(ui.sender).attr("id")
+                    );
+                    $("#out-2").text(
+                        "#" + $(ui.item).attr("id")
+                    );
+                    $("*").css("background-color", "inherit"); // reset before setting again
+                    $(ui.item).css("background-color", "pink");
+                    return true;
+                }
+            });
+
+            $("#draggables div").draggable({
+                helper: "clone",
+                connectToSortable: "#sortable"
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+    #draggables
+    <div id="draggables">
+        <div id="draggable_item_1">draggable item 1</div>
+        <div id="draggable_item_2">draggable item 2</div>
+    </div>
+
+    <br />
+    <br />
+    #sortable
+    <div id="sortable">
+        <div>sortable item 1</div>
+        <div>sortable item 2</div>
+    </div>
+
+    <br />
+    <br />
+    receive: ui.sender = <span id="out-1"> </span><br />
+    receive: ui.item = <span id="out-2"> </span>
+
+
+</body>
+</html>

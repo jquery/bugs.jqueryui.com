@@ -1,0 +1,18 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<title>Title</title>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<button>Scale!</button>
+		<div style="background-color: Maroon; color: Silver; display: none; height: 100px; padding: 100px; width: 100px;">Should grow from bottom</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/jquery-ui.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$('button').click(function () {
+				$('div').show('scale', { origin: ['bottom', 'left'], from: { width: 0, height: 0} }, 1000);
+			});
+		</script>
+	</body>
+</html>

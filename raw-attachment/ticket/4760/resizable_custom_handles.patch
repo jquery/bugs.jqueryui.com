@@ -1,0 +1,14 @@
+Index: ui/ui.resizable.js
+===================================================================
+--- ui/ui.resizable.js	(revision 3039)
++++ ui/ui.resizable.js	(working copy)
+@@ -97,6 +97,9 @@
+ 			}
+ 
+ 		}
++		else { 
++		    this.handles = $.extend({}, this.handles);
++		}
+ 
+ 		this._renderAxis = function(target) {
+ 

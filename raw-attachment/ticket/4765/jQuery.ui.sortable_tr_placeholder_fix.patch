@@ -1,0 +1,45 @@
+Index: ui/jquery.ui.sortable.js
+===================================================================
+--- ui/jquery.ui.sortable.js	(revision 3571)
++++ ui/jquery.ui.sortable.js	(working copy)
+@@ -608,8 +608,19 @@
+ 			o.placeholder = {
+ 				element: function() {
+ 
+-					var el = $(document.createElement(self.currentItem[0].nodeName))
+-						.addClass(className || self.currentItem[0].className+" ui-sortable-placeholder")
++					var nodeType = self.currentItem[0].nodeName;
++					var el = $(document.createElement(nodeType));
++
++					// For tr elements create a child td element and apply styles there, as empty tr tags aren't rendered in webkit browsers
++					if (nodeType.toLowerCase() != "tr") {
++						var styledNode = el;
++					} else {
++						var styledNode = $(document.createElement('td'))
++							.attr('colspan', self.currentItem[0].children.length);
++						el.append(styledNode);
++					}
++
++					styledNode.addClass(className || self.currentItem[0].className+" ui-sortable-placeholder")
+ 						.removeClass("ui-sortable-helper")[0];
+ 
+ 					if(!className)
+@@ -623,9 +634,17 @@
+ 					// 2. The option 'forcePlaceholderSize can be enabled to force it even if a class name is specified
+ 					if(className && !o.forcePlaceholderSize) return;
+ 
++					// If the placeholder is a tr element, apply sizes to its child td tag as some browsers ignore them on the tr element.
++						// Also skip setting the width as it causes column widths in firefox to jump wider and then back to normal.
++					var skipWidth = false;
++					if (p.get(0).nodeName.toLowerCase() == 'tr') {
++						p = p.children(':first');
++						skipWidth = true;
++					}
++
+ 					//If the element doesn't have a actual height by itself (without styles coming from a stylesheet), it receives the inline height from the dragged item
+ 					if(!p.height()) { p.height(self.currentItem.innerHeight() - parseInt(self.currentItem.css('paddingTop')||0, 10) - parseInt(self.currentItem.css('paddingBottom')||0, 10)); };
+-					if(!p.width()) { p.width(self.currentItem.innerWidth() - parseInt(self.currentItem.css('paddingLeft')||0, 10) - parseInt(self.currentItem.css('paddingRight')||0, 10)); };
++					if(!skipWidth && !p.width()) { p.width(self.currentItem.innerWidth() - parseInt(self.currentItem.css('paddingLeft')||0, 10) - parseInt(self.currentItem.css('paddingRight')||0, 10)); };
+ 				}
+ 			};
+ 		}

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>Quirks Mode</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+	<!--script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7/jquery-ui.min.js"></script-->
+	<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/base/jquery-ui.css" type="text/css" />
+	<script type="text/javascript" language="javascript">
+		$(function() {
+			var dialog = $('#dialog');
+			var info = function()
+			{
+				$('#info')
+					.append("Dialog option height: "+dialog.dialog('option', 'height'))
+					.append("<br/>")
+					.append("Dialog actual height: "+dialog.parent().height())
+					.append("<br/>")
+			};
+			dialog.dialog({
+				width: "350",
+				height: "450",
+				minHeight: "50",
+				autoResize: false,
+				modal: true,
+				dragStop: info,
+				resizeStop: info,
+				buttons: {
+					Cancel: function() {
+						$(this).dialog('close');
+					}
+				}
+			});
+			$('#open').click(function() {
+				dialog
+					.append("<br/>"+Math.random())
+					.dialog('option', "height", "400")
+					.dialog("open")
+				info();
+				return false;
+			});
+
+			var _size = function() {
+                /* If the user has resized the dialog, the .ui-dialog and .ui-dialog-content
+                 * divs will both have width and height set, so we need to reset them
+                 */
+                var options = this.options;
+
+                // reset content sizing
+                this.element.css({
+                        height: "1px",
+                        minHeight: "1px",
+                        width: 'auto'
+                });
+
+                // reset wrapper sizing
+                // determine the height of all the non-content elements
+                var nonContentHeight = this.uiDialog.css({
+                                height: 'auto',
+                                width: options.width
+                        })
+                        .height() - 1;
+
+                this.element.css(options.height == 'auto'
+                        ? {
+                                minHeight: Math.max(options.minHeight - nonContentHeight, 0),
+                                height: 'auto'
+                        }
+                        : {
+                                height: Math.max(options.height - nonContentHeight, 0)
+                        });
+
+                (this.uiDialog.is(':data(resizable)') &&
+                        this.uiDialog.resizable('option', 'minHeight', this._minHeight()));
+        }
+
+			$('#fix').click(function() {
+				$.ui.dialog.prototype._size = _size;
+				$('#open').click();
+			});
+			info();
+		});
+	</script>
+</head>
+<body>
+	<a id="open" href="#">open</a>
+	<br/>
+	<a id="fix" href="#">fix</a>
+	<div id="dialog">
+	<label for="title" style="font-weight: bold;">Title</label>
+	<br/>
+	<input id="title" class="full-width-text ui-widget-content ui-corner-all" type="text" name="title" maxlength="255" style="width: 100%;"/>
+	<br/>
+	<br/>
+	<label for="duration" style="font-weight: bold;">Data</label>
+	<input id="title" class="full-width-text ui-widget-content ui-corner-all" type="text" name="title" maxlength="255" style="width: 100%;"/>
+	</div>
+	<div>
+	</div>
+
+	<div id="info"></div>
+</body>

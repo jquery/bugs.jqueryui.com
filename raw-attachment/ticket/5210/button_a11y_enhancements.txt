@@ -1,0 +1,258 @@
+### Eclipse Workspace Patch 1.0
+#P jQuery
+Index: demos/button/radio.html
+===================================================================
+--- demos/button/radio.html	(revision 3816)
++++ demos/button/radio.html	(working copy)
+@@ -19,13 +19,13 @@
+ </head>
+ <body>
+ 
+-<div class="demo">
++<div class="demo" role="application">
+ 
+-	<form>
+-		<div id="radio1">
++	<form id="radio1">
++		<div  title="test options">
+ 			<input type="radio" id="radio1" name="radio" /><label for="radio1">Choice 1</label>
+-			<input type="radio" id="radio2" name="radio" checked="checked" /><label for="radio2">Choice 2</label>
+-			<input type="radio" id="radio3" name="radio" /><label for="radio3">Choice 3</label>
++			<input type="radio" id="radio2" name="radio" /><label for="radio2">Choice 2</label>
++			<input type="radio" id="radio3" name="radio" checked="checked" /><label for="radio3">Choice 3</label>
+ 		</div>
+ 	</form>
+ 
+Index: demos/button/toolbar.html
+===================================================================
+--- demos/button/toolbar.html	(revision 3816)
++++ demos/button/toolbar.html	(working copy)
+@@ -85,7 +85,7 @@
+ </head>
+ <body>
+ 
+-<div class="demo">
++<div class="demo" role="application">
+ 
+ 	<span id="toolbar" class="ui-widget-header ui-corner-all">
+ 		<button id="beginning">go to beginning</button>
+@@ -97,7 +97,7 @@
+ 		
+ 		<input type="checkbox" id="shuffle" /><label for="shuffle">Shuffle</label>
+ 		
+-		<span id="repeat">
++		<span id="repeat" title="Repeat Options">
+ 			<input type="radio" id="repeat0" name="repeat" checked="checked" /><label for="repeat0">No Repeat</label>
+ 			<input type="radio" id="repeat1" name="repeat" /><label for="repeat1">Once</label>
+ 			<input type="radio" id="repeatall" name="repeat" /><label for="repeatall">All</label>
+Index: ui/jquery.ui.button.js
+===================================================================
+--- ui/jquery.ui.button.js	(revision 3828)
++++ ui/jquery.ui.button.js	(working copy)
+@@ -43,7 +43,7 @@
+ 
+ 		this.buttonElement
+ 			.addClass( baseClasses )
+-			.attr( "role", "button" )
++			.attr( "role", this.type === "radio" ? "radio" : "button" )
+ 			.bind( "mouseenter.button", function() {
+ 				if ( options.disabled ) {
+ 					return;
+@@ -73,36 +73,60 @@
+ 					return;
+ 				}
+ 				$( this ).toggleClass( "ui-state-active" );
++				//this doesn't fire on the actual label, so we'll have to manually toggle the original checkbox first
++				self.element[0].checked = !self.element[0].checked;
+ 				self.buttonElement.attr( "aria-pressed", self.element[0].checked );
++			})
++			.bind( "keydown.button", function(event) {
++				if ( event.keyCode == $.ui.keyCode.SPACE || event.keyCode == $.ui.keyCode.ENTER ) {
++				    self.buttonElement.click();
++				}
+ 			});
+ 		} else if ( this.type === "radio") {
+-			this.buttonElement.bind( "click.button", function() {
++			this.buttonElement.bind("keyup.button", function(event) {
++				var forward, radios , currentIndex, nextIndex;
++				switch(event.keyCode) {
++					case $.ui.keyCode.DOWN:
++					case $.ui.keyCode.RIGHT:
++					case $.ui.keyCode.UP:
++					case $.ui.keyCode.LEFT:
++						forward = event.keyCode == $.ui.keyCode.RIGHT || 
++							event.keyCode == $.ui.keyCode.DOWN; 
++						radios = self._getRadiosInGroup(true);
++						if (!radios)
++							return;
++						currentIndex = radios.index(self.buttonElement);
++						nextIndex = forward ? currentIndex + 1 : currentIndex -1;
++						nextIndex = nextIndex >= radios.length ? currentIndex : 
++							nextIndex < 0 ? 0 : nextIndex;
++						if (radios.eq(nextIndex).length == 0)							 
++							return;
++						if (event.ctrlKey) // move focus without selecting
++							radios.eq(nextIndex).focus();
++						else  {
++						    radios.eq(nextIndex).checked = true;
++							radios.eq(nextIndex).click();
++							radios.get(nextIndex).focus();
++						}
++						break;
++					case $.ui.keyCode.SPACE: // select focused but unselected radiobutton
++						self.buttonElement.click();
++						break;
++				}
++			})
++			.bind( "click.button", function() {
+ 				if ( options.disabled ) {
+ 					return;
+ 				}
+ 				$( this ).addClass( "ui-state-active" );
+-				self.buttonElement.attr( "aria-pressed", true );
++				self.buttonElement.attr( "aria-checked", true ).attr( "tabindex", "0" );
+ 
+-				var radio = self.element[ 0 ],
+-					name = radio.name,
+-					form = radio.form,
+-					radios;
+-				if ( name ) {
+-					if ( form ) {
+-						radios = $( form ).find( "[name=" + name + "]" );
+-					} else {
+-						radios = $( "[name=" + name + "]", radio.ownerDocument )
+-							.filter(function() {
+-								return !this.form;
+-							});
+-					}
++				var radios = self._getRadiosInGroup(false);
++				if (radios) {
+ 					radios
+-						.not( radio )
+-						.map(function() {
+-							return $( this ).button( "widget" )[ 0 ];
+-						})
+ 						.removeClass( "ui-state-active" )
+-						.attr( "aria-pressed", false );
++						.attr( "tabindex", "-1" )
++						.attr( "aria-checked", false );
+ 				}
+ 			});
+ 		} else {
+@@ -154,18 +178,48 @@
+ 					: "button";
+ 
+ 		if ( this.type === "checkbox" || this.type === "radio" ) {
+-			this.buttonElement = $( "[for=" + this.element.attr("id") + "]" );
++			this.buttonElement = $( "[for=" + this.element.attr("id") + "]" ).
++				wrapInner("<span />").find(":first-child").first();
++			// Because otherwise radiobuttons will be announced as "1 of 1":
++			this.buttonElement.parent().attr('role', 'presentation'); 
+ 			this.element.hide();
+ 
+ 			var checked = this.element.is( ":checked" );
+ 			if ( checked ) {
+ 				this.buttonElement.addClass( "ui-state-active" );
+ 			}
+-			this.buttonElement.attr( "aria-pressed", checked );
++			this.buttonElement.attr( this.type === "radio" ? "aria-checked" : "aria-pressed", checked );
++			if (this.type === "radio" || this.type === "checkbox") {
++				// unchecked radio buttons will be taken out of the tab order later by the buttonset widget  
++				this.buttonElement.attr( "tabindex", "0"); 
++			}
+ 		} else {
+ 			this.buttonElement = this.element;
+ 		}
+ 	},
++	
++	_getRadiosInGroup : function(includeSelf) {
++		var radio = this.element[ 0 ],
++			name = radio.name,
++			form = radio.form,
++			radios;
++		if ( name ) {
++			if ( form ) {
++				radios = $( form ).find( "[name=" + name + "]" );
++			} else {
++				radios = $( "[name=" + name + "]", radio.ownerDocument )
++					.filter(function() {
++						return !this.form;
++					});
++			}
++			if (!includeSelf)
++				radios = radios.not( this.element[ 0 ] );
++			radios = radios.map(function() {
++				return $( this ).button( "widget" )[ 0 ];
++			}); 
++		}
++		return radios;
++	},
+ 
+ 	widget: function() {
+ 		return this.buttonElement;
+@@ -175,14 +229,15 @@
+ 		this.buttonElement
+ 			.removeClass( baseClasses + " " + otherClasses )
+ 			.removeAttr( "role" )
+-			.removeAttr( "aria-pressed" )
++			.removeAttr( this.type === "radio" ? "aria-checked" : "aria-pressed" )
+ 			.html( this.buttonElement.find(".ui-button-text").html() );
+ 
+ 		if ( !this.hasTitle ) {
+ 			this.buttonElement.removeAttr( "title" );
+ 		}
+-
++	
+ 		if ( this.type === "checkbox" || this.type === "radio" ) {
++			this.buttonElement.parent().html(this.buttonElement.html()).removeAttr("role");
+ 			this.element.show();
+ 		}
+ 
+@@ -210,7 +265,7 @@
+ 
+ 		var icons = this.options.icons,
+ 			multipleIcons = icons.primary && icons.secondary;
+-		if ( icons.primary || icons.secondary ) {
++		if ( !jQuery.ui.highContrastMode() && ( icons.primary || icons.secondary ) ) {
+ 			buttonElement.addClass( "ui-button-text-icon" +
+ 				( multipleIcons ? "s" : "" ) );
+ 			if ( icons.primary ) {
+@@ -249,6 +304,29 @@
+ 					.addClass( "ui-corner-right" )
+ 				.end()
+ 			.end();
++		var radioNames = [], self = this, parent; 
++		//we need to ensure at least one radiobutton in each group is in the tab order
++		this.element.find(":radio[name]").map(function(){
++			name = $(this).attr('name');
++			if (jQuery.inArray(name, radioNames) == -1) {
++				radioNames.push(name);
++				return name;
++			}
++			return null;
++		}).each(function(i,name) {
++			radios = self.element.find("[name="+ name +"]");
++			// if a radiobutton is checked, it is in the tab order. If none are checked, the first is in the tab order
++			radios = radios.filter("[checked]").length > 0 ? radios.not("[checked]") : radios.filter(":gt(0)");  
++			radios.each(function(i, e){
++				// all radiobuttons initially have tabindex="0", here we remove the unnecessary tab stops
++				$( e ).button( "widget" ).attr("tabindex", "-1");
++				// radio buttons should be wrapped in an element representing the radiogroup, 
++				// with a title, aria-label, or aria-labelledby attribute naming the group
++				parent = $( e ).parent();
++				if ( parent[0] !== self.element && !parent.is("[role='radiogroup']"))
++					parent.attr('role', 'radiogroup');
++			})
++		});
+ 	},
+ 
+ 	_setOption: function( key, value ) {
+@@ -264,7 +342,7 @@
+ 		this.buttons
+ 			.button( "destroy" )
+ 			.removeClass( "ui-corner-left ui-corner-right" );
+-
++		this.element.find("[role=radiogroup]").removeAttr("role");
+ 		$.Widget.prototype.destroy.call( this );
+ 	}
+ });

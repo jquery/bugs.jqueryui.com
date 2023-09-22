@@ -1,0 +1,15 @@
+### Eclipse Workspace Patch 1.0
+#P JQueryUI
+Index: ui.slider.js
+===================================================================
+--- ui.slider.js	(revision 1577)
++++ ui.slider.js	(working copy)
+@@ -254,7 +254,7 @@
+ 		if (valueMouseModStep > (this.options.step / 2))
+ 			normValue += this.options.step;
+ 
+-		return normValue;
++		return Math.round(normValue);
+ 	},
+ 
+ 	_start: function(event) {

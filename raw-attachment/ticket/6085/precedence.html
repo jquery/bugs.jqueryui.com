@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/js/jquery-ui-1.8.4.custom.min.js"></script>
+		<style type="text/css">
+			#container {
+				width: 200px;
+				height: 200px;
+				border-style: solid;
+			}
+			
+			.box {
+				width: 100px;
+				height: 100px;
+				background-color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="draggable">Drag me!</div>
+		<div id="container"></div>
+		
+		<script type="text/javascript">
+			function secondDropFunction(event, ui) {
+				alert("You'll never get here!");
+			}
+			
+			function dropFunction(event, ui) {	
+				alert("This is the container's drop function. It fires every time, even when you're trying to drop into an orange box, which should be droppable");
+				$(document.createElement('div'))
+					.addClass('box')
+					.appendTo($(this))
+					.droppable({
+						accept: '.draggable', 
+						drop: secondDropFunction 
+					});
+			}
+			
+			$('.draggable').draggable({helper: 'clone'});
+			
+			$('#container').droppable({
+				accept: '.draggable',
+				drop: dropFunction
+			});
+				
+		</script>
+	</body>
+</html>
