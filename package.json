@@ -4,7 +4,7 @@
   "description": "Static archive of the old bugs.jqueryui.com trac site, built with eleventy.",
   "scripts": {
     "clean": "rimraf _site/",
-    "build": "npm run clean && npx @11ty/eleventy",
+    "build": "npx @11ty/eleventy",
     "postbuild": "npm run searchindex",
     "start": "npm run clean && cross-env NODE_ENV=development npx @11ty/eleventy --serve --quiet",
     "debug": "npm run clean && DEBUG=Eleventy* npx @11ty/eleventy",
