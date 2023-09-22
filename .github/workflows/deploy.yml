@@ -3,7 +3,7 @@ name: Deploy site
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ['ci-test']
+    branches: ['main']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -48,7 +48,7 @@ jobs:
 
       - name: Build with Eleventy
         env:
-          NODE_ENV: development
+          NODE_ENV: production
           NODE_OPTIONS: '--max_old_space_size=4096'
         run: npm run build -- --pathprefix="/bugs.jqueryui.com/"
 
