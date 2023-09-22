@@ -1,2 +1,2 @@
-source: _site
+site: _site
 glob: '{milestone,ticket}/**/*.{html}'
