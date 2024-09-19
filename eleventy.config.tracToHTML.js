@@ -25,7 +25,7 @@ function escapeHTML(string) {
   return string.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
-module.exports = function tracToHTML(text) {
+export default function tracToHTML(text) {
   const codes = []
   const pres = []
   let html = escapeHTML(text)
