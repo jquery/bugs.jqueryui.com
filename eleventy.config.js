@@ -1,19 +1,17 @@
-const { DateTime } = require('luxon')
+import { EleventyHtmlBasePlugin } from '@11ty/eleventy'
+import pluginNavigation from '@11ty/eleventy-navigation'
+import pluginBundle from '@11ty/eleventy-plugin-bundle'
+import pluginSyntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight'
+import CleanCSS from 'clean-css'
+import pluginFavicon from 'eleventy-favicon'
+import { DateTime } from 'luxon'
+import { exec } from 'node:child_process'
+import fs from 'node:fs'
+import path from 'node:path'
+import pluginImages from './eleventy.config.images.js'
+import tracToHTML from './eleventy.config.tracToHTML.js'
 
-const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
-const pluginBundle = require('@11ty/eleventy-plugin-bundle')
-const pluginNavigation = require('@11ty/eleventy-navigation')
-const { EleventyHtmlBasePlugin } = require('@11ty/eleventy')
-const pluginFavicon = require('eleventy-favicon')
-const CleanCSS = require('clean-css')
-const fs = require('node:fs')
-const path = require('node:path')
-const { exec } = require('node:child_process')
-
-const pluginImages = require('./eleventy.config.images.js')
-const tracToHTML = require('./eleventy.config.tracToHTML.js')
-
-module.exports = function (eleventyConfig) {
+export default function config(eleventyConfig) {
   // Copy the contents of the `public` folder to the output folder
   // For example, `./public/css/` ends up in `_site/css/`
   eleventyConfig.addPassthroughCopy({
@@ -157,7 +155,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addAsyncShortcode('attachment', async (ticketId, filename) => {
     const content = await fs.promises.readFile(
-      path.join(__dirname, `raw-attachment/ticket/${ticketId}`, filename)
+      path.resolve(`./raw-attachment/ticket/${ticketId}`, filename)
     )
     return content.toString()
   })

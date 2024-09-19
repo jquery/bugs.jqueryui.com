@@ -31,11 +31,11 @@
     {# Add an arbitrary string to the bundle #}
     {# {%- css %}* { box-sizing: border-box; }{% endcss %} #}
     {# Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
-    <style>
+    {# <style>
       {% getBundle "css" %}
-    </style>
+    </style> #}
     {#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-    {# <link rel="stylesheet" href="{% getBundleFileUrl 'css' %}"> #}
+    <link rel="stylesheet" href="{% getBundleFileUrl 'css' %}">
   </head>
   <body>
     <div class="banner flex-center">
@@ -139,17 +139,5 @@
       </footer>
     </div>
     <script src="/pagefind/pagefind-ui.js" type="text/javascript"></script>
-    <script>
-      window.addEventListener('DOMContentLoaded', (event) => {
-        new PagefindUI({
-          element: "#search",
-          showImages: false,
-          translations: {
-            placeholder: 'Search tickets',
-            zero_results: 'No matches found.'
-          }
-        })
-      })
-    </script>
   </body>
 </html>
