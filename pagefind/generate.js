@@ -6,12 +6,8 @@ const { index } = await pagefind.createIndex()
 
 // Index milestones and tickets
 await index.addDirectory({
-  path: '_site/milestone',
-  glob: '**/*.html'
-})
-await index.addDirectory({
-  path: '_site/ticket',
-  glob: '**/*.html'
+  path: '_site',
+  glob: '{milestone,ticket}/**/*.html'
 })
 
 // Write pagefind files
