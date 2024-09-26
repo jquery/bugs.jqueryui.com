@@ -1,4 +1,9 @@
 {%- css %}{% include "public/css/milestone-summary.css" %}{% endcss %}
+{%- css %}
+.progress-bar-{{ milestone.id }} {
+  width: {{ milestone.percent }}%;
+}
+{%- endcss %}
 
 <div class="milestone-summary">
   {% if milestone.completed != 0 %}
@@ -11,7 +16,7 @@
 
   <div class="flex-row progress">
     <div class="progress-bar">
-      <div class="progress-bar-fill" style="width: {{ milestone.percent }}%"></div>
+      <div class="progress-bar-fill progress-bar-{{ milestone.id }}"></div>
     </div>
     {{ milestone.percent }}%
   </div>

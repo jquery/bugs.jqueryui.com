@@ -6,7 +6,8 @@
     "description": "",
     "total": 350,
     "closed": 350,
-    "percent": 100
+    "percent": 100,
+    "id": "1-5"
   },
   {
     "name": "1.5.1",
@@ -15,7 +16,8 @@
     "description": "",
     "total": 43,
     "closed": 43,
-    "percent": 100
+    "percent": 100,
+    "id": "1-5-1"
   },
   {
     "name": "1.5.2",
@@ -24,7 +26,8 @@
     "description": "",
     "total": 36,
     "closed": 36,
-    "percent": 100
+    "percent": 100,
+    "id": "1-5-2"
   },
   {
     "name": "1.6b",
@@ -33,7 +36,8 @@
     "description": "",
     "total": 22,
     "closed": 22,
-    "percent": 100
+    "percent": 100,
+    "id": "1-6b"
   },
   {
     "name": "1.6rc1",
@@ -42,7 +46,8 @@
     "description": "",
     "total": 26,
     "closed": 26,
-    "percent": 100
+    "percent": 100,
+    "id": "1-6rc1"
   },
   {
     "name": "1.6rc2",
@@ -51,7 +56,8 @@
     "description": "",
     "total": 13,
     "closed": 13,
-    "percent": 100
+    "percent": 100,
+    "id": "1-6rc2"
   },
   {
     "name": "1.5.3",
@@ -60,7 +66,8 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": 100
+    "percent": 100,
+    "id": "1-5-3"
   },
   {
     "name": "1.6rc3",
@@ -69,7 +76,8 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": 100
+    "percent": 100,
+    "id": "1-6rc3"
   },
   {
     "name": "1.6rc4",
@@ -78,7 +86,8 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": 100
+    "percent": 100,
+    "id": "1-6rc4"
   },
   {
     "name": "1.6rc5",
@@ -87,7 +96,8 @@
     "description": "",
     "total": 3,
     "closed": 3,
-    "percent": 100
+    "percent": 100,
+    "id": "1-6rc5"
   },
   {
     "name": "1.6rc6",
@@ -96,7 +106,8 @@
     "description": "",
     "total": 2,
     "closed": 2,
-    "percent": 100
+    "percent": 100,
+    "id": "1-6rc6"
   },
   {
     "name": "1.7",
@@ -105,7 +116,8 @@
     "description": "1.6rc6 plus bug fixes, compatible with jQuery 1.3+\r\\\nMajor features:\r\\\n* Progressbar\r\\\n* jQuery UI CSS Framework\r\\\n",
     "total": 490,
     "closed": 490,
-    "percent": 100
+    "percent": 100,
+    "id": "1-7"
   },
   {
     "name": "1.6rc2.5",
@@ -114,7 +126,8 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": 100
+    "percent": 100,
+    "id": "1-6rc2-5"
   },
   {
     "name": "1.7.1",
@@ -123,7 +136,8 @@
     "description": "",
     "total": 23,
     "closed": 23,
-    "percent": 100
+    "percent": 100,
+    "id": "1-7-1"
   },
   {
     "name": "1.6rc2.6",
@@ -132,7 +146,8 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": 100
+    "percent": 100,
+    "id": "1-6rc2-6"
   },
   {
     "name": "1.6",
@@ -141,7 +156,8 @@
     "description": "1.6rc2 plus bug fixes, compatible with jQuery 1.2.6",
     "total": 37,
     "closed": 37,
-    "percent": 100
+    "percent": 100,
+    "id": "1-6"
   },
   {
     "name": "1.7.2",
@@ -150,7 +166,8 @@
     "description": "",
     "total": 35,
     "closed": 35,
-    "percent": 100
+    "percent": 100,
+    "id": "1-7-2"
   },
   {
     "name": "1.8a1",
@@ -159,7 +176,8 @@
     "description": "",
     "total": 1,
     "closed": 1,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8a1"
   },
   {
     "name": "1.8a2",
@@ -168,7 +186,8 @@
     "description": "",
     "total": 3,
     "closed": 3,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8a2"
   },
   {
     "name": "1.8b1",
@@ -177,7 +196,8 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8b1"
   },
   {
     "name": "1.8rc1",
@@ -186,7 +206,8 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8rc1"
   },
   {
     "name": "1.8rc2",
@@ -195,7 +216,8 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8rc2"
   },
   {
     "name": "1.8rc3",
@@ -204,7 +226,8 @@
     "description": "",
     "total": 0,
     "closed": 0,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8rc3"
   },
   {
     "name": "1.8",
@@ -213,7 +236,8 @@
     "description": "",
     "total": 443,
     "closed": 443,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8"
   },
   {
     "name": "1.7.3",
@@ -222,7 +246,8 @@
     "description": "",
     "total": 3,
     "closed": 3,
-    "percent": 100
+    "percent": 100,
+    "id": "1-7-3"
   },
   {
     "name": "1.8.1",
@@ -231,7 +256,8 @@
     "description": "",
     "total": 33,
     "closed": 33,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-1"
   },
   {
     "name": "1.8.2",
@@ -240,7 +266,8 @@
     "description": "",
     "total": 49,
     "closed": 49,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-2"
   },
   {
     "name": "1.8.3",
@@ -249,7 +276,8 @@
     "description": "",
     "total": 79,
     "closed": 79,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-3"
   },
   {
     "name": "1.8.4",
@@ -258,7 +286,8 @@
     "description": "",
     "total": 7,
     "closed": 7,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-4"
   },
   {
     "name": "1.8.5",
@@ -267,7 +296,8 @@
     "description": "",
     "total": 41,
     "closed": 41,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-5"
   },
   {
     "name": "1.8.6",
@@ -276,7 +306,8 @@
     "description": "",
     "total": 54,
     "closed": 54,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-6"
   },
   {
     "name": "1.8.7",
@@ -285,7 +316,8 @@
     "description": "",
     "total": 47,
     "closed": 47,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-7"
   },
   {
     "name": "1.8.8",
@@ -294,7 +326,8 @@
     "description": "",
     "total": 14,
     "closed": 14,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-8"
   },
   {
     "name": "1.8.9",
@@ -303,7 +336,8 @@
     "description": "",
     "total": 12,
     "closed": 12,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-9"
   },
   {
     "name": "1.8.10",
@@ -312,7 +346,8 @@
     "description": "",
     "total": 13,
     "closed": 13,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-10"
   },
   {
     "name": "1.8.11",
@@ -321,7 +356,8 @@
     "description": "",
     "total": 18,
     "closed": 18,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-11"
   },
   {
     "name": "1.8.12",
@@ -330,7 +366,8 @@
     "description": "",
     "total": 8,
     "closed": 8,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-12"
   },
   {
     "name": "1.8.13",
@@ -339,7 +376,8 @@
     "description": "",
     "total": 23,
     "closed": 23,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-13"
   },
   {
     "name": "1.8.14",
@@ -348,7 +386,8 @@
     "description": "",
     "total": 25,
     "closed": 25,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-14"
   },
   {
     "name": "1.8.15",
@@ -357,7 +396,8 @@
     "description": "",
     "total": 11,
     "closed": 11,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-15"
   },
   {
     "name": "1.8.16",
@@ -366,7 +406,8 @@
     "description": "",
     "total": 18,
     "closed": 18,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-16"
   },
   {
     "name": "1.8.17",
@@ -375,7 +416,8 @@
     "description": "",
     "total": 31,
     "closed": 31,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-17"
   },
   {
     "name": "1.8.18",
@@ -384,7 +426,8 @@
     "description": "",
     "total": 30,
     "closed": 30,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-18"
   },
   {
     "name": "1.8.19",
@@ -393,7 +436,8 @@
     "description": "",
     "total": 20,
     "closed": 20,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-19"
   },
   {
     "name": "1.8.20",
@@ -402,7 +446,8 @@
     "description": "",
     "total": 7,
     "closed": 7,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-20"
   },
   {
     "name": "1.8.21",
@@ -411,7 +456,8 @@
     "description": "",
     "total": 13,
     "closed": 13,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-21"
   },
   {
     "name": "1.8.22",
@@ -420,7 +466,8 @@
     "description": "",
     "total": 8,
     "closed": 8,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-22"
   },
   {
     "name": "1.8.23",
@@ -429,7 +476,8 @@
     "description": "",
     "total": 7,
     "closed": 7,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-23"
   },
   {
     "name": "1.8.24",
@@ -438,7 +486,8 @@
     "description": "",
     "total": 8,
     "closed": 8,
-    "percent": 100
+    "percent": 100,
+    "id": "1-8-24"
   },
   {
     "name": "1.9.0",
@@ -447,7 +496,8 @@
     "description": "",
     "total": 1451,
     "closed": 1451,
-    "percent": 100
+    "percent": 100,
+    "id": "1-9-0"
   },
   {
     "name": "1.9.1",
@@ -456,7 +506,8 @@
     "description": "",
     "total": 59,
     "closed": 59,
-    "percent": 100
+    "percent": 100,
+    "id": "1-9-1"
   },
   {
     "name": "1.9.2",
@@ -465,7 +516,8 @@
     "description": "",
     "total": 19,
     "closed": 19,
-    "percent": 100
+    "percent": 100,
+    "id": "1-9-2"
   },
   {
     "name": "1.10.0",
@@ -474,7 +526,8 @@
     "description": "",
     "total": 357,
     "closed": 357,
-    "percent": 100
+    "percent": 100,
+    "id": "1-10-0"
   },
   {
     "name": "1.10.1",
@@ -483,7 +536,8 @@
     "description": "",
     "total": 26,
     "closed": 26,
-    "percent": 100
+    "percent": 100,
+    "id": "1-10-1"
   },
   {
     "name": "1.10.2",
@@ -492,7 +546,8 @@
     "description": "",
     "total": 22,
     "closed": 22,
-    "percent": 100
+    "percent": 100,
+    "id": "1-10-2"
   },
   {
     "name": "1.10.3",
@@ -501,7 +556,8 @@
     "description": "",
     "total": 19,
     "closed": 19,
-    "percent": 100
+    "percent": 100,
+    "id": "1-10-3"
   },
   {
     "name": "1.10.4",
@@ -510,7 +566,8 @@
     "description": "",
     "total": 33,
     "closed": 33,
-    "percent": 100
+    "percent": 100,
+    "id": "1-10-4"
   },
   {
     "name": "1.11.0",
@@ -519,7 +576,8 @@
     "description": "",
     "total": 215,
     "closed": 215,
-    "percent": 100
+    "percent": 100,
+    "id": "1-11-0"
   },
   {
     "name": "1.11.1",
@@ -528,7 +586,8 @@
     "description": "",
     "total": 26,
     "closed": 26,
-    "percent": 100
+    "percent": 100,
+    "id": "1-11-1"
   },
   {
     "name": "1.11.2",
@@ -537,7 +596,8 @@
     "description": "",
     "total": 30,
     "closed": 30,
-    "percent": 100
+    "percent": 100,
+    "id": "1-11-2"
   },
   {
     "name": "1.11.3",
@@ -546,7 +606,8 @@
     "description": "",
     "total": 12,
     "closed": 12,
-    "percent": 100
+    "percent": 100,
+    "id": "1-11-3"
   },
   {
     "name": "1.11.4",
@@ -555,7 +616,8 @@
     "description": "",
     "total": 10,
     "closed": 10,
-    "percent": 100
+    "percent": 100,
+    "id": "1-11-4"
   },
   {
     "name": "1.12.0",
@@ -564,7 +626,8 @@
     "description": "",
     "total": 123,
     "closed": 123,
-    "percent": 100
+    "percent": 100,
+    "id": "1-12-0"
   },
   {
     "name": "1.12.1",
@@ -573,7 +636,8 @@
     "description": "",
     "total": 12,
     "closed": 11,
-    "percent": 92
+    "percent": 92,
+    "id": "1-12-1"
   },
   {
     "name": "1.12.2",
@@ -582,7 +646,8 @@
     "description": "",
     "total": 48,
     "closed": 46,
-    "percent": 96
+    "percent": 96,
+    "id": "1-12-2"
   },
   {
     "name": "1.13.0",
@@ -591,7 +656,8 @@
     "description": "",
     "total": 18,
     "closed": 0,
-    "percent": 0
+    "percent": 0,
+    "id": "1-13-0"
   },
   {
     "name": "2.0.0",
@@ -600,7 +666,8 @@
     "description": "",
     "total": 371,
     "closed": 262,
-    "percent": 71
+    "percent": 71,
+    "id": "2-0-0"
   },
   {
     "name": "git",
@@ -609,7 +676,8 @@
     "description": "",
     "total": 63,
     "closed": 63,
-    "percent": 100
+    "percent": 100,
+    "id": "git"
   },
   {
     "name": "none",
@@ -618,6 +686,7 @@
     "description": "",
     "total": 1652,
     "closed": 1189,
-    "percent": 72
+    "percent": 72,
+    "id": "none"
   }
 ]
