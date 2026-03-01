@@ -139,32 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- effects.scale.js.orig	2008-06-06 20:16:13.000000000 +0400
-+++ effects.scale.js	2008-06-06 21:24:29.000000000 +0400
-@@ -8,7 +8,7 @@
- 			var el = $(this);
- 		
- 			// Set options
--			var options = $.extend(true, {}, o);
-+			var options = $.extend(true, {}, o.options);
- 			var mode = $.effects.setMode(el, o.options.mode || 'hide'); // Set Mode
- 			var percent = parseInt(o.options.percent) || 150; // Set default puff percent
- 			options.fade = true; // It's not a puff if it doesn't fade! :)
-@@ -38,7 +38,7 @@
- 			var el = $(this);
- 
- 			// Set options
--			var options = $.extend(true, {}, o);
-+			var options = $.extend(true, {}, o.options);
- 			var mode = $.effects.setMode(el, o.options.mode || 'effect'); // Set Mode
- 			var percent = parseInt(o.options.percent) || (parseInt(o.options.percent) == 0 ? 0 : (mode == 'hide' ? 0 : 100)); // Set default scaling percent
- 			var direction = o.options.direction || 'both'; // Set default axis</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/2967/scale-easing.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/2967/scale-easing.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

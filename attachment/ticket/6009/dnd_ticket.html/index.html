@@ -139,104 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-html" tabindex="0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>jQuery UI Droppable - Accept Demo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/themes/base/jquery-ui.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/jquery-ui.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
-    <span class="token selector">#droppable1,#droppable2</span> <span class="token punctuation">{</span>
-        <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-        <span class="token property">width</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
-        <span class="token property">height</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
-        <span class="token property">padding</span><span class="token punctuation">:</span> 0.5em<span class="token punctuation">;</span>
-        <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-        <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token selector">#droppable1</span> <span class="token punctuation">{</span>
-        <span class="token property">z-index</span><span class="token punctuation">:</span> 20<span class="token punctuation">;</span>
-        <span class="token property">top</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-        <span class="token property">left</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token selector">#droppable2</span> <span class="token punctuation">{</span>
-        <span class="token property">z-index</span><span class="token punctuation">:</span> 22<span class="token punctuation">;</span>
-        <span class="token property">top</span><span class="token punctuation">:</span> 130px<span class="token punctuation">;</span>
-        <span class="token property">left</span><span class="token punctuation">:</span> 130px<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token selector">#draggable</span> <span class="token punctuation">{</span>
-        <span class="token property">z-index</span><span class="token punctuation">:</span> 25<span class="token punctuation">;</span>
-        <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-        <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-        <span class="token property">padding</span><span class="token punctuation">:</span> 0.5em<span class="token punctuation">;</span>
-        <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-        <span class="token property">margin</span><span class="token punctuation">:</span> 10px 10px 10px 0<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#draggable"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">draggable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#droppable1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">droppable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-            <span class="token literal-property property">accept</span><span class="token operator">:</span> <span class="token string">'#draggable'</span><span class="token punctuation">,</span>
-            <span class="token literal-property property">activeClass</span><span class="token operator">:</span> <span class="token string">'ui-state-hover'</span><span class="token punctuation">,</span>
-            <span class="token literal-property property">hoverClass</span><span class="token operator">:</span> <span class="token string">'ui-state-active'</span><span class="token punctuation">,</span>
-            <span class="token function-variable function">drop</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> ui</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">'ui-state-highlight'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">'Dropped!'</span><span class="token punctuation">)</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#droppable2"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">droppable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-            <span class="token literal-property property">accept</span><span class="token operator">:</span> <span class="token string">'#draggable'</span><span class="token punctuation">,</span>
-            <span class="token literal-property property">activeClass</span><span class="token operator">:</span> <span class="token string">'ui-state-hover'</span><span class="token punctuation">,</span>
-            <span class="token literal-property property">hoverClass</span><span class="token operator">:</span> <span class="token string">'ui-state-active'</span><span class="token punctuation">,</span>
-            <span class="token function-variable function">drop</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> ui</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">'ui-state-highlight'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">'Dropped!'</span><span class="token punctuation">)</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>draggable<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui-widget-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Drag me to my target<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>droppable1<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui-widget-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>accept: '#draggable'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>droppable2<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui-widget-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>accept: '#draggable'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token comment">&lt;!-- End demo --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>
-    Try to drag draggable over two droppables.
-    There are positions when they both are hovered though only one should be.
-    I think that only one droppable should be hovered because only one could receive this draggable so only one should show that it's waiting.
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>
-    When you drop draggable into intersection of droppable1 and droppable2 (when they are hovered) only droppable1 will receive draggable though droppable2 is on top.
-    And droppable2 will be keeping hoverClass untill next dragging.
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+      <pre class="language-html" tabindex="0"><code class="language-html"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/6009/dnd_ticket.html">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/6009/dnd_ticket.html">Original Format</a>
   </div>
 </h1></div>
         </div>

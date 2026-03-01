@@ -139,127 +139,17 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: img/slider-bg-2.png
-===================================================================
-Cannot display: file marked as a binary type.
-svn:mime-type = application/octet-stream
-
-Property changes on: img\slider-bg-2.png
-___________________________________________________________________
-Added: svn:mime-type
-   + application/octet-stream
-
-Index: img/slider-handle.gif
-===================================================================
-Cannot display: file marked as a binary type.
-svn:mime-type = application/octet-stream
-
-Property changes on: img\slider-handle.gif
-___________________________________________________________________
-Added: svn:mime-type
-   + application/octet-stream
-
-Index: index.html
-===================================================================
---- index.html	(revision 537)
-+++ index.html	(working copy)
-@@ -15,9 +15,21 @@
- 		<script type="text/javascript" src="../../../ui/ui.core.js"></script>
- 		<script type="text/javascript" src="../../../ui/ui.draggable.js"></script>
- 		<script type="text/javascript" src="../../../ui/ui.droppable.js"></script>
-+		<script type="text/javascript" src="../../../ui/ui.droppable.js"></script>
-+		<script type="text/javascript" src="../../../ui/ui.slider.js"></script>
- 
- 		<script type="text/javascript" src="./js/demo.js"></script>
-+		<style type="text/css" media="all">
-+			.ui-slider { width: 200px; height: 23px; position: relative; background-repeat: no-repeat; background-position: center center; }
-+			.ui-slider-handle { position: absolute; z-index: 1; height: 23px; width: 12px; top: 0px; left: 0px; background-image: url(img/slider-handle.gif); }
-+			.ui-slider-handle-active { border: 1px dotted black; }
-+			.ui-slider-disabled .ui-slider-handle { opacity: 0.5; filter: alpha(opacity=50); }
-+			.ui-slider-range { position: absolute; background: #50A029; opacity: 0.3; filter: alpha(opacity=30); width: 100%; height: 100%; }
- 
-+			.ui-slider, .ui-slider-1 { background-image: url(img/slider-bg-1.png); }
-+			.ui-slider-2 { background-image: url(img/slider-bg-2.png); clear:both}
-+			.nominheight{min-height:20px;}
-+		</style>
- 		<link rel="stylesheet" type="text/css" href="./theme/css/screen.css" media="screen, projection">
- 	
- 	<body>
-@@ -109,6 +121,14 @@
- 				
- 			</body></code></pre></div>
- 			<div id="sidebar">
-+				<div class="box2" id="resize">
-+					<h2>Resize images</h2>
-+					<div style="margin: 5px; padding: 5px;min-height:20px" class="ui-slider-2 ui-slider" id="sliderSize">
-+						<a style="cursor: default;" href="javascript:void(0)">
-+							<div class="ui-slider-handle" style="left: 150px;min-height:20px"></div>
-+						</a>	
-+					</div>	
-+				</div>
- 				<div class="box" id="trash">
- 					<h2>Trash (drag me back)</h2>
- 					<div></div>
-Index: js/demo.js
-===================================================================
---- js/demo.js	(revision 537)
-+++ js/demo.js	(working copy)
-@@ -117,6 +117,26 @@
- 			.displayBox();
- 		return false;
- 	});
-+	
-+	
-+	var sliderChange = function(e, ui){
-+		$('.img_content').each(function(index, item){
-+			var _new = 1.44	* $('#sliderSize').slider("value");
-+			
-+			$(this).css("width", _new+'px')
-+				.parent().css("width", (_new+16)+'px');
-+			
-+		});
-+	}
-+	$('#sliderSize').slider({
-+		startValue : 100,
-+		min : 50,
-+		max : 100,
-+		stepping : 5,
-+		slide : sliderChange,
-+		change : sliderChange
-+	});
-+	
- });
- 
- function createGalleryItem(img) {
-Index: theme/css/screen.css
-===================================================================
---- theme/css/screen.css	(revision 537)
-+++ theme/css/screen.css	(working copy)
-@@ -116,12 +116,12 @@
- ----------------
- =SIDEBAR
- ---------------- */
--.box {
-+.box, .box2 {
- 	margin: 18px;
- 	border: 1px solid #ccc;
- 	background: #fff;
- }
--.box h2 {
-+.box h2, .box2 h2 {
- 	padding: 0 8px;
- 	margin: 0;
- 	font-size: 1.5em;
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3185/ui.photogallerydemo_slider.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3185/ui.photogallerydemo_slider.patch">Original Format</a>
   </div>
-</div>
-        </h1></div>
-      </div></main>
+</h1></div>
+        </div>
+      </main>
       <footer>
         Copyright &copy; 2026
         <a href="https://openjsf.org">The OpenJS Foundation</a>

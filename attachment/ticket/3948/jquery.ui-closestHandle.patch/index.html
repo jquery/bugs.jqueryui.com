@@ -139,34 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- ui.orig/ui.slider.js	2009-01-16 01:11:14.000000000 +0100
-+++ ui/ui.slider.js	2009-01-26 17:59:35.490771400 +0100
-@@ -185,7 +185,8 @@
- 		var position = { x: event.pageX, y: event.pageY };
- 		var normValue = this._normValueFromMouse(position);
- 
--		var distance = this._valueMax(), closestHandle;
-+		var distance = this._valueMax() + 1;
-+		var closestHandle;
- 		var self = this, index;
- 		this.handles.each(function(i) {
- 			var thisDistance = Math.abs(normValue - self.values(i));
-@@ -196,6 +197,9 @@
- 			}
- 		});
- 
-+		if (index == undefined)
-+			return false;
-+
- 		self._handleIndex = index;
- 
- 		closestHandle</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3948/jquery.ui-closestHandle.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3948/jquery.ui-closestHandle.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

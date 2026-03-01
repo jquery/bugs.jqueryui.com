@@ -139,51 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff"><span class="token coord">*** e:/webapp/Code/Server/src/admin2/media/js/ui.dialog.js	2008-08-25 10:29:29.892301300 +0200</span>
-<span class="token coord">--- e:/jqueryjs/ui/ui/ui.dialog.js	2008-08-25 09:56:18.410805900 +0200</span>
-<span class="token coord">***************</span>
-<span class="token coord">*** 395,412 ****</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 					return allow;
-</span><span class="token prefix unchanged"> </span><span class="token line"> 				});
-</span><span class="token prefix unchanged"> </span><span class="token line"> 			}, 1);
-</span></span><span class="token diff bold"><span class="token prefix diff">!</span><span class="token line"> 
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 			// allow closing by pressing the escape key
-</span><span class="token prefix unchanged"> </span><span class="token line"> 			$(document).bind('keydown.dialog-overlay', function(e) {
-</span></span><span class="token diff bold"><span class="token prefix diff">!</span><span class="token line">                             if (options.closeOnEscape) {
-</span><span class="token prefix diff">!</span><span class="token line">                                 (e.keyCode &amp;&amp; e.keyCode == $.keyCode.ESCAPE &amp;&amp; dialog.close());
-</span><span class="token prefix diff">!</span><span class="token line">                             }
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 			});
-</span></span><span class="token diff bold"><span class="token prefix diff">!</span><span class="token line"> 
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 			// handle window resize
-</span><span class="token prefix unchanged"> </span><span class="token line"> 			$(window).bind('resize.dialog-overlay', $.ui.dialog.overlay.resize);
-</span><span class="token prefix unchanged"> </span><span class="token line"> 		}
-</span></span><span class="token diff bold"><span class="token prefix diff">!</span><span class="token line"> 
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 		var $el = $('&lt;div/>').appendTo(document.body)
-</span><span class="token prefix unchanged"> </span><span class="token line"> 			.addClass('ui-dialog-overlay').css($.extend({
-</span><span class="token prefix unchanged"> </span><span class="token line"> 				borderWidth: 0, margin: 0, padding: 0,
-</span></span><span class="token coord">--- 395,410 ----</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 					return allow;
-</span><span class="token prefix unchanged"> </span><span class="token line"> 				});
-</span><span class="token prefix unchanged"> </span><span class="token line"> 			}, 1);
-</span></span><span class="token diff bold"><span class="token prefix diff">!</span><span class="token line"> 			
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 			// allow closing by pressing the escape key
-</span><span class="token prefix unchanged"> </span><span class="token line"> 			$(document).bind('keydown.dialog-overlay', function(e) {
-</span></span><span class="token diff bold"><span class="token prefix diff">!</span><span class="token line"> 				(e.keyCode &amp;&amp; e.keyCode == $.keyCode.ESCAPE &amp;&amp; dialog.close()); 
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 			});
-</span></span><span class="token diff bold"><span class="token prefix diff">!</span><span class="token line"> 			
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 			// handle window resize
-</span><span class="token prefix unchanged"> </span><span class="token line"> 			$(window).bind('resize.dialog-overlay', $.ui.dialog.overlay.resize);
-</span><span class="token prefix unchanged"> </span><span class="token line"> 		}
-</span></span><span class="token diff bold"><span class="token prefix diff">!</span><span class="token line"> 		
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 		var $el = $('&lt;div/>').appendTo(document.body)
-</span><span class="token prefix unchanged"> </span><span class="token line"> 			.addClass('ui-dialog-overlay').css($.extend({
-</span><span class="token prefix unchanged"> </span><span class="token line"> 				borderWidth: 0, margin: 0, padding: 0,</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3253/dialogescapefix.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3253/dialogescapefix.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

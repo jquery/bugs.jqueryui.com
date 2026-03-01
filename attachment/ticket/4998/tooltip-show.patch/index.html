@@ -137,24 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui/jquery.ui.tooltip.js
-===================================================================
---- ui/jquery.ui.tooltip.js	(revision 3491)
-+++ ui/jquery.ui.tooltip.js	(working copy)
-@@ -50,6 +50,7 @@
- 	
- 	show: function(target) {
- 		var self = this;
-+                if(target === undefined) target = this.element;
- 		this.current = target;
- 		this.currentTitle = target.attr("title");
- 		var content = this.options.content.call(target[0], function(response) {</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4998/tooltip-show.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4998/tooltip-show.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

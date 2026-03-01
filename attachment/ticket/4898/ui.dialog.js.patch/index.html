@@ -137,23 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- ui.dialog.orig.js	2009-06-12 03:20:44.000000000 +0200
-+++ ui.dialog.js	2009-10-07 04:52:05.000000000 +0200
-@@ -547,7 +547,7 @@
- 				// handle $(el).dialog().dialog('close') (see #4065)
- 				if ($.ui.dialog.overlay.instances.length) {
- 					$(document).bind($.ui.dialog.overlay.events, function(event) {
--						var dialogZ = $(event.target).parents('.ui-dialog').css('zIndex') || 0;
-+						var dialogZ = $(event.target).parents('.ui-dialog').andSelf().css('zIndex') || 0;
- 						return (dialogZ > $.ui.dialog.overlay.maxZ);
- 					});
- 				}</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4898/ui.dialog.js.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4898/ui.dialog.js.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

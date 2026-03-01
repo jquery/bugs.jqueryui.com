@@ -139,40 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">### Eclipse Workspace Patch 1.0
-#P jquery-ui-trunk
-Index: ui/ui.draggable.js
-===================================================================
---- ui/ui.draggable.js	(revision 1535)
-+++ ui/ui.draggable.js	(working copy)
-@@ -396,10 +396,17 @@
- 
- 		var inst = $(this).data("draggable");
- 		inst.sortables = [];
--		$(ui.options.connectToSortable).each(function() {
--			// 'this' points to a string, and should therefore resolved as query, but instead, if the string is assigned to a variable, it loops through the strings properties,
--			// so we have to append '' to make it anonymous again
--			$(this+'').each(function() {
-+		
-+		var strSortable;
-+		if (ui.options.connectToSortable instanceof Array)
-+			strSortable = ui.options.connectToSortable.join(',');
-+		else
-+			strSortable = ui.options.connectToSortable;
-+		
-+		$(strSortable).each(function() {
-+//			// 'this' points to a string, and should therefore resolved as query, but instead, if the string is assigned to a variable, it loops through the strings properties,
-+//			// so we have to append '' to make it anonymous again
-+			$(this).each(function() {
- 				if($.data(this, 'sortable')) {
- 					var sortable = $.data(this, 'sortable');
- 					inst.sortables.push({</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3666/sortable.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3666/sortable.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

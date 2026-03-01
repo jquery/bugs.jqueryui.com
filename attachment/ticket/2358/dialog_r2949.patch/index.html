@@ -139,55 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ../jquery/1.7.2/ui/ui.dialog.js
-===================================================================
---- ../jquery/1.7.2/ui/ui.dialog.js	(revision 2949)
-+++ ../jquery/1.7.2/ui/ui.dialog.js	(working copy)
-@@ -169,6 +169,21 @@
- 			})
- 			: self.uiDialog.hide() && self._trigger('close', event));
- 
-+    if ( !!this.options.hide && !!this.options.hide.effect ) {
-+      this.options.hide.effect == "fade" ? 
-+        this.uiDialog.fadeOut(this.options.hide.speed, function() {
-+          self._trigger('close', event);
-+        })
-+        : this.uiDialog.hide(this.options.hide.effect,this.options.hide.options,this.options.hide.speed, function() {
-+          self._trigger('close', event);
-+        });
-+    } else {
-+      this.options.hide == "fade" ?
-+        this.uiDialog.fadeOut() :
-+        this.uiDialog.hide();
-+      self._trigger('close', event);
-+    }
-+
- 		$.ui.dialog.overlay.resize();
- 
- 		self._isOpen = false;
-@@ -221,7 +236,15 @@
- 		(uiDialog.next().length && uiDialog.appendTo('body'));
- 		this._size();
- 		this._position(options.position);
--		uiDialog.show(options.show);
-+    if ( !!this.options.show && !!this.options.show.effect ) {
-+      this.options.show.effect == "fade" ?
-+        this.uiDialog.fadeIn(this.options.show.speed) : 
-+        this.uiDialog.show(this.options.show.effect,this.options.show.options,this.options.show.speed);
-+    } else {
-+      this.options.show == "fade" ? 
-+        this.uiDialog.fadeIn() : 
-+        this.uiDialog.show(this.options.show);
-+    }
- 		this.moveToTop(true);
- 
- 		// prevent tabbing out of modal dialogs</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/2358/dialog_r2949.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/2358/dialog_r2949.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

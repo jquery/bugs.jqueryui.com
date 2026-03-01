@@ -139,26 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff"><span class="token coord">--- jquery.ui.sortable.js</span>
-<span class="token coord">+++ (karl)</span>
-<span class="token coord">@@ -701,7 +701,10 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">       if(!innermostContainer) return; 
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">       // move the item into the container if it's not there already 
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">        if(this.currentContainer != this.containers[innermostIndex]) { 
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">        if(this.containers.length === 1) {
-</span><span class="token prefix inserted">+</span><span class="token line">          this.containers[innermostIndex]._trigger("over", event, this._uiHash(this)); 
-</span><span class="token prefix inserted">+</span><span class="token line">            this.containers[innermostIndex].containerCache.over = 1;
-</span><span class="token prefix inserted">+</span><span class="token line">        } else if(this.currentContainer != this.containers[innermostIndex]) { 
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">           //When entering a new container, we will find the item with the least distance and append our item near it 
-</span><span class="token prefix unchanged"> </span><span class="token line">           var dist = 10000; var itemWithLeastDistance = null; var base = this.positionAbs[this.containers[innermostIndex].floating ? 'left' : 'top'];</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5346/sortable-over-out.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5346/sortable-over-out.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

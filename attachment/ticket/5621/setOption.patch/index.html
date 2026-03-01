@@ -139,22 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- jquery.ui.sortable.js	2010-04-30 11:50:24.000000000 +0300
-+++ jquery.ui.sortable.fixed.js	2010-05-17 19:38:26.000000000 +0300
-@@ -81,7 +81,7 @@
- 				[ value ? "addClass" : "removeClass"]( "ui-sortable-disabled" );
- 		} else {
- 			// Don't call widget base _setOption for disable as it adds ui-state-disabled class
--			$.Widget.prototype._setOption.apply(self, arguments);
-+			$.Widget.prototype._setOption.apply(this, arguments);
- 		}
- 	},</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5621/setOption.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5621/setOption.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

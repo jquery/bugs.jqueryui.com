@@ -139,27 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">### Eclipse Workspace Patch 1.0
-#P jquery-ui
-Index: trunk/ui/ui.dialog.js
-===================================================================
---- trunk/ui/ui.dialog.js	(revision 3225)
-+++ trunk/ui/ui.dialog.js	(working copy)
-@@ -465,7 +465,7 @@
- 					uiDialog.resizable('option', 'handles', value));
- 
- 				// currently non-resizable, becoming resizable
--				(isResizable || self._makeResizable(value));
-+				(isResizable || (value !== false && self._makeResizable(value)));
- 				break;
- 			case "title":
- 				$(".ui-dialog-title", self.uiDialogTitlebar).html(value || '&nbsp;');</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4826/4826_dialog_option_resizable_false.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4826/4826_dialog_option_resizable_false.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

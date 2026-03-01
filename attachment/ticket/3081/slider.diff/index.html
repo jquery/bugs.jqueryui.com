@@ -139,29 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui/ui.slider.js
-===================================================================
-<span class="token coord">--- ui/ui.slider.js	(revision 431)</span>
-<span class="token coord">+++ ui/ui.slider.js	(working copy)</span>
-<span class="token coord">@@ -158,9 +158,10 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	
-</span><span class="token prefix unchanged"> </span><span class="token line">	keydown: function(keyCode, handle) {
-</span><span class="token prefix unchanged"> </span><span class="token line">		if(/(37|38|39|40)/.test(keyCode)) {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			var oper = /(37|40)/.test(keyCode) ? "-=" : "+="; 
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			this.moveTo({
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				x: /(37|39)/.test(keyCode) ? (keyCode == 37 ? '-' : '+') + '=' + this.oneStep("x") : 0,
-</span><span class="token prefix deleted">-</span><span class="token line">				y: /(38|40)/.test(keyCode) ? (keyCode == 38 ? '-' : '+') + '=' + this.oneStep("y") : 0
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				x: oper + this.oneStep("x"),
-</span><span class="token prefix inserted">+</span><span class="token line">				y: oper + this.oneStep("y")
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			}, handle);
-</span><span class="token prefix unchanged"> </span><span class="token line">		}
-</span><span class="token prefix unchanged"> </span><span class="token line">	},</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3081/slider.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3081/slider.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

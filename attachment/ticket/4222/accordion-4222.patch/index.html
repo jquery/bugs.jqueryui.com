@@ -137,100 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: tests/unit/accordion/accordion_options.js
-===================================================================
---- tests/unit/accordion/accordion_options.js	(revision 2502)
-+++ tests/unit/accordion/accordion_options.js	(working copy)
-@@ -119,6 +119,20 @@
- 	ok(false, 'missing test - untested code is broken code');
- });
- 
-+test("{ icons: false }", function() {
-+	function icons(on) {
-+		same($("#list1 span.ui-icon:visible").length, on ? 3 : 0);
-+	} 
-+	$("#list1").accordion({
-+		icons: false
-+	});
-+	icons(false);
-+	$("#list1").accordion("option", "icons", $.ui.accordion.defaults.icons);
-+	icons(true);
-+	$("#list1").accordion("option", "icons", false);
-+	icons(false);
-+});
-+
- test("{ navigation: false }, default", function() {
- 	ok(false, 'missing test - untested code is broken code');
- });
-Index: ui/ui.accordion.js
-===================================================================
---- ui/ui.accordion.js	(revision 2502)
-+++ ui/ui.accordion.js	(working copy)
-@@ -60,8 +60,7 @@
- 		this.active.next().addClass('ui-accordion-content-active');
- 
- 		//Append icon elements
--		$("<span>").addClass("ui-icon " + o.icons.header).prependTo(this.headers);
--		this.active.find(".ui-icon").toggleClass(o.icons.header).toggleClass(o.icons.headerSelected);
-+		this._createIcons();
- 
- 		// IE7-/Win - Extra vertical space in lists fixed
- 		if ($.browser.msie) {
-@@ -104,6 +103,18 @@
- 		}
- 
- 	},
-+	
-+	_createIcons: function() {
-+		var o = this.options;
-+		if (o.icons) {
-+			$("<span>").addClass("ui-icon " + o.icons.header).prependTo(this.headers);
-+			this.active.find(".ui-icon").toggleClass(o.icons.header).toggleClass(o.icons.headerSelected);
-+		}
-+	},
-+	
-+	_destroyIcons: function() {
-+		this.headers.children(".ui-icon").remove();
-+	},
- 
- 	destroy: function() {
- 		var o = this.options;
-@@ -120,7 +131,7 @@
- 			.removeAttr("role").removeAttr("aria-expanded").removeAttr("tabindex");
- 
- 		this.headers.find("a").removeAttr("tabindex");
--		this.headers.children(".ui-icon").remove();
-+		this._destroyIcons();
- 		var contents = this.headers.next().css("display", "").removeAttr("role").removeClass("ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content ui-accordion-content-active");
- 		if (o.autoHeight || o.fillHeight) {
- 			contents.css("height", "");
-@@ -130,8 +141,18 @@
- 	},
- 	
- 	_setData: function(key, value) {
--		if(key == 'alwaysOpen') { key = 'collapsible'; value = !value; }
--		$.widget.prototype._setData.apply(this, arguments);	
-+		// alwaysOpen is deprecated
-+		if(key == 'alwaysOpen'){ key = 'collapsible'; value = !value; }
-+		
-+		$.widget.prototype._setData.apply(this, arguments);
-+			
-+		if (key == "icons") {
-+			this._destroyIcons();
-+			if (value) {
-+				this._createIcons();
-+			}
-+		}
-+		
- 	},
- 
- 	_keydown: function(event) {</span></span></code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4222/accordion-4222.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4222/accordion-4222.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

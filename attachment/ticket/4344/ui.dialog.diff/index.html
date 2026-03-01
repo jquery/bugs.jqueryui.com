@@ -137,76 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui/ui.dialog.js
-===================================================================
-<span class="token coord">--- ui/ui.dialog.js	(revision 2482)</span>
-<span class="token coord">+++ ui/ui.dialog.js	(working copy)</span>
-<span class="token coord">@@ -284,14 +284,27 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		(typeof buttons == 'object' &amp;&amp; buttons !== null &amp;&amp;
-</span><span class="token prefix unchanged"> </span><span class="token line">			$.each(buttons, function() { return !(hasButtons = true); }));
-</span><span class="token prefix unchanged"> </span><span class="token line">		if (hasButtons) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			$.each(buttons, function(name, fn) {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			$.each(buttons, function(name, options) {
-</span><span class="token prefix inserted">+</span><span class="token line">				//check for legacy click callbacks
-</span><span class="token prefix inserted">+</span><span class="token line">				if($.isFunction(options)) {
-</span><span class="token prefix inserted">+</span><span class="token line">				    options = {click: options}
-</span><span class="token prefix inserted">+</span><span class="token line">				} 
-</span><span class="token prefix inserted">+</span><span class="token line">				
-</span><span class="token prefix inserted">+</span><span class="token line">				var o = $.extend({}, $.ui.dialog.defaults.buttonOptions, options);
-</span><span class="token prefix inserted">+</span><span class="token line">				var classes = 'ui-state-default';
-</span><span class="token prefix inserted">+</span><span class="token line">				if(o.priority) {
-</span><span class="token prefix inserted">+</span><span class="token line">				    classes += ' ui-priority-'+o.priority;
-</span><span class="token prefix inserted">+</span><span class="token line">				}
-</span><span class="token prefix inserted">+</span><span class="token line">				if(o.disabled) {
-</span><span class="token prefix inserted">+</span><span class="token line">				    classes += ' ui-state-disabled';
-</span><span class="token prefix inserted">+</span><span class="token line">				}
-</span><span class="token prefix inserted">+</span><span class="token line">				classes += ' '+o.classes;
-</span><span class="token prefix inserted">+</span><span class="token line">				
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				$('&lt;button type="button">&lt;/button>')
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">					.addClass(
-</span><span class="token prefix deleted">-</span><span class="token line">						'ui-state-default ' +
-</span><span class="token prefix deleted">-</span><span class="token line">						'ui-corner-all'
-</span><span class="token prefix deleted">-</span><span class="token line">					)
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">					.addClass(classes)
-</span><span class="token prefix inserted">+</span><span class="token line">					.attr('id', o.id)
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">					.text(name)
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">					.click(function() { fn.apply(self.element[0], arguments); })
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">					.click(function() { o.click.apply(self.element[0], arguments); })
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">					.hover(
-</span><span class="token prefix unchanged"> </span><span class="token line">						function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">							$(this).addClass('ui-state-hover');
-</span></span><span class="token coord">@@ -305,8 +318,8 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">					})
-</span><span class="token prefix unchanged"> </span><span class="token line">					.blur(function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">						$(this).removeClass('ui-state-focus');
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">					})
-</span><span class="token prefix deleted">-</span><span class="token line">					.appendTo(uiDialogButtonPane);
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">					}).appendTo(uiDialogButtonPane);
-</span><span class="token prefix inserted">+</span><span class="token line">					
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			});
-</span><span class="token prefix unchanged"> </span><span class="token line">			uiDialogButtonPane.appendTo(self.uiDialog);
-</span><span class="token prefix unchanged"> </span><span class="token line">		}
-</span></span><span class="token coord">@@ -529,7 +542,13 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		stack: true,
-</span><span class="token prefix unchanged"> </span><span class="token line">		title: '',
-</span><span class="token prefix unchanged"> </span><span class="token line">		width: 300,
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		zIndex: 1000
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		zIndex: 1000,
-</span><span class="token prefix inserted">+</span><span class="token line">		buttonOptions: {
-</span><span class="token prefix inserted">+</span><span class="token line">			disabled: false,
-</span><span class="token prefix inserted">+</span><span class="token line">			id: '',
-</span><span class="token prefix inserted">+</span><span class="token line">			classes: 'ui-corner-all',
-</span><span class="token prefix inserted">+</span><span class="token line">			click: function() {}
-</span><span class="token prefix inserted">+</span><span class="token line">		}
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	uuid: 0,</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4344/ui.dialog.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4344/ui.dialog.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

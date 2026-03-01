@@ -137,30 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-txt" tabindex="0"><code class="language-txt">### Eclipse Workspace Patch 1.0
-#P ProcEval
-Index: lib/ui.tabs.js
-===================================================================
---- lib/ui.tabs.js   (revision 18)
-+++ lib/ui.tabs.js   (working copy)
-@@ -353,10 +353,9 @@
-      var $panel = $('#' + id);
-      if (!$panel.length) {
-         $panel = $(o.panelTemplate).attr('id', id)
--           .addClass(o.hideClass)
-            .data('destroy.tabs', true);
-      }
--     $panel.addClass(o.panelClass);
-+     $panel.addClass(o.panelClass + " " + o.hideClass);
-      if (index >= this.$lis.length) {
-         $li.appendTo(this.list);
-         $panel.appendTo(this.list[0].parentNode);</code></pre>
+      <pre class="language-txt" tabindex="0"><code class="language-txt"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3875/ui.tabs.patch.txt">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3875/ui.tabs.patch.txt">Original Format</a>
   </div>
 </h1></div>
         </div>

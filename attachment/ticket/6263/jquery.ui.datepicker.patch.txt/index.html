@@ -139,24 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-txt" tabindex="0"><code class="language-txt">diff -u -r1.2 jquery.ui.datepicker.js
---- jquery.ui.datepicker.js	28 Oct 2010 11:41:32 -0000	1.2
-+++ jquery.ui.datepicker.js	4 Nov 2010 14:23:34 -0000
-@@ -615,7 +615,7 @@
- 			$.datepicker._pos[1] += input.offsetHeight; // add the height
- 		}
- 		var isFixed = false;
--		$(input).parents().each(function() {
-+		$(input).parents(":not(body,html)").each(function() {
- 			isFixed |= $(this).css('position') == 'fixed';
- 			return !isFixed;
- 		});</code></pre>
+      <pre class="language-txt" tabindex="0"><code class="language-txt"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/6263/jquery.ui.datepicker.patch.txt">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/6263/jquery.ui.datepicker.patch.txt">Original Format</a>
   </div>
 </h1></div>
         </div>

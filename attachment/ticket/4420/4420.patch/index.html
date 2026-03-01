@@ -137,34 +137,22 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: jquery.ui.datepicker.js
-===================================================================
---- jquery.ui.datepicker.js	(revision 3486)
-+++ jquery.ui.datepicker.js	(working copy)
-@@ -1541,7 +1541,7 @@
- 		}
- 		html += this._get(inst, 'yearSuffix');
- 		if (showMonthAfterYear)
--			html += (secondary || changeMonth || changeYear ? '&#xa0;' : '') + monthHtml;
-+			html += ((secondary || changeMonth || changeYear) && (!(changeMonth && changeYear)) ? '&#xa0;' : '') + monthHtml;
- 		html += '</code></pre></div>'; // Close datepicker_header
- 		return html;
- 	},
-    </h1></div>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
+    </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4420/4420.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4420/4420.patch">Original Format</a>
   </div>
-</div>
-        </main></div>
-      
+</h1></div>
+        </div>
+      </main>
       <footer>
         Copyright &copy; 2026
         <a href="https://openjsf.org">The OpenJS Foundation</a>
       </footer>
-    
+    </div>
     <script src="/pagefind/pagefind-ui.js" type="text/javascript"></script>
   </body>
 </html>

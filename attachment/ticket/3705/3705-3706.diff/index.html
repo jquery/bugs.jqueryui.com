@@ -139,65 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: trunk/themes/base/ui.accordion.css
-===================================================================
-<span class="token coord">--- trunk/themes/base/ui.accordion.css	���汾 1535��</span>
-<span class="token coord">+++ trunk/themes/base/ui.accordion.css	������������</span>
-<span class="token coord">@@ -2,7 +2,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">----------------------------------*/
-</span><span class="token prefix unchanged"> </span><span class="token line">.ui-accordion-group {margin-bottom: 1px;}
-</span><span class="token prefix unchanged"> </span><span class="token line">.ui-accordion-header { cursor: pointer; position: relative;  }
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">.selected .ui-accordion-header { border-bottom: 0; }
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">.ui-accordion-selected .ui-accordion-header { border-bottom: 0; }
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">.ui-accordion .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
-</span><span class="token prefix unchanged"> </span><span class="token line">.ui-accordion-header a { display: block; font-size: 1em; padding: .5em .5em .5em 2.2em; }
-</span><span class="token prefix unchanged"> </span><span class="token line">.ui-accordion-content-wrap { border-top: 0; margin-top: -1px; position: relative; top: 1px; }
-</span></span>Index: trunk/ui/ui.accordion.js
-===================================================================
-<span class="token coord">--- trunk/ui/ui.accordion.js	���汾 1535��</span>
-<span class="token coord">+++ trunk/ui/ui.accordion.js	������������</span>
-<span class="token coord">@@ -24,7 +24,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">					options.active = current;
-</span><span class="token prefix unchanged"> </span><span class="token line">				} else {
-</span><span class="token prefix unchanged"> </span><span class="token line">					options.active = current.parent().parent().prev();
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">					current.addClass("current");
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">					current.addClass("ui-accordion-current");
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				}
-</span><span class="token prefix unchanged"> </span><span class="token line">			}
-</span><span class="token prefix unchanged"> </span><span class="token line">		}
-</span></span><span class="token coord">@@ -38,7 +38,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		headers.next().wrap("&lt;div>&lt;/div>").addClass("ui-accordion-content").parent().addClass("ui-accordion-content-wrap ui-helper-reset ui-widget-content ui-corner-bottom");
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		var active = options.active = findActive(headers, options.active).toggleClass("ui-state-default").toggleClass("ui-state-active").toggleClass("ui-corner-all").toggleClass("ui-corner-top");
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		active.parent().addClass("selected");
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		active.parent().addClass(options.selectedClass);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		$("&lt;span/>").addClass("ui-icon " + this.options.icons.header).prependTo(headers);
-</span><span class="token prefix unchanged"> </span><span class="token line">		active.find(".ui-icon").toggleClass(this.options.icons.header).toggleClass(this.options.icons.headerSelected);
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token coord">@@ -86,7 +86,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	destroy: function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.element.removeClass("ui-accordion ui-widget ui-helper-reset").removeAttr("role").unbind(".accordion");
-</span><span class="token prefix unchanged"> </span><span class="token line">		$.removeData(this.element[0], "accordion");
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		var groups = this.element.children().removeClass("ui-accordion-group selected");
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		var groups = this.element.children().removeClass("ui-accordion-group "+ this.options.selectedClass);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		var headers = this.options.headers.unbind(".accordion").removeClass("ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-state-active ui-corner-top")
-</span><span class="token prefix unchanged"> </span><span class="token line">			.removeAttr("role").removeAttr("aria-expanded").removeAttr("tabindex");
-</span><span class="token prefix unchanged"> </span><span class="token line">		headers.find("a").removeAttr("tabindex");
-</span></span><span class="token coord">@@ -354,7 +354,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			return this.href.toLowerCase() == location.href.toLowerCase();
-</span><span class="token prefix unchanged"> </span><span class="token line">		},
-</span><span class="token prefix unchanged"> </span><span class="token line">		running: 0,
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		selectedClass: "selected"
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		selectedClass: "ui-accordion-selected"
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">	animations: {
-</span><span class="token prefix unchanged"> </span><span class="token line">		slide: function(options, additions) {</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3705/3705-3706.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3705/3705-3706.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

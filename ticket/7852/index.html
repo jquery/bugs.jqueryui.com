@@ -114,7 +114,7 @@
         <div id="jq-content" class="flex-column">
           
 
-<div class="flex-column" data-pagefind-body="">
+<div class="flex-column" data-pagefind-body>
   
 
   <nav class="content-nav">
@@ -209,7 +209,7 @@
   </table>
   <div class="ticket-info-bottom">
     <h5 class="ticket-description-title">Description</h5>
-    <div class="ticket-description"><p>Under 1.6.4 the event target on a droppable drop was the element that the drop occurred to, whereas with 1.7 the event target becomes the element being dropped.</p><p>If you drop 'one' onto 'two', under 1.7 the console shows 'one' whereas under 1.6.2 it shows 'two'</p><p><a href="http://jsfiddle.net/pkzvb/" class="ext-link"><span class="icon"></span>http://jsfiddle.net/pkzvb/</a></p><p>(can't seem to do jsfiddle with 1.6.4 as it doesn't seem to do jquery ui)</p><p>&lt;!DOCTYPE HTML&gt; &lt;html&gt; &lt;head&gt; &lt;!-- &lt;script src=" <a href="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" "="" class="ext-link"><span class="icon"></span>http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"</a> type="text/javascript"&gt;&lt;/script&gt; --&gt;</p><p>&lt;script src=" <a href="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js" "="" class="ext-link"><span class="icon"></span>http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"</a> type="text/javascript"&gt;&lt;/script&gt;</p><p>&lt;script src=" <a href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" "="" class="ext-link"><span class="icon"></span>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"</a> type="text/javascript"&gt;&lt;/script&gt; </p><p>&lt;script&gt; </p><p>function <a href="/wiki/OnDrop">OnDrop</a>(e, ui) {</p><p>        console.log(e.target.id);</p><p>    }</p><p>    $(document).ready(function () {</p><p>        $("#one").draggable(); </p><p>        $("#two").droppable({ drop: <a href="/wiki/OnDrop">OnDrop</a> });</p><p>    });</p><p>    &lt;/script&gt;</p><p>&lt;/head&gt; &lt;body&gt; &lt;div id="one"&gt;one&lt;/div&gt; &lt;div id="two"&gt;two&lt;/div&gt; &lt;/body&gt; &lt;/html&gt;</p></div>
+    <div class="ticket-description"><p>Under 1.6.4 the event target on a droppable drop was the element that the drop occurred to, whereas with 1.7 the event target becomes the element being dropped.</p><p>If you drop 'one' onto 'two', under 1.7 the console shows 'one' whereas under 1.6.2 it shows 'two'</p><p><a href="http://jsfiddle.net/pkzvb/" class="ext-link"><span class="icon"></span>http://jsfiddle.net/pkzvb/</a></p><p>(can't seem to do jsfiddle with 1.6.4 as it doesn't seem to do jquery ui)</p><p>&lt;!DOCTYPE HTML&gt; &lt;html&gt; &lt;head&gt; &lt;!-- &lt;script src=" <a href="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" " class="ext-link"><span class="icon"></span>http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"</a> type="text/javascript"&gt;&lt;/script&gt; --&gt;</p><p>&lt;script src=" <a href="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js" " class="ext-link"><span class="icon"></span>http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"</a> type="text/javascript"&gt;&lt;/script&gt;</p><p>&lt;script src=" <a href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" " class="ext-link"><span class="icon"></span>http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"</a> type="text/javascript"&gt;&lt;/script&gt; </p><p>&lt;script&gt; </p><p>function <a href="/wiki/OnDrop">OnDrop</a>(e, ui) {</p><p>        console.log(e.target.id);</p><p>    }</p><p>    $(document).ready(function () {</p><p>        $("#one").draggable(); </p><p>        $("#two").droppable({ drop: <a href="/wiki/OnDrop">OnDrop</a> });</p><p>    });</p><p>    &lt;/script&gt;</p><p>&lt;/head&gt; &lt;body&gt; &lt;div id="one"&gt;one&lt;/div&gt; &lt;div id="two"&gt;two&lt;/div&gt; &lt;/body&gt; &lt;/html&gt;</p></div>
   </div>
 </div>
 
@@ -221,7 +221,7 @@
   </ul>
 </details>
 
-<details open="">
+<details open>
   <summary class="ticket-details-summary">Change History (5)</summary>
   
     <div class="ticket-change flex-column" id="comment:1">

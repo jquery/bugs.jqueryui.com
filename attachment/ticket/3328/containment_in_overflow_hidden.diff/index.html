@@ -139,46 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui.core.js
-===================================================================
-<span class="token coord">--- ui.core.js	(Revision 668)</span>
-<span class="token coord">+++ ui.core.js	(Arbeitskopie)</span>
-<span class="token coord">@@ -283,6 +283,9 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			.unbind('selectstart.ui');
-</span><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">	hasScroll: function(e, a) {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		// We can assume, that the element has no scrollbars if it's overflow is set to hidden
-</span><span class="token prefix inserted">+</span><span class="token line">		if ($(e).css('overflow') == 'hidden') { return false; }
-</span><span class="token prefix inserted">+</span><span class="token line">
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		var scroll = (a &amp;&amp; a == 'left') ? 'scrollLeft' : 'scrollTop',
-</span><span class="token prefix unchanged"> </span><span class="token line">			has = false;
-</span><span class="token prefix unchanged"> </span><span class="token line">		
-</span></span>Index: ui.draggable.js
-===================================================================
-<span class="token coord">--- ui.draggable.js	(Revision 668)</span>
-<span class="token coord">+++ ui.draggable.js	(Arbeitskopie)</span>
-<span class="token coord">@@ -118,12 +118,13 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			if(!(/^(document|window|parent)$/).test(o.containment)) {
-</span><span class="token prefix unchanged"> </span><span class="token line">				var ce = $(o.containment)[0];
-</span><span class="token prefix unchanged"> </span><span class="token line">				var co = $(o.containment).offset();
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				var over = ($(ce).css("overflow") != 'hidden');
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				
-</span><span class="token prefix unchanged"> </span><span class="token line">				this.containment = [
-</span><span class="token prefix unchanged"> </span><span class="token line">					co.left + (parseInt($(ce).css("borderLeftWidth"),10) || 0) - this.offset.relative.left - this.offset.parent.left,
-</span><span class="token prefix unchanged"> </span><span class="token line">					co.top + (parseInt($(ce).css("borderTopWidth"),10) || 0) - this.offset.relative.top - this.offset.parent.top,
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">					co.left+Math.max(ce.scrollWidth,ce.offsetWidth) - (parseInt($(ce).css("borderLeftWidth"),10) || 0) - this.offset.relative.left - this.offset.parent.left - this.helperProportions.width - this.margins.left - (parseInt(this.element.css("marginRight"),10) || 0),
-</span><span class="token prefix deleted">-</span><span class="token line">					co.top+Math.max(ce.scrollHeight,ce.offsetHeight) - (parseInt($(ce).css("borderTopWidth"),10) || 0) - this.offset.relative.top - this.offset.parent.top - this.helperProportions.height - this.margins.top - (parseInt(this.element.css("marginBottom"),10) || 0)
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">					co.left+( over ? Math.max(ce.scrollWidth,ce.offsetWidth) : ce.offsetWidth) - (parseInt($(ce).css("borderLeftWidth"),10) || 0) - this.offset.relative.left - this.offset.parent.left - this.helperProportions.width - this.margins.left - (parseInt(this.element.css("marginRight"),10) || 0),
-</span><span class="token prefix inserted">+</span><span class="token line">					co.top+( over ? Math.max(ce.scrollHeight,ce.offsetHeight) : ce.offsetHeight) - (parseInt($(ce).css("borderTopWidth"),10) || 0) - this.offset.relative.top - this.offset.parent.top - this.helperProportions.height - this.margins.top - (parseInt(this.element.css("marginBottom"),10) || 0)
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				];
-</span><span class="token prefix unchanged"> </span><span class="token line">			}
-</span><span class="token prefix unchanged"> </span><span class="token line">		}</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3328/containment_in_overflow_hidden.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3328/containment_in_overflow_hidden.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

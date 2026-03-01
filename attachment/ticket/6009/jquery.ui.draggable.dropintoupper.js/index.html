@@ -139,51 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-js" tabindex="0"><code class="language-js"><span class="token comment">/**
- * To make draggable drop into droppable that has the biggest zIndex.
- * Usually drop works on the first droppable element thet receives event bubbling.
- * To use this plugin add to draggable
- * options
- *     dropIntoUpper: true
- */</span>
-$<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>plugin<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"draggable"</span><span class="token punctuation">,</span> <span class="token string">"dropIntoUpper"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    <span class="token function-variable function">start</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> ui</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment">// get scope of draggable element if it's not set it equals "default"</span>
-        <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span><span class="token string">"draggable"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>options
-        
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>
-            <span class="token operator">!</span>o <span class="token operator">||</span> <span class="token operator">!</span>o<span class="token punctuation">.</span>scope <span class="token operator">||</span>
-            <span class="token operator">!</span>$<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>ddmanager <span class="token operator">||</span> 
-            <span class="token operator">!</span>$<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>ddmanager<span class="token punctuation">.</span>droppables <span class="token operator">||</span>
-            <span class="token operator">!</span>$<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>ddmanager<span class="token punctuation">.</span>droppables<span class="token punctuation">[</span>o<span class="token punctuation">.</span>scope<span class="token punctuation">]</span>
-        <span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span>
-        <span class="token punctuation">}</span>
-        
-        $<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>ddmanager<span class="token punctuation">.</span>droppables<span class="token punctuation">[</span>o<span class="token punctuation">.</span>scope<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-
-            <span class="token keyword">var</span> zA <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>element<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"zIndex"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                zB <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>element<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"zIndex"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">0</span>
-
-            <span class="token keyword">if</span> <span class="token punctuation">(</span> zA <span class="token operator">>=</span> zB <span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span> zA <span class="token operator">&lt;</span> zB <span class="token punctuation">)</span> 
-            <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> <span class="token number">1</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+      <pre class="language-js" tabindex="0"><code class="language-js"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/6009/jquery.ui.draggable.dropintoupper.js">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/6009/jquery.ui.draggable.dropintoupper.js">Original Format</a>
   </div>
 </h1></div>
         </div>

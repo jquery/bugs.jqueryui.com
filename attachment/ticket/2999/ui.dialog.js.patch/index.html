@@ -137,103 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- a/ui.dialog.js
-+++ b/ui.dialog.js
-@@ -47,9 +47,11 @@ $.widget("ui.dialog", {
- 			title = options.title || uiDialogContent.attr('title') || '',
- 			uiDialogTitlebar = (this.uiDialogTitlebar =
- 				$('<div class="ui-dialog-titlebar">'))
--				.append('<span class="ui-dialog-title">' + title + '</span>')
--				.append('<a href="#" class="ui-dialog-titlebar-close"><span>X</span></a>')
--				.prependTo(uiDialogContainer),
-+				.append('<span class="ui-dialog-title">' + title + '</span>');
-+			if (options.maximizable)
-+                uiDialogTitlebar.append('<a href="#" class="ui-dialog-titlebar-maximize"><span>+</span></a>');
-+			uiDialogTitlebar.append('<a href="#" class="ui-dialog-titlebar-close"><span>X</span></a>')
-+				.prependTo(uiDialogContainer);
- 			
- 			uiDialog = (this.uiDialog = uiDialogContainer.parent())
- 				.appendTo(document.body)
-@@ -95,6 +97,23 @@ $.widget("ui.dialog", {
- 				self.close();
- 				return false;
- 			});
-+		if (options.maximizable){
-+		    this.uiDialogTitlebarMaximize = $('.ui-dialog-titlebar-maximize', uiDialogTitlebar)
-+		    .hover(
-+		        function() {
-+		            $(this).addClass('ui-dialog-titlebar-maximize-hover');
-+		        },
-+		        function() {
-+                    $(this).removeClass('ui-dialog-titlebar-maximize-hover');
-+		        }
-+		    )
-+		    .mousedown(function(ev){ ev.stopPropagation(); })
-+		    .click(function() {
-+		        self.toggleMaximize();
-+		        return false;
-+		    });
-+		}
-+			
- 		
- 		var hasButtons = false;
- 		$.each(options.buttons, function() { return !(hasButtons = true); });
-@@ -266,6 +285,49 @@ $.widget("ui.dialog", {
- 		$.ui.dialog.overlay.resize();
- 	},
- 	
-+	toggleMaximize: function(){
-+	    this.maximized ? this.unMaximize() : this.maximize();
-+	},
-+	
-+	maximize: function(){
-+	    var self = this;
-+        this.uiDialog.addClass('maximized');
-+	    this.preMaximize = {
-+	        top: this.uiDialog.css('top'),
-+	        left: this.uiDialog.css('left'),
-+	        width: this.uiDialog.width(),
-+	        height: this.uiDialog.height()
-+	    };
-+	    $.each(['margin-left', 'margin-right', 'margin-top', 'margin-bottom', 'margin',
-+	            'padding-left', 'padding-right', 'padding-top', 'padding-bottom', 'padding'], function(i, attr){
-+            self.preMaximize[attr] = self.uiDialog.css(attr);
-+            self.uiDialog.css(attr, 0);
-+	    });
-+        this.position(['left', 'top']);
-+        var wnd = $(window);
-+        this.uiDialog.width(wnd.width()).height(wnd.height())
-+            .resizable('disable').draggable('disable');
-+        $.ui.dialog.overlay.resize();
-+        this.uiDialog.trigger('resize');
-+        this.maximized = true;
-+	},
-+	
-+	unMaximize: function(){
-+	    var self = this;
-+        this.uiDialog.removeClass('maximized');
-+	    this.uiDialog.width(this.preMaximize.width).height(this.preMaximize.height);
-+        this.position([this.preMaximize.left, this.preMaximize.top]);
-+        $.each(['margin-left', 'margin-right', 'margin-top', 'margin-bottom', 'margin',
-+	            'padding-left', 'padding-right', 'padding-top', 'padding-bottom', 'padding'], function(i, attr){
-+            self.uiDialog.css(attr, self.preMaximize[attr]);
-+	    });
-+        (this.options.resizable && this.uiDialog.resizable('enable'));
-+        (this.options.draggable && this.uiDialog.draggable('enable'));
-+        $.ui.dialog.overlay.resize();
-+        this.uiDialog.trigger('resize');
-+        this.maximized = false;
-+	},
-+	
- 	destroy: function() {
- 		(this.overlay && this.overlay.destroy());
- 		this.uiDialog.hide();</div></code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/2999/ui.dialog.js.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/2999/ui.dialog.js.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

@@ -139,37 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- C:/Documents and Settings/Andrew/Local Settings/Temp/ui.slider-HEAD.js	Fri Apr 17 20:57:07 2009
-+++ d:/Subversion/jQuery UI/Trunk/ui/ui.slider.js	Fri Apr 17 20:54:56 2009
-@@ -334,10 +334,10 @@
- 
- 		if (this.options.values && this.options.values.length) {
- 
--			var otherVal = this.values(index ? 0 : 1);
--
--			if ((index == 0 && newVal >= otherVal) || (index == 1 && newVal <= otherVal))
-+			if ((index == 0 && newVal >= otherVal) || (index == 1 && newVal <= otherVal) && (this.options.values.length < 3 || this.options.range === false)){
-+				var otherVal = this.values(index ? 0 : 1);
- 				newVal = otherVal;
-+			}
- 
- 			if (newVal != this.values(index)) {
- 				var newValues = this.values();
-@@ -348,7 +348,7 @@
- 					value: newVal,
- 					values: newValues
- 				});
--				var otherVal = this.values(index ? 0 : 1);
-+				//var otherVal = this.values(index ? 0 : 1); << unused?
- 				if (allowed !== false) {
- 					this.values(index, newVal, ( event.type == 'mousedown' && this.options.animate ), true);
- 				}</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3736/3736.ui.slider.js.2.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3736/3736.ui.slider.js.2.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

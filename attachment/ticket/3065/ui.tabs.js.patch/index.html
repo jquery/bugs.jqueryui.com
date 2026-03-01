@@ -137,36 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- ui.tabs.js	2008-07-03 16:25:19.073740196 -0400
-+++ ui.tabs.js.fix	2008-07-03 16:25:13.993743612 -0400
-@@ -361,16 +361,16 @@
- 		var o = this.options, $li = this.$lis.eq(index).remove(),
- 			$panel = this.$panels.eq(index).remove();
- 
--		// If selected tab was removed focus tab to the right or
--		// in case the last tab was removed the tab to the left.
--		if ($li.hasClass(o.selectedClass) && this.$tabs.length > 1)
--			this.select(index + (index + 1 < this.$tabs.length ? 1 : -1));
--
- 		o.disabled = $.map($.grep(o.disabled, function(n, i) { return n != index; }),
- 			function(n, i) { return n >= index ? --n : n });
- 
- 		this.tabify();
- 
-+    // If selected tab was removed focus tab to the right or
-+    // in case the last tab was removed the tab to the left.
-+    if ($li.hasClass(o.selectedClass) && this.$tabs.length)
-+      this.select(index + (index + 1 <= this.$tabs.length ? 0 : -1));
-+
- 		// callback
- 		this.element.triggerHandler('tabsremove',
- 			[null, this.ui($li.find('a')[0], $panel[0])], o.remove</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3065/ui.tabs.js.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3065/ui.tabs.js.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

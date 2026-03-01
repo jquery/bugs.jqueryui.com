@@ -137,68 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-txt" tabindex="0"><code class="language-txt">/*
- * jQuery UI Effects Scrollview
- *
- * Copyright (c) 2009 Philipp Simon (psimon@solotics.com)
- * Dual licensed under the MIT (MIT-LICENSE.txt)
- * and GPL (GPL-LICENSE.txt) licenses.
- *
- * Depends:
- *  effects.core.js
- *
- */
-;(function($) {
-
-$.effects.scrollview = function(o) {
-	return this.queue(function() {
-
-		// Create element
-		var el = $(this);
-
-		// Set options
-		$.effects.setMode(el, 'show');
-		var offset = o.options.offset || 10;
-
-		var vpTop = $(window).scrollTop();
-		var lyTop = el.offset().top;
-
-		if(lyTop - offset &lt; vpTop) {
-			scrollTo(lyTop - offset);
-		} else {
-			var vpHeight = self.innerHeight || $(window).height();
-			var lyHeight = el.height();
-
-			if (lyTop + lyHeight + offset > vpTop + vpHeight) {
-				if (lyHeight > vpHeight) {
-					scrollTo(lyTop - offset);
-				} else {
-					scrollTo(lyTop + lyHeight + offset - vpHeight);
-				}
-			} else {
-				if(o.callback) o.callback.apply(el.get(0));
-				el.dequeue();
-			}
-		}
-
-		function scrollTo(y) {
-			var animation = {'scrollTop': y};
-			$($.browser.safari ? 'body' : 'html').animate(animation, {queue: false, duration: o.duration, easing: o.options.easing, complete: function() {
-				if(o.callback) o.callback.apply(el.get(0), arguments);
-				el.dequeue();
-			}});
-		};
-	});
-
-};
-
-})(jQuery);</code></pre>
+      <pre class="language-txt" tabindex="0"><code class="language-txt"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3914/effects.scrollview.js.txt">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3914/effects.scrollview.js.txt">Original Format</a>
   </div>
 </h1></div>
         </div>

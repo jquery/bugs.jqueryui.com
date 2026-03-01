@@ -139,113 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: trunk/ui/ui.sortable.js
-===================================================================
-<span class="token coord">--- trunk/ui/ui.sortable.js	(revision 2963)</span>
-<span class="token coord">+++ trunk/ui/ui.sortable.js	(working copy)</span>
-<span class="token coord">@@ -258,6 +258,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				&amp;&amp;	this.placeholder[intersection == 1 ? "next" : "prev"]()[0] != itemElement //no useless actions that have been done before
-</span><span class="token prefix unchanged"> </span><span class="token line">				&amp;&amp;	!$.ui.contains(this.placeholder[0], itemElement) //no action if the item moved is the parent of the item checked
-</span><span class="token prefix unchanged"> </span><span class="token line">				&amp;&amp; (this.options.type == 'semi-dynamic' ? !$.ui.contains(this.element[0], itemElement) : true)
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				&amp;&amp; itemElement.parentNode == this.placeholder[0].parentNode // only rearrange items within the same container
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			) {
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">				this.direction = intersection == 1 ? "down" : "up";
-</span></span><span class="token coord">@@ -640,47 +641,58 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	_contactContainers: function(event) {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		// get innermost container that intersects with item
-</span><span class="token prefix inserted">+</span><span class="token line">		var innermostContainer = null, innermostIndex = null;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		for (var i = this.containers.length - 1; i >= 0; i--){
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			// never consider a container that's located within the item itself
-</span><span class="token prefix inserted">+</span><span class="token line">			if($.ui.contains(this.currentItem[0],this.containers[i].element[0]))continue;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">			if(this._intersectsWith(this.containers[i].containerCache)) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				if(!this.containers[i].containerCache.over) {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				// if we've already found a container and it's more "inner" than this, then continue
-</span><span class="token prefix inserted">+</span><span class="token line">				if(innermostContainer &amp;&amp; $.ui.contains(this.containers[i].element[0],innermostContainer.element[0]))continue;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">					if(this.currentContainer != this.containers[i]) {
-</span><span class="token prefix deleted">-</span><span class="token line">
-</span><span class="token prefix deleted">-</span><span class="token line">						//When entering a new container, we will find the item with the least distance and append our item near it
-</span><span class="token prefix deleted">-</span><span class="token line">						var dist = 10000; var itemWithLeastDistance = null; var base = this.positionAbs[this.containers[i].floating ? 'left' : 'top'];
-</span><span class="token prefix deleted">-</span><span class="token line">						for (var j = this.items.length - 1; j >= 0; j--) {
-</span><span class="token prefix deleted">-</span><span class="token line">							if(!$.ui.contains(this.containers[i].element[0], this.items[j].item[0])) continue;
-</span><span class="token prefix deleted">-</span><span class="token line">							var cur = this.items[j][this.containers[i].floating ? 'left' : 'top'];
-</span><span class="token prefix deleted">-</span><span class="token line">							if(Math.abs(cur - base) &lt; dist) {
-</span><span class="token prefix deleted">-</span><span class="token line">								dist = Math.abs(cur - base); itemWithLeastDistance = this.items[j];
-</span><span class="token prefix deleted">-</span><span class="token line">							}
-</span><span class="token prefix deleted">-</span><span class="token line">						}
-</span><span class="token prefix deleted">-</span><span class="token line">
-</span><span class="token prefix deleted">-</span><span class="token line">						if(!itemWithLeastDistance &amp;&amp; !this.options.dropOnEmpty) //Check if dropOnEmpty is enabled
-</span><span class="token prefix deleted">-</span><span class="token line">							continue;
-</span><span class="token prefix deleted">-</span><span class="token line">
-</span><span class="token prefix deleted">-</span><span class="token line">						this.currentContainer = this.containers[i];
-</span><span class="token prefix deleted">-</span><span class="token line">						itemWithLeastDistance ? this._rearrange(event, itemWithLeastDistance, null, true) : this._rearrange(event, null, this.containers[i].element, true);
-</span><span class="token prefix deleted">-</span><span class="token line">						this._trigger("change", event, this._uiHash());
-</span><span class="token prefix deleted">-</span><span class="token line">						this.containers[i]._trigger("change", event, this._uiHash(this));
-</span><span class="token prefix deleted">-</span><span class="token line">
-</span><span class="token prefix deleted">-</span><span class="token line">						//Update the placeholder
-</span><span class="token prefix deleted">-</span><span class="token line">						this.options.placeholder.update(this.currentContainer, this.placeholder);
-</span><span class="token prefix deleted">-</span><span class="token line">
-</span><span class="token prefix deleted">-</span><span class="token line">					}
-</span><span class="token prefix deleted">-</span><span class="token line">
-</span><span class="token prefix deleted">-</span><span class="token line">					this.containers[i]._trigger("over", event, this._uiHash(this));
-</span><span class="token prefix deleted">-</span><span class="token line">					this.containers[i].containerCache.over = 1;
-</span><span class="token prefix deleted">-</span><span class="token line">				}
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				innermostContainer = this.containers[i];
-</span><span class="token prefix inserted">+</span><span class="token line">				innermostIndex = i;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			} else {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				// container doesn't intersect. trigger "out" event if necessary
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				if(this.containers[i].containerCache.over) {
-</span><span class="token prefix unchanged"> </span><span class="token line">					this.containers[i]._trigger("out", event, this._uiHash(this));
-</span><span class="token prefix unchanged"> </span><span class="token line">					this.containers[i].containerCache.over = 0;
-</span><span class="token prefix unchanged"> </span><span class="token line">				}
-</span><span class="token prefix unchanged"> </span><span class="token line">			}
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		}
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		};
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		// if no intersecting containers found, return
-</span><span class="token prefix inserted">+</span><span class="token line">		if(!innermostContainer) return;
-</span><span class="token prefix inserted">+</span><span class="token line">
-</span><span class="token prefix inserted">+</span><span class="token line">		// move the item into the container if it's not there already
-</span><span class="token prefix inserted">+</span><span class="token line">		if(this.currentContainer != this.containers[innermostIndex]) {
-</span><span class="token prefix inserted">+</span><span class="token line">
-</span><span class="token prefix inserted">+</span><span class="token line">			//When entering a new container, we will find the item with the least distance and append our item near it
-</span><span class="token prefix inserted">+</span><span class="token line">			var dist = 10000; var itemWithLeastDistance = null; var base = this.positionAbs[this.containers[innermostIndex].floating ? 'left' : 'top'];
-</span><span class="token prefix inserted">+</span><span class="token line">			for (var j = this.items.length - 1; j >= 0; j--) {
-</span><span class="token prefix inserted">+</span><span class="token line">				if(!$.ui.contains(this.containers[innermostIndex].element[0], this.items[j].item[0])) continue;
-</span><span class="token prefix inserted">+</span><span class="token line">				var cur = this.items[j][this.containers[innermostIndex].floating ? 'left' : 'top'];
-</span><span class="token prefix inserted">+</span><span class="token line">				if(Math.abs(cur - base) &lt; dist) {
-</span><span class="token prefix inserted">+</span><span class="token line">					dist = Math.abs(cur - base); itemWithLeastDistance = this.items[j];
-</span><span class="token prefix inserted">+</span><span class="token line">				}
-</span><span class="token prefix inserted">+</span><span class="token line">			}
-</span><span class="token prefix inserted">+</span><span class="token line">
-</span><span class="token prefix inserted">+</span><span class="token line">			if(!itemWithLeastDistance &amp;&amp; !this.options.dropOnEmpty) //Check if dropOnEmpty is enabled
-</span><span class="token prefix inserted">+</span><span class="token line">				return;
-</span><span class="token prefix inserted">+</span><span class="token line">
-</span><span class="token prefix inserted">+</span><span class="token line">			this.currentContainer = this.containers[innermostIndex];
-</span><span class="token prefix inserted">+</span><span class="token line">			itemWithLeastDistance ? this._rearrange(event, itemWithLeastDistance, null, true) : this._rearrange(event, null, this.containers[innermostIndex].element, true);
-</span><span class="token prefix inserted">+</span><span class="token line">			this._trigger("change", event, this._uiHash());
-</span><span class="token prefix inserted">+</span><span class="token line">			this.containers[innermostIndex]._trigger("change", event, this._uiHash(this));
-</span><span class="token prefix inserted">+</span><span class="token line">
-</span><span class="token prefix inserted">+</span><span class="token line">			//Update the placeholder
-</span><span class="token prefix inserted">+</span><span class="token line">			this.options.placeholder.update(this.currentContainer, this.placeholder);
-</span><span class="token prefix inserted">+</span><span class="token line">
-</span><span class="token prefix inserted">+</span><span class="token line">		}
-</span><span class="token prefix inserted">+</span><span class="token line">
-</span><span class="token prefix inserted">+</span><span class="token line">		this.containers[innermostIndex]._trigger("over", event, this._uiHash(this));
-</span><span class="token prefix inserted">+</span><span class="token line">		this.containers[innermostIndex].containerCache.over = 1;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	_createHelper: function(event) {</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4703/ui.sortable.js.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4703/ui.sortable.js.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

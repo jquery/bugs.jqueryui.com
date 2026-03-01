@@ -137,48 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- ./jquery-ui-orig/development-bundle/ui/jquery.ui.resizable.js	Sat Feb 27 19:55:06 2010
-+++ ./jquery-ui/development-bundle/ui/jquery.ui.resizable.js	Tue Mar 16 10:51:01 2010
-@@ -28,6 +28,7 @@
- 		grid: false,
- 		handles: "e,s,se",
- 		helper: false,
-+		iframeFix: false,
- 		maxHeight: null,
- 		maxWidth: null,
- 		minHeight: 10,
-@@ -787,6 +788,25 @@
- 	}
- 
- });
-+
-+$.ui.plugin.add("resizable", "iframeFix", {
-+	start: function(event, ui) {
-+		var o = $(this).data('resizable').options;
-+		$(o.iframeFix === true ? "iframe" : o.iframeFix).each(function() {
-+			$('<div class="ui-resizable-iframeFix" style="background: #fff;"></div>')
-+			.css({
-+				width: this.offsetWidth+"px", height: this.offsetHeight+"px",
-+				position: "absolute", opacity: "0.001", zIndex: 1000
-+			})
-+			.css($(this).offset())
-+			.appendTo("body");
-+		});
-+	},
-+	stop: function(event, ui) {
-+		$("div.ui-resizable-iframeFix").each(function() { this.parentNode.removeChild(this); }); //Remove frame helpers
-+	}
-+});
-+
- 
- var num = function(v) {
- 	return parseInt(v, 10) || 0;</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4903/jquery.ui.resizable-iframeFix.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4903/jquery.ui.resizable-iframeFix.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

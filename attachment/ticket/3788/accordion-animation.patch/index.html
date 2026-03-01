@@ -137,59 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.accordion.js
-===================================================================
---- /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.accordion.js	(revision 1844)
-+++ /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.accordion.js	(working copy)
-@@ -41,10 +41,7 @@
- 		// wrap content elements in div against animation issues
- 		this.headers
- 			.next()
--				.wrap("<div></div>")
--				.addClass("ui-accordion-content")
--				.parent()
--					.addClass("ui-accordion-content-wrap ui-helper-reset ui-widget-content ui-corner-bottom");
-+				.addClass("ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom");
- 
- 		this.active = this._findActive(this.active || o.active).toggleClass("ui-state-default").toggleClass("ui-state-active").toggleClass("ui-corner-all").toggleClass("ui-corner-top");
- 		this.active.parent().addClass('ui-accordion-selected');
-@@ -403,17 +400,23 @@
- 				return;
- 			}
- 			var hideHeight = options.toHide.height(),
--				showHeight = options.toShow.height(),
--				difference = showHeight / hideHeight,
--				overflow = options.toShow.css('overflow');
-+				overflow = options.toShow.css('overflow'),
-+				showProps = {},
-+				hideProps = {},
-+				fxAttrs = [ "height", "marginTop", "marginBottom", "paddingTop", "paddingBottom" ];
-+			$.each(fxAttrs, function(i, prop) {
-+				hideProps[prop] = 'hide';
-+				showProps[prop] = parseFloat(options.toShow.css(prop));
-+			});
- 			options.toShow.css({ height: 0, overflow: 'hidden' }).show();
--			options.toHide.filter(":hidden").each(options.complete).end().filter(":visible").animate({height:"hide"},{
--				step: function(now) {
--					var current = (hideHeight - now) * difference;
-+			options.toHide.filter(":hidden").each(options.complete).end().filter(":visible").animate(hideProps,{
-+				step: function(now, settings) {
-+					var percentDone = (settings.start - settings.now) / settings.start,
-+						current = percentDone * showProps[settings.prop];
- 					if ($.browser.msie || $.browser.opera) {
- 						current = Math.ceil(current);
- 					}
--					options.toShow.height( current );
-+					options.toShow[0].style[settings.prop] = current + 'px';
- 				},
- 				duration: options.duration,
- 				easing: options.easing,</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3788/accordion-animation.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3788/accordion-animation.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

@@ -139,27 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">### Eclipse Workspace Patch 1.0
-#P jquery-ui-trunk
-Index: ui/ui.draggable.js
-===================================================================
---- ui/ui.draggable.js	(revision 1535)
-+++ ui/ui.draggable.js	(working copy)
-@@ -139,7 +139,7 @@
- 		if ($.ui.ddmanager && !this.options.dropBehaviour)
- 			var dropped = $.ui.ddmanager.drop(this, event);
- 
--		if((this.options.revert == "invalid" && !dropped) || (this.options.revert == "valid" && dropped) || this.options.revert === true || ($.isFunction(this.options.revert) && this.options.revert.call(this.element, dropped))) {
-+		if(((this.options.revert == "invalid" && !dropped) || (this.options.revert == "valid" && dropped) || (this.options.revert === true) || ($.isFunction(this.options.revert) && this.options.revert.call(this.element, dropped))) && (!this.options.connectToSortable)) {
- 			var self = this;
- 			$(this.helper).animate(this.originalPosition, parseInt(this.options.revertDuration, 10), function() {
- 				self._propagate("stop", event);</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3556/sortable-3556.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3556/sortable-3556.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

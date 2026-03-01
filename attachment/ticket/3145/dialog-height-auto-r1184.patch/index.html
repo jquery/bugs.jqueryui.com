@@ -137,56 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.dialog.js
-===================================================================
---- /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.dialog.js	(revision 1184)
-+++ /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.dialog.js	(working copy)
-@@ -411,11 +411,12 @@
- 
- 		$.widget.prototype._setData.apply(this, arguments);
- 	},
--	
-+
- 	_size: function() {
- 		/* If the user has resized the dialog, the .ui-dialog and .ui-dialog-content
--		 * divs will both have width and height set
-+		 * divs will both have width and height set, so we need to reset them
- 		 */
-+		var options = this.options;
- 
- 		// reset content sizing
- 		this.element.css({
-@@ -422,16 +423,19 @@
- 			height: 0,
- 			width: 'auto'
- 		});
--		
--		// reset the wrapper sizing and determine the height of all of the
--		// non-content elements
-+
-+		// reset wrapper sizing
-+		// determine the height of all the non-content elements
- 		var nonContentHeight = this.uiDialog.css({
- 				height: 'auto',
--				width: this.options.width
-+				width: options.width
- 			})
- 			.height();
--		
--		this.element.height(this.options.height - nonContentHeight);
-+
-+		this.element.height(
-+			options.height == 'auto'
-+				? 'auto'
-+				: options.height - nonContentHeight);
- 	}
- });</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3145/dialog-height-auto-r1184.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3145/dialog-height-auto-r1184.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

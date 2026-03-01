@@ -139,25 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui/effects.core.js
-===================================================================
---- ui/effects.core.js	(revision 3202)
-+++ ui/effects.core.js	(working copy)
-@@ -257,7 +257,7 @@
- 	'borderRightColor', 'borderTopColor', 'color', 'outlineColor'],
- function(i, attr) {
- 	$.fx.step[attr] = function(fx) {
--		if (fx.state === 0) {
-+		if (fx.start.constructor != Array) {
- 			fx.start = getColor(fx.elem, attr);
- 			fx.end = getRGB(fx.end);
- 		}</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4476/fix.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4476/fix.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

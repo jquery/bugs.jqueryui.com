@@ -139,56 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui.accordion.js
-===================================================================
---- ui.accordion.js	(revision 1187)
-+++ ui.accordion.js	(working copy)
-@@ -56,7 +56,9 @@
- 			var maxPadding = 0;
- 			options.headers.next().each(function() {
- 				maxPadding = Math.max(maxPadding, $(this).innerHeight() - $(this).height());
--			}).height(maxHeight - maxPadding);
-+			})
-+			.height(maxHeight - maxPadding)
-+			.css('overflow', 'auto');
- 		} else if ( options.autoHeight ) {
- 			maxHeight = 0;
- 			options.headers.next().each(function() {
-@@ -202,7 +204,10 @@
- 				toHide: toHide,
- 				complete: complete,
- 				down: down,
--				autoHeight: options.autoHeight
-+				// autoHeight == true: height was set by the
-+				// accordion plugin, either through autoHeight
-+				// or fillSpace
-+				autoHeight: options.autoHeight || options.fillSpace
- 			};
- 		} else {
- 			animOptions = {
-@@ -210,7 +215,7 @@
- 				toHide: toHide,
- 				complete: complete,
- 				down: down,
--				autoHeight: options.autoHeight
-+				autoHeight: options.autoHeight || options.fillSpace
- 			};
- 		}
- 
-@@ -339,6 +344,7 @@
- 		alwaysOpen: true,
- 		animated: 'slide',
- 		event: "click",
-+		fillSpace: false,
- 		header: "a",
- 		headerIcon: "ui-icon-triangle-1-e",
- 		headerIconSelected: "ui-icon-triangle-1-s",</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3682/accordion-fillspace.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3682/accordion-fillspace.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

@@ -139,37 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-txt" tabindex="0"><code class="language-txt">diff -r1.1 jquery.ui.datepicker.js
-825c825
-&lt; 			var date = new Date();
----
-> 			var date = this._get(inst, 'todayDate') || new Date();
-1257c1257
-&lt; 			this._determineDate(inst, this._get(inst, 'defaultDate'), new Date()));
----
-> 			this._determineDate(inst, this._get(inst, 'defaultDate'), this._get(inst, 'todayDate') || new Date()));
-1263c1263
-&lt; 			var date = new Date();
----
-> 			var date = this._get(inst, 'todayDate') || new Date();
-1276c1276
-&lt; 				$.datepicker._getDate(inst) : null) || new Date();
----
-> 				$.datepicker._getDate(inst) : null) || $.datepicker._get(inst, 'todayDate') || new Date();
-1330c1330
-&lt; 		date = this._restrictMinMax(inst, this._determineDate(inst, date, new Date()));
----
-> 		date = this._restrictMinMax(inst, this._determineDate(inst, date, this._get(inst, 'todayDate') || new Date()));
-1352c1352
-&lt; 		var today = new Date();
----
-> 		var today = this._get(inst, 'todayDate') || new Date();</code></pre>
+      <pre class="language-txt" tabindex="0"><code class="language-txt"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5151/jquery.ui.datepicker.patch.txt">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5151/jquery.ui.datepicker.patch.txt">Original Format</a>
   </div>
 </h1></div>
         </div>

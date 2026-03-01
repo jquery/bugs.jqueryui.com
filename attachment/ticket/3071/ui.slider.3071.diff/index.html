@@ -139,54 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui.slider.js
-===================================================================
-<span class="token coord">--- ui.slider.js	(revision 2349)</span>
-<span class="token coord">+++ ui.slider.js	(working copy)</span>
-<span class="token coord">@@ -85,6 +85,9 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		this.handles.each(function(i) {
-</span><span class="token prefix unchanged"> </span><span class="token line">			$(this).data("index.ui-slider-handle", i);
-</span><span class="token prefix unchanged"> </span><span class="token line">		});
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		if (this.options.tooltips) {
-</span><span class="token prefix inserted">+</span><span class="token line">			this.handles.append('&lt;span class="ui-slider-tooltip ui-widget-content ui-corner-all">&lt;/span>');
-</span><span class="token prefix inserted">+</span><span class="token line">		}
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.handles.keydown(function(event) {
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token coord">@@ -490,6 +493,9 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">					}
-</span><span class="token prefix unchanged"> </span><span class="token line">				}
-</span><span class="token prefix unchanged"> </span><span class="token line">				lastValPercent = valPercent;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				if (o.tooltips) {	
-</span><span class="token prefix inserted">+</span><span class="token line">					$('.ui-slider-tooltip', this).text(o.tooltips[self.values(i)]);
-</span><span class="token prefix inserted">+</span><span class="token line">				}
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			});
-</span><span class="token prefix unchanged"> </span><span class="token line">		} else {
-</span><span class="token prefix unchanged"> </span><span class="token line">			var value = this.value(),
-</span></span><span class="token coord">@@ -499,7 +505,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">					? (value - valueMin) / (valueMax - valueMin) * 100
-</span><span class="token prefix unchanged"> </span><span class="token line">					: 0;
-</span><span class="token prefix unchanged"> </span><span class="token line">			var _set = {}; _set[self.orientation == 'horizontal' ? 'left' : 'bottom'] = valPercent + '%';
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			this.handle.stop(1,1)[animate ? 'animate' : 'css'](_set, o.animate);
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			this.handle.stop(1,1)[animate ? 'animate' : 'css'](_set, o.animate).find('.ui-slider-tooltip').text(o.tooltips ? o.tooltips[self.value()] : '');
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">			(oRange == "min") &amp;&amp; (this.orientation == "horizontal") &amp;&amp; this.range.stop(1,1)[animate ? 'animate' : 'css']({ width: valPercent + '%' }, o.animate);
-</span><span class="token prefix unchanged"> </span><span class="token line">			(oRange == "max") &amp;&amp; (this.orientation == "horizontal") &amp;&amp; this.range[animate ? 'animate' : 'css']({ width: (100 - valPercent) + '%' }, { queue: false, duration: o.animate });
-</span></span><span class="token coord">@@ -525,7 +531,8 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		range: false,
-</span><span class="token prefix unchanged"> </span><span class="token line">		step: 1,
-</span><span class="token prefix unchanged"> </span><span class="token line">		value: 0,
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		values: null
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		values: null,
-</span><span class="token prefix inserted">+</span><span class="token line">		tooltips: null
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	}
-</span><span class="token prefix unchanged"> </span><span class="token line">});</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3071/ui.slider.3071.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3071/ui.slider.3071.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

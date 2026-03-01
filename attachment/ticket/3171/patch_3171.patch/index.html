@@ -139,130 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui/ui.tabs.js
-===================================================================
---- ui/ui.tabs.js	(révision 2500)
-+++ ui/ui.tabs.js	(copie de travail)
-@@ -185,7 +185,7 @@
- 				self.element.queue("tabs", function() {
- 					self._trigger('show', null, self._ui(self.anchors[o.selected], self.panels[o.selected]));
- 				});
--				
-+
- 				this.load(o.selected);
- 			}
- 
-@@ -332,7 +332,7 @@
- 					self.element.queue("tabs", function() {
- 						hideTab(el, $hide);
- 					}).dequeue("tabs");
--					
-+
- 					this.blur();
- 					return false;
- 				}
-@@ -340,13 +340,13 @@
- 					if (o.cookie) {
- 						self._cookie(o.selected, o.cookie);
- 					}
--					
-+
- 					self.element.queue("tabs", function() {
- 						showTab(el, $show);
- 					});
- 
- 					self.load(self.anchors.index(this)); // TODO make passing in node possible, see also http://dev.jqueryui.com/ticket/3171
--					
-+
- 					this.blur();
- 					return false;
- 				}
-@@ -366,7 +366,7 @@
- 				self.element.queue("tabs", function() {
- 					showTab(el, $show);
- 				});
--				
-+
- 				self.load(self.anchors.index(this));
- 			}
- 			else {
-@@ -392,7 +392,7 @@
- 		var o = this.options;
- 
- 		this.abort();
--		
-+
- 		this.element.unbind('.tabs')
- 			.removeClass('ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-collapsible')
- 			.removeData('tabs');
-@@ -476,7 +476,7 @@
- 			this.element.queue("tabs", function() {
- 				self._trigger('show', null, self._ui(self.anchors[0], self.panels[0]));
- 			});
--				
-+
- 			this.load(0);
- 		}
- 
-@@ -486,6 +486,9 @@
- 	},
- 
- 	remove: function(index) {
-+		if (typeof index == 'string') {
-+			index = this.anchors.index(this.anchors.filter('[href$=' + index + ']'));
-+		}
- 		var o = this.options, $li = this.lis.eq(index).remove(),
- 			$panel = this.panels.eq(index).remove();
- 
-@@ -506,6 +509,9 @@
- 	},
- 
- 	enable: function(index) {
-+		if (typeof index == 'string') {
-+			index = this.anchors.index(this.anchors.filter('[href$=' + index + ']'));
-+		}
- 		var o = this.options;
- 		if ($.inArray(index, o.disabled) == -1) {
- 			return;
-@@ -520,6 +526,9 @@
- 	},
- 
- 	disable: function(index) {
-+		if (typeof index == 'string') {
-+			index = this.anchors.index(this.anchors.filter('[href$=' + index + ']'));
-+		}
- 		var self = this, o = this.options;
- 		if (index != o.selected) { // cannot disable already selected tab
- 			this.lis.eq(index).addClass('ui-state-disabled');
-@@ -651,19 +660,19 @@
- 	rotate: function(ms, continuing) {
- 
- 		var self = this, o = this.options;
--		
-+
- 		var rotate = self._rotate || (self._rotate = function(e) {
- 			clearTimeout(self.rotation);
- 			self.rotation = setTimeout(function() {
- 				var t = o.selected;
- 				self.select( ++t < self.anchors.length ? t : 0 );
- 			}, ms);
--			
-+
- 			if (e) {
- 				e.stopPropagation();
- 			}
- 		});
--		
-+
- 		var stop = self._unrotate || (self._unrotate = !continuing ?
- 			function(e) {
- 				if (e.clientX) { // in case of a true click</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3171/patch_3171.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3171/patch_3171.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

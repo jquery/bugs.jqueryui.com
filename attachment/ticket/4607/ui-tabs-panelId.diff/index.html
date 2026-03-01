@@ -139,32 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff"><span class="token coord">--- ui.tabs.js	2009-06-15 17:16:32.000000000 +0100</span>
-<span class="token coord">+++ new-ui.tabs.js	2009-06-15 17:25:43.000000000 +0100</span>
-<span class="token coord">@@ -38,7 +38,8 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	_tabId: function(a) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		return a.title &amp;&amp; a.title.replace(/\s/g, '_').replace(/[^A-Za-z0-9\-_:\.]/g, '') ||
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		return this.options.panelId ||
-</span><span class="token prefix inserted">+</span><span class="token line">			a.title &amp;&amp; a.title.replace(/\s/g, '_').replace(/[^A-Za-z0-9\-_:\.]/g, '') ||
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			this.options.idPrefix + $.data(a);
-</span><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token coord">@@ -623,6 +624,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		event: 'click',
-</span><span class="token prefix unchanged"> </span><span class="token line">		fx: null, // e.g. { height: 'toggle', opacity: 'toggle', duration: 200 }
-</span><span class="token prefix unchanged"> </span><span class="token line">		idPrefix: 'ui-tabs-',
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		panelId: null,
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		panelTemplate: '&lt;div>&lt;/div>',
-</span><span class="token prefix unchanged"> </span><span class="token line">		spinner: '&lt;em>Loading&amp;#8230;&lt;/em>',
-</span><span class="token prefix unchanged"> </span><span class="token line">		tabTemplate: '&lt;li>&lt;a href="#{href}">&lt;span>#{label}&lt;/span>&lt;/a>&lt;/li>'</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4607/ui-tabs-panelId.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4607/ui-tabs-panelId.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

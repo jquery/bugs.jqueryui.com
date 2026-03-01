@@ -139,47 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff"><span class="token coord">--- ui.datepicker.js.org	2009-03-20 23:44:27.000000000 +0000</span>
-<span class="token coord">+++ ui.datepicker.js	2009-03-21 00:11:28.000000000 +0000</span>
-<span class="token coord">@@ -77,6 +77,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		showOtherMonths: false, // True to show dates in other months, false to leave blank
-</span><span class="token prefix unchanged"> </span><span class="token line">		calculateWeek: this.iso8601Week, // How to calculate the week of the year,
-</span><span class="token prefix unchanged"> </span><span class="token line">			// takes a Date and returns the number of the week for it
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		showWeekNumbers: false, // True to show week numbers
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		shortYearCutoff: '+10', // Short year values &lt; this are in the current century,
-</span><span class="token prefix unchanged"> </span><span class="token line">			// > this are in the previous century,
-</span><span class="token prefix unchanged"> </span><span class="token line">			// string value starting with '+' for current year + value
-</span></span><span class="token coord">@@ -1321,6 +1322,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		var beforeShowDay = this._get(inst, 'beforeShowDay');
-</span><span class="token prefix unchanged"> </span><span class="token line">		var showOtherMonths = this._get(inst, 'showOtherMonths');
-</span><span class="token prefix unchanged"> </span><span class="token line">		var calculateWeek = this._get(inst, 'calculateWeek') || this.iso8601Week;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		var showWeek = this._get(inst, 'showWeekNumbers');
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		var endDate = inst.endDay ? this._daylightSavingAdjust(
-</span><span class="token prefix unchanged"> </span><span class="token line">			new Date(inst.endYear, inst.endMonth, inst.endDay)) : currentDate;
-</span><span class="token prefix unchanged"> </span><span class="token line">		var defaultDate = this._getDefaultDate(inst);
-</span></span><span class="token coord">@@ -1347,7 +1349,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">					selectedDate, row > 0 || col > 0, monthNames, monthNamesShort) + // draw month headers
-</span><span class="token prefix unchanged"> </span><span class="token line">					'&lt;/div>&lt;table class="ui-datepicker-calendar">&lt;thead>' +
-</span><span class="token prefix unchanged"> </span><span class="token line">					'&lt;tr>';
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				var thead = '';
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				var thead = showWeek ? '&lt;th>&lt;span title="Week number">w&lt;/span>&lt;/th>' : '';
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				for (var dow = 0; dow &lt; 7; dow++) { // days of the week
-</span><span class="token prefix unchanged"> </span><span class="token line">					var day = (dow + firstDay) % 7;
-</span><span class="token prefix unchanged"> </span><span class="token line">					thead += '&lt;th' + ((dow + firstDay + 6) % 7 >= 5 ? ' class="ui-datepicker-week-end"' : '') + '>' +
-</span></span><span class="token coord">@@ -1362,6 +1364,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				var printDate = this._daylightSavingAdjust(new Date(drawYear, drawMonth, 1 - leadDays));
-</span><span class="token prefix unchanged"> </span><span class="token line">				for (var dRow = 0; dRow &lt; numRows; dRow++) { // create date picker rows
-</span><span class="token prefix unchanged"> </span><span class="token line">					calender += '&lt;tr>';
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">					if (showWeek) calender += '&lt;td>&lt;span>' + calculateWeek(printDate) + '&lt;/span>&lt;/td>';
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">					var tbody = '';
-</span><span class="token prefix unchanged"> </span><span class="token line">					for (var dow = 0; dow &lt; 7; dow++) { // create date picker days
-</span><span class="token prefix unchanged"> </span><span class="token line">						var daySettings = (beforeShowDay ?</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4131/datepicker_showWeeks.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4131/datepicker_showWeeks.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

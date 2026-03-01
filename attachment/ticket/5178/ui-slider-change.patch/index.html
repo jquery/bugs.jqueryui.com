@@ -139,58 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui/jquery.ui.slider.js
-===================================================================
---- ui/jquery.ui.slider.js	(revision 3797)
-+++ ui/jquery.ui.slider.js	(working copy)
-@@ -399,7 +399,7 @@
- 					value: newVal
- 				});
- 				if (allowed !== false) {
--					this.value(newVal);
-+					this.value(newVal, true);
- 				}
- 					
- 			}
-@@ -432,24 +432,27 @@
- 		this._trigger("change", event, uiHash);
- 	},
- 
--	value: function(newValue) {
--
-+	value: function(newValue, dontTriggerChange) {
- 		if (arguments.length) {
- 			this.options.value = this._trimValue(newValue);
- 			this._refreshValue();
--			this._change(null, 0);
-+			if (!dontTriggerChange) {
-+				this._change(null, 0);
-+			}
- 		}
- 
- 		return this._value();
- 
- 	},
- 
--	values: function(index, newValue) {
-+	values: function(index, newValue, dontTriggerChange) {
- 
- 		if (arguments.length > 1) {
- 			this.options.values[index] = this._trimValue(newValue);
- 			this._refreshValue();
--			this._change(null, index);
-+			if (!dontTriggerChange) {
-+				this._change(null, index);
-+			}
- 		}
- 
- 		if (arguments.length) {</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5178/ui-slider-change.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5178/ui-slider-change.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

@@ -139,38 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui.slider.js
-===================================================================
-<span class="token coord">--- ui.slider.js	(revision 2349)</span>
-<span class="token coord">+++ ui.slider.js	(working copy)</span>
-<span class="token coord">@@ -198,18 +198,15 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		var self = this, index;
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.handles.each(function(i) {
-</span><span class="token prefix unchanged"> </span><span class="token line">			var thisDistance = Math.abs(normValue - self.values(i));
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			if (distance > thisDistance) {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			if (distance >= thisDistance) {
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				distance = thisDistance;
-</span><span class="token prefix unchanged"> </span><span class="token line">				closestHandle = $(this);
-</span><span class="token prefix unchanged"> </span><span class="token line">				index = i;
-</span><span class="token prefix unchanged"> </span><span class="token line">			}
-</span><span class="token prefix unchanged"> </span><span class="token line">		});
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		// workaround for bug #3736 (if both handles of a range are at 0,
-</span><span class="token prefix deleted">-</span><span class="token line">		// the first is always used as the one with least distance,
-</span><span class="token prefix deleted">-</span><span class="token line">		// and moving it is obviously prevented by preventing negative ranges)
-</span><span class="token prefix deleted">-</span><span class="token line">		if(o.range == true &amp;&amp; this.values(1) == o.min) {
-</span><span class="token prefix deleted">-</span><span class="token line">			closestHandle = $(this.handles[++index]);
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		while (this.values(index) == o.max &amp;&amp; index > 0 &amp;&amp; this.values(index-1) == o.max) {
-</span><span class="token prefix inserted">+</span><span class="token line">			closestHandle = $(this.handles[--index]);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		}
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		this._start(event, index);</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3736/ui.slider.3736.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3736/ui.slider.3736.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

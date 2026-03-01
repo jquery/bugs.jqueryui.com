@@ -139,27 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">*** jquery-ui-1.7.1/jquery-ui-1.7.1/ui/jquery-ui.js	2009-03-18 23:18:58.000000000 -0500
---- jquery-ui-1.7.1/ui/jquery-ui.js	2009-03-20 11:52:46.000000000 -0500
-***************
-*** 7662,7667 ****
---- 7662,7671 ----
-  		if (this.instances.length === 0) {
-  			$([document, window]).unbind('.dialog-overlay');
-  		}
-+         else
-+         {
-+             $(this.instances[this.instances-1]).unbind('.dialog-overlay');
-+         }
-  
-  		$el.remove();
-  	},</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4309/jquery-ui-dialog.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4309/jquery-ui-dialog.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

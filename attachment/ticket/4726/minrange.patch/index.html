@@ -137,37 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui.slider.js
-===================================================================
---- ui.slider.js	(revision 2999)
-+++ ui.slider.js	(working copy)
-@@ -337,8 +337,9 @@
- 			var otherVal = this.values(index ? 0 : 1);
- 
- 			if ((this.options.values.length == 2 && this.options.range === true) && 
--				((index == 0 && newVal > otherVal) || (index == 1 && newVal < otherVal))){
-- 				newVal = otherVal;
-+				((index == 0 && newVal > (otherVal - this.options.minRange)) ||
-+				(index == 1 && newVal < (otherVal + this.options.minRange)))){
-+ 				newVal = otherVal + this.options.minRange * (index * 2 - 1);
- 			}
- 
- 			if (newVal != this.values(index)) {
-@@ -550,7 +551,8 @@
- 		range: false,
- 		step: 1,
- 		value: 0,
--		values: null
-+		values: null,
-+		minRange: 0
- 	})
- });</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4726/minrange.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4726/minrange.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

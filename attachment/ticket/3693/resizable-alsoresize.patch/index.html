@@ -137,25 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.resizable.js
-===================================================================
---- /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.resizable.js	(revision 1221)
-+++ /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.resizable.js	(working copy)
-@@ -606,7 +606,7 @@
- 			});
- 		};
- 
--		if (typeof(o.alsoResize) == 'object') {
-+		if (typeof(o.alsoResize) == 'object' && !o.alsoResize.parentNode) {
- 			$.each(o.alsoResize, function(exp, c) { _alsoResize(exp, c); });
- 		}else{
- 			_alsoResize(o.alsoResize);</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3693/resizable-alsoresize.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3693/resizable-alsoresize.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

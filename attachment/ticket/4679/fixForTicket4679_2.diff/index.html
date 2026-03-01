@@ -139,34 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui/ui.dialog.js
-===================================================================
-<span class="token coord">--- ui/ui.dialog.js	(revision 2935)</span>
-<span class="token coord">+++ ui/ui.dialog.js	(working copy)</span>
-<span class="token coord">@@ -308,6 +308,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	_makeDraggable: function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">		var self = this,
-</span><span class="token prefix unchanged"> </span><span class="token line">			options = self.options,
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			doc = $(document),
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			heightBeforeDrag;
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		self.uiDialog.draggable({
-</span></span><span class="token coord">@@ -322,7 +323,8 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			drag: function(event) {
-</span><span class="token prefix unchanged"> </span><span class="token line">				self._trigger('drag', event);
-</span><span class="token prefix unchanged"> </span><span class="token line">			},
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			stop: function(event) {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			stop: function(event, ui) {
-</span><span class="token prefix inserted">+</span><span class="token line">				options.position = [ui.position.left - doc.scrollLeft(), ui.position.top - doc.scrollTop()];
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				$(this).removeClass("ui-dialog-dragging").height(heightBeforeDrag);
-</span><span class="token prefix unchanged"> </span><span class="token line">				self._trigger('dragStop', event);
-</span><span class="token prefix unchanged"> </span><span class="token line">				$.ui.dialog.overlay.resize();</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4679/fixForTicket4679_2.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4679/fixForTicket4679_2.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

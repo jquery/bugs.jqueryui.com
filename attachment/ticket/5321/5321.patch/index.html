@@ -139,36 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui/jquery.ui.sortable.js
-===================================================================
---- ui/jquery.ui.sortable.js	(revision 3886)
-+++ ui/jquery.ui.sortable.js	(working copy)
-@@ -%ld,%ld +%ld,%ld @@
- 		this.helper.css("position", "absolute");
- 		this.cssPosition = this.helper.css("position");
- 
-+		//Create the placeholder
-+		this._createPlaceholder();
-+		
- 		$.extend(this.offset, {
- 			click: { //Where the click happened, relative to the element
- 				left: event.pageX - this.offset.left,
-@@ -%ld,%ld +%ld,%ld @@
- 			this.currentItem.hide();
- 		}
- 
--		//Create the placeholder
--		this._createPlaceholder();
--
- 		//Set a containment if given in the options
- 		if(o.containment)
- 			this._setContainment();</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5321/5321.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5321/5321.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

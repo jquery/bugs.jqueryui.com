@@ -139,74 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: tests/draggable-revert.html
-===================================================================
---- tests/draggable-revert.html	(revision 0)
-+++ tests/draggable-revert.html	(revision 0)
-@@ -0,0 +1,30 @@
-+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-+	<head>
-+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-+		<title>jQuery UI Draggable Revert-Function Test</title>
-+		
-+		<script type="text/javascript" src="../jquery-1.2.6.js"></script>
-+		<script type="text/javascript" src="../ui/ui.core.js"></script>
-+		<script type="text/javascript" src="../ui/ui.draggable.js"></script>
-+		<script type="text/javascript" src="draggable-revert.js"></script>
-+
-+		<style type="text/css">
-+		
-+		#draggable {
-+			width: 150px;
-+			height: 150px;
-+			background-color: #ccc;
-+			padding: 10px;
-+			border: solid 1px black;
-+		}
-+		
-+		</style>
-+	</head>
-+	<body>
-+		<h1>jQuery UI Draggable Revert-Function Test</h1>
-+		<p><input id="revert" type="checkbox"> <label for="revert">Revert?</label></p>
-+		<div id="draggable">Drag me!</div>
-+	</body>
-+</html>
-\ No newline at end of file
-Index: tests/draggable-revert.js
-===================================================================
---- tests/draggable-revert.js	(revision 0)
-+++ tests/draggable-revert.js	(revision 0)
-@@ -0,0 +1,7 @@
-+$(function () {
-+	$('#draggable').draggable({
-+		revert: function () {
-+			return !!($('#revert').val());
-+		}
-+	});
-+});
-\ No newline at end of file
-Index: ui/ui.draggable.js
-===================================================================
---- ui/ui.draggable.js	(revision 536)
-+++ ui/ui.draggable.js	(working copy)
-@@ -229,7 +229,7 @@
- 		if ($.ui.ddmanager && !this.options.dropBehaviour)
- 			var dropped = $.ui.ddmanager.drop(this, e);		
- 		
--		if((this.options.revert == "invalid" && !dropped) || (this.options.revert == "valid" && dropped) || this.options.revert === true) {
-+		if((this.options.revert == "invalid" && !dropped) || (this.options.revert == "valid" && dropped) || this.options.revert === true || (typeof(this.options.revert) == 'function' && this.options.revert())) {
- 			var self = this;
- 			$(this.helper).animate(this.originalPosition, parseInt(this.options.revertDuration, 10) || 500, function() {
- 				self.propagate("stop", e);</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3175/draggable-revert.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3175/draggable-revert.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

@@ -139,23 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- vendors/js/jquery/ui/effects.scale.js	2008-06-11 19:17:34.000000000 +0200
-+++ app/webroot/js/effects.scale.js	2008-06-11 19:17:07.000000000 +0200
-@@ -68,7 +68,7 @@
- 			y: direction != 'horizontal' ? (percent / 100) : 1,
- 			x: direction != 'vertical' ? (percent / 100) : 1
- 		};
--		el.to = {height: original.height * factor.y, width: original.width * factor.x}; // Set to state
-+		el.to = o.options.to || {height: original.height * factor.y, width: original.width * factor.x}; // Set to state
- 		if (origin) { // Calculate baseline shifts
- 			var baseline = $.effects.getBaseline(origin, original);
- 			el.from.top = (original.height - el.from.height) * baseline.y;</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3005/affects.scale_allow-option-to.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3005/affects.scale_allow-option-to.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

@@ -139,83 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui.core.js
-===================================================================
-<span class="token coord">--- ui.core.js	(revision 909)</span>
-<span class="token coord">+++ ui.core.js	(working copy)</span>
-<span class="token coord">@@ -1,34 +1,35 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">(function($) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">	
-</span><span class="token prefix inserted">+</span><span class="token line">var normalizedTabindex = ($.browser.msie &amp;&amp; parseInt($.browser.version, 10) &lt; 8) ?
-</span><span class="token prefix inserted">+</span><span class="token line">		'tabIndex' :
-</span><span class="token prefix inserted">+</span><span class="token line">		'tabindex';
-</span><span class="token prefix inserted">+</span><span class="token line">	         
-</span><span class="token prefix inserted">+</span><span class="token line">function hasTabindexAttr(element) { 
-</span><span class="token prefix inserted">+</span><span class="token line">	var attributeNode = element.getAttributeNode(normalizedTabindex);
-</span><span class="token prefix inserted">+</span><span class="token line">	return attributeNode ? attributeNode.specified : false; 
-</span><span class="token prefix inserted">+</span><span class="token line">} 
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">function getTabIndex(element) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">	var index = parseInt(element.getAttribute('tabIndex'), 10);
-</span><span class="token prefix deleted">-</span><span class="token line">	if (isNaN(index)) {
-</span><span class="token prefix deleted">-</span><span class="token line">		index = element.tabIndex;
-</span><span class="token prefix deleted">-</span><span class="token line">	}
-</span><span class="token prefix deleted">-</span><span class="token line">	
-</span><span class="token prefix deleted">-</span><span class="token line">	return index;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">	if (!hasTabindexAttr(element)) { 
-</span><span class="token prefix inserted">+</span><span class="token line">		return undefined; 
-</span><span class="token prefix inserted">+</span><span class="token line">	} 
-</span><span class="token prefix inserted">+</span><span class="token line">	var value = parseInt(element.getAttribute(normalizedTabindex), 10); 
-</span><span class="token prefix inserted">+</span><span class="token line"> 	return !isNaN(value) ? value : undefined;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">}
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">$.extend($.expr[':'], {
-</span><span class="token prefix unchanged"> </span><span class="token line">	focusable: function(element) {
-</span><span class="token prefix unchanged"> </span><span class="token line">		var nodeName = element.nodeName.toLowerCase(),
-</span><span class="token prefix unchanged"> </span><span class="token line">			tabIndex = getTabIndex(element);
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		
-</span><span class="token prefix deleted">-</span><span class="token line">		if ($(element).is(':hidden') || $(element).parents(':hidden').length) {
-</span><span class="token prefix deleted">-</span><span class="token line">			return false;
-</span><span class="token prefix deleted">-</span><span class="token line">		}
-</span><span class="token prefix deleted">-</span><span class="token line">		
-</span><span class="token prefix deleted">-</span><span class="token line">		return (/input|select|textarea|button|object|area/.test(nodeName)
-</span><span class="token prefix deleted">-</span><span class="token line">			? !('hidden' == element.type || element.disabled)
-</span><span class="token prefix deleted">-</span><span class="token line">			: 'a' == nodeName
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		return (/input|select|textarea|button|object/.test(nodeName)
-</span><span class="token prefix inserted">+</span><span class="token line">			? !(element.disabled)
-</span><span class="token prefix inserted">+</span><span class="token line">			: 'a' == nodeName || 'area' == nodeName
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				? element.href || !isNaN(tabIndex)
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				: !isNaN(tabIndex));
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				: !isNaN(tabIndex)) &amp;&amp; (!$(element).parents().andSelf().filter(':hidden').length) ? true : false;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">	
-</span><span class="token prefix unchanged"> </span><span class="token line">	tabbable: function(element) {
-</span><span class="token prefix unchanged"> </span><span class="token line">		var tabIndex = getTabIndex(element);
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		
-</span><span class="token prefix deleted">-</span><span class="token line">		return !isNaN(tabIndex) &amp;&amp; tabIndex >= 0 &amp;&amp; $(element).is(':focusable'); 
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		return (isNaN(tabIndex) || tabIndex >= 0) &amp;&amp; $(element).is(':focusable'); 
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	}
-</span><span class="token prefix unchanged"> </span><span class="token line">});
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token coord">@@ -36,9 +37,9 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	var element = this[0];
-</span><span class="token prefix unchanged"> </span><span class="token line">	
-</span><span class="token prefix unchanged"> </span><span class="token line">	if (element) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		if (!isNaN(getTabIndex(element))) {
-</span><span class="token prefix deleted">-</span><span class="token line">			$(element).attr('tabIndex', -1);
-</span><span class="token prefix deleted">-</span><span class="token line">		}
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		//if (!isNaN(getTabIndex(element))) {
-</span><span class="token prefix inserted">+</span><span class="token line">		$(element).attr('tabIndex', -1);
-</span><span class="token prefix inserted">+</span><span class="token line">		//}
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		
-</span><span class="token prefix unchanged"> </span><span class="token line">		setTimeout(function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">			element.focus();</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3559/core.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3559/core.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

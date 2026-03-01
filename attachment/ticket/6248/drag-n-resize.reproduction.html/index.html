@@ -139,52 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jquery-1.4.2.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jquery-ui-1.8.5.custom.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"> 
-			<span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-				<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#drag-n-resize"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">draggable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-					<span class="token literal-property property">containment</span> <span class="token operator">:</span> <span class="token string">'parent'</span><span class="token punctuation">,</span>
-					<span class="token function-variable function">stop</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> ui</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-						<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#debug"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span>ui<span class="token punctuation">.</span>position<span class="token punctuation">[</span><span class="token string">"left"</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span>ui<span class="token punctuation">.</span>position<span class="token punctuation">[</span><span class="token string">"top"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token punctuation">}</span>	
-				<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-				<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#drag-n-resize"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">resizable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css"> 
-			<span class="token atrule"><span class="token rule">@import</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>jquery-ui-1.8.5.custom.css<span class="token punctuation">)</span></span><span class="token punctuation">;</span></span>
-			<span class="token selector">#container</span> <span class="token punctuation">{</span>
-				<span class="token property">border</span><span class="token punctuation">:</span> 1px solid #000<span class="token punctuation">;</span>
-				<span class="token property">width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
-				<span class="token property">height</span><span class="token punctuation">:</span> 600px<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-			<span class="token selector">#drag-n-resize</span> <span class="token punctuation">{</span>
-				<span class="token property">background</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
-				<span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-				<span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-		</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-		Try simply drag red square. Everything is going alright.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
-		Put it at left-upper corner - coords will be 0,0;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
-		And now change square size and drug it. Position is not more relative to #container object. =(<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
-		Put it at left-upper corner - coords will not be 0,0;
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> 
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>drag-n-resize<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-		Position: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">disabled</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>disabled<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>debug<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+      <pre class="language-html" tabindex="0"><code class="language-html"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/6248/drag-n-resize.reproduction.html">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/6248/drag-n-resize.reproduction.html">Original Format</a>
   </div>
 </h1></div>
         </div>

@@ -139,50 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: functional/css/functional_demos.css
-===================================================================
---- functional/css/functional_demos.css	(revision 1187)
-+++ functional/css/functional_demos.css	(working copy)
-@@ -195,11 +195,11 @@
- 	float: left; padding: 5px;
- }
- 
--#accordionDemo, select {
-+#accordionDemo, #accordionDemoFillSpace, select {
- 	position: relative;
- 	font-size: 12px;
- }
--#accordionDemo h3 {
-+#accordionDemo h3, #accordionDemoFillSpace h3 {
- 	padding: 0;
- }
- 
-Index: functional/templates/ui.accordion.html
-===================================================================
---- functional/templates/ui.accordion.html	(revision 1187)
-+++ functional/templates/ui.accordion.html	(working copy)
-@@ -19,6 +19,16 @@
- 					{ desc: 'Simple Accordion Mouse over', source: '$("#accordionDemo").accordion({event: "mouseover", header:".ui-accordion-header"});' },
- 					{ desc: 'Simple Accordion', source: '$("#accordionDemo").accordion({ header: ".ui-accordion-header"});' }
- 				]
-+			},
-+			{
-+				title: 'Fill space accordion',
-+				html: { url: 'templates/ui.accordion.fillspace.html' },
-+				destroy: '$("#accordionDemoFillSpace").accordion("destroy");',
-+
-+				options: [
-+					{ desc: 'Simple Accordion Mouse over', source: '$("#accordionDemoFillSpace").accordion({event: "mouseover", fillSpace: true, header:".ui-accordion-header"});' },
-+					{ desc: 'Simple Accordion', source: '$("#accordionDemoFillSpace").accordion({fillSpace: true, header: ".ui-accordion-header"});' }
-+				]
- 			}
- 		]</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3682/accordion-fillspace-demos.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3682/accordion-fillspace-demos.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

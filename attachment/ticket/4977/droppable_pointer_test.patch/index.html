@@ -137,64 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: droppable_tickets.js
-===================================================================
---- droppable_tickets.js	(revision 3476)
-+++ droppable_tickets.js	(working copy)
-@@ -5,4 +5,47 @@
- 
- module("droppable: tickets");
- 
-+test("#4977: tolerance, pointer - when pointer outside draggable", function() {
-+	var draggable1 = $("#draggable1");
-+	var droppable1 = $("#droppable1");
-+	var isDropped = false;
-+
-+	droppable1.droppable({
-+		tolerance: 'pointer',
-+		drop: function() { isDropped = true; }
-+	});
-+
-+	// Contain draggable so only its bottom half can be dragged
-+	// over the droppable.
-+	draggable1.draggable({ containment: [
-+		draggable1.offset().left,
-+		draggable1.offset().top,
-+		droppable1.offset().left + droppable1.width(),
-+		droppable1.offset().top - Math.round(draggable1.height() / 2)
-+	]});
-+
-+	// Pointer starts out over "top of draggable"
-+	draggable1.simulate("mousedown", {
-+		clientX: draggable1.offset().left + draggable1.width() / 2,
-+		clientY: draggable1.offset().top + 1 // draggable1.height() - 1
-+	});
-+
-+	// Pointer ends up below bottom of draggable:
-+	//
-+	//   * Top of draggable is *not* inside droppable.
-+	//   * Bottom of draggable *is* inside droppable.
-+	//   * Pointer *is* inside droppable, and outside droppable.
-+	var pos = {
-+		clientX: droppable1.offset().left + droppable1.width() / 2,
-+		clientY: droppable1.offset().top + draggable1.height()
-+	};
-+	draggable1.simulate("mousemove", pos);
-+	draggable1.simulate("mouseup", pos);
-+
-+	draggable1.draggable("destroy");
-+	droppable1.droppable("destroy");
-+
-+	ok(isDropped, "tolerance, pointer - when pointer outside draggable");
-+});
-+
- })(jQuery);</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4977/droppable_pointer_test.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4977/droppable_pointer_test.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

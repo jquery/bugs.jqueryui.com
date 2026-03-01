@@ -139,71 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui.slider.js
-===================================================================
-<span class="token coord">--- ui.slider.js	(revision 2349)</span>
-<span class="token coord">+++ ui.slider.js	(working copy)</span>
-<span class="token coord">@@ -34,14 +34,12 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		if (o.range) {
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			this.range = $('&lt;div>&lt;/div>');
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			if (o.range === true) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				this.range = $('&lt;div>&lt;/div>');
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				if (!o.values) o.values = [this._valueMin(), this._valueMin()];
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				if (o.values.length &amp;&amp; o.values.length != 2) {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				if (o.values.length &amp;&amp; o.values.length &lt; 2) {
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">					o.values = [o.values[0], o.values[0]];
-</span><span class="token prefix unchanged"> </span><span class="token line">				}
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			} else {
-</span><span class="token prefix deleted">-</span><span class="token line">				this.range = $('&lt;div>&lt;/div>');
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			}
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">			this.range
-</span></span><span class="token coord">@@ -473,23 +471,24 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	_refreshValue: function(animate) {
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		var oRange = this.options.range, o = this.options, self = this;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		var numOptions = this.options.values ? this.options.values.length : 0;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		if (this.options.values &amp;&amp; this.options.values.length) {
-</span><span class="token prefix deleted">-</span><span class="token line">			var vp0, vp1;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		if (numOptions) {
-</span><span class="token prefix inserted">+</span><span class="token line">			var min = this._valueMin();
-</span><span class="token prefix inserted">+</span><span class="token line">			var diff = this._valueMax() - this._valueMin();
-</span><span class="token prefix inserted">+</span><span class="token line">			if (oRange === true) {
-</span><span class="token prefix inserted">+</span><span class="token line">				var firstHandlePercent = (this.values(0) - min) / diff * 100;
-</span><span class="token prefix inserted">+</span><span class="token line">				var rangePercent = (this.values(numOptions-1) - min) / diff * 100 - firstHandlePercent;
-</span><span class="token prefix inserted">+</span><span class="token line">				if (self.orientation == 'horizontal') {
-</span><span class="token prefix inserted">+</span><span class="token line">					self.range.stop(1,1)[animate ? 'animate' : 'css']({ left: firstHandlePercent + '%', width: rangePercent + '%' }, o.animate);
-</span><span class="token prefix inserted">+</span><span class="token line">				} else {
-</span><span class="token prefix inserted">+</span><span class="token line">					self.range.stop(1,1)[animate ? 'animate' : 'css']({ bottom: firstHandlePercent + '%', height: rangePercent + '%' }, o.animate);
-</span><span class="token prefix inserted">+</span><span class="token line">				}
-</span><span class="token prefix inserted">+</span><span class="token line">			}
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			this.handles.each(function(i, j) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				var valPercent = (self.values(i) - self._valueMin()) / (self._valueMax() - self._valueMin()) * 100;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				var valPercent = (self.values(i) - min) / diff * 100;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				var _set = {}; _set[self.orientation == 'horizontal' ? 'left' : 'bottom'] = valPercent + '%';
-</span><span class="token prefix unchanged"> </span><span class="token line">				$(this).stop(1,1)[animate ? 'animate' : 'css'](_set, o.animate);
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				if (self.options.range === true) {
-</span><span class="token prefix deleted">-</span><span class="token line">					if (self.orientation == 'horizontal') {
-</span><span class="token prefix deleted">-</span><span class="token line">						(i == 0) &amp;&amp; self.range.stop(1,1)[animate ? 'animate' : 'css']({ left: valPercent + '%' }, o.animate);
-</span><span class="token prefix deleted">-</span><span class="token line">						(i == 1) &amp;&amp; self.range[animate ? 'animate' : 'css']({ width: (valPercent - lastValPercent) + '%' }, { queue: false, duration: o.animate });
-</span><span class="token prefix deleted">-</span><span class="token line">					} else {
-</span><span class="token prefix deleted">-</span><span class="token line">						(i == 0) &amp;&amp; self.range.stop(1,1)[animate ? 'animate' : 'css']({ bottom: (valPercent) + '%' }, o.animate);
-</span><span class="token prefix deleted">-</span><span class="token line">						(i == 1) &amp;&amp; self.range[animate ? 'animate' : 'css']({ height: (valPercent - lastValPercent) + '%' }, { queue: false, duration: o.animate });
-</span><span class="token prefix deleted">-</span><span class="token line">					}
-</span><span class="token prefix deleted">-</span><span class="token line">				}
-</span><span class="token prefix deleted">-</span><span class="token line">				lastValPercent = valPercent;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			});
-</span><span class="token prefix unchanged"> </span><span class="token line">		} else {
-</span><span class="token prefix unchanged"> </span><span class="token line">			var value = this.value(),</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4388/ui.slider.4388.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4388/ui.slider.4388.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

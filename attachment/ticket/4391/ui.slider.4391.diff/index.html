@@ -137,27 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui.slider.js
-===================================================================
-<span class="token coord">--- ui.slider.js	(revision 2363)</span>
-<span class="token coord">+++ ui.slider.js	(working copy)</span>
-<span class="token coord">@@ -78,8 +78,8 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.handles.add(this.range).filter("a")
-</span><span class="token prefix unchanged"> </span><span class="token line">			.click(function(event) { event.preventDefault(); })
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			.hover(function() { $(this).addClass('ui-state-hover'); }, function() { $(this).removeClass('ui-state-hover'); })
-</span><span class="token prefix deleted">-</span><span class="token line">			.focus(function() { $(".ui-slider .ui-state-focus").removeClass('ui-state-focus'); $(this).addClass('ui-state-focus'); })
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			.hover(function() { if (!o.disabled) $(this).addClass('ui-state-hover'); }, function() { $(this).removeClass('ui-state-hover'); })
-</span><span class="token prefix inserted">+</span><span class="token line">			.focus(function() { if (!o.disabled) {$(".ui-slider .ui-state-focus").removeClass('ui-state-focus'); $(this).addClass('ui-state-focus');} })
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			.blur(function() { $(this).removeClass('ui-state-focus'); });
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.handles.each(function(i) {</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4391/ui.slider.4391.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4391/ui.slider.4391.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

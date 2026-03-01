@@ -137,60 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>./js/js/jquery-ui-1.8.4.custom.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
-			<span class="token selector">#container</span> <span class="token punctuation">{</span>
-				<span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
-				<span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
-				<span class="token property">border-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-			
-			<span class="token selector">.box</span> <span class="token punctuation">{</span>
-				<span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-				<span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-				<span class="token property">background-color</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-		</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>draggable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Drag me!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-		
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-			<span class="token keyword">function</span> <span class="token function">secondDropFunction</span><span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> ui</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-				<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"You'll never get here!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-			
-			<span class="token keyword">function</span> <span class="token function">dropFunction</span><span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> ui</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>	
-				<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"This is the container's drop function. It fires every time, even when you're trying to drop into an orange box, which should be droppable"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-				<span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-					<span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">'box'</span><span class="token punctuation">)</span>
-					<span class="token punctuation">.</span><span class="token function">appendTo</span><span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-					<span class="token punctuation">.</span><span class="token function">droppable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-						<span class="token literal-property property">accept</span><span class="token operator">:</span> <span class="token string">'.draggable'</span><span class="token punctuation">,</span> 
-						<span class="token literal-property property">drop</span><span class="token operator">:</span> secondDropFunction 
-					<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-			
-			<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'.draggable'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">draggable</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">helper</span><span class="token operator">:</span> <span class="token string">'clone'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			
-			<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#container'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">droppable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-				<span class="token literal-property property">accept</span><span class="token operator">:</span> <span class="token string">'.draggable'</span><span class="token punctuation">,</span>
-				<span class="token literal-property property">drop</span><span class="token operator">:</span> dropFunction
-			<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-				
-		</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+      <pre class="language-html" tabindex="0"><code class="language-html"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/6085/precedence.html">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/6085/precedence.html">Original Format</a>
   </div>
 </h1></div>
         </div>

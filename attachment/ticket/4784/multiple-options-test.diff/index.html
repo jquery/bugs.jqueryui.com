@@ -139,43 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: tests/unit/core/core.js
-===================================================================
-<span class="token coord">--- tests/unit/core/core.js	(revision 3071)</span>
-<span class="token coord">+++ tests/unit/core/core.js	(working copy)</span>
-<span class="token coord">@@ -57,4 +57,26 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	equals($('#zIndexAutoNoParent').zIndex(), 0, 'zIndex never explicitly set in hierarchy');
-</span><span class="token prefix unchanged"> </span><span class="token line">});
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">test('widget factory, merge multiple option arguments', function() {
-</span><span class="token prefix inserted">+</span><span class="token line">	expect(1);
-</span><span class="token prefix inserted">+</span><span class="token line">	$.widget("ui.widgetTest", {
-</span><span class="token prefix inserted">+</span><span class="token line">		_init: function() {
-</span><span class="token prefix inserted">+</span><span class="token line">			same(this.options, {
-</span><span class="token prefix inserted">+</span><span class="token line">				disabled: false,
-</span><span class="token prefix inserted">+</span><span class="token line">				option1: "value1",
-</span><span class="token prefix inserted">+</span><span class="token line">				option2: "value2",
-</span><span class="token prefix inserted">+</span><span class="token line">				option3: "value3"
-</span><span class="token prefix inserted">+</span><span class="token line">			});
-</span><span class="token prefix inserted">+</span><span class="token line">		}
-</span><span class="token prefix inserted">+</span><span class="token line">	});
-</span><span class="token prefix inserted">+</span><span class="token line">	$("#main > :first").widgetTest({
-</span><span class="token prefix inserted">+</span><span class="token line">		option1: "valuex",
-</span><span class="token prefix inserted">+</span><span class="token line">		option2: "valuex",
-</span><span class="token prefix inserted">+</span><span class="token line">		option3: "value3"
-</span><span class="token prefix inserted">+</span><span class="token line">	}, {
-</span><span class="token prefix inserted">+</span><span class="token line">		option1: "value1",
-</span><span class="token prefix inserted">+</span><span class="token line">		option2: "value2"
-</span><span class="token prefix inserted">+</span><span class="token line">	});
-</span><span class="token prefix inserted">+</span><span class="token line">});
-</span><span class="token prefix inserted">+</span><span class="token line">
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">})(jQuery);</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4784/multiple-options-test.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4784/multiple-options-test.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

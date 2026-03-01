@@ -139,83 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: jquery.ui.dialog.js
-===================================================================
---- jquery.ui.dialog.js	(revision 3871)
-+++ jquery.ui.dialog.js	(working copy)
-@@ -27,7 +27,7 @@
- $.widget("ui.dialog", {
- 	options: {
- 		autoOpen: true,
--		buttons: {},
-+		buttons: null,
- 		closeOnEscape: true,
- 		closeText: 'close',
- 		dialogClass: '',
-@@ -307,17 +307,48 @@
- 		// if we already have a button pane, remove it
- 		self.uiDialog.find('.ui-dialog-buttonpane').remove();
- 
--		(typeof buttons == 'object' && buttons !== null &&
--			$.each(buttons, function() { return !(hasButtons = true); }));
--		if (hasButtons) {
--			$.each(buttons, function(name, fn) {
--				var button = $('<button type="button"></button>')
--					.text(name)
--					.click(function() { fn.apply(self.element[0], arguments); })
--					.appendTo(uiDialogButtonPane);
--				($.fn.button && button.button());
--			});
-+		if( $.isArray(buttons) ) {
-+			$.each(buttons, function( index,value ) {
-+					// Default button type is in fact "button", available is button, submit and reset
-+					var options = { 'type': 'button' };
-+					var button_options = {};
-+
-+					// normal callback
-+					if( typeof value.callback != 'undefined' ) {
-+						options = $.extend( options, { 'click': value.callback } );
-+					}
-+
-+					// normal label
-+					if( typeof value.label != 'undefined' ) {
-+						options = $.extend( options, { 'html': value.label } );
-+					}
-+
-+					// extend with optional attributes, methods and callbacks
-+					if( typeof value.options != 'undefined' ) {
-+						options = $.extend( options, value.options );
-+					}
-+					// ui.button specific options
-+					if( typeof value.button_options != 'undefined' ) {
-+						options = $.extend( button_options, value.button_options );
-+					}
-+
-+					var button = $("<button>", options ).appendTo(uiDialogButtonPane).button(button_options);
-+
-+				});
- 			uiDialogButtonPane.appendTo(self.uiDialog);
-+		} else {
-+			(typeof buttons == 'object' && buttons !== null &&
-+				$.each(buttons, function() { return !(hasButtons = true); }));
-+			if (hasButtons) {
-+				$.each(buttons, function(name, fn) {
-+						var button = $('</button><button type="button"></button>')
-+						.text(name)
-+						.click(function() { fn.apply(self.element[0], arguments); })
-+						.appendTo(uiDialogButtonPane);
-+						($.fn.button && button.button());
-+					});
-+				uiDialogButtonPane.appendTo(self.uiDialog);
-+			}
- 		}
- 	},</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5287/jquery.ui.dialog.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5287/jquery.ui.dialog.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

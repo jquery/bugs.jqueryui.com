@@ -137,25 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui.tabs.js
-===================================================================
-<span class="token coord">--- ui.tabs.js	(revision 2500)</span>
-<span class="token coord">+++ ui.tabs.js	(working copy)</span>
-<span class="token coord">@@ -71,7 +71,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	_tabify: function(init) {
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		this.list = this.element.children('ul:first');
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		this.list = this.element.children('ol:first,ul:first').eq(0);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		this.lis = $('li:has(a[href])', this.list);
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.anchors = this.lis.map(function() { return $('a', this)[0]; });
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.panels = $([]);</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4501/ui.tabs.js@r2500-ol.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4501/ui.tabs.js@r2500-ol.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

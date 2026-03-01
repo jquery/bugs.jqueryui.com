@@ -139,59 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui.core.js
-===================================================================
---- ui.core.js	(revision 3051)
-+++ ui.core.js	(working copy)
-@@ -161,14 +161,16 @@
- 		return this
- 			.attr('unselectable', 'off')
- 			.css('MozUserSelect', '')
--			.unbind('selectstart.ui');
-+			.unbind('selectstart.ui')
-+			.unbind('selectstart.disableTextSelect');	//ie select enable
- 	},
- 
- 	disableSelection: function() {
- 		return this
- 			.attr('unselectable', 'on')
- 			.css('MozUserSelect', 'none')
--			.bind('selectstart.ui', function() { return false; });
-+			.bind('selectstart.ui', function() { return false; })
-+			.bind('selectstart.disableTextSelect', function() { return false; }); //ie select disable
- 	},
- 
- 	scrollParent: function() {
-@@ -413,12 +415,6 @@
- 				}
- 			});
- 
--		// Prevent text selection in IE
--		if ($.browser.msie) {
--			this._mouseUnselectable = this.element.attr('unselectable');
--			this.element.attr('unselectable', 'on');
--		}
--
- 		this.started = false;
- 	},
- 
-@@ -426,10 +422,6 @@
- 	// other instances of mouse
- 	_mouseDestroy: function() {
- 		this.element.unbind('.'+this.widgetName);
--
--		// Restore text selection in IE
--		($.browser.msie
--			&& this.element.attr('unselectable', this._mouseUnselectable));
- 	},
- 
- 	_mouseDown: function(event) {</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4773/ie select fix.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4773/ie select fix.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

@@ -137,33 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: jquery.ui.autocomplete.js
-===================================================================
---- jquery.ui.autocomplete.js	(revision 3749)
-+++ jquery.ui.autocomplete.js	(working copy)
-@@ -219,14 +219,14 @@
- 			.menu({
- 				focus: function( event, ui ) {
- 					var item = ui.item.data( "item.autocomplete" );
--					if ( false !== self._trigger( "focus", null, { item: item } ) ) {
-+					if ( false !== self._trigger( "focus", event, item ) ) {
- 						// use value to match what will end up in the input
- 						self.element.val( item.value );
- 					}
- 				},
- 				selected: function( event, ui ) {
- 					var item = ui.item.data( "item.autocomplete" );
--					if ( false !== self._trigger( "select", event, { item: item } ) ) {
-+					if ( false !== self._trigger( "select", event, item ) ) {
- 						self.element.val( item.value );
- 					}
- 					self.close( event );</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5106/autocomplete-callback-params.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5106/autocomplete-callback-params.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

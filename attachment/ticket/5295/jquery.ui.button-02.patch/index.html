@@ -139,62 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: jquery.ui.button.js
-===================================================================
---- jquery.ui.button.js	(revision 3874)
-+++ jquery.ui.button.js	(arbetskopia)
-@@ -30,6 +30,7 @@
- 	_create: function() {
- 		this._determineButtonType();
- 		this.hasTitle = !!this.buttonElement.attr( "title" );
-+		this.isHovering = false; // To be used if "enable" is called while mouse is hovering over a disabled dutton
- 
- 		var self = this,
- 			options = this.options,
-@@ -45,6 +46,7 @@
- 			.addClass( baseClasses )
- 			.attr( "role", "button" )
- 			.bind( "mouseenter.button", function() {
-+				self.isHovering = true;
- 				if ( options.disabled ) {
- 					return;
- 				}
-@@ -54,6 +56,7 @@
- 				}
- 			})
- 			.bind( "mouseleave.button", function() {
-+				self.isHovering = false;
- 				if ( options.disabled ) {
- 					return;
- 				}
-@@ -194,6 +197,21 @@
- 	},
- 
- 	_setOption: function( key, value ) {
-+		switch( key ) {
-+		case 'disabled':
-+			if( value ) {
-+				// There is a posibillity that the button is made disabled during hovering/clicking etc...
-+				// So to be on the safe side, we'll remove all state classes when calling disabled.
-+				this.element.removeClass( "ui-state-active ui-state-hover ui-state-focus" )
-+			} else {
-+				// We could be hovering (statically) over the disabled button and call "enable" on the button, 
-+				// lets then mark it as in a hovering state.
-+				if( this.isHovering ) {
-+					this.element.addClass( "ui-state-hover" );
-+				}
-+			}
-+			break;
-+		}
- 		$.Widget.prototype._setOption.apply( this, arguments );
- 		this._resetButton();
- 	},</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5295/jquery.ui.button-02.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5295/jquery.ui.button-02.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

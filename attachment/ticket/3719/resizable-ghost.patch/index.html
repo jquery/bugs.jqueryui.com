@@ -139,24 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui/ui.resizable.js
-===================================================================
---- ui/ui.resizable.js	(revision 1449)
-+++ ui/ui.resizable.js	(working copy)
-@@ -760,7 +760,7 @@
- 	resize: function(event, ui){
- 		var o = ui.options, self = $(this).data("resizable"), pr = o.proportionallyResize;
- 
--		if (self.ghost) self.ghost.css({ position: 'relative', height: self.size.height, width: self.size.width });
-+		if (self.ghost) self.ghost.css({ position: 'relative', height: self.size.height-self.sizeDiff.height, width: self.size.width-self.sizeDiff.width });
- 
- 	},</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3719/resizable-ghost.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3719/resizable-ghost.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

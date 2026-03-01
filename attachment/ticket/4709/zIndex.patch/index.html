@@ -137,38 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js
-===================================================================
---- /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js	(revision 2970)
-+++ /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.core.js	(working copy)
-@@ -184,6 +184,22 @@
- 		}
- 
- 		return (/fixed/).test(this.css('position')) || !scrollParent.length ? $(document) : scrollParent;
-+	},
-+
-+	zIndex: function(zIndex) {
-+		if (zIndex !== undefined) {
-+			return this.css('zIndex', zIndex);
-+		}
-+
-+		var elem = this[0];
-+		while (elem) {
-+			if (elem.style.zIndex !== '') {
-+				return elem.style.zIndex;
-+			}
-+			elem = elem.parentNode;
-+		}
-+
-+		return 0;
- 	}
- });</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4709/zIndex.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4709/zIndex.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

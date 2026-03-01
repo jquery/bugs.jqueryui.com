@@ -139,36 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">From 3eadf2bcab9acdd0e15608299377e12e87d325bf Mon Sep 17 00:00:00 2001
-From: Nathan Sobo <nathansobo@gmail.com>
-Date: Wed, 14 Apr 2010 19:40:31 -0600
-Subject: [PATCH] Draggable: Calling refreshPositions instead of _refreshItems when dragging into a connected sortable. Fixed: #5563 - Draggable li with connectToSortable option cannot be dropped on the connected sortable ol
-
----
- ui/jquery.ui.draggable.js |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
-
-diff --git a/ui/jquery.ui.draggable.js b/ui/jquery.ui.draggable.js
-index 9496ce3..d13107a 100644
---- a/ui/jquery.ui.draggable.js
-+++ b/ui/jquery.ui.draggable.js
-@@ -475,7 +475,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
- 					instance: sortable,
- 					shouldRevert: sortable.options.revert
- 				});
--				sortable._refreshItems();	//Do a one-time refresh at start to refresh the containerCache
-+				sortable.refreshPositions();	//Do a one-time refreshPositions at start to initialize the containerCache
- 				sortable._trigger("activate", event, uiSortable);
- 			}
- 		});
--- 
-1.7.0</nathansobo@gmail.com></code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5811/0001-Draggable-Calling-refreshPositions-instead-of-_refre.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5811/0001-Draggable-Calling-refreshPositions-instead-of-_refre.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

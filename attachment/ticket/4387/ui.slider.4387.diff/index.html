@@ -139,45 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui.slider.js
-===================================================================
-<span class="token coord">--- ui.slider.js	(revision 2349)</span>
-<span class="token coord">+++ ui.slider.js	(working copy)</span>
-<span class="token coord">@@ -316,13 +316,16 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		var handle = this.handles[index];
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		if (this.options.values &amp;&amp; this.options.values.length) {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			
-</span><span class="token prefix inserted">+</span><span class="token line">			var oldVal = this.values(index);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			var otherVal = this.values(index ? 0 : 1);
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			if (oldVal &lt; newVal &amp;&amp; index &lt; this.options.values.length - 1 &amp;&amp; newVal > this.options.values[index+1]) 
-</span><span class="token prefix inserted">+</span><span class="token line">				newVal = this.options.values[index+1];
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			if ((index == 0 &amp;&amp; newVal >= otherVal) || (index == 1 &amp;&amp; newVal &lt;= otherVal))
-</span><span class="token prefix deleted">-</span><span class="token line">				newVal = otherVal;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			if (oldVal > newVal &amp;&amp; index > 0 &amp;&amp; newVal &lt; this.options.values[index-1]) 
-</span><span class="token prefix inserted">+</span><span class="token line">				newVal = this.options.values[index-1];
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			if (newVal != this.values(index)) {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			if (newVal != oldVal) {
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				var newValues = this.values();
-</span><span class="token prefix unchanged"> </span><span class="token line">				newValues[index] = newVal;
-</span><span class="token prefix unchanged"> </span><span class="token line">				// A slide can be canceled by returning false from the slide callback
-</span></span><span class="token coord">@@ -331,7 +334,6 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">					value: newVal,
-</span><span class="token prefix unchanged"> </span><span class="token line">					values: newValues
-</span><span class="token prefix unchanged"> </span><span class="token line">				});
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				var otherVal = this.values(index ? 0 : 1);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				if (allowed !== false) {
-</span><span class="token prefix unchanged"> </span><span class="token line">					this.values(index, newVal, ( event.type == 'mousedown' &amp;&amp; this.options.animate ), true);
-</span><span class="token prefix unchanged"> </span><span class="token line">				}</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4387/ui.slider.4387.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4387/ui.slider.4387.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

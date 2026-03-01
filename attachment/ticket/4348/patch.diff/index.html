@@ -139,38 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui.datepicker.js
-===================================================================
-<span class="token coord">--- ui.datepicker.js</span>
-<span class="token coord">+++ ui.datepicker.js</span>
-<span class="token coord">@@ -245,8 +245,8 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		this._pos = (pos ? (pos.length ? pos : [pos.pageX, pos.pageY]) : null);
-</span><span class="token prefix unchanged"> </span><span class="token line">		if (!this._pos) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			var browserWidth = window.innerWidth || document.documentElement.clientWidth ||	document.body.clientWidth;
-</span><span class="token prefix deleted">-</span><span class="token line">			var browserHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			var browserWidth =  document.documentElement.clientWidth ||	document.body.clientWidth || window.innerWidth;
-</span><span class="token prefix inserted">+</span><span class="token line">			var browserHeight = document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
-</span><span class="token prefix unchanged"> </span><span class="token line">			var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
-</span><span class="token prefix unchanged"> </span><span class="token line">			this._pos = // should use actual width/height below
-</span></span><span class="token coord">@@ -617,8 +617,8 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		var dpHeight = inst.dpDiv.outerHeight();
-</span><span class="token prefix unchanged"> </span><span class="token line">		var inputWidth = inst.input ? inst.input.outerWidth() : 0;
-</span><span class="token prefix unchanged"> </span><span class="token line">		var inputHeight = inst.input ? inst.input.outerHeight() : 0;
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		var viewWidth = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) + $(document).scrollLeft();
-</span><span class="token prefix deleted">-</span><span class="token line">		var viewHeight = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) + $(document).scrollTop();
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		var viewWidth = (document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth) + $(document).scrollLeft();
-</span><span class="token prefix inserted">+</span><span class="token line">		var viewHeight = (document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight) + $(document).scrollTop();
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		offset.left -= (this._get(inst, 'isRTL') ? (dpWidth - inputWidth) : 0);
-</span><span class="token prefix unchanged"> </span><span class="token line">		offset.left -= (isFixed &amp;&amp; offset.left == inst.input.offset().left) ? $(document).scrollLeft() : 0;</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4348/patch.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4348/patch.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

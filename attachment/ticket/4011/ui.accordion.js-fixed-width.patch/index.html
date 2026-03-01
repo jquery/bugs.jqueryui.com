@@ -139,43 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: /ui/ui.accordion.js
-===================================================================
---- /ui/ui.accordion.js	(revision 1934)
-+++ /ui/ui.accordion.js	(working copy)
-@@ -398,7 +398,14 @@
- 				percentDone,
- 				showProps = {},
- 				hideProps = {},
--				fxAttrs = [ "height", "paddingTop", "paddingBottom" ];
-+				fxAttrs = [ "height", "paddingTop", "paddingBottom" ],
-+				originalWidth;
-+			// fix width before calculating height of hidden element
-+			if (options.toShow[0]) {
-+				var s = options.toShow;
-+				originalWidth = s[0].style.width;
-+				s.width( parseInt(s.parent().width()) - parseInt(s.css("paddingLeft")) - parseInt(s.css("paddingRight")) - parseInt(s.css("borderLeftWidth")) - parseInt(s.css("borderRightWidth")) );
-+			}
- 			$.each(fxAttrs, function(i, prop) {
- 				hideProps[prop] = 'hide';
- 				
-@@ -431,8 +438,9 @@
- 				easing: options.easing,
- 				complete: function() {
- 					if ( !options.autoHeight ) {
--						options.toShow.css("height", "auto");
-+						options.toShow.css("height", "");
- 					}
-+					options.toShow.css("width", originalWidth);
- 					options.toShow.css({overflow: overflow});
- 					options.complete();
- 				}</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4011/ui.accordion.js-fixed-width.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4011/ui.accordion.js-fixed-width.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

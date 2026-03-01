@@ -139,66 +139,22 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: tests/unit/position/position.html
-===================================================================
---- tests/unit/position/position.html	(revision 3906)
-+++ tests/unit/position/position.html	(arbetskopia)
-@@ -43,5 +43,9 @@
- 
- <div style="position: absolute; height: 5000px; width: 5000px;"></div>
- 
-+
-+  <div id="span-in-div" style="position: absolute; height: 30px; width: 201px;">
-+  <span>Hello World</span>
-+  </div>
- </code></pre></div></h1></div></div></main></div></body>
- </html>
-Index: tests/unit/position/position_core.js
-===================================================================
---- tests/unit/position/position_core.js	(revision 3906)
-+++ tests/unit/position/position_core.js	(arbetskopia)
-@@ -330,4 +330,26 @@
- 	}, { top: -13, left: -12 }, "left top, negative offset");
- });
- 
-+test('bug #5280: span in a div and reposition', function() {
-+		var box = $('#span-in-div')
-+		var span = $('span', box);
-+		span.position({
-+				my: 'center',
-+				at: 'center',
-+				of: box,
-+				collision: 'none'
-+			});
-+		var first_offset = span.offset();
-+		span.position({
-+				my: 'center',
-+				at: 'center',
-+				of: box,
-+				collision: 'none'
-+			});
-+		var second_offset = span.offset();
-+
-+		same(first_offset.left, second_offset.left, 'generate same left offset twice in a row');
-+		same(first_offset.top, second_offset.top, 'generate same top offset twice in a row');
-+	});
-+
- })(jQuery);
-    
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
+    </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5280/jquery.ui.position.test.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5280/jquery.ui.position.test.patch">Original Format</a>
   </div>
-
-        
-      
+</h1></div>
+        </div>
+      </main>
       <footer>
         Copyright &copy; 2026
         <a href="https://openjsf.org">The OpenJS Foundation</a>
       </footer>
-    
+    </div>
     <script src="/pagefind/pagefind-ui.js" type="text/javascript"></script>
-  
-
+  </body>
+</html>

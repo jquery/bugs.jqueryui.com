@@ -139,105 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff"><span class="token coord">--- C:/wamp/www/jquery/ui/ui.dialog.js	Fri Jun 12 03:20:44 2009</span>
-<span class="token coord">+++ C:/wamp/www/jquery/ui/development-bundle/ui/ui.dialog.js	Wed Jul 08 17:08:41 2009</span>
-<span class="token coord">@@ -37,6 +37,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	_init: function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.originalTitle = this.element.attr('title');
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		this._load();
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		var self = this,
-</span><span class="token prefix unchanged"> </span><span class="token line">			options = this.options,
-</span></span><span class="token coord">@@ -301,6 +302,51 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			uiDialogButtonPane.appendTo(this.uiDialog);
-</span><span class="token prefix unchanged"> </span><span class="token line">		}
-</span><span class="token prefix unchanged"> </span><span class="token line">	},
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">	
-</span><span class="token prefix inserted">+</span><span class="token line">	_save:function(){
-</span><span class="token prefix inserted">+</span><span class="token line">		if(!this.options.history || !$.cookie){
-</span><span class="token prefix inserted">+</span><span class="token line">			return;
-</span><span class="token prefix inserted">+</span><span class="token line">		}
-</span><span class="token prefix inserted">+</span><span class="token line">		
-</span><span class="token prefix inserted">+</span><span class="token line">		var p;
-</span><span class="token prefix inserted">+</span><span class="token line">		if(typeof(this.options.position)=='string'){
-</span><span class="token prefix inserted">+</span><span class="token line">			p=this.options.position;
-</span><span class="token prefix inserted">+</span><span class="token line">		}else{
-</span><span class="token prefix inserted">+</span><span class="token line">			p=this.options.position[0]+','+this.options.position[1];
-</span><span class="token prefix inserted">+</span><span class="token line">		}
-</span><span class="token prefix inserted">+</span><span class="token line">		$.cookie('dialog'+this.element.attr('id'), p+';'+this.options.width+','+this.options.height, this.options.history)
-</span><span class="token prefix inserted">+</span><span class="token line">	},
-</span><span class="token prefix inserted">+</span><span class="token line">	
-</span><span class="token prefix inserted">+</span><span class="token line">	_load:function(){
-</span><span class="token prefix inserted">+</span><span class="token line">		if(!this.options.history || !$.cookie){
-</span><span class="token prefix inserted">+</span><span class="token line">			return;
-</span><span class="token prefix inserted">+</span><span class="token line">		}
-</span><span class="token prefix inserted">+</span><span class="token line">		
-</span><span class="token prefix inserted">+</span><span class="token line">		var settings;
-</span><span class="token prefix inserted">+</span><span class="token line">		if(settings=$.cookie('dialog'+this.element.attr('id'))){
-</span><span class="token prefix inserted">+</span><span class="token line">			settings=settings.split(';');
-</span><span class="token prefix inserted">+</span><span class="token line">			var p=settings[1].split(',');
-</span><span class="token prefix inserted">+</span><span class="token line">			
-</span><span class="token prefix inserted">+</span><span class="token line">			if(p[0]!='auto'){
-</span><span class="token prefix inserted">+</span><span class="token line">				p[0]=1*p[0];
-</span><span class="token prefix inserted">+</span><span class="token line">			}
-</span><span class="token prefix inserted">+</span><span class="token line">			this.options.width=p[0];
-</span><span class="token prefix inserted">+</span><span class="token line">			
-</span><span class="token prefix inserted">+</span><span class="token line">			if(p[1]!='auto'){
-</span><span class="token prefix inserted">+</span><span class="token line">				p[1]=1*p[1];
-</span><span class="token prefix inserted">+</span><span class="token line">			}
-</span><span class="token prefix inserted">+</span><span class="token line">			this.options.height=p[1];
-</span><span class="token prefix inserted">+</span><span class="token line">			
-</span><span class="token prefix inserted">+</span><span class="token line">			p=settings[0].split(',');
-</span><span class="token prefix inserted">+</span><span class="token line">			if(!p.length>1){
-</span><span class="token prefix inserted">+</span><span class="token line">				this.options.position=settings[0];
-</span><span class="token prefix inserted">+</span><span class="token line">			}else{
-</span><span class="token prefix inserted">+</span><span class="token line">				this.options.position=new Array();
-</span><span class="token prefix inserted">+</span><span class="token line">				this.options.position[0]=1*p[0];
-</span><span class="token prefix inserted">+</span><span class="token line">				this.options.position[1]=1*p[1];
-</span><span class="token prefix inserted">+</span><span class="token line">			}
-</span><span class="token prefix inserted">+</span><span class="token line">		}
-</span><span class="token prefix inserted">+</span><span class="token line">	},
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	_makeDraggable: function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">		var self = this,
-</span></span><span class="token coord">@@ -321,8 +367,12 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			},
-</span><span class="token prefix unchanged"> </span><span class="token line">			stop: function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">				$(this).removeClass("ui-dialog-dragging").height(heightBeforeDrag);
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				options.position = new Array();
-</span><span class="token prefix inserted">+</span><span class="token line">				options.position[0]=arguments[1].position.left;
-</span><span class="token prefix inserted">+</span><span class="token line">				options.position[1]=arguments[1].position.top;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				(options.dragStop &amp;&amp; options.dragStop.apply(self.element[0], arguments));
-</span><span class="token prefix unchanged"> </span><span class="token line">				$.ui.dialog.overlay.resize();
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				self._save();
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			}
-</span><span class="token prefix unchanged"> </span><span class="token line">		});
-</span><span class="token prefix unchanged"> </span><span class="token line">	},
-</span></span><span class="token coord">@@ -356,6 +406,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				options.width = $(this).width();
-</span><span class="token prefix unchanged"> </span><span class="token line">				(options.resizeStop &amp;&amp; options.resizeStop.apply(self.element[0], arguments));
-</span><span class="token prefix unchanged"> </span><span class="token line">				$.ui.dialog.overlay.resize();
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				self._save();
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			}
-</span><span class="token prefix unchanged"> </span><span class="token line">		})
-</span><span class="token prefix unchanged"> </span><span class="token line">		.find('.ui-resizable-se').addClass('ui-icon ui-icon-grip-diagonal-se');
-</span></span><span class="token coord">@@ -516,7 +567,8 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		stack: true,
-</span><span class="token prefix unchanged"> </span><span class="token line">		title: '',
-</span><span class="token prefix unchanged"> </span><span class="token line">		width: 300,
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		zIndex: 1000
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		zIndex: 1000,
-</span><span class="token prefix inserted">+</span><span class="token line">		history:false
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	getter: 'isOpen',</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4654/ui.dialog.2.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4654/ui.dialog.2.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

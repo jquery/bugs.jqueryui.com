@@ -139,30 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: jquery.ui.tabs.js
-===================================================================
---- jquery.ui.tabs.js	(revision 3691)
-+++ jquery.ui.tabs.js	(working copy)
-@@ -567,6 +567,14 @@
- 
- 		this.xhr = $.ajax($.extend({}, o.ajaxOptions, {
- 			url: url,
-+			error: function(r, s) {
-+				self._trigger('error', null, self._ui(self.anchors[index], self.panels[index]));
-+				
-+				try {
-+					o.ajaxOptions.error(r, s);
-+				}
-+				catch(e) {}
-+			},
- 			success: function(r, s) {
- 				$(self._sanitizeSelector(a.hash)).html(r);</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5070/jquery-ui-tabs-context.js.2.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5070/jquery-ui-tabs-context.js.2.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

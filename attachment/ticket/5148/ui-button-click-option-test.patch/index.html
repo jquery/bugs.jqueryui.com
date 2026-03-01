@@ -139,39 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: tests/unit/button/button_events.js
-===================================================================
---- tests/unit/button/button_events.js	(revision 3788)
-+++ tests/unit/button/button_events.js	(working copy)
-@@ -14,4 +14,22 @@
- 	ok( set.find("label:first").click().is(".ui-button") );
- });
- 
-+test("click (set with bind)", function() {
-+	expect(2);
-+	$("#button").button().bind("click", function() {
-+		ok( true );
-+	});
-+	ok( $("#button").click().is(".ui-button"), "Click event should have been fired" );
-+});
-+
-+test("click (set as option)", function() {
-+	expect(2);
-+	$("#button").button({
-+		click: function() {
-+			ok( true );
-+		}
-+	});
-+	ok( $("#button").click().is(".ui-button"),  "Click event should have been fired" );
-+});
-+
- })(jQuery);</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5148/ui-button-click-option-test.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5148/ui-button-click-option-test.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

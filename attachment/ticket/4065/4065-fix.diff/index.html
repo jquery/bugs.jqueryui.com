@@ -139,55 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">diff --git a/ui/ui.dialog.js b/ui/ui.dialog.js
-index 1edfee1..bbbe428 100644
-<span class="token coord">--- a/ui/ui.dialog.js</span>
-<span class="token coord">+++ b/ui/ui.dialog.js</span>
-@@ -30,6 +30,7 @@ var setDataSwitch = {
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">$.widget("ui.dialog", {
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	_init: function() {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		this.container = $(this.element).parent().get(0);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		this.originalTitle = this.element.attr('title');
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		var self = this,
-</span></span>@@ -143,11 +144,11 @@ $.widget("ui.dialog", {
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	destroy: function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">		(this.overlay &amp;&amp; this.overlay.destroy());
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.uiDialog.hide();
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		this.element
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		$(this.container).append(this.element
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			.unbind('.dialog')
-</span><span class="token prefix unchanged"> </span><span class="token line">			.removeData('dialog')
-</span><span class="token prefix unchanged"> </span><span class="token line">			.removeClass('ui-dialog-content ui-widget-content')
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			.hide().appendTo('body');
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			.hide());
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		this.uiDialog.remove();
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		(this.originalTitle &amp;&amp; this.element.attr('title', this.originalTitle));
-</span></span>@@ -157,15 +158,15 @@ $.widget("ui.dialog", {
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		if (false === this._trigger('beforeclose', event)) {
-</span><span class="token prefix unchanged"> </span><span class="token line">			return;
-</span><span class="token prefix unchanged"> </span><span class="token line">		}
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		(this.overlay &amp;&amp; this.overlay.destroy());
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.uiDialog
-</span><span class="token prefix unchanged"> </span><span class="token line">			.hide(this.options.hide)
-</span><span class="token prefix unchanged"> </span><span class="token line">			.unbind('keypress.ui-dialog');
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		this.destroy();
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		this._trigger('close', event);
-</span><span class="token prefix unchanged"> </span><span class="token line">		$.ui.dialog.overlay.resize();
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		this._isOpen = false;
-</span><span class="token prefix unchanged"> </span><span class="token line">	},</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4065/4065-fix.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4065/4065-fix.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

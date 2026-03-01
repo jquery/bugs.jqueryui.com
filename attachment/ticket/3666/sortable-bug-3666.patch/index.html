@@ -139,30 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">### Eclipse Workspace Patch 1.0
-#P jquery-ui-trunk
-Index: ui/ui.draggable.js
-===================================================================
---- ui/ui.draggable.js	(revision 1734)
-+++ ui/ui.draggable.js	(working copy)
-@@ -433,6 +433,11 @@
- 
- 		var inst = $(this).data("draggable");
- 		inst.sortables = [];
-+		
-+		if (typeof ui.options.connectToSortable === 'string') {
-+			ui.options.connectToSortable = [ui.options.connectToSortable];
-+		}
-+		
- 		$(ui.options.connectToSortable).each(function() {
- 			// 'this' points to a string, and should therefore resolved as query, but instead, if the string is assigned to a variable, it loops through the strings properties,
- 			// so we have to append '' to make it anonymous again</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3666/sortable-bug-3666.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3666/sortable-bug-3666.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

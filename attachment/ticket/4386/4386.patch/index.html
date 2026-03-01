@@ -137,69 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui.tabs.js
-===================================================================
---- ui.tabs.js	���汾 2343��
-+++ ui.tabs.js	������������
-@@ -1,4 +1,4 @@
--/*
-+﻿/*
-  * jQuery UI Tabs @VERSION
-  *
-  * Copyright (c) 2009 AUTHORS.txt (http://jqueryui.com/about)
-@@ -301,6 +301,12 @@
- 
- 		// attach tab event handler, unbind to avoid duplicates from former tabifying...
- 		this.anchors.bind(o.event + '.tabs', function() {
-+
-+			if ( o.disabled === true ) {
-+				return false;
-+			}
-+
-+
- 			var el = this, $li = $(this).closest('li'), $hide = self.panels.filter(':not(.ui-tabs-hide)'),
- 					$show = $(self._sanitizeSelector(this.hash));
- 
-@@ -502,8 +508,17 @@
- 	},
- 
- 	enable: function(index) {
--		var o = this.options;
--		if ($.inArray(index, o.disabled) == -1) {
-+		var self = this, o = this.options;
-+		if ( index === undefined ) {
-+			$.widget.prototype.enable.call(this);
-+			if ( $.isArray(self._disabled) ) {
-+				o.disabled = $.map(self._disabled,function(e,i){ return e; });
-+				$.each(self._disabled, function(i,v){
-+					self.disable(v);
-+				});
-+			}
-+			return ;
-+		} else if ($.inArray(index, o.disabled) == -1) {
- 			return;
- 		}
- 
-@@ -516,7 +531,12 @@
- 
- 	disable: function(index) {
- 		var self = this, o = this.options;
--		if (index != o.selected) { // cannot disable already selected tab
-+
-+		if ( index === undefined ) {
-+			self._disabled = $.map(o.disabled,function(e,i){ return e; });
-+			$.widget.prototype.disable.call(this);
-+			return ;
-+		} else if (index != o.selected) { // cannot disable already selected tab
- 			this.lis.eq(index).addClass('ui-state-disabled');
- 
- 			o.disabled.push(index);</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4386/4386.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4386/4386.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

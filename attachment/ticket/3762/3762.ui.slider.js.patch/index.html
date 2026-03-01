@@ -139,64 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- C:/Documents and Settings/Andrew/Local Settings/Temp/ui.slider-HEAD.3.js	Sun Apr 19 19:42:47 2009
-+++ d:/Subversion/jQuery UI/Trunk/ui/ui.slider.js	Sun Apr 19 19:42:38 2009
-@@ -22,7 +22,8 @@
- 		this._handleIndex = null;
- 		this._detectOrientation();
- 		this._mouseInit();
--
-+		this._setData('values', o.values);
-+		
- 		this.element
- 			.addClass("ui-slider"
- 				+ " ui-slider-" + this.orientation
-@@ -452,6 +453,9 @@
- 			case 'value':
- 				this._refreshValue(animated);
- 				break;
-+			case 'values':
-+				this._cleanValues();
-+				break;
- 		}
- 
- 	},
-@@ -532,7 +536,29 @@
- 			(oRange == "max") && (this.orientation == "vertical") && this.range[animate ? 'animate' : 'css']({ height: (100 - valPercent) + '%' }, { queue: false, duration: o.animate });
- 		}
- 
--	}
-+	},
-+	
-+	_cleanValues: function(){
-+		var options = this.options, values = options.values, min = options.min, max = options.max;
-+		
-+		if (!values){
-+			options.values = [min, min];
-+			return;
-+		}
-+		if (values.length){
-+			if(values.length != 2){ values = [values[0], values[0]]; }
-+			
-+			for(var i = 0; i < values.length; i++){
-+				var value = values[i];
-+				if(value < min){ value = min; }
-+				if(i > 0 && value < values[i - 1]){ value = values[i - 1]; }
-+				if(i + 1 < values.length && value > values[i + 1]){ value = values[i + 1]; }
-+				values[i] = value;
-+			}
-+			
-+			options.values = values;
-+		}
-+	}	
- 	
- }));</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3762/3762.ui.slider.js.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3762/3762.ui.slider.js.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

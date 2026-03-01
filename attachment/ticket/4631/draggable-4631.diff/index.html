@@ -139,97 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff"><span class="token coord">--- /Users/chaffee/downloads/jquery-ui-1/development-bundle/ui/ui.draggable.js	2009-06-04 05:15:36.000000000 -0700</span>
-<span class="token coord">+++ ui.draggable.js	2009-09-25 17:03:19.000000000 -0700</span>
-<span class="token coord">@@ -292,20 +292,20 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		if(!pos) pos = this.position;
-</span><span class="token prefix unchanged"> </span><span class="token line">		var mod = d == "absolute" ? 1 : -1;
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		var o = this.options, scroll = this.cssPosition == 'absolute' &amp;&amp; !(this.scrollParent[0] != document &amp;&amp; $.ui.contains(this.scrollParent[0], this.offsetParent[0])) ? this.offsetParent : this.scrollParent, scrollIsRootNode = (/(html|body)/i).test(scroll[0].tagName);
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		var o = this.options, scroll = this.cssPosition == 'absolute' &amp;&amp; !(this.scrollParent[0] != document &amp;&amp; $.ui.contains(this.scrollParent[0], this.offsetParent[0])) ? this.offsetParent : this.scrollParent;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		return {
-</span><span class="token prefix unchanged"> </span><span class="token line">			top: (
-</span><span class="token prefix unchanged"> </span><span class="token line">				pos.top																	// The absolute mouse position
-</span><span class="token prefix unchanged"> </span><span class="token line">				+ this.offset.relative.top * mod										// Only for relative positioned nodes: Relative offset from element to offset parent
-</span><span class="token prefix unchanged"> </span><span class="token line">				+ this.offset.parent.top * mod											// The offsetParent's offset without borders (offset + border)
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				- ($.browser.safari &amp;&amp; this.cssPosition == 'fixed' ? 0 : ( this.cssPosition == 'fixed' ? -this.scrollParent.scrollTop() : ( scrollIsRootNode ? 0 : scroll.scrollTop() ) ) * mod)
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				- (this._extraY(scroll) * mod)
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			),
-</span><span class="token prefix unchanged"> </span><span class="token line">			left: (
-</span><span class="token prefix unchanged"> </span><span class="token line">				pos.left																// The absolute mouse position
-</span><span class="token prefix unchanged"> </span><span class="token line">				+ this.offset.relative.left * mod										// Only for relative positioned nodes: Relative offset from element to offset parent
-</span><span class="token prefix unchanged"> </span><span class="token line">				+ this.offset.parent.left * mod											// The offsetParent's offset without borders (offset + border)
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				- ($.browser.safari &amp;&amp; this.cssPosition == 'fixed' ? 0 : ( this.cssPosition == 'fixed' ? -this.scrollParent.scrollLeft() : scrollIsRootNode ? 0 : scroll.scrollLeft() ) * mod)
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				- (this._extraX(scroll) * mod)
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			)
-</span><span class="token prefix unchanged"> </span><span class="token line">		};
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token coord">@@ -313,7 +313,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	_generatePosition: function(event) {
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		var o = this.options, scroll = this.cssPosition == 'absolute' &amp;&amp; !(this.scrollParent[0] != document &amp;&amp; $.ui.contains(this.scrollParent[0], this.offsetParent[0])) ? this.offsetParent : this.scrollParent, scrollIsRootNode = (/(html|body)/i).test(scroll[0].tagName);
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		var o = this.options, scroll = this.cssPosition == 'absolute' &amp;&amp; !(this.scrollParent[0] != document &amp;&amp; $.ui.contains(this.scrollParent[0], this.offsetParent[0])) ? this.offsetParent : this.scrollParent;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		// This is another very weird special case that only happens for relative elements:
-</span><span class="token prefix unchanged"> </span><span class="token line">		// 1. If the css position is relative
-</span></span><span class="token coord">@@ -356,19 +356,47 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				- this.offset.click.top													// Click offset (relative to the element)
-</span><span class="token prefix unchanged"> </span><span class="token line">				- this.offset.relative.top												// Only for relative positioned nodes: Relative offset from element to offset parent
-</span><span class="token prefix unchanged"> </span><span class="token line">				- this.offset.parent.top												// The offsetParent's offset without borders (offset + border)
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				+ ($.browser.safari &amp;&amp; this.cssPosition == 'fixed' ? 0 : ( this.cssPosition == 'fixed' ? -this.scrollParent.scrollTop() : ( scrollIsRootNode ? 0 : scroll.scrollTop() ) ))
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				+ this._extraY(scroll)
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			),
-</span><span class="token prefix unchanged"> </span><span class="token line">			left: (
-</span><span class="token prefix unchanged"> </span><span class="token line">				pageX																// The absolute mouse position
-</span><span class="token prefix unchanged"> </span><span class="token line">				- this.offset.click.left												// Click offset (relative to the element)
-</span><span class="token prefix unchanged"> </span><span class="token line">				- this.offset.relative.left												// Only for relative positioned nodes: Relative offset from element to offset parent
-</span><span class="token prefix unchanged"> </span><span class="token line">				- this.offset.parent.left												// The offsetParent's offset without borders (offset + border)
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				+ ($.browser.safari &amp;&amp; this.cssPosition == 'fixed' ? 0 : ( this.cssPosition == 'fixed' ? -this.scrollParent.scrollLeft() : scrollIsRootNode ? 0 : scroll.scrollLeft() ))
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				+ this._extraX(scroll)
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			)
-</span><span class="token prefix unchanged"> </span><span class="token line">		};
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">	_extraY: function(scroll) {
-</span><span class="token prefix inserted">+</span><span class="token line">	  scrollIsRootNode = (/(html|body)/i).test(scroll[0].tagName);
-</span><span class="token prefix inserted">+</span><span class="token line">	  if (this._needsSafariFixedWorkaround())
-</span><span class="token prefix inserted">+</span><span class="token line">	    return 0;
-</span><span class="token prefix inserted">+</span><span class="token line">	  else if (this.cssPosition == 'fixed')
-</span><span class="token prefix inserted">+</span><span class="token line">	    return -this.scrollParent.scrollTop();
-</span><span class="token prefix inserted">+</span><span class="token line">	  else if (scrollIsRootNode)
-</span><span class="token prefix inserted">+</span><span class="token line">	    return 0;
-</span><span class="token prefix inserted">+</span><span class="token line">	  else
-</span><span class="token prefix inserted">+</span><span class="token line">	    return scroll.scrollTop();
-</span><span class="token prefix inserted">+</span><span class="token line">	},
-</span><span class="token prefix inserted">+</span><span class="token line">	
-</span><span class="token prefix inserted">+</span><span class="token line">	_extraX: function(scroll) {
-</span><span class="token prefix inserted">+</span><span class="token line">	  scrollIsRootNode = (/(html|body)/i).test(scroll[0].tagName);
-</span><span class="token prefix inserted">+</span><span class="token line">    if (this._needsSafariFixedWorkaround())
-</span><span class="token prefix inserted">+</span><span class="token line">      return 0;
-</span><span class="token prefix inserted">+</span><span class="token line">    else if (this.cssPosition == 'fixed')
-</span><span class="token prefix inserted">+</span><span class="token line">      return -this.scrollParent.scrollLeft();
-</span><span class="token prefix inserted">+</span><span class="token line">    else if (scrollIsRootNode)
-</span><span class="token prefix inserted">+</span><span class="token line">      return 0;
-</span><span class="token prefix inserted">+</span><span class="token line">    else 
-</span><span class="token prefix inserted">+</span><span class="token line">      return scroll.scrollLeft();
-</span><span class="token prefix inserted">+</span><span class="token line">	},
-</span><span class="token prefix inserted">+</span><span class="token line">	
-</span><span class="token prefix inserted">+</span><span class="token line">	_needsSafariFixedWorkaround: function() {
-</span><span class="token prefix inserted">+</span><span class="token line">	  return $.browser.safari &amp;&amp; $.browser.version &lt; 526 &amp;&amp; this.cssPosition == 'fixed';
-</span><span class="token prefix inserted">+</span><span class="token line">	},
-</span><span class="token prefix inserted">+</span><span class="token line">	
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	_clear: function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.helper.removeClass("ui-draggable-dragging");
-</span><span class="token prefix unchanged"> </span><span class="token line">		if(this.helper[0] != this.element[0] &amp;&amp; !this.cancelHelperRemoval) this.helper.remove();</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4631/draggable-4631.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4631/draggable-4631.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

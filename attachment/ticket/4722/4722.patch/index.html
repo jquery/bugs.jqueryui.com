@@ -137,37 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: effects.core.js
-===================================================================
---- effects.core.js	(�汾 2991)
-+++ effects.core.js	(��������)
-@@ -222,8 +222,18 @@
- 	},
- 
- 	_toggleClass: $.fn.toggleClass,
--	toggleClass: function(classNames,speed,easing,callback) {
--		return ( (typeof speed !== "boolean") && speed ) ? $.effects.animateClass.apply(this, [{ toggle: classNames },speed,easing,callback]) : this._toggleClass(classNames, speed);
-+	toggleClass: function(classNames, force, speed, easing, callback) {
-+		if ( typeof force == "boolean" || force === undefined ) {
-+			if ( !speed ) {
-+				// without speed parameter;
-+				return this._toggleClass(classNames, force);
-+			} else {
-+				return $.effects.animateClass.apply(this, [(force?{add:classNames}:{remove:classNames}),speed,easing,callback]);
-+			}
-+		} else {
-+			// without switch parameter;
-+			return $.effects.animateClass.apply(this, [{ toggle: classNames },force,speed,easing]);
-+		}
- 	},
- 
- 	switchClass: function(remove,add,speed,easing,callback) {</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4722/4722.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4722/4722.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

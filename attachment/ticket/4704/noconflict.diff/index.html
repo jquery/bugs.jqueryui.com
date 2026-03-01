@@ -139,92 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui/ui.datepicker.js
-===================================================================
-<span class="token coord">--- ui/ui.datepicker.js	(revision 2958)</span>
-<span class="token coord">+++ ui/ui.datepicker.js	(working copy)</span>
-<span class="token coord">@@ -16,6 +16,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">$.extend($.ui, { datepicker: { version: "@VERSION" } });
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">var PROP_NAME = 'datepicker';
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">var expando = +new Date();
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">/* Date picker manager.
-</span><span class="token prefix unchanged"> </span><span class="token line">   Use the singleton instance of this class, $.datepicker, to interact with the date picker.
-</span></span><span class="token coord">@@ -1345,7 +1346,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			this._daylightSavingAdjust(new Date(drawYear, drawMonth - stepMonths, 1)),
-</span><span class="token prefix unchanged"> </span><span class="token line">			this._getFormatConfig(inst)));
-</span><span class="token prefix unchanged"> </span><span class="token line">		var prev = (this._canAdjustMonth(inst, -1, drawYear, drawMonth) ?
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			'&lt;a class="ui-datepicker-prev ui-corner-all" onclick="DP_jQuery.datepicker._adjustDate(\'#' + inst.id + '\', -' + stepMonths + ', \'M\');"' +
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			'&lt;a class="ui-datepicker-prev ui-corner-all" onclick="DP_jQuery_' + expando + '.datepicker._adjustDate(\'#' + inst.id + '\', -' + stepMonths + ', \'M\');"' +
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			' title="' + prevText + '">&lt;span class="ui-icon ui-icon-circle-triangle-' + ( isRTL ? 'e' : 'w') + '">' + prevText + '&lt;/span>&lt;/a>' :
-</span><span class="token prefix unchanged"> </span><span class="token line">			(hideIfNoPrevNext ? '' : '&lt;a class="ui-datepicker-prev ui-corner-all ui-state-disabled" title="'+ prevText +'">&lt;span class="ui-icon ui-icon-circle-triangle-' + ( isRTL ? 'e' : 'w') + '">' + prevText + '&lt;/span>&lt;/a>'));
-</span><span class="token prefix unchanged"> </span><span class="token line">		var nextText = this._get(inst, 'nextText');
-</span></span><span class="token coord">@@ -1353,16 +1354,16 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			this._daylightSavingAdjust(new Date(drawYear, drawMonth + stepMonths, 1)),
-</span><span class="token prefix unchanged"> </span><span class="token line">			this._getFormatConfig(inst)));
-</span><span class="token prefix unchanged"> </span><span class="token line">		var next = (this._canAdjustMonth(inst, +1, drawYear, drawMonth) ?
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			'&lt;a class="ui-datepicker-next ui-corner-all" onclick="DP_jQuery.datepicker._adjustDate(\'#' + inst.id + '\', +' + stepMonths + ', \'M\');"' +
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			'&lt;a class="ui-datepicker-next ui-corner-all" onclick="DP_jQuery_' + expando + '.datepicker._adjustDate(\'#' + inst.id + '\', +' + stepMonths + ', \'M\');"' +
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			' title="' + nextText + '">&lt;span class="ui-icon ui-icon-circle-triangle-' + ( isRTL ? 'w' : 'e') + '">' + nextText + '&lt;/span>&lt;/a>' :
-</span><span class="token prefix unchanged"> </span><span class="token line">			(hideIfNoPrevNext ? '' : '&lt;a class="ui-datepicker-next ui-corner-all ui-state-disabled" title="'+ nextText + '">&lt;span class="ui-icon ui-icon-circle-triangle-' + ( isRTL ? 'w' : 'e') + '">' + nextText + '&lt;/span>&lt;/a>'));
-</span><span class="token prefix unchanged"> </span><span class="token line">		var currentText = this._get(inst, 'currentText');
-</span><span class="token prefix unchanged"> </span><span class="token line">		var gotoDate = (this._get(inst, 'gotoCurrent') &amp;&amp; inst.currentDay ? currentDate : today);
-</span><span class="token prefix unchanged"> </span><span class="token line">		currentText = (!navigationAsDateFormat ? currentText :
-</span><span class="token prefix unchanged"> </span><span class="token line">			this.formatDate(currentText, gotoDate, this._getFormatConfig(inst)));
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		var controls = (!inst.inline ? '&lt;button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all" onclick="DP_jQuery.datepicker._hideDatepicker();">' + this._get(inst, 'closeText') + '&lt;/button>' : '');
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		var controls = (!inst.inline ? '&lt;button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all" onclick="DP_jQuery_' + expando + '.datepicker._hideDatepicker();">' + this._get(inst, 'closeText') + '&lt;/button>' : '');
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		var buttonPanel = (showButtonPanel) ? '&lt;div class="ui-datepicker-buttonpane ui-widget-content">' + (isRTL ? controls : '') +
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			(this._isInRange(inst, gotoDate) ? '&lt;button type="button" class="ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all" onclick="DP_jQuery.datepicker._gotoToday(\'#' + inst.id + '\');"' +
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			(this._isInRange(inst, gotoDate) ? '&lt;button type="button" class="ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all" onclick="DP_jQuery_' + expando + '.datepicker._gotoToday(\'#' + inst.id + '\');"' +
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			'>' + currentText + '&lt;/button>' : '') + (isRTL ? '' : controls) + '&lt;/div>' : '';
-</span><span class="token prefix unchanged"> </span><span class="token line">		var firstDay = parseInt(this._get(inst, 'firstDay'),10);
-</span><span class="token prefix unchanged"> </span><span class="token line">		firstDay = (isNaN(firstDay) ? 0 : firstDay);
-</span></span><span class="token coord">@@ -1433,7 +1434,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">							(printDate.getTime() == currentDate.getTime() ? ' ' + this._currentClass : '') + // highlight selected day
-</span><span class="token prefix unchanged"> </span><span class="token line">							(printDate.getTime() == today.getTime() ? ' ui-datepicker-today' : '')) + '"' + // highlight today (if different)
-</span><span class="token prefix unchanged"> </span><span class="token line">							((!otherMonth || showOtherMonths) &amp;&amp; daySettings[2] ? ' title="' + daySettings[2] + '"' : '') + // cell title
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">							(unselectable ? '' : ' onclick="DP_jQuery.datepicker._selectDay(\'#' +
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">							(unselectable ? '' : ' onclick="DP_jQuery_' + expando + '.datepicker._selectDay(\'#' +
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">							inst.id + '\',' + printDate.getMonth() + ',' + printDate.getFullYear() + ', this);return false;"') + '>' + // actions
-</span><span class="token prefix unchanged"> </span><span class="token line">							(otherMonth &amp;&amp; !showOtherMonths ? '&amp;#xa0;' : // display for other months
-</span><span class="token prefix unchanged"> </span><span class="token line">							(unselectable ? '&lt;span class="ui-state-default">' + printDate.getDate() + '&lt;/span>' : '&lt;a class="ui-state-default' +
-</span></span><span class="token coord">@@ -1478,8 +1479,8 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			var inMinYear = (minDate &amp;&amp; minDate.getFullYear() == drawYear);
-</span><span class="token prefix unchanged"> </span><span class="token line">			var inMaxYear = (maxDate &amp;&amp; maxDate.getFullYear() == drawYear);
-</span><span class="token prefix unchanged"> </span><span class="token line">			monthHtml += '&lt;select class="ui-datepicker-month" ' +
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				'onchange="DP_jQuery.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'M\');" ' +
-</span><span class="token prefix deleted">-</span><span class="token line">				'onclick="DP_jQuery.datepicker._clickMonthYear(\'#' + inst.id + '\');"' +
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				'onchange="DP_jQuery_' + expando + '.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'M\');" ' +
-</span><span class="token prefix inserted">+</span><span class="token line">				'onclick="DP_jQuery_' + expando + '.datepicker._clickMonthYear(\'#' + inst.id + '\');"' +
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			 	'>';
-</span><span class="token prefix unchanged"> </span><span class="token line">			for (var month = 0; month &lt; 12; month++) {
-</span><span class="token prefix unchanged"> </span><span class="token line">				if ((!inMinYear || month >= minDate.getMonth()) &amp;&amp;
-</span></span><span class="token coord">@@ -1513,8 +1514,8 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			year = (minDate ? Math.max(year, minDate.getFullYear()) : year);
-</span><span class="token prefix unchanged"> </span><span class="token line">			endYear = (maxDate ? Math.min(endYear, maxDate.getFullYear()) : endYear);
-</span><span class="token prefix unchanged"> </span><span class="token line">			html += '&lt;select class="ui-datepicker-year" ' +
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				'onchange="DP_jQuery.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'Y\');" ' +
-</span><span class="token prefix deleted">-</span><span class="token line">				'onclick="DP_jQuery.datepicker._clickMonthYear(\'#' + inst.id + '\');"' +
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				'onchange="DP_jQuery_' + expando + '.datepicker._selectMonthYear(\'#' + inst.id + '\', this, \'Y\');" ' +
-</span><span class="token prefix inserted">+</span><span class="token line">				'onclick="DP_jQuery_' + expando + '.datepicker._clickMonthYear(\'#' + inst.id + '\');"' +
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				'>';
-</span><span class="token prefix unchanged"> </span><span class="token line">			for (; year &lt;= endYear; year++) {
-</span><span class="token prefix unchanged"> </span><span class="token line">				html += '&lt;option value="' + year + '"' +
-</span></span><span class="token coord">@@ -1674,6 +1675,6 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">// Workaround for #4055
-</span><span class="token prefix unchanged"> </span><span class="token line">// Add another global to avoid noConflict issues with inline event handlers
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">window.DP_jQuery = $;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">window['DP_jQuery_' + expando] = $;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">})(jQuery);</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4704/noconflict.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4704/noconflict.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

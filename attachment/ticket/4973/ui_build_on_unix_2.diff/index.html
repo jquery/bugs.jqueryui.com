@@ -137,26 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: build/build.xml
-===================================================================
-<span class="token coord">--- build/build.xml	(revision 3476)</span>
-<span class="token coord">+++ build/build.xml	(working copy)</span>
-<span class="token coord">@@ -59,8 +59,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		&lt;for param="file">
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;path>&lt;fileset dir="${dist.dir}/ui/minified/" includes="*.js" />&lt;/path>
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;sequential>
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				&lt;basename file="@{file}" property="target" />
-</span><span class="token prefix deleted">-</span><span class="token line">				&lt;propertyregex override="yes" property="target" input="${target}" regexp="(.+)\.min\.js$" replace="\1"/>
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				&lt;propertyregex override="yes" property="target" input="@{file}" regexp=".*[\\/](.+)\.min\.js$" replace="\1"/>
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				&lt;concat destfile="${dist.dir}/ui-headered/${target}.min.js">
-</span><span class="token prefix unchanged"> </span><span class="token line">					&lt;header file="${dist.dir}/headers/${target}.js" />
-</span><span class="token prefix unchanged"> </span><span class="token line">					&lt;fileset file="@{file}" /></span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4973/ui_build_on_unix_2.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4973/ui_build_on_unix_2.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

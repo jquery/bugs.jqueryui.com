@@ -139,27 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui.datepicker.js
-===================================================================
---- ui.datepicker.js	(revision 582)
-+++ ui.datepicker.js	(working copy)
-@@ -583,8 +583,8 @@
- 	/* Check positioning to remain on screen. */
- 	_checkOffset: function(inst, offset, isFixed) {
- 		var pos = inst.input ? this._findPos(inst.input[0]) : null;
--		var browserWidth = window.innerWidth || document.documentElement.clientWidth;
--		var browserHeight = window.innerHeight || document.documentElement.clientHeight;
-+		var browserWidth = (window.innerWidth || (document.documentElement && document.documentElement.clientWidth) || document.body.clientWidth);
-+		var browserHeight = (window.innerHeight || (document.documentElement && document.documentElement.clientHeight) || document.body.clientHeight);
- 		var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
- 		var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
- 		// reposition date picker horizontally if outside the browser window</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3232/ui.datepicker.js.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3232/ui.datepicker.js.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

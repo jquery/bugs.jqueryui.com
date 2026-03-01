@@ -139,36 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui/ui.sortable.js
-===================================================================
---- ui/ui.sortable.js	(revision 2391)
-+++ ui/ui.sortable.js	(working copy)
-@@ -52,9 +52,6 @@
- 
- 		if(this.options.disabled || this.options.type == 'static') return false;
- 
--		//We have to refresh the items data once first
--		this._refreshItems(event);
--
- 		//Find out if the clicked node (or one of its parents) is a actual item in this.items
- 		var currentItem = null, self = this, nodes = $(event.target).parents().each(function() {
- 			if($.data(this, 'sortable-item') == self) {
-@@ -83,7 +80,8 @@
- 		var o = this.options, self = this;
- 		this.currentContainer = this;
- 
--		//We only need to call refreshPositions, because the refreshItems call has been moved to mouseCapture
-+		// moving the refreshItems call to mouseCapture slows things down big time with large lists
-+		this._refreshItems(event);
- 		this.refreshPositions();
- 
- 		//Create and append the visible helper</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4410/speed.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4410/speed.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

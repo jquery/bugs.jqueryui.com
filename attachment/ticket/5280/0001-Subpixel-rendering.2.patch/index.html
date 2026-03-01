@@ -139,44 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">From 06c1fa920bc8ce0138a9a4490b46256af70d6b70 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Carl=20F=C3=BCrstenberg?= <carl@excito.com>
-Date: Fri, 26 Mar 2010 21:06:51 +0100
-Subject: [PATCH] Subpixel rendering
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-As we can't really render an object on a subpixel, we can avoid the
-issue of bug #5280 by rounding the resulting values down (towards zero).
-
-Signed-off-by: Carl Fürstenberg <carl@excito.com>
----
- ui/jquery.ui.position.js |    3 +++
- 1 files changed, 3 insertions(+), 0 deletions(-)
-
-diff --git a/ui/jquery.ui.position.js b/ui/jquery.ui.position.js
-index f01640e..20eab06 100644
---- a/ui/jquery.ui.position.js
-+++ b/ui/jquery.ui.position.js
-@@ -127,6 +127,9 @@ $.fn.position = function( options ) {
- 			}
- 		});
- 
-+		position.top = ~~position.top;
-+		position.left = ~~position.left;
-+
- 		if ( $.fn.bgiframe ) {
- 			elem.bgiframe();
- 		}
--- 
-1.7.0</carl@excito.com></carl@excito.com></code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5280/0001-Subpixel-rendering.2.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5280/0001-Subpixel-rendering.2.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

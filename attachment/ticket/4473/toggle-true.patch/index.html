@@ -137,25 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: effects.core.js
-===================================================================
---- effects.core.js	(revision 2450)
-+++ effects.core.js	(working copy)
-@@ -175,7 +175,7 @@
- 	},
- 
- 	toggle: function(){
--		if(!arguments[0] || (arguments[0].constructor == Number || (/(slow|normal|fast)/).test(arguments[0])) || (arguments[0].constructor == Function))
-+		if(!arguments[0] || arguments[0] === true || (arguments[0].constructor == Number || (/(slow|normal|fast)/).test(arguments[0])) || (arguments[0].constructor == Function))
- 			return this.__toggle.apply(this, arguments);
- 		else {
- 			return this.effect.apply(this, _normalizeArguments(arguments, 'toggle'));</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4473/toggle-true.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4473/toggle-true.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

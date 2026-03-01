@@ -139,86 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-css" tabindex="0"><code class="language-css"><span class="token comment">/*NEW SLIDER STYLES FOR SCALE, ETC*/</span>
-<span class="token comment">/* slider widget */</span>
-<span class="token selector">.ui-slider</span>  <span class="token punctuation">{</span>
-	<span class="token property">text-decoration</span><span class="token punctuation">:</span> none <span class="token important">!important</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider .ui-slider-handle</span>  <span class="token punctuation">{</span>
-	<span class="token property">overflow</span><span class="token punctuation">:</span> visible <span class="token important">!important</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider .ui-slider-tooltip</span> <span class="token punctuation">{</span>
-	<span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider .ui-state-active .ui-slider-tooltip, .ui-slider .ui-state-focus .ui-slider-tooltip, .ui-slider .ui-state-hover .ui-slider-tooltip</span> <span class="token punctuation">{</span>
-	<span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
-	<span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-	<span class="token property">bottom</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
-	<span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
-	<span class="token property">padding</span><span class="token punctuation">:</span> .2em<span class="token punctuation">;</span>
-	<span class="token property">font-size</span><span class="token punctuation">:</span> .9em<span class="token punctuation">;</span>
-	<span class="token property">width</span><span class="token punctuation">:</span> 8em<span class="token punctuation">;</span>
-	<span class="token property">margin-left</span><span class="token punctuation">:</span> -4em<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider a</span> <span class="token punctuation">{</span>
-	<span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider ol, .ui-slider li, .ui-slider dl, .ui-slider dd, .ui-slider dt</span> <span class="token punctuation">{</span>
-	<span class="token property">list-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-	<span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-	<span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider ol, .ui-slider dl</span> <span class="token punctuation">{</span>
-	<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
-	<span class="token property">top</span><span class="token punctuation">:</span> 1.3em<span class="token punctuation">;</span>
-	<span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider dt</span> <span class="token punctuation">{</span>
-	<span class="token property">top</span><span class="token punctuation">:</span> 1.5em<span class="token punctuation">;</span>
-	<span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-	<span class="token property">padding-top</span><span class="token punctuation">:</span> .2em<span class="token punctuation">;</span>
-	<span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
-	<span class="token property">border-bottom</span><span class="token punctuation">:</span> 1px dotted #ddd<span class="token punctuation">;</span>
-	<span class="token property">height</span><span class="token punctuation">:</span> .7em<span class="token punctuation">;</span>
-	<span class="token property">color</span><span class="token punctuation">:</span> #999<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider dt span</span> <span class="token punctuation">{</span>
-	<span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
-	<span class="token property">padding</span><span class="token punctuation">:</span> 0 .5em<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider li, .ui-slider dd</span> <span class="token punctuation">{</span>
-	<span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-	<span class="token property">overflow</span><span class="token punctuation">:</span> visible<span class="token punctuation">;</span>
-	<span class="token property">color</span><span class="token punctuation">:</span> #666<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider li span.ui-slider-label, .ui-slider dd span.ui-slider-label</span> <span class="token punctuation">{</span>
-	<span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider li span.ui-slider-label-show, .ui-slider dd span.ui-slider-label-show</span> <span class="token punctuation">{</span>
-	<span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider span.ui-slider-tic</span> <span class="token punctuation">{</span>
-	<span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-	<span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-	<span class="token property">height</span><span class="token punctuation">:</span> .8em<span class="token punctuation">;</span>
-	<span class="token property">top</span><span class="token punctuation">:</span> -1.3em<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider li span.ui-widget-content, .ui-slider dd span.ui-widget-content</span> <span class="token punctuation">{</span>
-	<span class="token property">border-right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-	<span class="token property">border-left-width</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
-	<span class="token property">border-left-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
-	<span class="token property">border-top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-	<span class="token property">border-bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.ui-slider .first .ui-slider-tic, .ui-slider .last .ui-slider-tic</span> <span class="token punctuation">{</span>
-	<span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+      <pre class="language-css" tabindex="0"><code class="language-css"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3071/ui.slider.extras.css">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3071/ui.slider.extras.css">Original Format</a>
   </div>
 </h1></div>
         </div>

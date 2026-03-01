@@ -137,56 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: themes/base/ui.resizable.css
-===================================================================
---- themes/base/ui.resizable.css	(revision 1514)
-+++ themes/base/ui.resizable.css	(working copy)
-@@ -7,7 +7,7 @@
- .ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0px; }
- .ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0px; height: 100%; }
- .ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0px; height: 100%; }
--.ui-resizable-se { cursor: se-resize; width: 7px; height: 7px; right: -5px; bottom: -5px; }
-+.ui-resizable-se { cursor: se-resize; width: 12px; height: 12px; right: 1px; bottom: 1px; }
- .ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
- .ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
- .ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}
-\ No newline at end of file
-Index: themes/default/ui.resizable.css
-===================================================================
---- themes/default/ui.resizable.css	(revision 1514)
-+++ themes/default/ui.resizable.css	(working copy)
-@@ -7,7 +7,7 @@
- .ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0px; }
- .ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0px; height: 100%; }
- .ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0px; height: 100%; }
--.ui-resizable-se { cursor: se-resize; width: 7px; height: 7px; right: -5px; bottom: -5px; }
-+.ui-resizable-se { cursor: se-resize; width: 12px; height: 12px; right: 1px; bottom: 1px; }
- .ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
- .ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
- .ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}
-\ No newline at end of file
-Index: ui/ui.resizable.js
-===================================================================
---- ui/ui.resizable.js	(revision 1514)
-+++ ui/ui.resizable.js	(working copy)
-@@ -135,6 +135,11 @@
- 
- 				var defCss = (loadDefault ? insertionsDefault[handle] : ''),
- 					axis = $(['<div class="ui-resizable-handle ', hname, '" style="', defCss, insertionsDefault.handle, '"></div>'].join('')).css( applyZIndex );
-+
-+				if ('se' == handle) {
-+					axis.addClass('ui-icon ui-icon-gripsmall-diagonal-se');
-+				};
-+
- 				o.handles[handle] = '.ui-resizable-'+handle;
- 
- 				this.element.append(</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3767/3767.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3767/3767.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

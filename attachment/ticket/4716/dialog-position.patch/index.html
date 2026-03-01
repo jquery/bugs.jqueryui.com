@@ -137,97 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.dialog.js
-===================================================================
---- /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.dialog.js	(revision 2970)
-+++ /Users/sgonzale/Documents/workspace/jQuery UI/ui/ui.dialog.js	(working copy)
-@@ -10,6 +10,7 @@
-  * Depends:
-  *	ui.core.js
-  *	ui.draggable.js
-+ *  ui.position.js
-  *	ui.resizable.js
-  */
- (function($) {
-@@ -377,55 +378,26 @@
- 	},
- 
- 	_position: function(pos) {
--		var wnd = $(window), doc = $(document),
--			pTop = doc.scrollTop(), pLeft = doc.scrollLeft(),
--			minTop = pTop,
--			uiDialog = this.uiDialog;
--
--		if ($.inArray(pos, ['center','top','right','bottom','left']) >= 0) {
--			pos = [
--				pos == 'right' || pos == 'left' ? pos : 'center',
--				pos == 'top' || pos == 'bottom' ? pos : 'middle'
--			];
-+		var offset = [0, 0];
-+		pos = $.isArray(pos) ? pos : pos.split(' ');
-+		if (pos.length == 1) {
-+			pos[1] = pos[0];
- 		}
--		if (pos.constructor != Array) {
--			pos = ['center', 'middle'];
--		}
--		if (pos[0].constructor == Number) {
--			pLeft += pos[0];
--		} else {
--			switch (pos[0]) {
--				case 'left':
--					pLeft += 0;
--					break;
--				case 'right':
--					pLeft += wnd.width() - uiDialog.outerWidth();
--					break;
--				default:
--				case 'center':
--					pLeft += (wnd.width() - uiDialog.outerWidth()) / 2;
-+
-+		$.each(['left', 'top'], function(i, offsetPosition) {
-+			if (typeof pos[i] == 'number') {
-+				offset[i] = pos[i];
-+				pos[i] = offsetPosition;
- 			}
--		}
--		if (pos[1].constructor == Number) {
--			pTop += pos[1];
--		} else {
--			switch (pos[1]) {
--				case 'top':
--					pTop += 0;
--					break;
--				case 'bottom':
--					pTop += wnd.height() - uiDialog.outerHeight();
--					break;
--				default:
--				case 'middle':
--					pTop += (wnd.height() - uiDialog.outerHeight()) / 2;
--			}
--		}
-+		});
- 
--		// prevent the dialog from being too high (make sure the titlebar
--		// is accessible)
--		pTop = Math.max(pTop, minTop);
--		uiDialog.css({top: pTop, left: pLeft});
-+		this.uiDialog.position({
-+			my: pos.join(' '),
-+			at: pos.join(' '),
-+			of: window,
-+			offset: offset.join(' '),
-+			collision: 'fit'
-+		});
- 	},
- 
- 	_setData: function(key, value){</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4716/dialog-position.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4716/dialog-position.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

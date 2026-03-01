@@ -137,59 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: index.html
-===================================================================
-<span class="token coord">--- index.html	(revision 498)</span>
-<span class="token coord">+++ index.html	(working copy)</span>
-<span class="token coord">@@ -16,11 +16,15 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			&lt;link rel="stylesheet" href="css/functional_demos.css" type="text/css" media="screen">
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;link rel="stylesheet" href="css/chilli-recipes.css" type="text/css" media="screen">
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;link rel="stylesheet" href="../../themes/flora/flora.all.css" type="text/css" media="screen" title="Flora (Default)" />
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			&lt;link rel="stylesheet" href="../../themes/default/ui.autocomplete.css" type="text/css" media="screen" title="(Default)" />
-</span><span class="token prefix inserted">+</span><span class="token line">			&lt;link rel="stylesheet" href="../../themes/default/ui.colorpicker.css" type="text/css" media="screen" title="(Default)" />
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../jquery-1.2.6.js">&lt;/script>
-</span><span class="token prefix unchanged"> </span><span class="token line">		
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.core.js">&lt;/script>
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.accordion.js">&lt;/script>
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.autocomplete.js">&lt;/script>
-</span><span class="token prefix inserted">+</span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.colorpicker.js">&lt;/script>
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.datepicker.js">&lt;/script>
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/i18n/ui.datepicker-ar.js">&lt;/script>
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/i18n/ui.datepicker-bg.js">&lt;/script>
-</span></span><span class="token coord">@@ -58,8 +62,11 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.draggable.js">&lt;/script>
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.droppable.js">&lt;/script>
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.resizable.js">&lt;/script>
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.magnifier.js">&lt;/script>
-</span><span class="token prefix inserted">+</span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.progressbar.js">&lt;/script>
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.selectable.js">&lt;/script>
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.slider.js">&lt;/script>
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.spinner.js">&lt;/script>
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.sortable.js">&lt;/script>
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/ui.tabs.js">&lt;/script>
-</span><span class="token prefix unchanged"> </span><span class="token line">			&lt;script type="text/javascript" src="../../ui/effects.core.js">&lt;/script>
-</span></span><span class="token coord">@@ -149,9 +156,14 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">						  &lt;ul class="component-links">
-</span><span class="token prefix unchanged"> </span><span class="token line">								&lt;li>&lt;a href="#ui.accordion" title="Goto Accordion's Component Page">Accordion&lt;/a>&lt;/li>
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">								&lt;li>&lt;a href="#ui.autocomplete" title="Goto Accordion's Component Page">Autocomplete&lt;/a>&lt;/li>
-</span><span class="token prefix inserted">+</span><span class="token line">								&lt;li>&lt;a href="#ui.colorpicker" title="Goto Colorpicker's Component Page">Colorpicker&lt;/a>&lt;/li>
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">								&lt;li>&lt;a href="#ui.datepicker" title="Goto Datepicker's Component Page">Datepicker&lt;/a>&lt;/li>
-</span><span class="token prefix unchanged"> </span><span class="token line">								&lt;li>&lt;a href="#ui.dialog" title="Goto Dialog's Component Page">Dialog&lt;/a>&lt;/li>
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">								&lt;li>&lt;a href="#ui.magnifier" title="Goto Spinner Component Page">Magnifier&lt;/a>&lt;/li>
-</span><span class="token prefix inserted">+</span><span class="token line">								&lt;li>&lt;a href="#ui.progressbar" title="Goto Spinner Component Page">Progressbar&lt;/a>&lt;/li>
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">								&lt;li>&lt;a href="#ui.slider" title="Goto Slider Component Page">Slider&lt;/a>&lt;/li>
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">								&lt;li>&lt;a href="#ui.spinner" title="Goto Spinner Component Page">Spinner&lt;/a>&lt;/li>
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">								&lt;li>&lt;a href="#ui.tabs" title="Goto Tabs Component Page">Tabs&lt;/a>&lt;/li>
-</span><span class="token prefix unchanged"> </span><span class="token line">							&lt;/ul>
-</span><span class="token prefix unchanged"> </span><span class="token line">					&lt;/div></span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3162/function-demo.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3162/function-demo.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

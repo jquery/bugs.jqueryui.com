@@ -139,53 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: tests/jquery.simulate.js
-===================================================================
---- tests/jquery.simulate.js	(revision 3486)
-+++ tests/jquery.simulate.js	(working copy)
-@@ -107,20 +107,30 @@
- 		}
- 		return evt;
- 	},
--
-+	
- 	drag: function(el) {
--		var self = this, center = this.findCenter(this.target), 
--			options = this.options,	x = Math.floor(center.x), y = Math.floor(center.y), 
--			dx = options.dx || 0, dy = options.dy || 0, target = this.target;
-+		var center = this.findCenter(this.target);
-+		var x = Math.floor(center.x), y = Math.floor(center.y);
-+		if (this.options.dropTarget) {
-+			var offset = this.fixedOffsetOfElement(this.options.dropTarget);
-+			console.log('offset before dragstart', offset.dx, offset.dy);
-+			var dx = offset.dx, dy = offset.dy;
-+		}
-+		else {
-+			var dx = this.options.dx || 0, dy = this.options.dy || 0;
-+		}
-+		
- 		var coord = { clientX: x, clientY: y };
--		this.simulateEvent(target, "mousedown", coord);
-+		this.simulateEvent(this.target, "mousedown", coord);
- 		coord = { clientX: x + 1, clientY: y + 1 };
- 		this.simulateEvent(document, "mousemove", coord);
- 		coord = { clientX: x + dx, clientY: y + dy };
- 		this.simulateEvent(document, "mousemove", coord);
- 		this.simulateEvent(document, "mousemove", coord);
--		this.simulateEvent(target, "mouseup", coord);
-+		coord = { clientX: x + dx, clientY: y + dy };
-+		this.simulateEvent(this.target, "mouseup", coord);
- 	},
-+	
- 	findCenter: function(el) {
- 		var el = $(this.target), o = el.offset();
- 		return {</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4991/simulate-drop-accepts-dropTarget-arg.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4991/simulate-drop-accepts-dropTarget-arg.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

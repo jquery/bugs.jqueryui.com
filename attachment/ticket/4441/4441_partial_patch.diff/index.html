@@ -137,48 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui.selectable.js
-===================================================================
-<span class="token coord">--- ui.selectable.js	(revision 2593)</span>
-<span class="token coord">+++ ui.selectable.js	(working copy)</span>
-<span class="token coord">@@ -66,6 +66,11 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	_mouseStart: function(event) {
-</span><span class="token prefix unchanged"> </span><span class="token line">		var self = this;
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		if (this._trigger("start", event) === false) {
-</span><span class="token prefix inserted">+</span><span class="token line">                        this.opos = null;
-</span><span class="token prefix inserted">+</span><span class="token line">                        return;
-</span><span class="token prefix inserted">+</span><span class="token line">                }
-</span><span class="token prefix inserted">+</span><span class="token line">
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		this.opos = [event.pageX, event.pageY];
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		if (this.options.disabled)
-</span></span><span class="token coord">@@ -75,8 +80,6 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.selectees = $(options.filter, this.element[0]);
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		this._trigger("start", event);
-</span><span class="token prefix deleted">-</span><span class="token line">
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		$(options.appendTo).append(this.helper);
-</span><span class="token prefix unchanged"> </span><span class="token line">		// position helper (lasso)
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.helper.css({
-</span></span><span class="token coord">@@ -126,8 +129,10 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	_mouseDrag: function(event) {
-</span><span class="token prefix unchanged"> </span><span class="token line">		var self = this;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">                if (!this.opos) //if we never really started a selection
-</span><span class="token prefix inserted">+</span><span class="token line">                        return;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		this.dragged = true;
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">                
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		if (this.options.disabled)
-</span><span class="token prefix unchanged"> </span><span class="token line">			return;</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4441/4441_partial_patch.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4441/4441_partial_patch.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

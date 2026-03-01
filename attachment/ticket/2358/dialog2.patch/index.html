@@ -139,50 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui.dialog.js
-===================================================================
---- ui.dialog.js	(revision 384)
-+++ ui.dialog.js	(working copy)
-@@ -247,7 +247,15 @@
- 		this.overlay = this.options.modal ? new $.ui.dialog.overlay(this) : null;
- 		(this.uiDialog.next().length > 0) && this.uiDialog.appendTo('body');
- 		this.position(this.options.position);
--		this.uiDialog.show(this.options.show);
-+		if ( !!this.options.show && !!this.options.show.effect ) {
-+			this.options.show.effect == "fade" ?
-+				this.uiDialog.fadeIn(this.options.show.speed) :
-+				this.uiDialog.show(this.options.show.effect,this.options.show.options,this.options.show.speed);
-+		} else {
-+			this.options.show == "fade" ?
-+				this.uiDialog.fadeIn() :
-+				this.uiDialog.show(this.options.show);
-+		}
- 		this.options.autoResize && this.size();
- 		this.moveToTop(true);
- 		
-@@ -278,7 +286,15 @@
- 	
- 	close: function() {
- 		(this.overlay && this.overlay.destroy());
--		this.uiDialog.hide(this.options.hide);
-+		if ( !!this.options.hide && !!this.options.hide.effect ) {
-+			this.options.hide.effect == "fade" ?
-+				this.uiDialog.fadeOut(this.options.hide.speed) :
-+				this.uiDialog.hide(this.options.hide.effect,this.options.hide.options,this.options.hide.speed);
-+		} else {
-+			this.options.hide == "fade" ?
-+				this.uiDialog.fadeOut() :
-+				this.uiDialog.hide(this.options.hide);
-+		}
- 
- 		// CALLBACK: close
- 		var closeEV = null;</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/2358/dialog2.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/2358/dialog2.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

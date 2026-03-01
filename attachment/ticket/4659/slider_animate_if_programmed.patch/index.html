@@ -137,31 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- ui.slider.js.orig	2009-07-08 15:50:57.000000000 +1000
-+++ ui.slider.js	2009-07-08 16:12:44.000000000 +1000
-@@ -400,7 +400,7 @@
- 	value: function(newValue) {
- 
- 		if (arguments.length) {
--			this._setData("value", newValue);
-+			this._setData("value", newValue, this.options.animate_if_programmed);
- 			this._change(null, 0);
- 		}
- 
-@@ -543,6 +543,7 @@
- 	eventPrefix: "slide",
- 	defaults: {
- 		animate: false,
-+    	        animate_if_programmed: false,
- 		delay: 0,
- 		distance: 0,
- 		max: 100,</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4659/slider_animate_if_programmed.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4659/slider_animate_if_programmed.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

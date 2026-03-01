@@ -139,52 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui/ui.slider.js
-===================================================================
-<span class="token coord">--- ui/ui.slider.js	(revision 439)</span>
-<span class="token coord">+++ ui/ui.slider.js	(working copy)</span>
-<span class="token coord">@@ -157,11 +157,21 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	
-</span><span class="token prefix unchanged"> </span><span class="token line">	keydown: function(keyCode, handle) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		if(/(37|38|39|40)/.test(keyCode)) {
-</span><span class="token prefix deleted">-</span><span class="token line">			var oper = /(37|40)/.test(keyCode) ? "-=" : "+=";
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		var k = keyCode;
-</span><span class="token prefix inserted">+</span><span class="token line">		if(/(33|34|35|36|37|38|39|40)/.test(k)) {
-</span><span class="token prefix inserted">+</span><span class="token line">			var o = this.options, xpos, ypos;
-</span><span class="token prefix inserted">+</span><span class="token line">			if (/(35|36)/.test(k)) {
-</span><span class="token prefix inserted">+</span><span class="token line">				xpos = (k == 35) ? o.max.x : o.min.x;
-</span><span class="token prefix inserted">+</span><span class="token line">				ypos = (k == 35) ? o.max.y : o.min.y;
-</span><span class="token prefix inserted">+</span><span class="token line">			} else {
-</span><span class="token prefix inserted">+</span><span class="token line">				var oper = /(34|37|40)/.test(k) ? "-=" : "+=";
-</span><span class="token prefix inserted">+</span><span class="token line">				var step = /(37|38|39|40)/.test(k) ? "oneStep" : "pageStep";
-</span><span class="token prefix inserted">+</span><span class="token line">				xpos = oper + this[step]("x");
-</span><span class="token prefix inserted">+</span><span class="token line">				ypos = oper + this[step]("y");
-</span><span class="token prefix inserted">+</span><span class="token line">			}
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			this.moveTo({
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				x: oper + this.oneStep("x"),
-</span><span class="token prefix deleted">-</span><span class="token line">				y: oper + this.oneStep("y")
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				x: xpos,
-</span><span class="token prefix inserted">+</span><span class="token line">				y: ypos
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			}, handle);
-</span><span class="token prefix unchanged"> </span><span class="token line">		}
-</span><span class="token prefix unchanged"> </span><span class="token line">	},
-</span></span><span class="token coord">@@ -280,6 +290,9 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	oneStep: function(axis) {
-</span><span class="token prefix unchanged"> </span><span class="token line">		return this.options.stepping[axis] || 1;
-</span><span class="token prefix unchanged"> </span><span class="token line">	},
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">	pageStep: function(axis) {
-</span><span class="token prefix inserted">+</span><span class="token line">		return /* this.options.paging[axis] ||*/ 10;
-</span><span class="token prefix inserted">+</span><span class="token line">	},
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	start: function(e, handle) {</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3081/slider.2.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3081/slider.2.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

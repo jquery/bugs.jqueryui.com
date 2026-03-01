@@ -137,56 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- ui_datepicker.js.orig	2009-05-02 19:29:00.000000000 +0200
-+++ ui.datepicker.js	2009-05-15 08:34:30.000000000 +0200
-@@ -11,6 +11,18 @@
-  *	ui.core.js
-  */
- 
-+/* Testing for a Value in JavaScript Array
-+ * http://snook.ca/archives/javascript/testing_for_a_v/ */
-+function oc(a)
-+{
-+  var o = {};
-+  for(var i=0;i<a.length;i++) 1="" 6="" +="" {="" o[a[i]]="" ;="" }="" return="" o;="" +}="" (function($)="" hide="" the="" namespace="" $.extend($.ui,="" datepicker:="" version:="" "1.7.1"="" });="" @@="" -54,6="" +66,7="" firstDay:="" 0,="" The="" first="" day="" of="" week,="" Sun="0," Mon="1," ...="" isRTL:="" false="" True="" if="" right-to-left="" language,="" left-to-right="" };="" this.highlight="{};" this._defaults="{" Global="" defaults="" for="" all="" date="" picker="" instances="" showOn:="" 'focus',="" 'focus'="" popup="" on="" focus,="" 'button'="" trigger="" button,="" or="" 'both'="" either="" -419,6="" +432,19="" },="" *="" Highlights="" specific="" dates="" with="" ui-state-active="" css="" class="" @param="" target="" element="" -="" input="" field="" division="" span="" Array[Date()]="" array="" to="" highlight="" _setHighlightDatepicker:="" function(target,="" settings)="" var="" inst="this._getInst(target);" (inst)="" this._updateDatepicker(inst);="" this._updateAlternate(inst);="" Get="" date(s)="" entry="" in="" a="" jQuery="" selection.="" @return="" Date="" current="" -430,6="" +456,7="" (inst="" ?="" this._getDate(inst)="" :="" null);="" Handle="" keystrokes.="" _doKeyDown:="" function(event)="" -1252,7="" +1279,7="" inst.currentYear,="" inst.currentMonth,="" inst.currentDay)));="" startDate;="" Generate="" HTML="" state="" picker.="" _generateHTML:="" function(inst)="" today="new" Date();="" -1364,6="" +1391,7="" leadDays="(this._getFirstDayOfMonth(drawYear," drawMonth)="" firstDay="" 7)="" %="" 7;="" numRows="(isMultiMonth" Math.ceil((leadDays="" daysInMonth)="" 7));="" calculate="" number="" rows="" generate="" printDate="this._daylightSavingAdjust(new" Date(drawYear,="" drawMonth,="" leadDays));="" (var="" dRow="0;" <="" numRows;="" dRow++)="" create="" calender="" tbody="" -1389,8="" +1417,9="" (unselectable="" ''="" '="" onclick="DP_jQuery.datepicker._selectDay(\'#' +
- 							inst.id + '\',' + drawMonth + ',' + drawYear + ', this);return false;" ')="">' + // actions
- 							(otherMonth ? (showOtherMonths ? printDate.getDate() : '&#xa0;') : // display for other months
--							(unselectable ? '<span class="ui-state-default">' + printDate.getDate() + '</span>' : '<a class="ui-state-default' +
--							(printDate.getTime() == today.getTime() ? ' ui-state-highlight' : '') +
-+							(unselectable ? '<span class=" ui-state-default"="">' + printDate.getDate() + '' : '<a class="' +
-+							(printDate.getTime() == today.getTime() ? ' ui-state-highlight' : '') +														
-+							this._setHighlight(printDate) +
- 							(printDate.getTime() >= currentDate.getTime() && printDate.getTime() <= endDate.getTime() ? // in current range
- 							' ui-state-active' : '') + // highlight selected day
- 							'" href="#">' + printDate.getDate() + '</a>')) + ''; // display for this month
-@@ -1416,6 +1445,21 @@
- 		return html;
- 	},
- 
-+	/* check if given date belongs to any classes and return their names
-+	 * return default 'ui-state-default' otherwise
-+	 */
-+	_setHighlight: function (printDate) {
-+		/* return classes of the given date */
-+		var classes = '';
-+		var highlight = this.highlight;
-+		for (var i in highlight) {
-+			if (printDate in oc(highlight[i])) {
-+				classes += ' ' + i;
-+			}			
-+		}
-+		return (( classes == '') ? 'ui-state-default' : classes);  
-+	},
-+
- 	/* Generate the month and year header. */
- 	_generateMonthYearHeader: function(inst, drawMonth, drawYear, minDate, maxDate,
- 			selectedDate, secondary, monthNames, monthNamesShort) {</a></a.length;i++)></code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4528/ui.datepicker.highlight_v2.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4528/ui.datepicker.highlight_v2.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

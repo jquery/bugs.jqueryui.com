@@ -137,86 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>./js/js/jquery-ui-1.8.4.custom.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>BoxWidget.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
-			<span class="token selector">.box</span> <span class="token punctuation">{</span>
-				<span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-				<span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-			
-			<span class="token selector">.orange</span> <span class="token punctuation">{</span>
-				<span class="token property">background-color</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-
-			<span class="token selector">.blue</span> <span class="token punctuation">{</span>
-				<span class="token property">background-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-
-			<span class="token selector">.green</span> <span class="token punctuation">{</span>
-				<span class="token property">background-color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-			
-			<span class="token selector">.emptyBox</span> <span class="token punctuation">{</span>
-				<span class="token property">margin-top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
-				<span class="token property">margin-left</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>			
-				<span class="token property">border</span><span class="token punctuation">:</span> 1px solid<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-			
-			<span class="token selector">#container</span> <span class="token punctuation">{</span>
-				<span class="token property">margin-top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
-				<span class="token property">width</span><span class="token punctuation">:</span> 346px<span class="token punctuation">;</span>
-				<span class="token property">height</span><span class="token punctuation">:</span> 346px<span class="token punctuation">;</span>
-				<span class="token property">border-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
-				<span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-			
-			<span class="token selector">#myBoxes</span> <span class="token punctuation">{</span>
-				<span class="token property">height</span><span class="token punctuation">:</span> 120px<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-			
-			<span class="token selector">.closeTab</span> <span class="token punctuation">{</span>
-				<span class="token property">height</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
-				<span class="token property">width</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
-				<span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'./images/close-tab.png'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
-				<span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-			
-			<span class="token selector">.inactiveCloseTab</span> <span class="token punctuation">{</span>
-				<span class="token property">height</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
-				<span class="token property">width</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
-				<span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'./images/inactive-close-tab.png'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-		</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>myBoxes<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box emptyBox<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>original draggable orange box<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box emptyBox<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>original draggable blue box<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box emptyBox<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>original draggable green box<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-		
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-			<span class="token keyword">var</span> boxWidget <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BoxWidget</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+      <pre class="language-html" tabindex="0"><code class="language-html"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/6083/boxWidget.html">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/6083/boxWidget.html">Original Format</a>
   </div>
 </h1></div>
         </div>

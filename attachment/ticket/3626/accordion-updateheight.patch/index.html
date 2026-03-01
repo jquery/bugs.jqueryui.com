@@ -139,67 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui/ui.accordion.js
-===================================================================
---- ui/ui.accordion.js	(revision 1187)
-+++ ui/ui.accordion.js	(working copy)
-@@ -47,22 +47,7 @@
- 			this.element.find('a').css('zoom', '1');
- 		}
- 
--		var maxHeight;
--		if ( options.fillSpace ) {
--			maxHeight = this.element.parent().height();
--			options.headers.each(function() {
--				maxHeight -= $(this).outerHeight();
--			});
--			var maxPadding = 0;
--			options.headers.next().each(function() {
--				maxPadding = Math.max(maxPadding, $(this).innerHeight() - $(this).height());
--			}).height(maxHeight - maxPadding);
--		} else if ( options.autoHeight ) {
--			maxHeight = 0;
--			options.headers.next().each(function() {
--				maxHeight = Math.max(maxHeight, $(this).outerHeight());
--			}).height(maxHeight);
--		}
-+		this.updateHeight();
- 
- 		this.element.attr('role','tablist');
- 
-@@ -150,6 +135,26 @@
- 		clickHandler.call(this.element[0], {
- 			target: findActive( this.options.headers, index )[0]
- 		});
-+	},
-+
-+	updateHeight: function() {
-+		var options = this.options;
-+		var maxHeight;
-+		if ( options.fillSpace ) {
-+			maxHeight = this.element.parent().height();
-+			options.headers.each(function() {
-+				maxHeight -= $(this).outerHeight();
-+			});
-+			var maxPadding = 0;
-+			options.headers.next().each(function() {
-+				maxPadding = Math.max(maxPadding, $(this).innerHeight() - $(this).height());
-+			}).height(maxHeight - maxPadding);
-+		} else if ( options.autoHeight ) {
-+			maxHeight = 0;
-+			options.headers.next().each(function() {
-+				maxHeight = Math.max(maxHeight, $(this).outerHeight());
-+			}).height(maxHeight);
-+		}
- 	}
- 
- });</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3626/accordion-updateheight.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3626/accordion-updateheight.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

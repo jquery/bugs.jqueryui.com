@@ -139,23 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff"><span class="token coord">--- ui.datepicker.js	Fri Jan 30 01:50:00 2009</span>
-<span class="token coord">+++ ui.datepicker.week-fix.js	Thu Mar 05 12:12:15 2009</span>
-<span class="token coord">@@ -844,7 +844,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				return 1;
-</span><span class="token prefix unchanged"> </span><span class="token line">			}
-</span><span class="token prefix unchanged"> </span><span class="token line">		}
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		return Math.floor(((checkDate - firstMon) / 86400000) / 7) + 1; // Weeks to given date
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		return Math.floor(Math.round((checkDate - firstMon) / 86400000) / 7) + 1; // Weeks to given date
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">	/* Parse a string value into a date object.</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4285/ui.datepicker.week-fix.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4285/ui.datepicker.week-fix.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

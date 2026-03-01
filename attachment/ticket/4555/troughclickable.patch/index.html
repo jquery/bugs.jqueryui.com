@@ -139,33 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: ui.slider.js
-===================================================================
---- ui.slider.js	(revision 2612)
-+++ ui.slider.js	(working copy)
-@@ -249,6 +249,7 @@
- 		};
- 
- 		normValue = this._normValueFromMouse(position);
-+		if(mouseOverHandle && !o.clickableTrough) return false;
- 		this._slide(event, index, normValue);
- 		return true;
- 
-@@ -551,7 +552,8 @@
- 		range: false,
- 		step: 1,
- 		value: 0,
--		values: null
-+		values: null,
-+		clickableTrough : true
- 	}
- });</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4555/troughclickable.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4555/troughclickable.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

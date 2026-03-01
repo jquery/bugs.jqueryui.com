@@ -139,31 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui/ui.dialog.js
-===================================================================
-<span class="token coord">--- ui/ui.dialog.js	(revision 2935)</span>
-<span class="token coord">+++ ui/ui.dialog.js	(working copy)</span>
-<span class="token coord">@@ -126,6 +126,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		(options.resizable &amp;&amp; $.fn.resizable &amp;&amp; self._makeResizable());
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		self._createButtons(options.buttons);
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		self._position(options.position);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		self._isOpen = false;
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">		(options.stackfix &amp;&amp; $.fn.stackfix &amp;&amp; uiDialog.stackfix());
-</span></span><span class="token coord">@@ -223,7 +224,6 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		self.overlay = options.modal ? new $.ui.dialog.overlay(self) : null;
-</span><span class="token prefix unchanged"> </span><span class="token line">		(uiDialog.next().length &amp;&amp; uiDialog.appendTo('body'));
-</span><span class="token prefix unchanged"> </span><span class="token line">		self._size();
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		self._position(options.position);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		uiDialog.show(options.show);
-</span><span class="token prefix unchanged"> </span><span class="token line">		self.moveToTop(true);</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4679/fixForTicket4679.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4679/fixForTicket4679.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

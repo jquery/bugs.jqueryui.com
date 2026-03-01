@@ -139,67 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-js" tabindex="0"><code class="language-js"><span class="token comment">/***
- * Pacth for dialog-fix ckeditor problem [ by ticket #4727 ]
- * 	http://dev.jqueryui.com/ticket/4727
- */</span>
-
-$<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span>$<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>dialog<span class="token punctuation">.</span>overlay<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token function-variable function">create</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">dialog</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>instances<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token comment">// prevent use of anchors and inputs</span>
-		<span class="token comment">// we use a setTimeout in case the overlay is created from an</span>
-		<span class="token comment">// event that we're going to be cancelling (see #2804)</span>
-		<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-			<span class="token comment">// handle $(el).dialog().dialog('close') (see #4065)</span>
-			<span class="token keyword">if</span> <span class="token punctuation">(</span>$<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>dialog<span class="token punctuation">.</span>overlay<span class="token punctuation">.</span>instances<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-				<span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>$<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>dialog<span class="token punctuation">.</span>overlay<span class="token punctuation">.</span>events<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-					<span class="token keyword">var</span> parentDialog <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">parents</span><span class="token punctuation">(</span><span class="token string">'.ui-dialog'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token keyword">if</span> <span class="token punctuation">(</span>parentDialog<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-						<span class="token keyword">var</span> parentDialogZIndex <span class="token operator">=</span> parentDialog<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">'zIndex'</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">;</span>
-						<span class="token keyword">return</span> parentDialogZIndex <span class="token operator">></span> $<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>dialog<span class="token punctuation">.</span>overlay<span class="token punctuation">.</span>maxZ<span class="token punctuation">;</span>
-					<span class="token punctuation">}</span>
-					
-					<span class="token keyword">var</span> aboveOverlay <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-					<span class="token function">$</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">parents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-						<span class="token keyword">var</span> currentZ <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">'zIndex'</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">;</span>
-						<span class="token keyword">if</span> <span class="token punctuation">(</span>currentZ <span class="token operator">></span> $<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>dialog<span class="token punctuation">.</span>overlay<span class="token punctuation">.</span>maxZ<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-							aboveOverlay <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-							<span class="token keyword">return</span><span class="token punctuation">;</span>
-						<span class="token punctuation">}</span>
-					<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-					
-					<span class="token keyword">return</span> aboveOverlay<span class="token punctuation">;</span>
-				<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-		<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		
-		<span class="token comment">// allow closing by pressing the escape key</span>
-		<span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token string">'keydown.dialog-overlay'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-			<span class="token punctuation">(</span>dialog<span class="token punctuation">.</span>options<span class="token punctuation">.</span>closeOnEscape <span class="token operator">&amp;&amp;</span> event<span class="token punctuation">.</span>keyCode
-					<span class="token operator">&amp;&amp;</span> event<span class="token punctuation">.</span>keyCode <span class="token operator">==</span> $<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>keyCode<span class="token punctuation">.</span><span class="token constant">ESCAPE</span> <span class="token operator">&amp;&amp;</span> dialog<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			
-		<span class="token comment">// handle window resize</span>
-		<span class="token function">$</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token string">'resize.dialog-overlay'</span><span class="token punctuation">,</span> $<span class="token punctuation">.</span>ui<span class="token punctuation">.</span>dialog<span class="token punctuation">.</span>overlay<span class="token punctuation">.</span>resize<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-	
-	<span class="token keyword">var</span> $el <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'&lt;div>&lt;/div>'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">appendTo</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">)</span>
-		<span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">'ui-widget-overlay'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-		<span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">width</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-		<span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">height</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	
-	<span class="token punctuation">(</span>dialog<span class="token punctuation">.</span>options<span class="token punctuation">.</span>stackfix <span class="token operator">&amp;&amp;</span> $<span class="token punctuation">.</span>fn<span class="token punctuation">.</span>stackfix <span class="token operator">&amp;&amp;</span> $el<span class="token punctuation">.</span><span class="token function">stackfix</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	
-	<span class="token keyword">this</span><span class="token punctuation">.</span>instances<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>$el<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token keyword">return</span> $el<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+      <pre class="language-js" tabindex="0"><code class="language-js"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4727/dialog-patch.js">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4727/dialog-patch.js">Original Format</a>
   </div>
 </h1></div>
         </div>

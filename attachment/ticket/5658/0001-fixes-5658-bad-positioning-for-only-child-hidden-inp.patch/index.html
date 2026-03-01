@@ -137,41 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">From 9e4071220a4b2e09c5d85825394c8689f66510cf Mon Sep 17 00:00:00 2001
-From: Andy Fowler <andy@andyfowler.com>
-Date: Tue, 25 May 2010 18:38:24 -0400
-Subject: [PATCH] fixes #5658 bad positioning for only-child hidden inputs
-
----
- ui/jquery.ui.datepicker.js |    6 ++++--
- 1 files changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/ui/jquery.ui.datepicker.js b/ui/jquery.ui.datepicker.js
-index ee3d79e..f844fa1 100644
---- a/ui/jquery.ui.datepicker.js
-+++ b/ui/jquery.ui.datepicker.js
-@@ -736,9 +736,11 @@ $.extend(Datepicker.prototype, {
- 	/* Find an object's position on the screen. */
- 	_findPos: function(obj) {
- 		var inst = this._getInst(obj);
--		var isRTL = this._get(inst, 'isRTL');
-+		var seekMethod = (this._get(inst, 'isRTL')) ? 'previousSibling' : 'nextSibling';
-+		
-+		// check for nearest visible sibling, or if this is an only child, try parent
-         while (obj && (obj.type == 'hidden' || obj.nodeType != 1)) {
--            obj = obj[isRTL ? 'previousSibling' : 'nextSibling'];
-+            obj = (obj[seekMethod]) ? obj[seekMethod] : obj.parentElement;
-         }
-         var position = $(obj).offset();
- 	    return [position.left, position.top];
--- 
-1.7.1</andy@andyfowler.com></code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/5658/0001-fixes-5658-bad-positioning-for-only-child-hidden-inp.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/5658/0001-fixes-5658-bad-positioning-for-only-child-hidden-inp.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

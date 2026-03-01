@@ -137,43 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui.datepicker.js
-===================================================================
-<span class="token coord">--- ui.datepicker.js	(revision 3312)</span>
-<span class="token coord">+++ ui.datepicker.js	(working copy)</span>
-<span class="token coord">@@ -65,6 +65,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		buttonText: '...', // Text for trigger button
-</span><span class="token prefix unchanged"> </span><span class="token line">		buttonImage: '', // URL for trigger button image
-</span><span class="token prefix unchanged"> </span><span class="token line">		buttonImageOnly: false, // True if the image appears alone, false if it appears on a button
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		disableAutoComplete: false,
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		hideIfNoPrevNext: false, // True to hide next/previous month links
-</span><span class="token prefix unchanged"> </span><span class="token line">			// if not applicable, false to just disable them
-</span><span class="token prefix unchanged"> </span><span class="token line">		navigationAsDateFormat: false, // True if date formatting applied to prev/today/next links
-</span></span><span class="token coord">@@ -173,6 +174,9 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		var isRTL = this._get(inst, 'isRTL');
-</span><span class="token prefix unchanged"> </span><span class="token line">		if (appendText)
-</span><span class="token prefix unchanged"> </span><span class="token line">			input[isRTL ? 'before' : 'after']('&lt;span class="' + this._appendClass + '">' + appendText + '&lt;/span>');
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		var doDisableAutoComplete = this._get(inst, 'disableAutoComplete');
-</span><span class="token prefix inserted">+</span><span class="token line">		if (doDisableAutoComplete)
-</span><span class="token prefix inserted">+</span><span class="token line">			input.attr('autocomplete', 'off');
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		var showOn = this._get(inst, 'showOn');
-</span><span class="token prefix unchanged"> </span><span class="token line">		if (showOn == 'focus' || showOn == 'both') // pop-up date picker when in the marked field
-</span><span class="token prefix unchanged"> </span><span class="token line">			input.focus(this._showDatepicker);
-</span></span><span class="token coord">@@ -1404,7 +1408,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">					drawMonth = 0;
-</span><span class="token prefix unchanged"> </span><span class="token line">					drawYear++;
-</span><span class="token prefix unchanged"> </span><span class="token line">				}
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				calender += '&lt;/tbody>&lt;/table>' + (isMultiMonth ? '&lt;/div>' + 
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				calender += '&lt;/tbody>&lt;/table>' + (isMultiMonth ? '&lt;/div>' +
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">							((numMonths[0] > 0 &amp;&amp; col == numMonths[1]-1) ? '&lt;div class="ui-datepicker-row-break">&lt;/div>' : '') : '');
-</span><span class="token prefix unchanged"> </span><span class="token line">				group += calender;
-</span><span class="token prefix unchanged"> </span><span class="token line">			}</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4478/ui.datepicker.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4478/ui.datepicker.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

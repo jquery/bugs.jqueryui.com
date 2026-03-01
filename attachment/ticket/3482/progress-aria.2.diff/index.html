@@ -139,77 +139,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: tests/progressbar.js
-===================================================================
-<span class="token coord">--- tests/progressbar.js	(revision 846)</span>
-<span class="token coord">+++ tests/progressbar.js	(working copy)</span>
-<span class="token coord">@@ -52,5 +52,18 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">});
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">test("accessibility", function() {
-</span><span class="token prefix inserted">+</span><span class="token line">	expect(6);
-</span><span class="token prefix inserted">+</span><span class="token line">	el = $("#progressbar").progressbar();
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">	equals(el.ariaRole(), "progressbar", "aria role");
-</span><span class="token prefix inserted">+</span><span class="token line">	equals(el.ariaState("valuemin"), 0, "aria-valuemin");
-</span><span class="token prefix inserted">+</span><span class="token line">	equals(el.ariaState("valuemax"), 100, "aria-valuemax");
-</span><span class="token prefix inserted">+</span><span class="token line">	equals(el.ariaState("valuenow"), 0, "aria-valuenow");
-</span><span class="token prefix inserted">+</span><span class="token line">	el.progressbar("disable");
-</span><span class="token prefix inserted">+</span><span class="token line">	equals(el.ariaState("disabled"), "true", "aria-valuenow");
-</span><span class="token prefix inserted">+</span><span class="token line">	el.progressbar("enable");
-</span><span class="token prefix inserted">+</span><span class="token line">	equals(el.ariaState("disabled"), "false", "aria-valuenow");
-</span><span class="token prefix inserted">+</span><span class="token line">});
-</span><span class="token prefix inserted">+</span><span class="token line">
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">})(jQuery);
-</span></span>Index: ui/ui.progressbar.js
-===================================================================
-<span class="token coord">--- ui/ui.progressbar.js	(revision 846)</span>
-<span class="token coord">+++ ui/ui.progressbar.js	(working copy)</span>
-<span class="token coord">@@ -23,7 +23,10 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">			text = options.text || '0%';
-</span><span class="token prefix unchanged"> </span><span class="token line">		
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.element.addClass("ui-progressbar").width(options.width);
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		this.element.ariaRole("progressbar");
-</span><span class="token prefix inserted">+</span><span class="token line">		this.element.ariaState("valuemin","0");
-</span><span class="token prefix inserted">+</span><span class="token line">		this.element.ariaState("valuemax","100");
-</span><span class="token prefix inserted">+</span><span class="token line">		this.element.ariaState("valuenow","0");
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		$.extend(this, {
-</span><span class="token prefix unchanged"> </span><span class="token line">			active: false,
-</span><span class="token prefix unchanged"> </span><span class="token line">			pixelState: 0,
-</span></span><span class="token coord">@@ -97,11 +100,13 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	disable: function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.element.addClass("ui-progressbar-disabled");
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.disabled = true;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		this.element.ariaState("disabled", true);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">	
-</span><span class="token prefix unchanged"> </span><span class="token line">	enable: function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.element.removeClass("ui-progressbar-disabled");
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.disabled = false;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		this.element.ariaState("disabled", false);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">	},
-</span><span class="token prefix unchanged"> </span><span class="token line">	
-</span><span class="token prefix unchanged"> </span><span class="token line">	pause: function() {
-</span></span><span class="token coord">@@ -120,9 +125,11 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		this.bar.width(this.pixelState);
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.textElement.width(this.pixelState);
-</span><span class="token prefix unchanged"> </span><span class="token line">		
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		var percent = Math.round(this.percentState);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		if (this.options.range &amp;&amp; !this.options.text) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			this.textElement.html(Math.round(this.percentState) + '%');
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			this.textElement.html(percent + '%');
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		}
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		this.element.ariaState("valuenow", percent);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		this._propagate('progress', this.ui());
-</span><span class="token prefix unchanged"> </span><span class="token line">	},</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3482/progress-aria.2.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3482/progress-aria.2.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

@@ -137,34 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-txt" tabindex="0"><code class="language-txt">Index: /home/lrbabe/workspace/jQuery-ui/ui/effects.scale.js
-===================================================================
---- /home/lrbabe/workspace/jQuery-ui/ui/effects.scale.js	(revision 463)
-+++ /home/lrbabe/workspace/jQuery-ui/ui/effects.scale.js	(working copy)
-@@ -116,7 +116,7 @@
- 			from: {y: el.from.height / original.height, x: el.from.width / original.width},
- 			to: {y: el.to.height / original.height, x: el.to.width / original.width}
- 		};
--		if (scale == 'box' || scale == 'both') { // Scale the css box
-+		if (scale != 'content') { // Scale the css box
- 			if (factor.from.y != factor.to.y) { // Vertical props scaling
- 				props = props.concat(vProps);
- 				el.from = $.effects.setTransition(el, vProps, factor.from.y, el.from);
-@@ -128,7 +128,7 @@
- 				el.to = $.effects.setTransition(el, hProps, factor.to.x, el.to);
- 			};
- 		};
--		if (scale == 'content' || scale == 'both') { // Scale the content
-+		if (scale != 'box') { // Scale the content
- 			if (factor.from.y != factor.to.y) { // Vertical props scaling
- 				props = props.concat(cProps);
- 				el.from = $.effects.setTransition(el, cProps, factor.from.y, el.from);</code></pre>
+      <pre class="language-txt" tabindex="0"><code class="language-txt"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3102/scale_patch.txt">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3102/scale_patch.txt">Original Format</a>
   </div>
 </h1></div>
         </div>

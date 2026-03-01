@@ -137,37 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-diff" tabindex="0"><code class="language-diff">Index: ui/ui.droppable.js
-===================================================================
-<span class="token coord">--- ui/ui.droppable.js	(revision 2636)</span>
-<span class="token coord">+++ ui/ui.droppable.js	(working copy)</span>
-<span class="token coord">@@ -103,7 +103,7 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">		var childrenIntersection = false;
-</span><span class="token prefix unchanged"> </span><span class="token line">		this.element.find(":data(droppable)").not(".ui-draggable-dragging").each(function() {
-</span><span class="token prefix unchanged"> </span><span class="token line">			var inst = $.data(this, 'droppable');
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">			if(inst.options.greedy &amp;&amp; $.ui.intersect(draggable, $.extend(inst, { offset: inst.element.offset() }), inst.options.tolerance)) {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			if(inst.options.greedy &amp;&amp; inst.options.scope === draggable.options.scope &amp;&amp; $.ui.intersect(draggable, $.extend(inst, { offset: inst.element.offset() }), inst.options.tolerance)) {
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				childrenIntersection = true; return false;
-</span><span class="token prefix unchanged"> </span><span class="token line">			}
-</span><span class="token prefix unchanged"> </span><span class="token line">		});
-</span></span><span class="token coord">@@ -251,7 +251,10 @@</span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">			var parentInstance;
-</span><span class="token prefix unchanged"> </span><span class="token line">			if (this.options.greedy) {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">				var parent = this.element.parents(':data(droppable):eq(0)');
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">				var drop = this;
-</span><span class="token prefix inserted">+</span><span class="token line">				var parent = this.element.parents(':data(droppable):eq(0)').filter(function() {
-</span><span class="token prefix inserted">+</span><span class="token line">					return ($.data(this, "droppable").option("scope") === drop.options.scope);
-</span><span class="token prefix inserted">+</span><span class="token line">				});
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">				if (parent.length) {
-</span><span class="token prefix unchanged"> </span><span class="token line">					parentInstance = $.data(parent[0], 'droppable');
-</span><span class="token prefix unchanged"> </span><span class="token line">					parentInstance.greedyChild = (c == 'isover' ? 1 : 0);</span></span></code></pre>
+      <pre class="language-diff" tabindex="0"><code class="language-diff"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/4570/greedyDropBadScope.diff">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/4570/greedyDropBadScope.diff">Original Format</a>
   </div>
 </h1></div>
         </div>

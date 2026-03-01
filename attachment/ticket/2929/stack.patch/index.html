@@ -137,100 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">Index: C:/Documents and Settings/Scott/eclipse/workspace/jQuery UI/ui/source/ui.dialog.js
-===================================================================
---- C:/Documents and Settings/Scott/eclipse/workspace/jQuery UI/ui/source/ui.dialog.js	(revision 132)
-+++ C:/Documents and Settings/Scott/eclipse/workspace/jQuery UI/ui/source/ui.dialog.js	(working copy)
-@@ -45,7 +45,13 @@
- 		var uiDialogContainer = uiDialogContent.parent().addClass('ui-dialog-container').css({position: 'relative'});
- 		var uiDialog = (this.uiDialog = uiDialogContainer.parent()).hide()
- 			.addClass('ui-dialog').addClass(options.dialogClass)
--			.css({position: 'absolute', width: options.width, height: options.height, overflow: 'hidden'}); 
-+			.css({
-+				position: 'absolute',
-+				width: options.width,
-+				height: options.height,
-+				overflow: 'hidden',
-+				zIndex: options.zIndex
-+			});
- 
- 		var classNames = uiDialogContent.attr('className').split(' ');
- 
-@@ -123,7 +129,7 @@
- 			uiDialog.draggable({
- 				handle: '.ui-dialog-titlebar',
- 				start: function(e, ui) {
--					self.activate();
-+					self.moveToTop();
- 					(options.dragStart && options.dragStart.apply(this, arguments));
- 				},
- 				drag: options.drag,
-@@ -136,11 +142,8 @@
- 		}
- 	
- 		uiDialog.mousedown(function() {
--			self.activate();
-+			self.moveToTop();
- 		});
--		uiDialogTitlebar.click(function() {
--			self.activate();
--		});
- 		
- 		(options.bgiframe && $.fn.bgiframe && uiDialog.bgiframe());
- 		
-@@ -229,7 +232,6 @@
- 		this.position(this.options.position);
- 		this.uiDialog.show();
- 		this.moveToTop();
--		this.activate();
- 		
- 		// CALLBACK: open
- 		var openEV = null;
-@@ -239,18 +241,10 @@
- 		this.uiDialogTitlebarClose.focus();
- 		this.element.triggerHandler("dialogopen", [openEV, openUI], this.options.open);
- 	},
--
--	activate: function() {
--		// Move modeless dialogs to the top when they're activated. Even
--		// if there is a modal dialog in the window, the modeless dialog
--		// should be on top because it must have been opened after the modal
--		// dialog. Modal dialogs don't get moved to the top because that
--		// would make any modeless dialogs that it spawned unusable until
--		// the modal dialog is closed.
--		(!this.options.modal && this.moveToTop());
--	},
--		
-+	
- 	moveToTop: function() {
-+		if (this.options.modal || !this.options.stack) { return; }
-+		
- 		var maxZ = this.options.zIndex, options = this.options;
- 		$('.ui-dialog:visible').each(function() {
- 			maxZ = Math.max(maxZ, parseInt($(this).css('z-index'), 10) || options.zIndex);
-@@ -258,7 +252,7 @@
- 		(this.overlay && this.overlay.$el.css('z-index', ++maxZ));
- 		this.uiDialog.css('z-index', ++maxZ);
- 	},
--		
-+	
- 	close: function() {
- 		(this.overlay && this.overlay.destroy());
- 		this.uiDialog.hide();
-@@ -298,6 +292,7 @@
- 		overlay: {},
- 		position: 'center',
- 		resizable: true,
-+		stack: true,
- 		width: 300,
- 		zIndex: 1000
- 	},</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/2929/stack.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/2929/stack.patch">Original Format</a>
   </div>
 </h1></div>
         </div>

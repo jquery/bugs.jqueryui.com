@@ -137,58 +137,13 @@
   
     <div class="attachment-preview">
       
-      <pre class="language-patch" tabindex="0"><code class="language-patch">--- ui/ui.tabs.js.old	2008-12-11 18:57:37.000000000 +0000
-+++ ui/ui.tabs.js	2008-12-11 20:30:04.000000000 +0000
-@@ -438,16 +438,38 @@
- 		var cleanup = function() {
- 			self.$tabs.filter('.' + o.loadingClass).removeClass(o.loadingClass)
- 					.each(function() {
--						if (o.spinner)
--							inner(this).parent().html(inner(this).data('label.tabs'));
-+						if (o.spinner) {
-+							if (o.spinner_placeholder) {
-+								var $placeholder = o.spinner_placeholder;
-+								if (!$placeholder.jquery)
-+									$placeholder = $(o.spinner_placeholder, this);
-+								
-+								var $inner_span = $('> span', $placeholder);
-+								$placeholder.html($inner_span.data('placeholder.tabs'));
-+							} else {
-+								inner(this).parent().html(inner(this).data('label.tabs'));
-+							}
-+						}
- 					});
- 			self.xhr = null;
- 		};
- 
- 		if (o.spinner) {
--			var label = inner(a).html();
--			inner(a).wrapInner('<em></em>')
--				.find('em').data('label.tabs', label).html(o.spinner);
-+			if (o.spinner_placeholder) {
-+				var $placeholder = o.spinner_placeholder;
-+				if (!$placeholder.jquery)
-+					$placeholder = $(o.spinner_placeholder, a);
-+
-+				var ph_inner = $placeholder.html();
-+				$placeholder.html('<span></span>')
-+					.find('span')
-+						.data('placeholder.tabs', ph_inner)
-+							.html(o.spinner);
-+			} else {
-+				var label = inner(a).html();
-+				inner(a).wrapInner('<em></em>')
-+					.find('em').data('label.tabs', label).html(o.spinner);
-+                        }
- 		}
- 
- 		var ajaxOptions = $.extend({}, o.ajaxOptions, {</code></pre>
+      <pre class="language-patch" tabindex="0"><code class="language-patch"></code></pre>
     </div>
   
 
   <div class="attachment-download flex-column flex-center">
     <h3>Download in other formats:</h3>
-    <a class="attachment-download-link" download="" href="/raw-attachment/ticket/3659/ui.tab-add-placeholder-spinners.patch">Original Format</a>
+    <a class="attachment-download-link" download href="/raw-attachment/ticket/3659/ui.tab-add-placeholder-spinners.patch">Original Format</a>
   </div>
 </h1></div>
         </div>
