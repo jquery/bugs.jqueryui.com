@@ -30,15 +30,15 @@ jobs:
     env:
       DEPLOY_DIR: _site/
       DEPLOY_BRANCH: gh-pages
-      NODE_VERSION: 20.x
+      NODE_VERSION: 24.x
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           submodules: recursive
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4.0.3
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
         with:
           node-version: ${{ env.NODE_VERSION }}
 
