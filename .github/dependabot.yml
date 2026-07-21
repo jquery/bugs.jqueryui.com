@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: github-actions
-    directory: "/"
+    directory: '/'
     schedule:
       interval: monthly
 
@@ -10,4 +10,4 @@ updates:
       github-actions:
         applies-to: version-updates
         patterns:
-          - "*"
+          - '*'

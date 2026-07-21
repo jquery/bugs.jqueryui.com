@@ -4,7 +4,12 @@
   --attachment-download-link-color: #666;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: bold;
 }
 
@@ -43,6 +48,7 @@ h6 {
   height: auto;
 }
 
-code[class*=language-], pre[class*=language-] {
+code[class*='language-'],
+pre[class*='language-'] {
   font-size: 0.75rem;
 }
